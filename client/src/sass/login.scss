@@ -1,0 +1,125 @@
+@import "./colors";
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+.login {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+
+	&__form {
+		width: 300px;
+		height: 400px;
+		border: 1px solid #909090;
+		border-radius: 8px;
+		padding: 20px;
+		text-align: center;
+	}
+
+	&__heading {
+		text-align: center;
+		color: $main-color;
+		margin-bottom: 30px;
+		font-size: 30px;
+	}
+
+	&__box {
+		position: relative;
+		width: 100%;
+		margin-bottom: 25px;
+
+		input {
+			width: 100%;
+			border: 1px solid $main-color;
+			outline: none;
+			padding: 15px 20px;
+            margin-bottom: 10px;
+		}
+
+		input:focus + label,
+		input:valid + label {
+			transform: translate(-5px, -25px);
+			color: $main-color;
+			background-color: #fff;
+		}
+
+		label {
+			position: absolute;
+			top: 15px;
+			left: 20px;
+			color: #000;
+			transition: all 0.3s;
+		}
+	}
+
+	&__btn-box {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 15px;
+	}
+
+	&__submit {
+		border: none;
+		background-color: $main-color;
+		color: #fff;
+		padding: 15px 20px;
+		border-radius: 8px;
+		width: 100%;
+		font-size: 20px;
+		transition: background-color 0.3s;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #cb380f;
+		}
+	}
+
+	&__info {
+		display: inline-block;
+		margin-right: 10px;
+	}
+
+	&__link {
+		text-decoration: none;
+		color: $main-color;
+	}
+
+    &__text-error{
+        color: #ff0000;
+        font-weight: bold;
+		visibility: hidden;
+    }
+
+	&__password-icons{
+		position: absolute;
+		top: 12px;
+		right: 10px;
+		cursor: pointer;
+
+		.show-password{
+			display: none;
+		}
+
+		.hide-password{
+			display: block;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.login {
+		&__form {
+			width: 500px;
+		}
+
+		&__info,
+		&__link, &__text-error {
+			font-size: 18px;
+		}
+	}
+}

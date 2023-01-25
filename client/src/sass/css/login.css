@@ -1,0 +1,118 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+}
+.login__form {
+  width: 300px;
+  height: 400px;
+  border: 1px solid #909090;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+}
+.login__heading {
+  text-align: center;
+  color: #f46036;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+.login__box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.login__box input {
+  width: 100%;
+  border: 1px solid #f46036;
+  outline: none;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+}
+.login__box input:focus + label,
+.login__box input:valid + label {
+  -webkit-transform: translate(-5px, -25px);
+          transform: translate(-5px, -25px);
+  color: #f46036;
+  background-color: #fff;
+}
+.login__box label {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #000;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.login__btn-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 15px;
+}
+.login__submit {
+  border: none;
+  background-color: #f46036;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 20px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.login__submit:hover {
+  background-color: #cb380f;
+}
+.login__info {
+  display: inline-block;
+  margin-right: 10px;
+}
+.login__link {
+  text-decoration: none;
+  color: #f46036;
+}
+.login__text-error {
+  color: #ff0000;
+  font-weight: bold;
+  visibility: hidden;
+}
+.login__password-icons {
+  position: absolute;
+  top: 12px;
+  right: 10px;
+  cursor: pointer;
+}
+.login__password-icons .show-password {
+  display: none;
+}
+.login__password-icons .hide-password {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .login__form {
+    width: 500px;
+  }
+  .login__info, .login__link, .login__text-error {
+    font-size: 18px;
+  }
+}/*# sourceMappingURL=login.css.map */
