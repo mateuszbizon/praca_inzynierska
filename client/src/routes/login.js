@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import "../sass/css/login.css";
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import HomeNavbar from "../components/homeNavbar";
 
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -70,6 +71,7 @@ function Login() {
 	}
 	return (
 		<>
+			<HomeNavbar />
 			<section className='login'>
 				<div className='login__form'>
 					<h1 className='login__heading'>Logowanie</h1>

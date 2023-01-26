@@ -1,0 +1,65 @@
+.navbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  padding: 0 15px;
+}
+.navbar__logo {
+  width: 50px;
+  height: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 20px;
+}
+.navbar__elements {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.navbar__link {
+  position: relative;
+  margin-right: 10px;
+  font-size: 16px;
+  color: #f46036;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.navbar__link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  background-color: #f46036;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+.navbar__link:hover::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+@media (min-width: 768px) {
+  .navbar__logo, .navbar__link {
+    margin-right: 40px;
+  }
+}/*# sourceMappingURL=homeNavbar.css.map */
