@@ -16,12 +16,14 @@
       -ms-flex-align: center;
           align-items: center;
   height: 100vh;
+  background-color: #414770;
 }
 .login__form {
   width: 300px;
   height: 400px;
   border: 1px solid #909090;
   border-radius: 8px;
+  background-color: #fff;
   padding: 20px;
   text-align: center;
 }
