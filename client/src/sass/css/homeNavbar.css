@@ -58,7 +58,7 @@
           transform-origin: left;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 576px) {
   .navbar__logo, .navbar__link {
     margin-right: 40px;
   }
