@@ -1,0 +1,153 @@
+@import "./colors";
+@import "./mixins";
+
+.register {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background-color: $secondary-color;
+
+	&__form {
+		width: 300px;
+		min-height: 400px;
+		margin-top: 90px;
+		border: 1px solid #909090;
+		border-radius: 8px;
+		background-color: #fff;
+		padding: 20px;
+	}
+
+	&__heading {
+		text-align: center;
+		color: $main-color;
+		margin-bottom: 30px;
+		font-size: 30px;
+	}
+
+	&__row {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__box {
+		position: relative;
+		width: 100%;
+		margin-bottom: 25px;
+
+		input {
+			width: 100%;
+			border: 1px solid $main-color;
+			outline: none;
+			padding: 15px 20px;
+			margin-bottom: 10px;
+		}
+
+		input:focus + label,
+		input:valid + label {
+			transform: translate(-5px, -25px);
+			color: $main-color;
+			background-color: #fff;
+		}
+
+		label {
+			position: absolute;
+			top: 15px;
+			left: 20px;
+			color: #000;
+			transition: all 0.3s;
+		}
+	}
+
+	&__btn-box {
+		display: flex;
+		justify-content: center;
+		margin-bottom: 15px;
+	}
+
+	&__submit {
+		border: none;
+		background-color: $main-color;
+		color: #fff;
+		padding: 15px 20px;
+		border-radius: 8px;
+		width: 100%;
+		font-size: 20px;
+		transition: background-color 0.3s;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #cb380f;
+		}
+	}
+
+	&__info-box {
+		width: 100%;
+		text-align: center;
+	}
+
+	&__info {
+		display: inline-block;
+		margin-right: 10px;
+	}
+
+	&__link {
+		position: relative;
+		text-decoration: none;
+		color: $main-color;
+
+		&::after {
+			@include link-style;
+		}
+
+		&:hover::after {
+			@include link-style-hover;
+		}
+	}
+
+	&__text-error {
+		color: #ff0000;
+		font-weight: bold;
+		visibility: hidden;
+		margin-left: 10px;
+	}
+
+	&__password-icons {
+		position: absolute;
+		top: 12px;
+		right: 10px;
+		cursor: pointer;
+
+		.show-password {
+			display: none;
+		}
+
+		.hide-password {
+			display: block;
+		}
+	}
+}
+
+@media (min-width: 576px) {
+	.register {
+		&__form {
+			width: 500px;
+			margin-top: 0;
+		}
+
+		&__row {
+			flex-direction: row;
+			justify-content: space-around;
+		}
+
+		&__box {
+			width: 45%;
+		}
+
+		&__info,
+		&__link,
+		&__text-error {
+			font-size: 17px;
+		}
+	}
+}

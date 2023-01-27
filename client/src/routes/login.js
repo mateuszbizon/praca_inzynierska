@@ -11,6 +11,7 @@ function Login() {
 	const passRef = useRef();
     const emailError = useRef();
     const passError = useRef();
+
     const showPass = useRef();
     const hidePass = useRef();
 	
@@ -60,7 +61,6 @@ function Login() {
 		}
 	}
 
-
 	function handleSubmit(e){
 		e.preventDefault();
 
@@ -68,6 +68,7 @@ function Login() {
 			return false;
 		}
 
+		console.log('submitted');
 	}
 	return (
 		<>
