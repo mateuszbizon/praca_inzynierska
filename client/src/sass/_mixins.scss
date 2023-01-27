@@ -1,0 +1,17 @@
+@mixin link-style {
+	content: "";
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+	height: 3px;
+	width: 100%;
+	transform: scaleX(0);
+	transform-origin: right;
+	background-color: $main-color;
+	transition: transform 0.3s;
+}
+
+@mixin link-style-hover {
+	transform: scaleX(1);
+	transform-origin: left;
+}

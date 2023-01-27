@@ -1,4 +1,5 @@
 @import "./colors";
+@import './mixins';
 
 * {
 	box-sizing: border-box;
@@ -21,7 +22,7 @@
 		border-radius: 8px;
 		background-color: #fff;
 		padding: 20px;
-		text-align: center;
+		// text-align: center;
 	}
 
 	&__heading {
@@ -82,20 +83,35 @@
 		}
 	}
 
+	&__info-box{
+		width: 100%;
+		text-align: center;
+	}
+
 	&__info {
 		display: inline-block;
 		margin-right: 10px;
 	}
 
 	&__link {
+		position: relative;
 		text-decoration: none;
 		color: $main-color;
+
+		&::after{
+            @include link-style;
+        }
+
+        &:hover::after{
+            @include link-style-hover;
+        }
 	}
 
     &__text-error{
         color: #ff0000;
         font-weight: bold;
 		visibility: hidden;
+		margin-left: 20px;
     }
 
 	&__password-icons{

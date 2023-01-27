@@ -1,4 +1,5 @@
 @import "./colors";
+@import './mixins';
 
 .navbar{
     position: absolute;
@@ -32,21 +33,11 @@
         font-weight: bold;
         
         &::after{
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            height: 3px;
-            width: 100%;
-            transform: scaleX(0);
-            transform-origin: right;
-            background-color: $main-color;
-            transition: transform .3s;
+            @include link-style;
         }
 
         &:hover::after{
-            transform: scaleX(1);
-            transform-origin: left;
+            @include link-style-hover;
         }
     }
 }

@@ -95,10 +95,12 @@ function Login() {
 								Zaloguj się
 							</button>
 						</div>
-						<p className='login__info'>Nie masz konta?</p>
-						<a className='login__link' href='#'>
-							Zarejestruj się
-						</a>
+						<div className="login__info-box">
+							<p className='login__info'>Nie masz konta?</p>
+							<a className='login__link' href='#'>
+								Zarejestruj się
+							</a>
+						</div>
 					</form>
 				</div>
 			</section>

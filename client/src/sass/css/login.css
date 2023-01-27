@@ -26,7 +26,6 @@
   border-radius: 8px;
   background-color: #fff;
   padding: 20px;
-  text-align: center;
 }
 .login__heading {
   text-align: center;
@@ -85,18 +84,47 @@
 .login__submit:hover {
   background-color: #cb380f;
 }
+.login__info-box {
+  width: 100%;
+  text-align: center;
+}
 .login__info {
   display: inline-block;
   margin-right: 10px;
 }
 .login__link {
+  position: relative;
   text-decoration: none;
   color: #f46036;
+}
+.login__link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  background-color: #f46036;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+.login__link:hover::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
 }
 .login__text-error {
   color: #ff0000;
   font-weight: bold;
   visibility: hidden;
+  margin-left: 20px;
 }
 .login__password-icons {
   position: absolute;
