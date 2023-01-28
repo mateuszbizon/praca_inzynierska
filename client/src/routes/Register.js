@@ -1,14 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import HomeNavbar from "../components/homeNavbar";
 import '../sass/css/register.css';
 
+const initialState = {name: '', surname: '', email: '', username: '', password: '', repeatPassword: ''}
+
 function Register() {
-    const emailRef = useRef();
-	const passRef = useRef();
-	const repeatPassRef = useRef();
-	const nameRef = useRef();
-	const surnameRef = useRef();
-	const usernameRef = useRef();
+    const [form, setForm] = useState(initialState);
     const emailError = useRef();
     const passError = useRef();
     const repeatPassError = useRef();
@@ -18,15 +15,14 @@ function Register() {
 
     function checkEmail(){
         const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        let email = emailRef.current.value;
 
-        if(email.length == 0){
+        if(form.email.length == 0){
             emailError.current.textContent = 'Email nie może być pusty';
 			emailError.current.style.visibility = 'visible';
             return false;
         }
 
-        if(!email.match(emailRegex)){
+        if(!form.email.match(emailRegex)){
             emailError.current.textContent = 'Nieprawidłowy email';
 			emailError.current.style.visibility = 'visible';
             return false;
@@ -38,15 +34,13 @@ function Register() {
     }
 
 	function checkPassword(){
-		let password = passRef.current.value;
-
-		if(password.length == 0){
+		if(form.password.length == 0){
             passError.current.textContent = 'Hasło nie może być puste';
 			passError.current.style.visibility = 'visible';
             return false;
         }
 
-		if(password.length < 7){
+		if(form.password.length < 7){
             passError.current.textContent = 'Hasło musi zawierać co najmniej 7 znaków';
 			passError.current.style.visibility = 'visible';
             return false;
@@ -58,10 +52,7 @@ function Register() {
 	}
 
     function checkRepeatPassword(){
-        let password = passRef.current.value;
-        let repeatpassword = repeatPassRef.current.value;
-
-        if(password !== repeatpassword){
+        if(form.password !== form.repeatPassword){
             repeatPassError.current.textContent = 'Hasła muszą być takie same';
 			repeatPassError.current.style.visibility = 'visible';
             return false;
@@ -73,9 +64,7 @@ function Register() {
     }
 
     function checkName(){
-        let name = nameRef.current.value;
-
-        if(name.length == 0){
+        if(form.name.length == 0){
             nameError.current.textContent = 'Imię nie może być puste';
 			nameError.current.style.visibility = 'visible';
             return false;
@@ -87,9 +76,7 @@ function Register() {
     }
 
     function checkSurname(){
-        let surname = surnameRef.current.value;
-
-        if(surname.length == 0){
+        if(form.surname.length == 0){
             surnameError.current.textContent = 'Nazwisko nie może być puste';
 			surnameError.current.style.visibility = 'visible';
             return false;
@@ -101,9 +88,7 @@ function Register() {
     }
 
     function checkUsername(){
-        let username = usernameRef.current.value;
-
-        if(username.length == 0){
+        if(form.username.length == 0){
             usernameError.current.textContent = 'Nazwa użytkownika nie może być pusta';
 			usernameError.current.style.visibility = 'visible';
             return false;
@@ -112,6 +97,10 @@ function Register() {
         usernameError.current.textContent = '';
 		usernameError.current.style.visibility = 'hidden';
 		return true;
+    }
+
+    function onChange(e){
+        setForm({ ...form, [e.target.name]: e.target.value });
     }
 
     function handleSubmit(e){
@@ -134,13 +123,13 @@ function Register() {
 
                     <div className="register__row">
                         <div className="register__box">
-                            <input type='text' id='name' ref={nameRef} required/>
+                            <input type='text' id='name' name='name' onChange={onChange} required/>
                             <label htmlFor='name'>Imię</label>
                             <p className="register__text-error" ref={nameError}>error</p>
                         </div>
                         
                         <div className="register__box">
-                            <input type='text' id='surname' ref={surnameRef} required/>
+                            <input type='text' id='surname' name='surname' onChange={onChange} required/>
                             <label htmlFor='surname'>Nazwisko</label>
                             <p className="register__text-error" ref={surnameError}>error</p>
                         </div>
@@ -148,13 +137,13 @@ function Register() {
 
                     <div className="register__row">
                         <div className="register__box">
-                            <input type='text' id='username' ref={usernameRef} required/>
+                            <input type='text' id='username' name='username' onChange={onChange} required/>
                             <label htmlFor='username'>Nazwa użytkownika</label>
                             <p className="register__text-error" ref={usernameError}>error</p>
                         </div>
 
                         <div className="register__box">
-                            <input type='text' id='email' ref={emailRef} required/>
+                            <input type='text' id='email' name='email' onChange={onChange} required/>
                             <label htmlFor='email'>Adres email</label>
                             <p className="register__text-error" ref={emailError}>error</p>
                         </div>
@@ -162,13 +151,13 @@ function Register() {
                     
                     <div className="register__row">
                         <div className="register__box">
-                            <input type='text' id='password' ref={passRef} required/>
+                            <input type='password' id='password' name='password' onChange={onChange} required/>
                             <label htmlFor='password'>Hasło</label>
                             <p className="register__text-error" ref={passError}>error</p>
                         </div>
 
                         <div className="register__box">
-                            <input type='text' id='repeat-password' ref={repeatPassRef} required/>
+                            <input type='password' id='repeat-password' name='repeatPassword' onChange={onChange} required/>
                             <label htmlFor='repeat-password'>Powtórz hasło</label>
                             <p className="register__text-error" ref={repeatPassError}>error</p>
                         </div>
