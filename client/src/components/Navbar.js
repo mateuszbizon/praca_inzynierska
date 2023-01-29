@@ -2,7 +2,7 @@ import React from 'react';
 import '../sass/css/homeNavbar.css';
 import logo from '../img/logo.png';
 
-function HomeNavbar() {
+function Navbar() {
   return (
     <>
         <nav className='navbar'>
@@ -18,4 +18,4 @@ function HomeNavbar() {
   )
 }
 
-export default HomeNavbar
+export default Navbar;

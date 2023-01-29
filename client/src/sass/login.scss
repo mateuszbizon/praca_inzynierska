@@ -1,5 +1,5 @@
 @import "./colors";
-@import './mixins';
+@import "./mixins";
 
 * {
 	box-sizing: border-box;
@@ -16,7 +16,7 @@
 
 	&__form {
 		width: 300px;
-		height: 400px;
+		min-height: 400px;
 		margin-top: 90px;
 		border: 1px solid #909090;
 		border-radius: 8px;
@@ -42,7 +42,7 @@
 			border: 1px solid $main-color;
 			outline: none;
 			padding: 15px 20px;
-            margin-bottom: 10px;
+			margin-bottom: 10px;
 		}
 
 		input:focus + label,
@@ -83,7 +83,14 @@
 		}
 	}
 
-	&__info-box{
+	&__submit-message {
+		text-align: center;
+		color: #ff0000;
+		margin-bottom: 15px;
+		font-weight: bold;
+	}
+
+	&__info-box {
 		width: 100%;
 		text-align: center;
 	}
@@ -98,33 +105,33 @@
 		text-decoration: none;
 		color: $main-color;
 
-		&::after{
-            @include link-style;
-        }
+		&::after {
+			@include link-style;
+		}
 
-        &:hover::after{
-            @include link-style-hover;
-        }
+		&:hover::after {
+			@include link-style-hover;
+		}
 	}
 
-    &__text-error{
-        color: #ff0000;
-        font-weight: bold;
+	&__text-error {
+		color: #ff0000;
+		font-weight: bold;
 		visibility: hidden;
 		margin-left: 20px;
-    }
+	}
 
-	&__password-icons{
+	&__password-icons {
 		position: absolute;
 		top: 12px;
 		right: 10px;
 		cursor: pointer;
 
-		.show-password{
+		.show-password {
 			display: none;
 		}
 
-		.hide-password{
+		.hide-password {
 			display: block;
 		}
 	}
@@ -138,8 +145,13 @@
 		}
 
 		&__info,
-		&__link, &__text-error {
-			font-size: 18px;
+		&__link,
+		&__submit-message {
+			font-size: 20px;
+		}
+
+		&__text-error {
+			font-size: 15px;
 		}
 	}
 }

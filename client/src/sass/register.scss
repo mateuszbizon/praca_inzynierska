@@ -41,6 +41,7 @@
 			outline: none;
 			padding: 15px 20px;
 			margin-bottom: 10px;
+			border-radius: 5px;
 		}
 
 		input:focus + label,
@@ -79,6 +80,13 @@
 		&:hover {
 			background-color: #cb380f;
 		}
+	}
+
+	&__submit-message{
+		text-align: center;
+		color: #ff0000;
+		margin-bottom: 15px;
+		font-weight: bold;
 	}
 
 	&__info-box {
@@ -137,17 +145,24 @@
 
 		&__row {
 			flex-direction: row;
-			justify-content: space-around;
+			justify-content: space-between;
 		}
 
 		&__box {
-			width: 45%;
+			width: 48%;
+
+			&--full-row{
+				width: 100%;
+			}
 		}
 
 		&__info,
-		&__link,
+		&__link, &__submit-message {
+			font-size: 20px;
+		}
+
 		&__text-error {
-			font-size: 17px;
+			font-size: 15px;
 		}
 	}
 }

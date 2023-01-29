@@ -2,12 +2,16 @@ import React, { useRef, useState } from "react";
 import "../sass/css/login.css";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import HomeNavbar from "../components/homeNavbar";
+import authService from '../services/auth-service';
+import { useNavigate } from "react-router-dom";
 
-const initialState = { email: "", password: "" };
+const initialState = { password: "", email: "" };
 
 function Login() {
 	const [form, setForm] = useState(initialState);
+	const navigate = useNavigate();
+	const message = useRef();
+	const passRef = useRef();
 	const emailError = useRef();
 	const passError = useRef();
 
@@ -30,7 +34,6 @@ function Login() {
 			return false;
 		}
 
-		emailError.current.textContent = "";
 		emailError.current.style.visibility = "hidden";
 		return true;
 	}
@@ -42,7 +45,6 @@ function Login() {
 			return false;
 		}
 
-		passError.current.textContent = "";
 		passError.current.style.visibility = "hidden";
 		return true;
 	}
@@ -70,11 +72,17 @@ function Login() {
 			return false;
 		}
 
-		console.log("submitted");
+		authService.login(form).then(response => {
+			if(response.success === false){
+				console.log(response)
+				message.current.textContent = response.message;
+			} else {
+				navigate('/dashboard');
+			}
+		});
 	}
 	return (
 		<>
-			<HomeNavbar />
 			<section className='login'>
 				<div className='login__form'>
 					<h1 className='login__heading'>Logowanie</h1>
@@ -98,6 +106,7 @@ function Login() {
 								id='password'
 								name='password'
 								onChange={onChange}
+								ref={passRef}
 								required
 							/>
 							<label htmlFor='password'>Hasło</label>
@@ -125,9 +134,12 @@ function Login() {
 								Zaloguj się
 							</button>
 						</div>
+							<p className="login__submit-message" ref={message}>
+								
+							</p>
 						<div className='login__info-box'>
 							<p className='login__info'>Nie masz konta?</p>
-							<a className='login__link' href='#'>
+							<a className='login__link' href='/register'>
 								Zarejestruj się
 							</a>
 						</div>

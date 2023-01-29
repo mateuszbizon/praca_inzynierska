@@ -20,7 +20,7 @@
 }
 .login__form {
   width: 300px;
-  height: 400px;
+  min-height: 400px;
   margin-top: 90px;
   border: 1px solid #909090;
   border-radius: 8px;
@@ -84,6 +84,12 @@
 .login__submit:hover {
   background-color: #cb380f;
 }
+.login__submit-message {
+  text-align: center;
+  color: #ff0000;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
 .login__info-box {
   width: 100%;
   text-align: center;
@@ -144,7 +150,10 @@
     width: 500px;
     margin-top: 0;
   }
-  .login__info, .login__link, .login__text-error {
-    font-size: 18px;
+  .login__info, .login__link, .login__submit-message {
+    font-size: 20px;
+  }
+  .login__text-error {
+    font-size: 15px;
   }
 }/*# sourceMappingURL=login.css.map */
