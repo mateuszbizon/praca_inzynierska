@@ -16,7 +16,7 @@
       -ms-flex-align: center;
           align-items: center;
   min-height: 100vh;
-  background-color: #414770;
+  background-color: #fff;
 }
 .login__form {
   width: 300px;
@@ -24,6 +24,8 @@
   margin-top: 90px;
   border: 1px solid #909090;
   border-radius: 8px;
+  -webkit-box-shadow: 10px 10px 10px #909090;
+          box-shadow: 10px 10px 10px #909090;
   background-color: #fff;
   padding: 20px;
 }

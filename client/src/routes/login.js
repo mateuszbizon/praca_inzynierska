@@ -77,7 +77,7 @@ function Login() {
 				console.log(response)
 				message.current.textContent = response.message;
 			} else {
-				navigate('/dashboard');
+				navigate('/');
 			}
 		});
 	}
