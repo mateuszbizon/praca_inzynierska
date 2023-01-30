@@ -7,9 +7,11 @@ import AddIcon from "@mui/icons-material/Add";
 import EditIcon from '@mui/icons-material/Edit';
 import ChangeCircleIcon from '@mui/icons-material/ChangeCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
+  const navigate = useNavigate()
 
   function showSidebar(){
     setSidebar(!sidebar)
@@ -27,7 +29,7 @@ function Navbar() {
 
 			<nav className={sidebar ? 'sidebar active' : 'sidebar'}>
 				<div className="sidebar__row">
-          <div className='sidebar__items'>
+          <div className='sidebar__items' onClick={() => navigate('/')}>
             <div className='sidebar__icons'>
               <HomeIcon fontSize='large' className='sidebar__icon' />
             </div>
@@ -37,7 +39,7 @@ function Navbar() {
           </div>
         </div>
 				<div className="sidebar__row">
-          <div className='sidebar__items'>
+          <div className='sidebar__items' onClick={() => navigate('/create')}>
             <div className='sidebar__icons'>
                 <AddIcon fontSize='large' className='sidebar__icon' />
             </div>

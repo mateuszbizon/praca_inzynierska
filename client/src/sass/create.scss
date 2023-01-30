@@ -1,0 +1,60 @@
+@import './colors';
+
+.create {
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&__form {
+		width: 400px;
+		min-height: 300px;
+		background-color: #fff;
+		border: 1px solid #909090;
+		box-shadow: 10px 10px 10px #909090;
+		padding: 20px;
+        margin-top: 70px;
+	}
+
+    &__form-box{
+        margin-bottom: 20px;
+    }
+
+	&__heading {
+		text-align: center;
+		color: $main-color;
+		margin-bottom: 30px;
+		font-size: 30px;
+	}
+
+    &__btn-box{
+        display: flex;
+		justify-content: center;
+		margin-bottom: 15px;
+        margin-top: 15px;
+    }
+
+    &__submit {
+		border: none;
+		background-color: $main-color;
+		color: #fff;
+		padding: 15px 20px;
+		border-radius: 8px;
+		width: 100%;
+		font-size: 20px;
+		transition: background-color 0.3s;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #cb380f;
+		}
+	}
+
+    &__text-error{
+        color: #ff0000;
+		font-weight: bold;
+		visibility: hidden;
+		margin-left: 20px;
+    }
+}

@@ -1,0 +1,63 @@
+.create {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.create__form {
+  width: 400px;
+  min-height: 300px;
+  background-color: #fff;
+  border: 1px solid #909090;
+  -webkit-box-shadow: 10px 10px 10px #909090;
+          box-shadow: 10px 10px 10px #909090;
+  padding: 20px;
+  margin-top: 70px;
+}
+.create__form-box {
+  margin-bottom: 20px;
+}
+.create__heading {
+  text-align: center;
+  color: #f46036;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+.create__btn-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.create__submit {
+  border: none;
+  background-color: #f46036;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 20px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.create__submit:hover {
+  background-color: #cb380f;
+}
+.create__text-error {
+  color: #ff0000;
+  font-weight: bold;
+  visibility: hidden;
+  margin-left: 20px;
+}/*# sourceMappingURL=create.css.map */
