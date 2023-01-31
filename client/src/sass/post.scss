@@ -15,12 +15,12 @@
         padding: 0 10px;
         font-size: 18px;
         font-weight: bold;
+        background-color: #eee;
     }
 
     &__img{
         min-height: 300px;
         width: 100%;
-        background-color: #eee;
     }
 
     &__msg, &__tags{
@@ -33,7 +33,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px 10px;
-        background-color: #fff;
+        background-color: #eee;
     }
 
     &__icons{

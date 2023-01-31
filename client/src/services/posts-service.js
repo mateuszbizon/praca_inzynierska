@@ -28,6 +28,12 @@ class postsService {
             return response.data;
         })
     }
+
+    async deletePost(id){
+        return await axios.delete(url + `/posts/deletePost/${id}`).then(response => {
+            return response.data;
+        })
+    }
 }
 
 export default new postsService();

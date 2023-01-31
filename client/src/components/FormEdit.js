@@ -66,9 +66,7 @@ function FormEdit({currentId, setCurrentId, post}) {
         }
 
         postsService.updatePost(currentId, form).then(response => {
-            console.log(response)
             setCurrentId(null);
-            // window.location.reload();
         });
     }
   return (

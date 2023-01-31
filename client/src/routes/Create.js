@@ -1,12 +1,14 @@
-import React, {useState, useRef} from "react";
+import React, { useState, useRef } from "react";
 import TextField from "@mui/material/TextField";
 import "../sass/css/create.css";
 import Navbar from "../components/Navbar";
 import FileBase from 'react-file-base64';
 import postsService from "../services/posts-service";
+import { useNavigate } from "react-router-dom";
 
 function Create() {
     const [form, setForm] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+    const navigate = useNavigate();
     const titleError = useRef();
     const messageError = useRef();
     const tagsError = useRef();
@@ -56,7 +58,9 @@ function Create() {
         }
 
         console.log('created');
-        postsService.createPost(form);
+        postsService.createPost(form).then(response => {
+            navigate('/');
+        });
     }
 	return (
 		<>

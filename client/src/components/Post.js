@@ -6,8 +6,16 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import postsService from '../services/posts-service';
 
 function post({post, setCurrentId}) {
+
+    function deletePost(){
+        postsService.deletePost(post._id).then(response => {
+            window.location.reload();
+        })
+    }
+
   return (
     <>
         <div className="post">
@@ -32,7 +40,7 @@ function post({post, setCurrentId}) {
                     <p className='post__text'> Edytuj</p>
                 </div>
                 <div className='post__button-box'>
-                    <DeleteOutlineIcon fontSize='medium' className='post__icons'/>
+                    <DeleteOutlineIcon fontSize='medium' className='post__icons' onClick={deletePost}/>
                     <p className='post__text'> Usuń</p>
                 </div>
             </div>
