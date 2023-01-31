@@ -7,7 +7,7 @@ import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-function post({post}) {
+function post({post, setCurrentId}) {
   return (
     <>
         <div className="post">
@@ -20,15 +20,20 @@ function post({post}) {
                 <p>{post.message}</p>
             </div>
             <div className="post__tags">
-                <p>{post.tags.map((tag) => `${tag} `)}</p>
+                <p>{post.tags.map((tag) => `#${tag} `)}</p>
             </div>
             <div className="post__buttons">
-                <div><ThumbUpOffAltIcon fontSize='large' className='post__icons'/></div>
-                <div>
-                    <EditIcon fontSize='large' className='post__icons' />
+                <div className='post__button-box'>
+                    <ThumbUpOffAltIcon fontSize='medium' className='post__icons'/>
+                    <p className='post__text'> Polubień</p>
                 </div>
-                <div>
-                    <DeleteOutlineIcon fontSize='large' className='post__icons'/>
+                <div className='post__button-box'>
+                    <EditIcon fontSize='medium' className='post__icons' onClick={() => setCurrentId(post._id)}/>
+                    <p className='post__text'> Edytuj</p>
+                </div>
+                <div className='post__button-box'>
+                    <DeleteOutlineIcon fontSize='medium' className='post__icons'/>
+                    <p className='post__text'> Usuń</p>
                 </div>
             </div>
         </div>

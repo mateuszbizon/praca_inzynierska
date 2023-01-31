@@ -18,6 +18,16 @@ class postsService {
             return response.data;
         })
     }
+
+    async updatePost(id, post){
+        return await axios.patch(url + `/posts/updatePost/${id}`, post, {
+            headers: {
+                "Content-Type": "application/json",
+            }
+        }).then(response => {
+            return response.data;
+        })
+    }
 }
 
 export default new postsService();

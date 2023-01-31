@@ -1,0 +1,66 @@
+.edit {
+  display: none;
+  position: fixed;
+  opacity: 0;
+  top: 400px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  width: 400px;
+}
+.edit__form {
+  position: relative;
+}
+.edit__heading {
+  text-align: center;
+  color: #f46036;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+.edit__btn-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.edit__submit {
+  border: none;
+  background-color: #f46036;
+  color: #fff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 20px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.edit__submit:hover {
+  background-color: #cb380f;
+}
+.edit__text-error {
+  color: #ff0000;
+  font-weight: bold;
+  visibility: hidden;
+  margin-left: 20px;
+}
+.edit__close {
+  position: absolute;
+  right: -5px;
+  top: -5px;
+  cursor: pointer;
+}
+
+.edit.active {
+  display: block;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+  opacity: 1;
+  z-index: 10;
+}/*# sourceMappingURL=edit.css.map */

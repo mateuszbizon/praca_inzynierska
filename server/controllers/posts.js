@@ -25,12 +25,16 @@ export const createPost = async (req, res) => {
 }
 
 export const updatePost = async (req, res) => {
-    const { id: _id } = req.params;
+    const { id } = req.params;
     const post = req.body;
 
-    if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send("Nie ma takiego posta z tym id");
-
-    const updatedPost = await PostMessage.findByIdAndUpdate(_id, post, {new: true});
-
-    res.json(updatedPost);
+    try {
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("Nie ma takiego posta z tym id");
+        // const updatedPost = { creator, title, message, tags, selectedFile };
+        const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new: true});
+        // await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
+        res.json(updatedPost);
+    } catch (error) {
+        console.log(error)
+    }
 }

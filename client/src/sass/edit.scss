@@ -1,0 +1,68 @@
+@import './colors';
+
+.edit{
+    display: none;
+    position: fixed;
+    opacity: 0;
+    top: 400px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+
+    &__form{
+        position: relative;
+    }
+
+    &__heading {
+		text-align: center;
+		color: $main-color;
+		margin-bottom: 30px;
+		font-size: 30px;
+	}
+
+    &__btn-box{
+        display: flex;
+		justify-content: center;
+		margin-bottom: 15px;
+        margin-top: 15px;
+    }
+
+    &__submit {
+		border: none;
+		background-color: $main-color;
+		color: #fff;
+		padding: 15px 20px;
+		border-radius: 8px;
+		width: 100%;
+		font-size: 20px;
+		transition: background-color 0.3s;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #cb380f;
+		}
+	}
+
+    &__text-error{
+        color: #ff0000;
+		font-weight: bold;
+		visibility: hidden;
+		margin-left: 20px;
+    }
+
+    &__close{
+        position: absolute;
+        right: -5px;
+        top: -5px;
+        cursor: pointer;
+    }
+}
+
+.edit.active{
+    display: block;
+    transition: opacity 1s;
+    opacity: 1;
+    z-index: 10;
+}

@@ -3,14 +3,14 @@ import Post from './Post';
 import '../sass/css/posts.css';
 import postsService from '../services/posts-service';
 
-function posts() {
-  const [posts, setPosts] = useState([]);
+function posts({posts, setCurrentId}) {
+  // const [posts, setPosts] = useState([]);
 
-  useEffect(() => {
-    postsService.getPosts().then(response => {
-      setPosts(response);
-    });
-  }, []);
+  // useEffect(() => {
+  //   postsService.getPosts().then(response => {
+  //     setPosts(response);
+  //   });
+  // }, []);
 
   return (
       !posts.length ? <div></div> : (
@@ -18,7 +18,7 @@ function posts() {
             {posts.map((post) => (
               <>
                 <div key={post._id}>
-                  <Post post={post}/>
+                  <Post post={post} setCurrentId={setCurrentId}/>
                 </div>
               </>
             ))}
