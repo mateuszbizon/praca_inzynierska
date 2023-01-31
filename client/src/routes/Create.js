@@ -3,6 +3,7 @@ import TextField from "@mui/material/TextField";
 import "../sass/css/create.css";
 import Navbar from "../components/Navbar";
 import FileBase from 'react-file-base64';
+import postsService from "../services/posts-service";
 
 function Create() {
     const [form, setForm] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
@@ -55,6 +56,7 @@ function Create() {
         }
 
         console.log('created');
+        postsService.createPost(form);
     }
 	return (
 		<>

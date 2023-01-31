@@ -1,0 +1,23 @@
+import axios from 'axios';
+
+const url = "http://localhost:5000";
+
+class postsService {
+    async getPosts(){
+        return await axios.get(url + "/posts/getPosts").then(response => {
+            return response.data;
+        })
+    }
+
+    async createPost(post){
+        return await axios.post(url + "/posts/createPost", post, {
+            headers: {
+                "Content-Type": "application/json",
+            }
+        }).then(response => {
+            return response.data;
+        })
+    }
+}
+
+export default new postsService();
