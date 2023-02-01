@@ -20,16 +20,10 @@ function post({post, setCurrentId}) {
                 <div className="post__date">{moment(post.createdAt).fromNow()}</div>
             </div>
             <CardMedia className='post__img' image={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} />
-            <div className="post__msg">
-                <p>{post.message}</p>
-            </div>
-            <div className="post__tags">
-                <p>{post.tags.map((tag) => `#${tag} `)}</p>
-            </div>
             <div className="post__buttons">
                 <div className='post__button-box'>
                     <ThumbUpOffAltIcon fontSize='medium' className='post__icons' onClick={() => dispatch(likePost(post._id))} />
-                    <p className='post__text'> Polubień {post.likeCount}</p>
+                    <p className='post__text'>Polub</p>
                 </div>
                 <div className='post__button-box'>
                     <EditIcon fontSize='medium' className='post__icons' onClick={() => setCurrentId(post._id)}/>
@@ -39,6 +33,13 @@ function post({post, setCurrentId}) {
                     <DeleteOutlineIcon fontSize='medium' className='post__icons' onClick={() => dispatch(deletePost(post._id))}/>
                     <p className='post__text'> Usuń</p>
                 </div>
+            </div>
+            <div className="post__likes-count">Polubień: {post.likeCount}</div>
+            <div className="post__msg">
+                <p>{post.message}</p>
+            </div>
+            <div className="post__tags">
+                <p>{post.tags.map((tag) => `#${tag} `)}</p>
             </div>
         </div>
     </>
