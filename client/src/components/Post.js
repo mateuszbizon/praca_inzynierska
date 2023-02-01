@@ -8,11 +8,17 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import postsService from '../services/posts-service';
 
-function post({post, setCurrentId}) {
+function post({post, setCurrentId, isLiked, setIsLiked}) {
 
     function deletePost(){
         postsService.deletePost(post._id).then(response => {
             window.location.reload();
+        })
+    }
+
+    function likePost(){
+        postsService.likePost(post._id).then(response => {
+            setIsLiked(!isLiked);
         })
     }
 
@@ -32,8 +38,8 @@ function post({post, setCurrentId}) {
             </div>
             <div className="post__buttons">
                 <div className='post__button-box'>
-                    <ThumbUpOffAltIcon fontSize='medium' className='post__icons'/>
-                    <p className='post__text'> Polubień</p>
+                    <ThumbUpOffAltIcon fontSize='medium' className='post__icons' onClick={likePost} />
+                    <p className='post__text'> Polubień {post.likeCount}</p>
                 </div>
                 <div className='post__button-box'>
                     <EditIcon fontSize='medium' className='post__icons' onClick={() => setCurrentId(post._id)}/>

@@ -3,7 +3,7 @@ import Post from './Post';
 import '../sass/css/posts.css';
 import postsService from '../services/posts-service';
 
-function posts({posts, setCurrentId}) {
+function posts({posts, setCurrentId, isLiked, setIsLiked}) {
   // const [posts, setPosts] = useState([]);
 
   // useEffect(() => {
@@ -18,7 +18,7 @@ function posts({posts, setCurrentId}) {
             {posts.map((post) => (
               <>
                 <div key={post._id}>
-                  <Post post={post} setCurrentId={setCurrentId}/>
+                  <Post post={post} setCurrentId={setCurrentId} isLiked={isLiked} setIsLiked={setIsLiked}/>
                 </div>
               </>
             ))}

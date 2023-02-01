@@ -8,18 +8,19 @@ import postsService from '../services/posts-service';
 function Home() {
   const [posts, setPosts] = useState([]);
   const [currentId, setCurrentId] = useState(null);
+  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
     postsService.getPosts().then(response => {
       setPosts(response);
     });
-  }, [currentId]);
+  }, [currentId, isLiked]);
   return (
     <>
         <Navbar />
         <FormEdit currentId={currentId} setCurrentId={setCurrentId} post={posts}/>
         <section className={currentId === null ? 'content' : 'shadow-active'}>
-            <Posts posts={posts} setCurrentId={setCurrentId}/>
+            <Posts posts={posts} setCurrentId={setCurrentId} isLiked={isLiked} setIsLiked={setIsLiked}/>
             <div className="shadow"></div>
         </section>
     </>

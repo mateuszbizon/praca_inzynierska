@@ -34,6 +34,12 @@ class postsService {
             return response.data;
         })
     }
+
+    async likePost(id){
+        return await axios.patch(url + `/posts/likePost/${id}`).then(response => {
+            return response.data;
+        })
+    }
 }
 
 export default new postsService();
