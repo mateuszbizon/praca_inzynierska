@@ -25,6 +25,14 @@ function Navbar() {
 				<div className='navbar__burger'>
 					<MenuIcon fontSize='large' className='navbar__burger-icon' onClick={showSidebar}/>
 				</div>
+        <div className="navbar__items">
+          <ul>
+            <li className="navbar__item"><a href='/' className="navbar__link">Strona główna</a></li>
+            <li className="navbar__item"><a href='/create' className="navbar__link">Utwórz</a></li>
+            <li className="navbar__item"><a href='#' className="navbar__link">Profil</a></li>
+            <li className="navbar__item"><a href='#' className="navbar__link">Wyloguj się</a></li>
+          </ul>
+        </div>
 			</nav>
 
 			<nav className={sidebar ? 'sidebar active' : 'sidebar'}>
@@ -54,17 +62,7 @@ function Navbar() {
                 <EditIcon fontSize='large' className='sidebar__icon' />
             </div>
             <div className="sidebar__text">
-            Edytuj profil
-            </div>
-          </div>
-        </div>
-				<div className="sidebar__row">
-          <div className='sidebar__items'>
-            <div className='sidebar__icons'>
-                <ChangeCircleIcon fontSize='large' className='sidebar__icon' />
-            </div>
-            <div className="sidebar__text">
-            Zmień hasło
+            Profil
             </div>
           </div>
         </div>
