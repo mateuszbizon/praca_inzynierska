@@ -2,15 +2,16 @@ import React, { useRef, useState } from "react";
 import "../sass/css/login.css";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import authService from '../services/auth-service';
 import { useNavigate } from "react-router-dom";
-
-const initialState = { password: "", email: "" };
+import { useDispatch, useSelector } from "react-redux";
+import { signin } from "../actions/auth";
 
 function Login() {
-	const [form, setForm] = useState(initialState);
+	const [form, setForm] = useState({password: "", email: ""});
 	const navigate = useNavigate();
-	const message = useRef();
+	const dispatch = useDispatch();
+	const errorAuth = useSelector(state => state.auth.error);
+	const submitMessage = useRef();
 	const passRef = useRef();
 	const emailError = useRef();
 	const passError = useRef();
@@ -72,14 +73,7 @@ function Login() {
 			return false;
 		}
 
-		authService.login(form).then(response => {
-			if(response.success === false){
-				console.log(response)
-				message.current.textContent = response.message;
-			} else {
-				navigate('/');
-			}
-		});
+		dispatch(signin(form, navigate));
 	}
 	return (
 		<>
@@ -134,8 +128,8 @@ function Login() {
 								Zaloguj się
 							</button>
 						</div>
-							<p className="login__submit-message" ref={message}>
-								
+							<p className="login__submit-message" ref={submitMessage}>
+								{errorAuth ? "Błedne dane logowania" : ""}
 							</p>
 						<div className='login__info-box'>
 							<p className='login__info'>Nie masz konta?</p>

@@ -3,11 +3,13 @@ import TextField from "@mui/material/TextField";
 import "../sass/css/create.css";
 import Navbar from "../components/Navbar";
 import FileBase from 'react-file-base64';
-import postsService from "../services/posts-service";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { createPost } from "../actions/posts";
 
 function Create() {
     const [form, setForm] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const titleError = useRef();
     const messageError = useRef();
@@ -57,10 +59,8 @@ function Create() {
             return false
         }
 
-        console.log('created');
-        postsService.createPost(form).then(response => {
-            navigate('/');
-        });
+        dispatch(createPost(form, navigate));
+
     }
 	return (
 		<>

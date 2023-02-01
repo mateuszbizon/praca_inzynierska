@@ -1,26 +1,25 @@
 import React, {useState, useEffect} from 'react';
+import { useDispatch } from 'react-redux';
 import Navbar from '../components/Navbar';
 import Posts from '../components/Posts';
 import FormEdit from '../components/FormEdit';
 import '../sass/css/home.css';
-import postsService from '../services/posts-service';
+import { getPosts } from '../actions/posts';
 
 function Home() {
-  const [posts, setPosts] = useState([]);
+  const dispatch = useDispatch();
   const [currentId, setCurrentId] = useState(null);
-  const [isLiked, setIsLiked] = useState(false);
 
   useEffect(() => {
-    postsService.getPosts().then(response => {
-      setPosts(response);
-    });
-  }, [currentId, isLiked]);
+    dispatch(getPosts());
+  }, [currentId, dispatch]);
+
   return (
     <>
         <Navbar />
-        <FormEdit currentId={currentId} setCurrentId={setCurrentId} post={posts}/>
+        <FormEdit currentId={currentId} setCurrentId={setCurrentId} />
         <section className={currentId === null ? 'content' : 'shadow-active'}>
-            <Posts posts={posts} setCurrentId={setCurrentId} isLiked={isLiked} setIsLiked={setIsLiked}/>
+            <Posts setCurrentId={setCurrentId}/>
             <div className="shadow"></div>
         </section>
     </>

@@ -9,7 +9,7 @@ export const signin = async (req, res) => {
 		const existingUser = await User.findOne({ email });
 
 		if (!existingUser)
-			return res.json({success: false, message: "Błędne dane logowania" });
+			return res.status(404).json({success: false, message: "Błędne dane logowania" });
 
 		const isPasswordCorrect = await bcrypt.compare(
 			password,
@@ -17,7 +17,7 @@ export const signin = async (req, res) => {
 		);
 
 		if (!isPasswordCorrect){
-			return res.json({success: false, message: "Błędne dane logowania" });
+			return res.status(400).json({success: false, message: "Błędne dane logowania" });
         }
 
 		const token = jwt.sign(
@@ -39,7 +39,7 @@ export const signup = async (req, res) => {
 		const existingUser = await User.findOne({ email });
 
 		if (existingUser)
-			return res.json({success: false, message: "Email jest już zajęty" });
+			return res.status(400).json({success: false, message: "Email jest już zajęty" });
 
 		const hashedPassword = await bcrypt.hash(password, 12);
 

@@ -1,21 +1,22 @@
 import React, {useState, useRef, useEffect} from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updatePost } from '../actions/posts';
 import '../sass/css/edit.css';
 import TextField from "@mui/material/TextField";
 import FileBase from 'react-file-base64';
 import CloseIcon from '@mui/icons-material/Close';
-import postsService from '../services/posts-service';
 
-function FormEdit({currentId, setCurrentId, post}) {
+function FormEdit({ currentId, setCurrentId }) {
     const [form, setForm] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+    const dispatch = useDispatch();
+    const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
     const titleError = useRef();
     const messageError = useRef();
     const tagsError = useRef();
 
-    const editPost = post.find((message) => message._id === currentId);
-
     useEffect(() => {
-        if (editPost) setForm(editPost);
-    }, [editPost]);
+        if (post) setForm(post);
+    }, [post]);
 
     function onChange(e){
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -65,9 +66,8 @@ function FormEdit({currentId, setCurrentId, post}) {
             return false
         }
 
-        postsService.updatePost(currentId, form).then(response => {
-            setCurrentId(null);
-        });
+        dispatch(updatePost(currentId, form));
+        closeForm();
     }
   return (
     <>

@@ -3,14 +3,15 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import '../sass/css/register.css';
 import { useNavigate } from 'react-router-dom';
-import authService from "../services/auth-service";
-
-const initialState = {name: '', surname: '', email: '', username: '', password: ''}
+import { useDispatch, useSelector } from 'react-redux';
+import { signup } from '../actions/auth';
 
 function Register() {
-    const [form, setForm] = useState(initialState);
-    const message = useRef();
+    const [form, setForm] = useState({name: '', surname: '', email: '', username: '', password: ''});
+    const dispatch = useDispatch();
+    const errorRegister = useSelector(state => state.auth.error)
     const navigate = useNavigate();
+    const submitMessage = useRef();
     const passRef = useRef();
     const emailError = useRef();
     const passError = useRef();
@@ -113,13 +114,7 @@ function Register() {
 			return false;
 		}
 
-		authService.register(form).then(response => {
-            if(response.success === false){
-                message.current.textContent = response.message;
-            } else {
-                navigate("/login")
-            }
-        })
+        dispatch(signup(form, navigate));
 	}
 
   return (
@@ -180,7 +175,9 @@ function Register() {
                             Zarejestruj się
                         </button>
                     </div>
-                    <p className="login__submit-message" ref={message}></p>
+                    <p className="login__submit-message" ref={submitMessage}>
+                        {errorRegister ? "Email jest zajęty" : ""}
+                    </p>
                     <div className="register__info-box">
                         <p className='register__info'>Masz już konto?</p>
                         <a className='register__link' href='/login'>

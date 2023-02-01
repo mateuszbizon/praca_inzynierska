@@ -6,21 +6,11 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import postsService from '../services/posts-service';
+import { useDispatch } from 'react-redux';
+import { likePost, deletePost} from '../actions/posts';
 
-function post({post, setCurrentId, isLiked, setIsLiked}) {
-
-    function deletePost(){
-        postsService.deletePost(post._id).then(response => {
-            window.location.reload();
-        })
-    }
-
-    function likePost(){
-        postsService.likePost(post._id).then(response => {
-            setIsLiked(!isLiked);
-        })
-    }
+function post({post, setCurrentId}) {
+    const dispatch = useDispatch();
 
   return (
     <>
@@ -38,7 +28,7 @@ function post({post, setCurrentId, isLiked, setIsLiked}) {
             </div>
             <div className="post__buttons">
                 <div className='post__button-box'>
-                    <ThumbUpOffAltIcon fontSize='medium' className='post__icons' onClick={likePost} />
+                    <ThumbUpOffAltIcon fontSize='medium' className='post__icons' onClick={() => dispatch(likePost(post._id))} />
                     <p className='post__text'> Polubień {post.likeCount}</p>
                 </div>
                 <div className='post__button-box'>
@@ -46,7 +36,7 @@ function post({post, setCurrentId, isLiked, setIsLiked}) {
                     <p className='post__text'> Edytuj</p>
                 </div>
                 <div className='post__button-box'>
-                    <DeleteOutlineIcon fontSize='medium' className='post__icons' onClick={deletePost}/>
+                    <DeleteOutlineIcon fontSize='medium' className='post__icons' onClick={() => dispatch(deletePost(post._id))}/>
                     <p className='post__text'> Usuń</p>
                 </div>
             </div>
