@@ -1,17 +1,15 @@
 .content{
+    position: relative;
     min-height: 100vh;
     display: flex;
     justify-content: center;
 }
 
-.shadow-active{
-    position: relative;
-    min-height: 100vh;
-    display: flex;    
-    justify-content: center;
+.shadow{
+    display: none;
 }
 
-.shadow-active .shadow{
+.shadow-active{
     position: absolute;
     width: 100%;
     height: 100%;

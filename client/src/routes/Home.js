@@ -18,9 +18,9 @@ function Home() {
     <>
         <Navbar />
         <FormEdit currentId={currentId} setCurrentId={setCurrentId} />
-        <section className={currentId === null ? 'content' : 'shadow-active'}>
+        <section className='content'>
             <Posts setCurrentId={setCurrentId}/>
-            <div className="shadow"></div>
+            <div className={currentId === null ? 'shadow' : 'shadow-active'} onClick={() => setCurrentId(null)}></div>
         </section>
     </>
   )

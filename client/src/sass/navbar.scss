@@ -16,6 +16,7 @@ body{
 	height: 60px;
 	background-color: $secondary-color;
 	padding: 0 20px;
+	z-index: 10;
 
 	&__logo {
 		width: 50px;
