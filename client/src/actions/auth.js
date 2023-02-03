@@ -7,7 +7,7 @@ export const signin = (formData, navigate) => async (dispatch) => {
   
       dispatch({ type: AUTH, data: data });
   
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       console.log(error);
       dispatch({ type: AUTH_FAIL });

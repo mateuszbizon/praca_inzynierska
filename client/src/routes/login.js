@@ -82,50 +82,25 @@ function Login() {
 					<h1 className='login__heading'>Logowanie</h1>
 					<form>
 						<div className='login__box'>
-							<input
-								type='text'
-								id='email'
-								name='email'
-								onChange={onChange}
-								required
-							/>
+							<input type='text' id='email' name='email' onChange={onChange} required />
 							<label htmlFor='email'>Adres email</label>
 							<p className='login__text-error' ref={emailError}>
 								error
 							</p>
 						</div>
 						<div className='login__box'>
-							<input
-								type='password'
-								id='password'
-								name='password'
-								onChange={onChange}
-								ref={passRef}
-								required
-							/>
+							<input type='password' id='password' name='password' onChange={onChange} ref={passRef} required />
 							<label htmlFor='password'>Hasło</label>
 							<span className='login__password-icons'>
-								<VisibilityOffIcon
-									className='hide-password'
-									ref={hidePass}
-									onClick={showPassword}
-								/>
-								<VisibilityIcon
-									className='show-password'
-									ref={showPass}
-									onClick={showPassword}
-								/>
+								<VisibilityOffIcon className='hide-password' ref={hidePass} onClick={showPassword} />
+								<VisibilityIcon className='show-password' ref={showPass} onClick={showPassword} />
 							</span>
 							<p className='login__text-error' ref={passError}>
 								error
 							</p>
 						</div>
 						<div className='login__btn-box'>
-							<button
-								type='submit'
-								onClick={handleSubmit}
-								className='login__submit'>
-								Zaloguj się
+							<button type='submit' onClick={handleSubmit} className='login__submit'> Zaloguj się
 							</button>
 						</div>
 							<p className="login__submit-message" ref={submitMessage}>
