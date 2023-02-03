@@ -58,6 +58,7 @@ body{
 		position: relative;
 		color: #fff;
 		text-decoration: none;
+		cursor: pointer;
 
 		&::after{
 		    @include link-style;

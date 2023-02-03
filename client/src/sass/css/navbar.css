@@ -63,6 +63,7 @@ body {
   position: relative;
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
 }
 .navbar__link::after {
   content: "";

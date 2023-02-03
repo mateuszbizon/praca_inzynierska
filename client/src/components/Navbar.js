@@ -16,10 +16,15 @@ function Navbar() {
   function showSidebar(){
     setSidebar(!sidebar)
   }
+
+  function logout(){
+    localStorage.removeItem("user");
+    window.location.reload();
+  }
 	return (
 		<>
 			<nav className='navbar'>
-				<a href='/' title='Strona główna'>
+				<a href='/dashboard' title='Strona główna'>
 					<img src={logo} alt='Kostka Rubika' className='navbar__logo' />
 				</a>
 				<div className='navbar__burger'>
@@ -27,10 +32,10 @@ function Navbar() {
 				</div>
         <div className="navbar__items">
           <ul>
-            <li className="navbar__item"><a href='/' className="navbar__link">Strona główna</a></li>
+            <li className="navbar__item"><a href='/dashboard' className="navbar__link">Strona główna</a></li>
             <li className="navbar__item"><a href='/create' className="navbar__link">Utwórz</a></li>
             <li className="navbar__item"><a href='#' className="navbar__link">Profil</a></li>
-            <li className="navbar__item"><a href='#' className="navbar__link">Wyloguj się</a></li>
+            <li className="navbar__item"><a className="navbar__link" onClick={logout}>Wyloguj się</a></li>
           </ul>
         </div>
 			</nav>

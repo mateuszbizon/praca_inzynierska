@@ -7,12 +7,13 @@ import FileBase from 'react-file-base64';
 import CloseIcon from '@mui/icons-material/Close';
 
 function FormEdit({ currentId, setCurrentId }) {
-    const [form, setForm] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+    const [form, setForm] = useState({ message: '', tags: '', selectedFile: '' });
     const dispatch = useDispatch();
     const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
     const titleError = useRef();
     const messageError = useRef();
     const tagsError = useRef();
+    const user = JSON.parse(localStorage.getItem("user"));
 
     useEffect(() => {
         if (post) setForm(post);
@@ -24,17 +25,6 @@ function FormEdit({ currentId, setCurrentId }) {
 
     function closeForm(){
         setCurrentId(null);
-    }
-
-    function checkTitle(){
-        if(form.title.length === 0){
-            titleError.current.textContent = "Wartość nie może być pusta";
-            titleError.current.style.visibility = "visible";
-            return false;
-        }
-
-        titleError.current.style.visibility = "hidden";
-        return true;
     }
 
     function checkMessage(){
@@ -62,11 +52,11 @@ function FormEdit({ currentId, setCurrentId }) {
     function handleSubmit(e){
         e.preventDefault();
 
-        if(!checkTitle() || !checkMessage() || !checkTags()){
+        if(!checkMessage() || !checkTags()){
             return false
         }
 
-        dispatch(updatePost(currentId, form));
+        dispatch(updatePost(currentId, { ...form, username: user.result.username}));
         closeForm();
     }
   return (
@@ -76,11 +66,6 @@ function FormEdit({ currentId, setCurrentId }) {
                 <CloseIcon fontSize='large' className='edit__close' onClick={closeForm}/>
                 <h1 className="edit__heading">Edytuj post</h1>
                 <form>
-                    <TextField name="creator" variant="outlined" label="Creator" fullWidth value={form.creator} onChange={onChange} />
-                    <div className="edit__form-box">
-                        <TextField name="title" variant="outlined" label="Tytuł" fullWidth value={form.title}  onChange={onChange}/>
-                        <p className="edit__text-error" ref={titleError}>error</p>
-                    </div>
                     <div className="edit__form-box">
                         <TextField name="message" variant="outlined" label="Wiadomość" fullWidth multiline rows={4} value={form.message} onChange={onChange}/>
                         <p className="edit__text-error" ref={messageError}>error</p>

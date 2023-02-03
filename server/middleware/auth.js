@@ -16,8 +16,8 @@ const auth = (req, res, next) => {
 
             req.userId = decodedData?.sub;
         }
-
-        next()
+        
+        next();
     } catch (error) {
         console.log(error)
     }
