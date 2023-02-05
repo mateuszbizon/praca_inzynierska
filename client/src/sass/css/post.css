@@ -61,18 +61,4 @@
 .post__likes-count {
   margin: 10px 10px;
   font-weight: bold;
-}
-
-@media (min-width: 576px) {
-  .post {
-    width: 400px;
-  }
-  .post__img {
-    height: 400px;
-  }
-}
-@media (min-width: 768px) {
-  .post {
-    width: 500px;
-  }
 }/*# sourceMappingURL=post.css.map */

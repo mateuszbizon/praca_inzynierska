@@ -12,8 +12,6 @@ import { likePost, deletePost} from '../actions/posts';
 function post({post, setCurrentId}) {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('user'));
-    console.log(user.result._id);
-    console.log(post.creator);
 
     function Likes(){
         if(post.likes.length > 0){

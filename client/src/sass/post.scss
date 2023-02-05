@@ -57,18 +57,14 @@
     }
 }
 
-@media (min-width: 576px){
-    .post{
-        width: 400px;
+// @media (min-width: 576px){
+//     .post{
+//         margin-right: 40px;
+//     }
+// }
 
-        &__img{
-            height: 400px;
-        }
-    }
-}
-
-@media (min-width: 768px){
-    .post{
-        width: 500px;
-    }
-}
+// @media (min-width: 768px){
+//     .post{
+//         width: 500px;
+//     }
+// }

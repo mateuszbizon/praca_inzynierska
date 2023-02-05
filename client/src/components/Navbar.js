@@ -11,7 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const user = JSON.parse(localStorage.getItem('user'));
 
   function showSidebar(){
     setSidebar(!sidebar)
@@ -19,12 +20,17 @@ function Navbar() {
 
   function logout(){
     localStorage.removeItem("user");
-    window.location.reload();
+    navigate("/login")
   }
+
+  function goToProfile(){
+    navigate(`/profile/${user.result.username}`)
+  }
+
 	return (
 		<>
 			<nav className='navbar'>
-				<a href='/dashboard' title='Strona główna'>
+				<a href='/' title='Strona główna'>
 					<img src={logo} alt='Kostka Rubika' className='navbar__logo' />
 				</a>
 				<div className='navbar__burger'>
@@ -32,9 +38,9 @@ function Navbar() {
 				</div>
         <div className="navbar__items">
           <ul>
-            <li className="navbar__item"><a href='/dashboard' className="navbar__link">Strona główna</a></li>
+            <li className="navbar__item"><a href='/' className="navbar__link">Strona główna</a></li>
             <li className="navbar__item"><a href='/create' className="navbar__link">Utwórz</a></li>
-            <li className="navbar__item"><a href='#' className="navbar__link">Profil</a></li>
+            <li className="navbar__item"><a className="navbar__link" onClick={goToProfile}>Profil</a></li>
             <li className="navbar__item"><a className="navbar__link" onClick={logout}>Wyloguj się</a></li>
           </ul>
         </div>

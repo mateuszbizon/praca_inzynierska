@@ -6,8 +6,10 @@ export const signin = (formData, navigate) => async (dispatch) => {
       const { data } = await api.signIn(formData);
   
       dispatch({ type: AUTH, data: data });
+
+      const user = JSON.parse(localStorage.getItem("user"));
   
-      navigate('/dashboard');
+      navigate(`/profile/${user.result.username}`);
     } catch (error) {
       console.log(error);
       dispatch({ type: AUTH_FAIL });

@@ -23,7 +23,7 @@ export const signin = async (req, res) => {
 		const token = jwt.sign(
 			{ email: existingUser.email, id: existingUser._id },
 			"test",
-			{ expiresIn: "1h" }
+			{ expiresIn: "5h" }
 		);
 
 		res.status(200).json({success: true, result: existingUser, message: "logged", token: token });

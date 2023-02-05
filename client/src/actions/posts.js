@@ -1,12 +1,12 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE, LIKE } from '../constants/actionTypes';
+import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL_BY_USERNAME } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
-export const getPosts = () => async (dispatch) => {
+export const getPostsByUsername = (username) => async (dispatch) => {
   try {
-    const { data } = await api.fetchPosts();
+    const { data } = await api.fetchPostsByUsername(username);
 
-    dispatch({ type: FETCH_ALL, payload: data });
+    dispatch({ type: FETCH_ALL_BY_USERNAME, payload: data });
   } catch (error) {
     console.log(error);
   }
@@ -18,7 +18,9 @@ export const createPost = (post, navigate) => async (dispatch) => {
 
     dispatch({ type: CREATE, payload: data });
 
-    navigate("/");
+    const user = JSON.parse(localStorage.getItem('user'));
+
+    navigate(`/profile/${user.result.username}`);
   } catch (error) {
     console.log(error.message);
   }
