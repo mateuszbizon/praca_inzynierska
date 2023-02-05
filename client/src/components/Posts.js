@@ -11,9 +11,7 @@ function posts({setCurrentId}) {
         <div className="posts">
             {posts.map((post) => (
               <>
-                <div>
                   <Post post={post} setCurrentId={setCurrentId}/>
-                </div>
               </>
             ))}
         </div>

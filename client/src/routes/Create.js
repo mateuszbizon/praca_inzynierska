@@ -67,6 +67,7 @@ function Create() {
                             <p className="create__text-error" ref={tagsError}>error</p>
                         </div>
                         <FileBase type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, selectedFile: base64 })} />
+                        {/* <input type="file" name='selectedFile' onChange={onChange}/> */}
                         <div className='create__btn-box'>
                                 <button
                                     type='submit'
