@@ -22,7 +22,6 @@ function Profiles() {
         <FormEdit currentId={currentId} setCurrentId={setCurrentId} />
         <section className="profiles">
             <Posts setCurrentId={setCurrentId}/>
-            <div className={currentId === null ? 'shadow' : 'shadow-active'} onClick={() => setCurrentId(null)}></div>
         </section>
     </>
   )

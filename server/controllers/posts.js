@@ -12,6 +12,18 @@ export const getPostsByUsername = async (req, res) => {
     }
 }
 
+export const getPostById = async (req, res) => {
+    const { id } = req.params;
+    
+    try {
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("Nie ma takiego posta z tym id");
+        const postMessage = await PostMessage.find({ _id: id });
+        res.status(200).json(postMessage);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const createPost = async (req, res) => {
     const post = req.body;
 

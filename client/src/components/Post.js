@@ -8,27 +8,33 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useDispatch } from 'react-redux';
 import { likePost, deletePost} from '../actions/posts';
+import { useNavigate } from 'react-router-dom';
 
 function post({post, setCurrentId}) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem('user'));
 
-    function Likes(){
-        if(post.likes.length > 0){
-            return post.likes.find(like => like === user?.result?._id) ? (
-                <ThumbUpIcon className='post__icons' />
-            ) : (
-                <ThumbUpOffAltIcon className='post__icons' />
-            )
-        }
+    // function Likes(){
+    //     if(post.likes.length > 0){
+    //         return post.likes.find(like => like === user?.result?._id) ? (
+    //             <ThumbUpIcon className='post__icons' />
+    //         ) : (
+    //             <ThumbUpOffAltIcon className='post__icons' />
+    //         )
+    //     }
 
-        return <ThumbUpOffAltIcon className='post__icons' />
+    //     return <ThumbUpOffAltIcon className='post__icons' />
+    // }
+
+    function goToPostDetails(){
+        navigate(`/posts/${post._id}`)
     }
 
   return (
     <>
-        <div className="post">
-        <img src={post.selectedFile} alt="" className='post__img' />
+        <div className="post" onClick={goToPostDetails}>
+            <img src={post.selectedFile} alt="" className='post__img' />
             {/* <div className="post__header">
                 <div className="post__creator">{post.username}</div>
                 <div className="post__date">{moment(post.createdAt).fromNow()}</div>

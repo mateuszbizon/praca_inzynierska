@@ -5,6 +5,7 @@ import HomePage from './routes/Home';
 import CreatePage from './routes/Create';
 import ProfilesPage from './routes/Profiles';
 import AuthRoutes from './utils/AuthRoutes';
+import PostDetails from "./routes/PostDetails";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
 				<Route element={<AuthRoutes />}>
 					<Route path='/create' element={<CreatePage />} />
 					<Route path='/profile/:username' element={<ProfilesPage />} />
+					<Route path='/posts/:id' element={<PostDetails />} />
 				</Route>
 				<Route path='/' element={<HomePage />} />
 				<Route path='/login' element={<LoginPage />} />
