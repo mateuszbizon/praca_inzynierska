@@ -1,17 +1,19 @@
 .post-details {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .post-details__container {
   width: 300px;
   min-height: 300px;
-  margin-top: 70px;
 }
 .post-details__img {
   width: 100%;
@@ -68,7 +70,7 @@
           justify-content: space-between;
   padding: 10px 10px;
 }
-.post-details__icons {
+.post-details__icons, .post-details__creator {
   cursor: pointer;
 }
 .post-details__button-box {

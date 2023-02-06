@@ -2,14 +2,14 @@
 
 .post-details {
 	position: relative;
-	min-height: 100vh;
+	height: 100vh;
 	display: flex;
 	justify-content: center;
+	align-items: center;
 
     &__container{
         width: 300px;
         min-height: 300px;
-        margin-top: 70px;
     }
 
 	&__img {
@@ -63,7 +63,7 @@
 		padding: 10px 10px;
 	}
 
-	&__icons {
+	&__icons, &__creator {
 		cursor: pointer;
 	}
 

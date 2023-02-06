@@ -8,12 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { createPost } from "../actions/posts";
 
 function Create() {
-    const [form, setForm] = useState({ message: '', tags: '', selectedFile: '' });
+    const [form, setForm] = useState({ message: '', selectedFile: '' });
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const titleError = useRef();
     const messageError = useRef();
-    const tagsError = useRef();
+    const fileError = useRef();
     const user = JSON.parse(localStorage.getItem("user"));
 
     function onChange(e){
@@ -31,21 +30,21 @@ function Create() {
         return true
     }
 
-    function checkTags(){
-        if(form.tags.length === 0){
-            tagsError.current.textContent = "Wartość nie może być pusta";
-            tagsError.current.style.visibility = "visible";
+    function checkFile(){
+        if(form.selectedFile.length === 0){
+            fileError.current.textContent = "Wybierz plik!";
+            fileError.current.style.visibility = "visible";
             return false;
         }
 
-        tagsError.current.style.visibility = "hidden";
-        return true
+        fileError.current.style.visibility = "visible"
+        return true;
     }
 
     function handleSubmit(e){
         e.preventDefault();
 
-        if(!checkMessage() || !checkTags()){
+        if(!checkMessage() || !checkFile()){
             return false
         }
 
@@ -63,11 +62,9 @@ function Create() {
                             <p className="create__text-error" ref={messageError}>error</p>
                         </div>
                         <div className="create__form-box">
-                            <TextField name="tags" variant="outlined" label="Tagi" fullWidth onChange={onChange}/>
-                            <p className="create__text-error" ref={tagsError}>error</p>
+                            <FileBase name="selectedFile" type="file" multiple={false} onChange={onChange} onDone={({ base64 }) => setForm({ ...form, selectedFile: base64 })} />
+                            <p className="create__text-error" ref={fileError}></p>
                         </div>
-                        <FileBase type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, selectedFile: base64 })} />
-                        {/* <input type="file" name='selectedFile' onChange={onChange}/> */}
                         <div className='create__btn-box'>
                                 <button
                                     type='submit'

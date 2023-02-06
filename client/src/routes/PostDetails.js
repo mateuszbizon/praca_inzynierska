@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
 import FormEdit from '../components/FormEdit';
@@ -7,7 +7,6 @@ import moment from 'moment';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import EditIcon from '@mui/icons-material/Edit';
-import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import '../sass/css/post-details.css';
 import { getPostById, likePost, deletePost } from '../actions/posts';
 
@@ -17,6 +16,7 @@ function PostDetails() {
     const [currentId, setCurrentId] = useState(null);
     const user = JSON.parse(localStorage.getItem('user'));
     const posts = useSelector((state) => state.posts);
+    const navigate = useNavigate();
 
     useEffect(() => {
         dispatch(getPostById(id));
@@ -44,7 +44,7 @@ function PostDetails() {
             <div className="post-details__container">
                 <div className="post-details__left-side">
                     <div className="post-details__header">
-                        <div className="post-details__creator">{post.username}</div>
+                        <div className="post-details__creator" onClick={() => {navigate(`/profile/${post.username}`)}}>{post.username}</div>
                         <div className="post-details__date">{moment(post.createdAt).fromNow()}</div>
                     </div>
                     <img src={post.selectedFile} alt="" className='post-details__img' />
