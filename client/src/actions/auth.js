@@ -11,8 +11,7 @@ export const signin = (formData, navigate) => async (dispatch) => {
   
       navigate(`/profile/${user.result.username}`);
     } catch (error) {
-      console.log(error);
-      dispatch({ type: AUTH_FAIL });
+      dispatch({ type: AUTH_FAIL, data: error.response.data.message });
     }
 };
 
@@ -24,7 +23,6 @@ export const signup = (formData, navigate) => async (dispatch) => {
   
       navigate('/login');
     } catch (error) {
-      console.log(error);
-      dispatch({ type: REGISTER_FAIL });
+      dispatch({ type: REGISTER_FAIL, data: error.response.data.message });
     }
 };

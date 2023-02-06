@@ -41,6 +41,11 @@ export const signup = async (req, res) => {
 		if (existingUser)
 			return res.status(400).json({success: false, message: "Email jest już zajęty" });
 
+		const existingUsername = await User.findOne({ username });
+
+		if (existingUsername)
+			return res.status(400).json({success: false, message: "Nazwa użytkownika jest już zajęta" });
+
 		const hashedPassword = await bcrypt.hash(password, 12);
 
 		const result = await User.create({
