@@ -1,20 +1,35 @@
 @import './colors';
 
 .post{
-    // width: 300px;
-    // min-height: 500px;
     width: 30%;
     height: 100px;
     margin-bottom: 20px;
     z-index: 5;
-    cursor: pointer;
 
+    &:hover{
+        .post__button-box{
+            visibility: visible;
+        }
+    }
+    
     &__img{
         object-fit: cover;
-        // height: 300px;
-        // width: 300px;
         width: 100%;
         height: 100%;
+        cursor: pointer;
+    }
+
+    &__button-box{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        transition: visibility .3s;
+        visibility: hidden;
+    }
+
+    &__icon{
+        cursor: pointer;
     }
 }
 
@@ -23,9 +38,3 @@
         height: 200px;
     }
 }
-
-// @media (min-width: 768px){
-//     .post{
-//         height: 250px;
-//     }
-// }

@@ -42,35 +42,40 @@ function PostDetails() {
             <div className={currentId === null ? 'shadow' : 'shadow-active'} onClick={() => setCurrentId(null)}></div>
             {posts.map(post => (
             <div className="post-details__container">
-                <div className="post-details__header">
-                    <div className="post-details__creator">{post.username}</div>
-                    <div className="post-details__date">{moment(post.createdAt).fromNow()}</div>
-                </div>
-                <img src={post.selectedFile} alt="" className='post-details__img' />
-                <div className="post-details__buttons">
-                    <div className='post-details__button-box' onClick={() => dispatch(likePost(post._id))} >
-                        <Likes post={post}/>
-                        <p className='post-details__text'>Polub</p>
+                <div className="post-details__left-side">
+                    <div className="post-details__header">
+                        <div className="post-details__creator">{post.username}</div>
+                        <div className="post-details__date">{moment(post.createdAt).fromNow()}</div>
                     </div>
-                    {(user.result._id === post.creator) && (
-                        <div className='post-details__button-box' onClick={() => setCurrentId(post._id)} >
-                        <EditIcon fontSize='medium' className='post-details__icons'/>
-                        <p className='post-details__text'> Edytuj</p>
-                    </div>
-                    )}
-                    {(user.result._id === post.creator) && (
-                        <div className='post-details__button-box' onClick={() => dispatch(deletePost(post._id))} >
-                        <DeleteOutlineIcon fontSize='medium' className='post-details__icons' />
-                        <p className='post-details__text'> Usuń</p>
-                    </div>
-                    )}
+                    <img src={post.selectedFile} alt="" className='post-details__img' />
                 </div>
-                <div className="post-details__likes-count">Polubień: {post.likes.length}</div>
-                <div className="post-details__msg">
-                    <p>{post.message}</p>
-                </div>
-                <div className="post-details__tags">
-                    <p>{post.tags.map((tag) => `#${tag} `)}</p>
+                <div className="post-details__right-side">
+                    <div className="post-details__msg">
+                        <p>{post.message}</p>
+                    </div>
+                    {/* <div className="post-details__tags">
+                        <p>{post.tags.map((tag) => `#${tag} `)}</p>
+                    </div> */}
+                    <div className="post-details__comments">
+                        komentarze
+                    </div>
+                    <div className="post-details__buttons">
+                        <div className='post-details__button-box' onClick={() => dispatch(likePost(post._id))} >
+                            <Likes post={post}/>
+                            <p className='post-details__text'>Polub</p>
+                        </div>
+                        {(user.result._id === post.creator) && (
+                            <div className='post-details__button-box' onClick={() => setCurrentId(post._id)} >
+                            <EditIcon fontSize='medium' className='post-details__icons'/>
+                            <p className='post-details__text'> Edytuj</p>
+                        </div>
+                        )}
+                        
+                    </div>
+                    <div className="post-details__likes-count">Polubień: {post.likes.length}</div>
+                    <div className="post-details__comment-input">
+                        <input type="text" placeholder='Dodaj komentarz'/>
+                    </div>
                 </div>
             </div>
             ))}

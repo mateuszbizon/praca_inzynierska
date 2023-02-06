@@ -1,31 +1,14 @@
 import React from 'react'
 import '../sass/css/post.css';
-import CardMedia from '@mui/material/CardMedia';
-import moment from 'moment';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useDispatch } from 'react-redux';
-import { likePost, deletePost} from '../actions/posts';
+import { deletePost} from '../actions/posts';
 import { useNavigate } from 'react-router-dom';
 
-function post({post, setCurrentId}) {
+function post({post}) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem('user'));
-
-    // function Likes(){
-    //     if(post.likes.length > 0){
-    //         return post.likes.find(like => like === user?.result?._id) ? (
-    //             <ThumbUpIcon className='post__icons' />
-    //         ) : (
-    //             <ThumbUpOffAltIcon className='post__icons' />
-    //         )
-    //     }
-
-    //     return <ThumbUpOffAltIcon className='post__icons' />
-    // }
 
     function goToPostDetails(){
         navigate(`/posts/${post._id}`)
@@ -33,37 +16,14 @@ function post({post, setCurrentId}) {
 
   return (
     <>
-        <div className="post" onClick={goToPostDetails}>
-            <img src={post.selectedFile} alt="" className='post__img' />
-            {/* <div className="post__header">
-                <div className="post__creator">{post.username}</div>
-                <div className="post__date">{moment(post.createdAt).fromNow()}</div>
-            </div>
-            <div className="post__buttons">
-                <div className='post__button-box' onClick={() => dispatch(likePost(post._id))} >
-                    <Likes />
-                    <p className='post__text'>Polub</p>
-                </div>
-                {(user.result._id === post.creator) && (
-                    <div className='post__button-box' onClick={() => setCurrentId(post._id)} >
-                    <EditIcon fontSize='medium' className='post__icons'/>
-                    <p className='post__text'> Edytuj</p>
-                </div>
-                )}
-                {(user.result._id === post.creator) && (
-                    <div className='post__button-box' onClick={() => dispatch(deletePost(post._id))} >
-                    <DeleteOutlineIcon fontSize='medium' className='post__icons' />
+        <div className="post">
+            <img src={post.selectedFile} alt="" className='post__img' onClick={goToPostDetails} />
+            {(user.result._id === post.creator) && (
+                <div className='post__button-box' >
+                    <DeleteOutlineIcon fontSize='medium' className='post__icon' onClick={() => dispatch(deletePost(post._id))} />
                     <p className='post__text'> Usuń</p>
                 </div>
-                )}
-            </div>
-            <div className="post__likes-count">Polubień: {post.likes.length}</div>
-            <div className="post__msg">
-                <p>{post.message}</p>
-            </div>
-            <div className="post__tags">
-                <p>{post.tags.map((tag) => `#${tag} `)}</p>
-            </div> */}
+            )}
         </div>
     </>
   )

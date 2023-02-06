@@ -14,14 +14,14 @@ function Profiles() {
 
     useEffect(() => {
       dispatch(getPostsByUsername(username));
-    }, [currentId, dispatch]);
+    }, [dispatch]);
 
   return (
     <>
         <Navbar />
         <FormEdit currentId={currentId} setCurrentId={setCurrentId} />
         <section className="profiles">
-            <Posts setCurrentId={setCurrentId}/>
+            <Posts />
         </section>
     </>
   )

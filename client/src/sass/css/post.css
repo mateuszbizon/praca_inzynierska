@@ -3,13 +3,34 @@
   height: 100px;
   margin-bottom: 20px;
   z-index: 5;
-  cursor: pointer;
+}
+.post:hover .post__button-box {
+  visibility: visible;
 }
 .post__img {
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
   height: 100%;
+  cursor: pointer;
+}
+.post__button-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  -webkit-transition: visibility 0.3s;
+  transition: visibility 0.3s;
+  visibility: hidden;
+}
+.post__icon {
+  cursor: pointer;
 }
 
 @media (min-width: 576px) {
