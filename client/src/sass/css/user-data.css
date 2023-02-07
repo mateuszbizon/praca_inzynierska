@@ -1,0 +1,110 @@
+.user-data {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 70px;
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px solid #555;
+}
+.user-data__img-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+  width: 30%;
+  padding: 0 10px;
+}
+.user-data__main-side {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0 30px;
+  width: 70%;
+}
+.user-data__img {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.user-data__info {
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+.user-data__edit-profile {
+  background-color: #f46036;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  width: 70%;
+  padding: 5px 10px;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.user-data__edit-profile:hover {
+  background-color: #cb380f;
+}
+
+.no-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 70px;
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px solid #555;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@media (min-width: 576px) {
+  .user-data {
+    width: 60%;
+    height: 200px;
+  }
+  .user-data__img-side {
+    width: 40%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .user-data__main-side {
+    width: 60%;
+  }
+  .user-data__img {
+    width: 150px;
+    height: 150px;
+  }
+  .user-data__info {
+    font-size: 25px;
+  }
+  .user-data__edit-profile {
+    padding: 10px 20px;
+    font-size: 20px;
+    width: 200px;
+  }
+  .no-user {
+    width: 60%;
+    font-size: 40px;
+  }
+}/*# sourceMappingURL=user-data.css.map */

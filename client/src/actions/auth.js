@@ -1,4 +1,4 @@
-import { AUTH, AUTH_FAIL, REGISTER, REGISTER_FAIL } from '../constants/actionTypes';
+import { AUTH, AUTH_FAIL, REGISTER, REGISTER_FAIL, GET_USER } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const signin = (formData, navigate) => async (dispatch) => {
@@ -26,3 +26,13 @@ export const signup = (formData, navigate) => async (dispatch) => {
       dispatch({ type: REGISTER_FAIL, data: error.response.data.message });
     }
 };
+
+export const getUser = (username) => async (dispatch) => {
+  try {
+    const { data } = await api.getUser(username);
+
+    dispatch({ type: GET_USER, data: data })
+  } catch (error) { 
+    console.log(error);
+  }
+}

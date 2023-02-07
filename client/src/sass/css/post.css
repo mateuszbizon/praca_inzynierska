@@ -2,10 +2,10 @@
   width: 30%;
   height: 100px;
   margin-bottom: 20px;
-  z-index: 5;
+  z-index: 0;
 }
 .post:hover .post__button-box {
-  visibility: visible;
+  opacity: 1;
 }
 .post__img {
   -o-object-fit: cover;
@@ -25,9 +25,9 @@
       -ms-flex-align: center;
           align-items: center;
   width: 100%;
-  -webkit-transition: visibility 0.3s;
-  transition: visibility 0.3s;
-  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
 }
 .post__icon {
   cursor: pointer;
@@ -35,6 +35,6 @@
 
 @media (min-width: 576px) {
   .post {
-    height: 200px;
+    height: 150px;
   }
 }/*# sourceMappingURL=post.css.map */

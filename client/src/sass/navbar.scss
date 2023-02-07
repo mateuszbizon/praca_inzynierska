@@ -80,6 +80,7 @@ body{
 	background-color: $secondary-color;
 	padding: 40px 0;
     transition: left .3s;
+	z-index: 5;
 
     &__row{
         display: flex;

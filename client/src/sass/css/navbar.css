@@ -100,6 +100,7 @@ body {
   padding: 40px 0;
   -webkit-transition: left 0.3s;
   transition: left 0.3s;
+  z-index: 5;
 }
 .sidebar__row {
   display: -webkit-box;

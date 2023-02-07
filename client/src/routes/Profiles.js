@@ -6,6 +6,7 @@ import Posts from '../components/Posts';
 import '../sass/css/profiles.css';
 import { getPostsByUsername } from '../actions/posts';
 import { useDispatch } from 'react-redux';
+import UserData from '../components/UserData';
 
 function Profiles() {
     const { username } = useParams();
@@ -21,6 +22,7 @@ function Profiles() {
         <Navbar />
         <FormEdit currentId={currentId} setCurrentId={setCurrentId} />
         <section className="profiles">
+            <UserData username={username}/>
             <Posts />
         </section>
     </>
