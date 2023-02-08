@@ -15,3 +15,20 @@
 	transform: scaleX(1);
 	transform-origin: left;
 }
+
+@mixin searchButton {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 60px;
+	height: 36px;
+	cursor: pointer;
+	border-radius: 0 20px 20px 0;
+	border: none;
+	transition: background-color .3s;
+
+	&:hover{
+		background-color: #b3aaaa;
+	}
+}
