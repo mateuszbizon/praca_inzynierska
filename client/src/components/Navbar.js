@@ -23,72 +23,84 @@ function Navbar() {
     navigate("/login")
   }
 
-  function goToProfile(){
-    navigate(`/profile/${user.result.username}`)
-  }
-
 	return (
 		<>
-			<nav className='navbar'>
-				<a href='/' title='Strona główna'>
-					<img src={logo} alt='Kostka Rubika' className='navbar__logo' />
-				</a>
-				<div className='navbar__burger'>
-					<MenuIcon fontSize='large' className='navbar__burger-icon' onClick={showSidebar}/>
-				</div>
-        <div className="navbar__items">
-          <ul>
-            <li className="navbar__item"><a href='/' className="navbar__link">Strona główna</a></li>
-            <li className="navbar__item"><a href='/create' className="navbar__link">Utwórz</a></li>
-            <li className="navbar__item"><a className="navbar__link" onClick={goToProfile}>Profil</a></li>
-            <li className="navbar__item"><a className="navbar__link" onClick={logout}>Wyloguj się</a></li>
-          </ul>
-        </div>
-			</nav>
+      {user ? (
+      <>
+        <nav className='navbar'>
+          <a href='/' title='Strona główna'>
+            <img src={logo} alt='Kostka Rubika' className='navbar__logo' />
+          </a>
+          <div className='navbar__burger'>
+            <MenuIcon fontSize='large' className='navbar__burger-icon' onClick={showSidebar}/>
+          </div>
+          <div className="navbar__items">
+            <ul>
+              <li className="navbar__item"><a href='/' className="navbar__link">Strona główna</a></li>
+              <li className="navbar__item"><a href='/create' className="navbar__link">Utwórz</a></li>
+              <li className="navbar__item"><a href={`/profile/${user.result.username}`} className="navbar__link" >Profil</a></li>
+              <li className="navbar__item"><a className="navbar__link" onClick={logout}>Wyloguj się</a></li>
+            </ul>
+          </div>
+        </nav>
 
-			<nav className={sidebar ? 'sidebar active' : 'sidebar'}>
-				<div className="sidebar__row">
-          <div className='sidebar__items' onClick={() => navigate('/')}>
-            <div className='sidebar__icons'>
-              <HomeIcon fontSize='large' className='sidebar__icon' />
-            </div>
-            <div className="sidebar__text">
-              Strona główna
-            </div>
-          </div>
-        </div>
-				<div className="sidebar__row">
-          <div className='sidebar__items' onClick={() => navigate('/create')}>
-            <div className='sidebar__icons'>
-                <AddIcon fontSize='large' className='sidebar__icon' />
-            </div>
-            <div className="sidebar__text">
-              Utwórz
+        <nav className={sidebar ? 'sidebar active' : 'sidebar'}>
+          <div className="sidebar__row">
+            <div className='sidebar__items' onClick={() => navigate('/')}>
+              <div className='sidebar__icons'>
+                <HomeIcon fontSize='large' className='sidebar__icon' />
+              </div>
+              <div className="sidebar__text">
+                Strona główna
+              </div>
             </div>
           </div>
-        </div>
-				<div className="sidebar__row">
-          <div className='sidebar__items'>
-            <div className='sidebar__icons'>
-                <EditIcon fontSize='large' className='sidebar__icon' />
-            </div>
-            <div className="sidebar__text">
-            Profil
-            </div>
-          </div>
-        </div>
-				<div className="sidebar__row">
-          <div className='sidebar__items'>
-            <div className='sidebar__icons'>
-                <LogoutIcon fontSize='large' className='sidebar__icon' />
-            </div>
-            <div className="sidebar__text">
-              Wyloguj się
+          <div className="sidebar__row">
+            <div className='sidebar__items' onClick={() => navigate('/create')}>
+              <div className='sidebar__icons'>
+                  <AddIcon fontSize='large' className='sidebar__icon' />
+              </div>
+              <div className="sidebar__text">
+                Utwórz
+              </div>
             </div>
           </div>
-        </div>
-			</nav>
-		</>
+          <div className="sidebar__row">
+            <div className='sidebar__items' onClick={() => navigate(`/profile/${user.result.username}`)}>
+              <div className='sidebar__icons'>
+                  <EditIcon fontSize='large' className='sidebar__icon' />
+              </div>
+              <div className="sidebar__text">
+              Profil
+              </div>
+            </div>
+          </div>
+          <div className="sidebar__row">
+            <div className='sidebar__items' onClick={logout}>
+              <div className='sidebar__icons'>
+                  <LogoutIcon fontSize='large' className='sidebar__icon' />
+              </div>
+              <div className="sidebar__text">
+                Wyloguj się
+              </div>
+            </div>
+          </div>
+        </nav>
+      </>
+      ) : (
+        <nav className="navbar">
+            <a href='/' title='Strona główna'>
+              <img src={logo} alt='Kostka Rubika' className='navbar__logo' />
+            </a>
+            <div className="navbar__items">
+              <ul>
+                <li className="navbar__item"><a href='/login' className="navbar__link">Logowanie</a></li>
+                <li className="navbar__item"><a href='register' className="navbar__link">Rejestracja</a></li>
+              </ul>
+            </div>
+        </nav>
+      )}
+    </>
 	);
 }
 

@@ -11,8 +11,9 @@
     &__img-side{
         display: flex;
         align-items: center;
+        justify-content: center;
         height: 100%;
-        width: 30%;
+        width: 50%;
         padding: 0 10px;
     }
 
@@ -21,7 +22,7 @@
         flex-direction: column;
         justify-content: center;
         padding: 0 30px;
-        width: 70%;
+        width: 50%;
     }
 
     &__img{
@@ -42,7 +43,7 @@
         font-size: 14px;
         border: none;
         border-radius: 5px;
-        width: 70%;
+        width: 100%;
         padding: 5px 10px;
         transition: background-color .3s;
         cursor: pointer;
@@ -70,15 +71,6 @@
     .user-data{
         width: 60%;
         height: 200px;
-
-        &__img-side{
-            width: 40%;
-            justify-content: center;
-        }
-
-        &__main-side{
-            width: 60%;
-        }
 
         &__img{
             width: 150px;
