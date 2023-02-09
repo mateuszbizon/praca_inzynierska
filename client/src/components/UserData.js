@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from '../actions/auth';
+import { getUser } from '../actions/users';
 import '../sass/css/user-data.css';
 import userImg from '../img/user.png';
 
 function UserData({username}) {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.auth.authData);
+    const user = useSelector(state => state.users);
     const posts = useSelector(state => state.posts);
 
     useEffect(() => {

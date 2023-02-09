@@ -14,9 +14,6 @@ const authReducer = (state = { authData: null, loading: false, error: false}, ac
 
         case actionType.REGISTER_FAIL:
             return {...state, authData: action.data, error: true}
-
-        case actionType.GET_USER:
-            return { ...state, authData: action.data }
             
         default:
             return state;

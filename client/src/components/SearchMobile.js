@@ -1,13 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import '../sass/css/searchMobile.css';
 import SearchIcon from '@mui/icons-material/Search';
+import { useNavigate } from 'react-router-dom';
 
 function SearchMobile() {
+  const navigate = useNavigate();
+  const [search, setSearch] = useState('')
+
+  function searchUsers(){
+    navigate(`/search?search=${search}`)
+  }
+
   return (
     <>
         <div className="search-mobile">
-            <input type="text" placeholder='Szukaj...' />
-            <button><SearchIcon /></button>
+            <input type="text" placeholder='Szukaj...' value={search} onChange={e => setSearch(e.target.value)} />
+            <button onClick={searchUsers}><SearchIcon /></button>
         </div>
     </>
   )

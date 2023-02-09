@@ -26,13 +26,3 @@ export const signup = (formData, navigate) => async (dispatch) => {
       dispatch({ type: REGISTER_FAIL, data: error.response.data.message });
     }
 };
-
-export const getUser = (username) => async (dispatch) => {
-  try {
-    const { data } = await api.getUser(username);
-
-    dispatch({ type: GET_USER, data: data })
-  } catch (error) { 
-    console.log(error);
-  }
-}
