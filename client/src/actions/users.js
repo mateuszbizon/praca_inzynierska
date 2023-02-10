@@ -1,4 +1,4 @@
-import { GET_USER } from '../constants/actionTypes';
+import { GET_USER, GET_USERS_BY_SEARCH } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const getUser = (username) => async (dispatch) => {
@@ -9,4 +9,14 @@ export const getUser = (username) => async (dispatch) => {
     } catch (error) { 
       console.log(error);
     }
+}
+
+export const getUsersBySearch = (search) => async (dispatch) => {
+  try {
+    const { data } = await api.getUsersBySearch(search);
+
+    dispatch({ type: GET_USERS_BY_SEARCH, data: data });
+  } catch (error) {
+    console.log(error);
   }
+}

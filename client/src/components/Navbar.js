@@ -13,6 +13,7 @@ function Navbar() {
   const [showSearch, setShowSearch] = useState(false)
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
+  const [search, setSearch] = useState('');
 
   function showSidebar(){
     setSidebar(!sidebar)
@@ -27,6 +28,16 @@ function Navbar() {
     navigate("/login")
   }
 
+  function searchUsers(){
+    navigate(`/search?search=${search}`);
+  }
+
+  function searchUsersByKey(e){
+    if(e.keyCode === 13){
+      searchUsers();
+    }
+  }
+
 	return (
 		<>
       {user ? (
@@ -39,12 +50,12 @@ function Navbar() {
           <div className='navbar__burger'>
             <MenuIcon fontSize='large' className='navbar__burger-icon' onClick={showSidebar}/>
           </div>
-          <div className={showSearch ? "search active" : "search"}>
+          <div className={showSearch ? "search active" : "search-input"}>
             <div className="search-icon-box" onClick={showSearchInput}>
               <KeyboardBackspaceIcon fontSize="large" className="search-icon"/>
             </div>
-            <input type="text" placeholder="Szukaj..."/>
-            <button><SearchIcon /></button>
+            <input type="text" placeholder="Szukaj..." onKeyDown={searchUsersByKey} value={search} onChange={e => setSearch(e.target.value)}/>
+            <button onClick={searchUsers}><SearchIcon /></button>
           </div>
           <div className={showSearch ? "navbar__items--hide" : "navbar__items"}>
             <ul>

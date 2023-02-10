@@ -20,3 +20,4 @@ export const deletePost = (id) => API.delete(`/posts/deletePost/${id}`);
 export const signIn = (formData) => API.post(`/user/signin`, formData);
 export const signUp = (formData) => API.post(`/user/signup`, formData);
 export const getUser = (username) => API.get(`/user/getUser/${username}`);
+export const getUsersBySearch = (search) => API.get(`/user/getUsersBySearch?search=${search}`)

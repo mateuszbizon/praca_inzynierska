@@ -1,5 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { getUsersBySearch } from '../actions/users';
+import { useDispatch } from 'react-redux';
+import SearchUsers from '../components/SearchUsers';
+import '../sass/css/search.css';
+import Navbar from '../components/Navbar';
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -8,10 +13,19 @@ function useQuery() {
 function Search() {
     const query = useQuery();
     const search = query.get('search');
-    console.log(search)
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getUsersBySearch(search))
+    }, [search])
 
   return (
-    <div>Search</div>
+    <>
+      <Navbar />
+      <section className='search'>
+        <SearchUsers />
+      </section>
+    </>
   )
 }
 

@@ -11,10 +11,16 @@ function SearchMobile() {
     navigate(`/search?search=${search}`)
   }
 
+  function searchUsersByKey(e){
+    if(e.keyCode === 13){
+      searchUsers();
+    }
+  }
+
   return (
     <>
         <div className="search-mobile">
-            <input type="text" placeholder='Szukaj...' value={search} onChange={e => setSearch(e.target.value)} />
+            <input type="text" placeholder='Szukaj...' onKeyDown={searchUsersByKey} value={search} onChange={e => setSearch(e.target.value)} />
             <button onClick={searchUsers}><SearchIcon /></button>
         </div>
     </>
