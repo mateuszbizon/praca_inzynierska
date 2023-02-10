@@ -7,9 +7,7 @@ import userImg from '../img/user.png';
 function UserData({username}) {
     const dispatch = useDispatch();
     const user = useSelector(state => state.users);
-    const posts = useSelector(state => state.posts);
     const currentUser = JSON.parse(localStorage.getItem('user'));
-    console.log(currentUser)
 
     useEffect(() => {
         dispatch(getUser(username));
@@ -25,7 +23,7 @@ function UserData({username}) {
             </div>
             <div className="user-data__main-side">
               <p className='user-data__info'>{user.name}</p>
-              <p className='user-data__info'>Posty: {posts.length}</p>
+              <p className='user-data__info'>Posty: {user.posts}</p>
               <p className='user-data__info'>{user.username}</p>
               {(currentUser.result.username === user.username) && (
                 <button className='user-data__edit-profile'>Edytuj profil</button>
