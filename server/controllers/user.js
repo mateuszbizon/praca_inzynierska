@@ -75,7 +75,7 @@ export const getUser = async (req, res) => {
 
 		if(!user) return res.status(404).json({ message: "Nie znaleziono danego użytkonwika" });
 
-		res.status(200).json({ username: user.username, name: user.name, file: user.selectedFile, siema: user.posts });
+		res.status(200).json({ username: user.username, name: user.name, file: user.selectedFile });
 	} catch (error) {
 		res.status(500).json({ message: "Coś poszło nie tak"})
 	}

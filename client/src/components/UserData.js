@@ -8,6 +8,8 @@ function UserData({username}) {
     const dispatch = useDispatch();
     const user = useSelector(state => state.users);
     const posts = useSelector(state => state.posts);
+    const currentUser = JSON.parse(localStorage.getItem('user'));
+    console.log(currentUser)
 
     useEffect(() => {
         dispatch(getUser(username));
@@ -25,7 +27,9 @@ function UserData({username}) {
               <p className='user-data__info'>{user.name}</p>
               <p className='user-data__info'>Posty: {posts.length}</p>
               <p className='user-data__info'>{user.username}</p>
-              <button className='user-data__edit-profile'>Edytuj profil</button>
+              {(currentUser.result.username === user.username) && (
+                <button className='user-data__edit-profile'>Edytuj profil</button>
+              )}
             </div>
           </div>
         )}
