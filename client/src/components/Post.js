@@ -2,7 +2,7 @@ import React from 'react'
 import '../sass/css/post.css';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useDispatch } from 'react-redux';
-import { deletePost} from '../actions/posts';
+import { deletePost, clearData} from '../actions/posts';
 import { useNavigate } from 'react-router-dom';
 
 function post({post}) {
@@ -11,6 +11,7 @@ function post({post}) {
     const user = JSON.parse(localStorage.getItem('user'));
 
     function goToPostDetails(){
+        dispatch(clearData());
         navigate(`/posts/${post._id}`)
     }
 

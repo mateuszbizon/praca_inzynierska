@@ -1,6 +1,16 @@
-import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL_BY_USERNAME, FETCH_POST_BY_ID } from '../constants/actionTypes';
+import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL_BY_USERNAME, FETCH_POST_BY_ID, CLEAR_DATA } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
+
+export const clearData = () => (dispatch) => {
+  try {
+    const data = [];
+
+    dispatch({ type: CLEAR_DATA, payload: data })
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export const getPostsByUsername = (username) => async (dispatch) => {
   try {
