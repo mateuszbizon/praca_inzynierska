@@ -7,15 +7,16 @@ import moment from 'moment';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import EditIcon from '@mui/icons-material/Edit';
+import { CircularProgress } from '@mui/material';
 import '../sass/css/post-details.css';
-import { getPostById, likePost, deletePost } from '../actions/posts';
+import { getPostById, likePost } from '../actions/posts';
 
 function PostDetails() {
     const { id } = useParams();
     const dispatch = useDispatch();
     const [currentId, setCurrentId] = useState(null);
     const user = JSON.parse(localStorage.getItem('user'));
-    const posts = useSelector((state) => state.posts);
+    const { posts , isLoading } = useSelector((state) => state.posts);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -34,18 +35,20 @@ function PostDetails() {
         return <ThumbUpOffAltIcon className='post-details__icons' />
     }
 
+    if (!posts.length && !isLoading) return 'Nie ma takiego postu';
+
   return (
     <>
         <Navbar />
         <FormEdit currentId={currentId} setCurrentId={setCurrentId} />
         <section className="post-details">
             <div className={currentId === null ? 'shadow' : 'shadow-active'} onClick={() => setCurrentId(null)}></div>
-            {!posts.length ? <div></div> : (
+            {isLoading ? <CircularProgress /> : (
                 posts.map(post => (
                     <div className="post-details__container">
                         <div className="post-details__left-side">
                             <div className="post-details__header">
-                                <div className="post-details__creator" onClick={() => {navigate(`/profile/${posts.username}`)}}>{post.username}</div>
+                                <div className="post-details__creator" onClick={() => {navigate(`/profile/${post.username}`)}}>{post.username}</div>
                                 <div className="post-details__date">{moment(post.createdAt).fromNow()}</div>
                             </div>
                             <img src={post.selectedFile} alt="" className='post-details__img' />

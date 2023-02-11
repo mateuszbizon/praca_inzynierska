@@ -1,22 +1,14 @@
-import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL_BY_USERNAME, FETCH_POST_BY_ID, CLEAR_DATA } from '../constants/actionTypes';
+import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL_BY_USERNAME, FETCH_POST_BY_ID, START_LOADING, END_LOADING } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
-export const clearData = () => (dispatch) => {
-  try {
-    const data = [];
-
-    dispatch({ type: CLEAR_DATA, payload: data })
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 export const getPostsByUsername = (username) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
     const { data } = await api.fetchPostsByUsername(username);
 
     dispatch({ type: FETCH_ALL_BY_USERNAME, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error);
   }
@@ -25,9 +17,11 @@ export const getPostsByUsername = (username) => async (dispatch) => {
 export const getPostById = (id) => async (dispatch) => {
 
   try {
+    dispatch({ type: START_LOADING });
     const { data } = await api.fetchPostById(id);
 
     dispatch({ type: FETCH_POST_BY_ID, payload: data });
+    dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error);
   }

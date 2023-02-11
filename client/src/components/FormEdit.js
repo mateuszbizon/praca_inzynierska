@@ -9,7 +9,7 @@ import CloseIcon from '@mui/icons-material/Close';
 function FormEdit({ currentId, setCurrentId }) {
     const [form, setForm] = useState({ message: '', selectedFile: '' });
     const dispatch = useDispatch();
-    const post = useSelector((state) => (currentId ? state.posts.find((message) => message._id === currentId) : null));
+    const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
     const messageError = useRef();
     const user = JSON.parse(localStorage.getItem("user"));
 

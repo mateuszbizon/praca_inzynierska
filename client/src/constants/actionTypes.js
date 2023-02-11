@@ -13,4 +13,5 @@ export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const GET_USER = "GET_USER";
 export const GET_USERS_BY_SEARCH = "GET_USERS_BY_SEARCH";
 
-export const CLEAR_DATA = "CLEAR_DATA";
+export const START_LOADING = "START_LOADING";
+export const END_LOADING = "END_LOADING";

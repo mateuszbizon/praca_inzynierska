@@ -2,12 +2,15 @@ import React from 'react'
 import Post from './Post';
 import '../sass/css/posts.css';
 import { useSelector } from 'react-redux';
+import { CircularProgress } from '@mui/material';
 
 function posts() {
-  const posts = useSelector((state) => state.posts);
+  const { posts, isLoading } = useSelector((state) => state.posts);
+
+  if (!posts.length && !isLoading) return 'Brak postów';
 
   return (
-      !posts.length ? <div></div> : (
+      isLoading ? <CircularProgress /> : (
         <div className="posts">
             {posts.map((post) => (
               <>
