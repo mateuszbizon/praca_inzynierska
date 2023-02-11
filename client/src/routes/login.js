@@ -10,7 +10,7 @@ function Login() {
 	const [form, setForm] = useState({password: "", email: ""});
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const errorAuth = useSelector(state => state.auth);
+	const { authData, error } = useSelector(state => state.auth);
 	const submitMessage = useRef();
 	const passRef = useRef();
 	const emailError = useRef();
@@ -104,7 +104,7 @@ function Login() {
 							</button>
 						</div>
 							<p className="login__submit-message" ref={submitMessage}>
-								{errorAuth.error ? errorAuth.authData : ""}
+								{error ? authData : ""}
 							</p>
 						<div className='login__info-box'>
 							<p className='login__info'>Nie masz konta?</p>

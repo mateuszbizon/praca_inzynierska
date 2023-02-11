@@ -9,7 +9,7 @@ import { signup } from '../actions/auth';
 function Register() {
     const [form, setForm] = useState({name: '', surname: '', email: '', username: '', password: ''});
     const dispatch = useDispatch();
-    const errorRegister = useSelector(state => state.auth)
+    const { authData, error} = useSelector(state => state.auth)
     const navigate = useNavigate();
     const submitMessage = useRef();
     const passRef = useRef();
@@ -176,7 +176,7 @@ function Register() {
                         </button>
                     </div>
                     <p className="login__submit-message" ref={submitMessage}>
-                        {errorRegister.error ? errorRegister.authData : ""}
+                        {error ? authData : ""}
                     </p>
                     <div className="register__info-box">
                         <p className='register__info'>Masz już konto?</p>
