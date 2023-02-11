@@ -1,14 +1,13 @@
 .edit {
-  display: none;
   position: fixed;
   opacity: 0;
-  top: 400px;
+  top: 250px;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background-color: #fff;
   padding: 20px;
-  width: 400px;
+  min-width: 300px;
 }
 .edit__form {
   position: relative;
@@ -58,7 +57,6 @@
 }
 
 .edit.active {
-  display: block;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
   opacity: 1;

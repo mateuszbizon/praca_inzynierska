@@ -42,7 +42,7 @@ function PostDetails() {
         <Navbar />
         <FormEdit currentId={currentId} setCurrentId={setCurrentId} />
         <section className="post-details">
-            <div className={currentId === null ? 'shadow' : 'shadow-active'} onClick={() => setCurrentId(null)}></div>
+            <div className={currentId === null ? 'post-details__shadow' : 'post-details__shadow-active'} onClick={() => setCurrentId(null)}></div>
             {isLoading ? <CircularProgress /> : (
                 posts.map(post => (
                     <div className="post-details__container">

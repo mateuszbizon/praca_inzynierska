@@ -4,7 +4,7 @@ import '../sass/css/posts.css';
 import { useSelector } from 'react-redux';
 import { CircularProgress } from '@mui/material';
 
-function posts() {
+function posts({currentId, setCurrentId}) {
   const { posts, isLoading } = useSelector((state) => state.posts);
 
   if (!posts.length && !isLoading) return 'Brak postów';
@@ -14,7 +14,7 @@ function posts() {
         <div className="posts">
             {posts.map((post) => (
               <>
-                  <Post post={post} />
+                  <Post post={post} currentId={currentId} setCurrentId={setCurrentId}/>
               </>
             ))}
         </div>

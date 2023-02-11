@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import FormEdit from '../components/FormEdit';
 import Posts from '../components/Posts';
 import '../sass/css/profiles.css';
 import { getPostsByUsername } from '../actions/posts';
 import { useDispatch } from 'react-redux';
 import UserData from '../components/UserData';
+import DeleteConfirm from '../components/DeleteConfirm';
 
 function Profiles() {
     const { username } = useParams();
     const dispatch = useDispatch();
-    const [currentId, setCurrentId] = useState(null);
+    const [currentId, setCurrentId] = useState(false);
 
     useEffect(() => {
       dispatch(getPostsByUsername(username));
@@ -20,10 +20,11 @@ function Profiles() {
   return (
     <>
         <Navbar />
-        <FormEdit currentId={currentId} setCurrentId={setCurrentId} />
+        <DeleteConfirm />
         <section className="profiles">
+            <div className={currentId ? 'profiles__shadow-active' : 'profiles__shadow'} onClick={() => setCurrentId(false)}></div>
             <UserData username={username}/>
-            <Posts />
+            <Posts currentId={currentId} setCurrentId={setCurrentId} />
         </section>
     </>
   )
