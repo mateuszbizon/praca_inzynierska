@@ -1,15 +1,12 @@
 .delete-confirm {
   position: fixed;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  opacity: 0;
   top: 250px;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
@@ -51,9 +48,9 @@
 }
 
 .delete-confirm.active {
-  -webkit-transition: opacity 1s;
-  transition: opacity 1s;
-  opacity: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 @media (min-width: 576px) {

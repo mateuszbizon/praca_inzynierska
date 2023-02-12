@@ -1,95 +1,94 @@
-@import './colors';
+@import "./colors";
 
-.user-data{
-    display: flex;
-    // justify-content: space-around;
-    margin-top: 70px;
-    width: 100%;
-    height: 150px;
-    border-bottom: 1px solid #555;
+.user-data {
+	display: flex;
+	margin-top: 70px;
+	width: 100%;
+	height: 150px;
+	border-bottom: 1px solid #555;
 
-    &__img-side{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        width: 50%;
-        padding: 0 10px;
-    }
+	&__img-side {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 50%;
+		padding: 0 10px;
+	}
 
-    &__main-side{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 0 30px;
-        width: 50%;
-    }
+	&__main-side {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 0 30px;
+		width: 50%;
+	}
 
-    &__img{
-        height: 100px;
-        width: 100px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
+	&__img {
+		height: 100px;
+		width: 100px;
+		border-radius: 50%;
+		object-fit: cover;
+	}
 
-    &__info{
-        margin-bottom: 10px;
-        font-size: 17px;
-    }
+	&__info {
+		margin-bottom: 10px;
+		font-size: 17px;
+	}
 
-    &__edit-profile{
-        background-color: $main-color;
-        color: #fff;
-        font-size: 14px;
-        border: none;
-        border-radius: 5px;
-        width: 100%;
-        padding: 5px 10px;
-        transition: background-color .3s;
-        cursor: pointer;
+	&__edit-profile {
+		background-color: $main-color;
+		color: #fff;
+		font-size: 14px;
+		border: none;
+		border-radius: 5px;
+		width: 100%;
+		padding: 5px 10px;
+		transition: background-color 0.3s;
+		cursor: pointer;
+        z-index: 5;
 
-        &:hover{
-            background-color: #cb380f;
-        }
-    }
-
+		&:hover {
+			background-color: $main-color-hover;
+		}
+	}
 }
 
-.no-user{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 70px;
-    width: 100%;
-    height: 150px;
-    border-bottom: 1px solid #555;
-    font-size: 18px;
-    font-weight: bold;
+.no-user {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 70px;
+	width: 100%;
+	height: 150px;
+	border-bottom: 1px solid #555;
+	font-size: 18px;
+	font-weight: bold;
 }
 
-@media (min-width: 576px){
-    .user-data{
-        width: 60%;
-        height: 200px;
+@media (min-width: 576px) {
+	.user-data {
+		width: 60%;
+		height: 200px;
 
-        &__img{
-            width: 150px;
-            height: 150px;
-        }
+		&__img {
+			width: 150px;
+			height: 150px;
+		}
 
-        &__info{
-            font-size: 25px;
-        }
+		&__info {
+			font-size: 25px;
+		}
 
-        &__edit-profile{
-            padding: 10px 20px;
-            font-size: 20px;
-            width: 200px;
-        }
-    }
+		&__edit-profile {
+			padding: 10px 20px;
+			font-size: 20px;
+			width: 200px;
+		}
+	}
 
-    .no-user{
-        width: 60%;
-        font-size: 40px;
-    }
+	.no-user {
+		width: 60%;
+		font-size: 40px;
+	}
 }

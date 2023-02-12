@@ -4,12 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../components/Navbar';
 import FormEdit from '../components/FormEdit';
 import moment from 'moment';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import EditIcon from '@mui/icons-material/Edit';
 import { CircularProgress } from '@mui/material';
 import '../sass/css/post-details.css';
-import { getPostById ,likePost } from '../actions/posts';
+import { getPostById } from '../actions/posts';
+import Likes from '../components/Likes';
 
 function PostDetails() {
     const { id } = useParams();
@@ -17,22 +16,12 @@ function PostDetails() {
     const [currentId, setCurrentId] = useState(null);
     const user = JSON.parse(localStorage.getItem('user'));
     const { posts, isLoading } = useSelector((state) => state.posts);
+    const hasLikedPost = posts?.likes?.find((like) => like === user?.result?._id);
+    
 
     useEffect(() => {
         dispatch(getPostById(id));
       }, [currentId, dispatch]);
-
-    function Likes(){
-        if(posts.likes.length > 0){
-            return posts.likes.find(like => like === user?.result?._id) ? (
-                <ThumbUpIcon className='post-details__icons' />
-            ) : (
-                <ThumbUpOffAltIcon className='post-details__icons' />
-            )
-        }
-
-        return <ThumbUpOffAltIcon className='post-details__icons' />
-    }
 
     if (!posts && !isLoading) return 'Nie ma takiego postu';
 
@@ -59,21 +48,18 @@ function PostDetails() {
                                 komentarze
                             </div>
                             <div className="post-details__buttons">
-                                <div className='post-details__button-box' onClick={() => dispatch(likePost(posts._id))} >
-                                    <Likes />
-                                    <p className='post-details__text'>Polub</p>
+                                <div className='post-details__button-box'>
+                                    <Likes posts={posts} />
                                 </div>
                                 {(user.result._id === posts.creator) && (
                                     <div className='post-details__button-box' onClick={() => setCurrentId(posts._id)} >
                                     <EditIcon fontSize='medium' className='post-details__icons'/>
                                     <p className='post-details__text'> Edytuj</p>
                                 </div>
-                                )}
-                                
+                                )}  
                             </div>
-                            <div className="post-details__likes-count">Polubień: {posts.likes.length}</div>
                             <div className="post-details__comment-input">
-                                <input type="text" placeholder='Dodaj komentarz'/>
+                                <textarea placeholder='Dodaj komentarz'></textarea>
                             </div>
                         </div>
                     </div>

@@ -2,10 +2,9 @@
 
 .delete-confirm{
     position: fixed;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: space-around;
-    opacity: 0;
     top: 250px;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -39,15 +38,14 @@
             transition: background-color .3s;
 
             &:hover{
-                background-color: #cb380f;
+                background-color: $main-color-hover;
             }
         }
     }
 }
 
 .delete-confirm.active{
-    transition: opacity 1s;
-    opacity: 1;
+    display: flex;
 }
 
 @media (min-width: 576px){

@@ -3,14 +3,17 @@
 
 .post-details {
 	position: relative;
-	height: 100vh;
+	min-height: 100vh;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 
     &__container{
         width: 300px;
-        min-height: 300px;
+        min-height: 500px;
+		margin-top: 60px;
+		margin-bottom: 100px;
+		box-shadow: 10px 10px 10px #909090;
     }
 
 	&__img {
@@ -54,11 +57,23 @@
 	}
 
 	&__comment-input{
-		input{
+		height: 100px;
+		border-bottom: 1px solid #ccc;
+
+		textarea{
 			width: 100%;
+			max-width: 100%;
+			min-width: 100%;
 			height: 100%;
-			padding: 0 10px;
+			min-height: 100%;
+			max-height: 100%;
 			border: none;
+			padding: 5px 10px;
+			font-size: 15px;
+
+			&::placeholder{
+				font-size: 15px;
+			}
 		}
 	}
 
@@ -67,10 +82,19 @@
 		align-items: center;
 		justify-content: space-between;
 		padding: 10px 10px;
+		border-bottom: 1px solid #ccc;
 	}
 
 	&__icons, &__creator {
 		cursor: pointer;
+	}
+
+	&__creator{
+		transition: color .3s;	
+	
+		&:hover{
+			color: $main-color;
+		}
 	}
 
 	&__button-box {
@@ -78,12 +102,16 @@
 		align-items: center;
 	}
 
+	&__text{
+		margin-left: 5px;
+	}
+
 	&__likes-count {
 		display: flex;
 		align-items: center;
 		padding-left: 10px;
 		font-weight: bold;
-		border-bottom: 1px solid #ccc;
+		margin-left: 20px;
 	}
 
 	&__shadow {
@@ -121,12 +149,17 @@
 			height: 25%;
 		}
 
-		&__comment-input, &__buttons, &__likes-count{
+		&__comments{
+			height: 50%;
+		}
+
+		&__buttons, &__likes-count{
 			height: 10%;
 		}
 
-		&__comments{
-			height: 45%;
+		&__comment-input{
+			height: 15%;
+			
 		}
 
 	}

@@ -57,6 +57,7 @@
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
   cursor: pointer;
+  z-index: 5;
 }
 .user-data__edit-profile:hover {
   background-color: #cb380f;
