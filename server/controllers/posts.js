@@ -18,8 +18,9 @@ export const getPostById = async (req, res) => {
     
     try {
         if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("Nie ma takiego posta z tym id");
-        const postMessage = await PostMessage.find({ _id: id });
-        res.status(200).json(postMessage);
+        const post = await PostMessage.findById(id);
+        
+        res.status(200).json(post);
     } catch (error) {
         console.log(error)
     }
@@ -51,7 +52,11 @@ export const updatePost = async (req, res) => {
 
     try {
         if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("Nie ma takiego posta z tym id");
-        const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new: true });
+
+        await PostMessage.findByIdAndUpdate(id, post, {new: true });
+
+        const updatedPost = await PostMessage.findById(id);
+
         res.json(updatedPost);
     } catch (error) {
         console.log(error)
@@ -97,7 +102,9 @@ export const likePost = async (req, res) => {
             post.likes = post.likes.filter(id => id !== String(req.userId))
         }
 
-        const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {new: true});
+        await PostMessage.findByIdAndUpdate(id, post, {new: true});
+
+        const updatedPost = await PostMessage.findById(id);
 
         res.json(updatedPost);
     } catch (error) {

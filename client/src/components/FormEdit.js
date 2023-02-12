@@ -9,13 +9,13 @@ import CloseIcon from '@mui/icons-material/Close';
 function FormEdit({ currentId, setCurrentId }) {
     const [form, setForm] = useState({ message: '', selectedFile: '' });
     const dispatch = useDispatch();
-    const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
+    const { posts } = useSelector(state => state.posts);
     const messageError = useRef();
     const user = JSON.parse(localStorage.getItem("user"));
 
     useEffect(() => {
-        if (post) setForm(post);
-    }, [post]);
+        if (posts) setForm(posts);
+    }, [posts]);
 
     function onChange(e){
         setForm({ ...form, [e.target.name]: e.target.value });

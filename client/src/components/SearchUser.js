@@ -18,7 +18,7 @@ function SearchUser({user}) {
                 <p className="search-user__info">{user.username}</p>
             </div>
             <div className="search-user__info-box">
-                <p className="search-user__info">Posty: 12</p>
+                <p className="search-user__info">{user.posts}</p>
             </div>
         </div>
     </div>

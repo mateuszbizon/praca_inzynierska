@@ -23,9 +23,9 @@ function PostDetails() {
         dispatch(getPostById(id));
       }, [currentId, dispatch]);
 
-    function Likes({post}){
-        if(post.likes.length > 0){
-            return post.likes.find(like => like === user?.result?._id) ? (
+    function Likes(){
+        if(posts?.likes?.length > 0){
+            return posts.likes.find(like => like === user?.result?._id) ? (
                 <ThumbUpIcon className='post-details__icons' />
             ) : (
                 <ThumbUpOffAltIcon className='post-details__icons' />
@@ -35,7 +35,7 @@ function PostDetails() {
         return <ThumbUpOffAltIcon className='post-details__icons' />
     }
 
-    if (!posts.length && !isLoading) return 'Nie ma takiego postu';
+    if (!posts && !isLoading) return 'Nie ma takiego postu';
 
   return (
     <>
@@ -44,42 +44,40 @@ function PostDetails() {
         <section className="post-details">
             <div className={currentId === null ? 'post-details__shadow' : 'post-details__shadow-active'} onClick={() => setCurrentId(null)}></div>
             {isLoading ? <CircularProgress /> : (
-                posts.map(post => (
                     <div className="post-details__container">
                         <div className="post-details__left-side">
                             <div className="post-details__header">
-                                <div className="post-details__creator" onClick={() => {navigate(`/profile/${post.username}`)}}>{post.username}</div>
-                                <div className="post-details__date">{moment(post.createdAt).fromNow()}</div>
+                                <div className="post-details__creator" onClick={() => {navigate(`/profile/${posts.username}`)}}>{posts.username}</div>
+                                <div className="post-details__date">{moment(posts.createdAt).fromNow()}</div>
                             </div>
-                            <img src={post.selectedFile} alt="" className='post-details__img' />
+                            <img src={posts.selectedFile} alt="" className='post-details__img' />
                         </div>
                         <div className="post-details__right-side">
                             <div className="post-details__msg">
-                                <p>{post.message}</p>
+                                <p>{posts.message}</p>
                             </div>
                             <div className="post-details__comments">
                                 komentarze
                             </div>
                             <div className="post-details__buttons">
-                                <div className='post-details__button-box' onClick={() => dispatch(likePost(post._id))} >
-                                    <Likes post={post}/>
+                                <div className='post-details__button-box' onClick={() => dispatch(likePost(posts._id))} >
+                                    <Likes />
                                     <p className='post-details__text'>Polub</p>
                                 </div>
-                                {(user.result._id === post.creator) && (
-                                    <div className='post-details__button-box' onClick={() => setCurrentId(post._id)} >
+                                {(user.result._id === posts.creator) && (
+                                    <div className='post-details__button-box' onClick={() => setCurrentId(posts._id)} >
                                     <EditIcon fontSize='medium' className='post-details__icons'/>
                                     <p className='post-details__text'> Edytuj</p>
                                 </div>
                                 )}
                                 
                             </div>
-                            <div className="post-details__likes-count">Polubień: {post.likes.length}</div>
+                            <div className="post-details__likes-count">Polubień: {posts?.likes?.length}</div>
                             <div className="post-details__comment-input">
                                 <input type="text" placeholder='Dodaj komentarz'/>
                             </div>
                         </div>
                     </div>
-                ))
             )}
         </section>
     </>
