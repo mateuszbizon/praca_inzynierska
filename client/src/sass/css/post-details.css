@@ -36,6 +36,10 @@
   font-weight: bold;
   background-color: #eee;
 }
+.post-details__header a {
+  text-decoration: none;
+  color: #000;
+}
 .post-details__msg {
   padding-left: 10px;
   padding-top: 10px;

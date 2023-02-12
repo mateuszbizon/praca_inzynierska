@@ -28,6 +28,11 @@
 		font-size: 18px;
 		font-weight: bold;
 		background-color: #eee;
+
+		a {
+			text-decoration: none;
+			color: #000;
+		}
 	}
 
 	&__msg {
