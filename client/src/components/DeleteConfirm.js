@@ -3,11 +3,12 @@ import '../sass/css/deleteConfirm.css';
 import { deletePost } from '../actions/posts';
 import { useDispatch } from 'react-redux';
 
-function DeleteConfirm({currentId, setCurrentId, post}) {
+function DeleteConfirm({currentId, setCurrentId, currentPostId, setCurrentPostId}) {
     const dispatch = useDispatch();
 
     function deleteCurrentPost(){
-        dispatch(deletePost(post._id))
+        dispatch(deletePost(currentPostId));
+        setCurrentPostId(null)
         setCurrentId(false);
     }
 
