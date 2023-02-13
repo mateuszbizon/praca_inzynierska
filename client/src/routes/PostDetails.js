@@ -7,8 +7,9 @@ import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
 import { CircularProgress } from '@mui/material';
 import '../sass/css/post-details.css';
-import { getPostById } from '../actions/posts';
+import { getPostById, commentPost } from '../actions/posts';
 import Likes from '../components/Likes';
+import Comments from '../components/Comments';
 
 function PostDetails() {
     const { id } = useParams();
@@ -16,12 +17,16 @@ function PostDetails() {
     const [currentId, setCurrentId] = useState(null);
     const user = JSON.parse(localStorage.getItem('user'));
     const { posts, isLoading } = useSelector((state) => state.posts);
-    const hasLikedPost = posts?.likes?.find((like) => like === user?.result?._id);
-    
+    const [comment, setComment] = useState();
 
     useEffect(() => {
         dispatch(getPostById(id));
       }, [currentId, dispatch]);
+
+    function handleComment(){
+        dispatch(commentPost(`${user.result.username}: ${comment}`, posts._id))
+        setComment('')
+    }
 
     if (!posts && !isLoading) return 'Nie ma takiego postu';
 
@@ -35,7 +40,7 @@ function PostDetails() {
                     <div className="post-details__container">
                         <div className="post-details__left-side">
                             <div className="post-details__header">
-                                <a href={`/profile/${posts.username}`}><div className="post-details__creator">{posts.username}</div></a>
+                                <a className='post-details__link' href={`/profile/${posts.username}`}><strong className="post-details__creator">{posts.username}</strong></a>
                                 <div className="post-details__date">{moment(posts.createdAt).fromNow()}</div>
                             </div>
                             <img src={posts.selectedFile} alt="" className='post-details__img' />
@@ -45,7 +50,7 @@ function PostDetails() {
                                 <p>{posts.message}</p>
                             </div>
                             <div className="post-details__comments">
-                                komentarze
+                                <Comments post={posts} />
                             </div>
                             <div className="post-details__buttons">
                                 <div className='post-details__button-box'>
@@ -59,7 +64,8 @@ function PostDetails() {
                                 )}  
                             </div>
                             <div className="post-details__comment-input">
-                                <textarea placeholder='Dodaj komentarz'></textarea>
+                                <textarea value={comment} onChange={e => setComment(e.target.value)} placeholder='Dodaj komentarz'></textarea>
+                                <button className='post-details__add-comment' onClick={handleComment} disabled={!comment}>opublikuj</button>
                             </div>
                         </div>
                     </div>

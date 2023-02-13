@@ -15,7 +15,7 @@
   width: 300px;
   min-height: 500px;
   margin-top: 60px;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   -webkit-box-shadow: 10px 10px 10px #909090;
           box-shadow: 10px 10px 10px #909090;
 }
@@ -37,17 +37,20 @@
   height: 50px;
   padding: 0 10px;
   font-size: 18px;
-  font-weight: bold;
   background-color: #eee;
 }
-.post-details__header a {
+.post-details__link {
   text-decoration: none;
   color: #000;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.post-details__link:hover {
+  color: #f46036;
 }
 .post-details__msg {
-  padding-left: 10px;
-  padding-top: 10px;
-  height: 100px;
+  padding: 10px 10px;
+  height: 70px;
   font-size: 17px;
   font-weight: bold;
   overflow-y: auto;
@@ -60,9 +63,12 @@
   overflow-y: auto;
   border-bottom: 1px solid #ccc;
 }
+.post-details__comment {
+  margin-bottom: 10px;
+}
 .post-details__comment-input {
-  height: 100px;
-  border-bottom: 1px solid #ccc;
+  position: relative;
+  height: 70px;
 }
 .post-details__comment-input textarea {
   width: 100%;
@@ -72,8 +78,9 @@
   min-height: 100%;
   max-height: 100%;
   border: none;
-  padding: 5px 10px;
+  padding: 5px 75px 5px 10px;
   font-size: 15px;
+  z-index: 0;
 }
 .post-details__comment-input textarea::-webkit-input-placeholder {
   font-size: 15px;
@@ -90,6 +97,26 @@
 .post-details__comment-input textarea::placeholder {
   font-size: 15px;
 }
+.post-details__add-comment {
+  position: absolute;
+  top: 25px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-weight: bold;
+  color: #f46036;
+  cursor: pointer;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  z-index: 10;
+}
+.post-details__add-comment:hover {
+  color: #cb380f;
+}
+.post-details__add-comment:disabled {
+  color: rgba(244, 96, 54, 0.5);
+  cursor: auto;
+}
 .post-details__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -103,15 +130,8 @@
   padding: 10px 10px;
   border-bottom: 1px solid #ccc;
 }
-.post-details__icons, .post-details__creator {
+.post-details__icons {
   cursor: pointer;
-}
-.post-details__creator {
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-}
-.post-details__creator:hover {
-  color: #f46036;
 }
 .post-details__button-box {
   display: -webkit-box;
