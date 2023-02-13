@@ -61,4 +61,10 @@
   transition: opacity 1s;
   opacity: 1;
   z-index: 10;
+}
+
+@media (min-width: 576px) {
+  .edit {
+    min-width: 400px;
+  }
 }/*# sourceMappingURL=edit.css.map */
