@@ -154,9 +154,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  gap: 20px;
   width: 220px;
   color: #fff;
   border-radius: 8px;
+  font-size: 25px;
   cursor: pointer;
 }
 .sidebar__items::after {
@@ -181,15 +183,6 @@ body {
           transform: scaleX(1);
   -webkit-transform-origin: left;
           transform-origin: left;
-}
-.sidebar__icon {
-  margin-right: 15px;
-}
-.sidebar__text {
-  color: #fff;
-  font-size: 20px;
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
 }
 
 .sidebar.active {
