@@ -7,10 +7,12 @@ import ProfilesPage from './routes/Profiles';
 import AuthRoutes from './utils/AuthRoutes';
 import PostDetails from "./routes/PostDetails";
 import Search from "./routes/Search";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
-		<Router>
+	 	 <Router>
+			<Navbar />
 			<Routes>
 				<Route element={<AuthRoutes />}>
 					<Route path='/create' element={<CreatePage />} />

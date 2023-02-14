@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Navbar from '../components/Navbar';
 import FormEdit from '../components/FormEdit';
 import moment from 'moment';
 import EditIcon from '@mui/icons-material/Edit';
@@ -32,7 +31,6 @@ function PostDetails() {
 
   return (
     <>
-        <Navbar />
         <FormEdit currentId={currentId} setCurrentId={setCurrentId} />
         <section className="post-details">
             <div className={currentId === null ? 'post-details__shadow' : 'post-details__shadow-active'} onClick={() => setCurrentId(null)}></div>

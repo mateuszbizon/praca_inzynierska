@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import TextField from "@mui/material/TextField";
 import "../sass/css/create.css";
-import Navbar from "../components/Navbar";
 import FileBase from 'react-file-base64';
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -52,7 +51,6 @@ function Create() {
     }
 	return (
 		<>
-			<Navbar />
 			<section className='create'>
 				<div className='create__form'>
                     <h1 className="create__heading">Utwórz post</h1>

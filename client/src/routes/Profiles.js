@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import Navbar from '../components/Navbar';
 import Posts from '../components/Posts';
 import '../sass/css/profiles.css';
 import { getPostsByUsername } from '../actions/posts';
@@ -19,7 +18,6 @@ function Profiles() {
 
   return (
     <>
-        <Navbar />
         <DeleteConfirm />
         <section className="profiles">
             <div className={currentId ? 'profiles__shadow-active' : 'profiles__shadow'} onClick={() => setCurrentId(false)}></div>
