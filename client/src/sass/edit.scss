@@ -1,4 +1,5 @@
 @import './colors';
+@import './mixins';
 
 .edit{
     position: fixed;
@@ -45,10 +46,7 @@
 	}
 
     &__text-error{
-        color: #ff0000;
-		font-weight: bold;
-		visibility: hidden;
-		margin-left: 20px;
+        @include text-error-styling;
     }
 
     &__close{

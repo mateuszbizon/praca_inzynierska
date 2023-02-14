@@ -1,4 +1,5 @@
 @import './colors';
+@import './mixins';
 
 .create {
 	width: 100%;
@@ -36,15 +37,9 @@
     }
 
     &__submit {
-		border: none;
-		background-color: $main-color;
-		color: #fff;
+		@include button;
 		padding: 15px 20px;
-		border-radius: 8px;
-		width: 100%;
 		font-size: 20px;
-		transition: background-color 0.3s;
-		cursor: pointer;
 
 		&:hover {
 			background-color: $main-color-hover;
@@ -52,9 +47,6 @@
 	}
 
     &__text-error{
-        color: #ff0000;
-		font-weight: bold;
-		visibility: hidden;
-		margin-left: 20px;
+        @include text-error-styling;
     }
 }

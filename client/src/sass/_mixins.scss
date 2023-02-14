@@ -40,3 +40,50 @@
 	background-color: rgba(0, 0, 0, 0.4);
 	z-index: 5;
 }
+
+@mixin input-styling {
+	width: 100%;
+	border: 1px solid $main-color;
+	outline: none;
+	padding: 15px 20px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+}
+
+@mixin label-animation {
+	transform: translate(-5px, -25px);
+	color: $main-color;
+	background-color: #fff;
+}
+
+@mixin label-styling {
+	position: absolute;
+	top: 15px;
+	left: 20px;
+	color: #000;
+	transition: all 0.3s;
+}
+
+@mixin button {
+	border: none;
+	background-color: $main-color;
+	color: #fff;
+	border-radius: 8px;
+	width: 100%;
+	transition: background-color 0.3s;
+	cursor: pointer;
+}
+
+@mixin text-error-styling {
+	color: #ff0000;
+	font-weight: bold;
+	visibility: hidden;
+	margin-left: 20px;
+}
+
+@mixin submit-message-styling {
+	text-align: center;
+	color: #ff0000;
+	margin-bottom: 15px;
+	font-weight: bold;
+}

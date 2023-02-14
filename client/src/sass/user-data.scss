@@ -1,4 +1,5 @@
 @import "./colors";
+@import "./mixins";
 
 .user-data {
 	display: flex;
@@ -37,15 +38,9 @@
 	}
 
 	&__edit-profile {
-		background-color: $main-color;
-		color: #fff;
+		@include button;
 		font-size: 14px;
-		border: none;
-		border-radius: 5px;
-		width: 100%;
 		padding: 5px 10px;
-		transition: background-color 0.3s;
-		cursor: pointer;
         z-index: 5;
 
 		&:hover {

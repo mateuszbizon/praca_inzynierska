@@ -37,26 +37,16 @@
 		margin-bottom: 25px;
 
 		input {
-			width: 100%;
-			border: 1px solid $main-color;
-			outline: none;
-			padding: 15px 20px;
-			margin-bottom: 10px;
+			@include input-styling;
 		}
 
 		input:focus + label,
 		input:valid + label {
-			transform: translate(-5px, -25px);
-			color: $main-color;
-			background-color: #fff;
+			@include label-animation;
 		}
 
 		label {
-			position: absolute;
-			top: 15px;
-			left: 20px;
-			color: #000;
-			transition: all 0.3s;
+			@include label-styling;
 		}
 	}
 
@@ -67,15 +57,9 @@
 	}
 
 	&__submit {
-		border: none;
-		background-color: $main-color;
-		color: #fff;
+		@include button;
 		padding: 15px 20px;
-		border-radius: 8px;
-		width: 100%;
 		font-size: 20px;
-		transition: background-color 0.3s;
-		cursor: pointer;
 
 		&:hover {
 			background-color: $main-color-hover;
@@ -83,10 +67,7 @@
 	}
 
 	&__submit-message {
-		text-align: center;
-		color: #ff0000;
-		margin-bottom: 15px;
-		font-weight: bold;
+		@include submit-message-styling;
 	}
 
 	&__info-box {
@@ -114,10 +95,7 @@
 	}
 
 	&__text-error {
-		color: #ff0000;
-		font-weight: bold;
-		visibility: hidden;
-		margin-left: 20px;
+		@include text-error-styling;
 	}
 
 	&__password-icons {

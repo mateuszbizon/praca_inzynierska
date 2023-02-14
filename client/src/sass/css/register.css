@@ -77,13 +77,13 @@
   border: none;
   background-color: #f46036;
   color: #fff;
-  padding: 15px 20px;
   border-radius: 8px;
   width: 100%;
-  font-size: 20px;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
   cursor: pointer;
+  padding: 15px 20px;
+  font-size: 20px;
 }
 .register__submit:hover {
   background-color: #cb380f;
@@ -134,7 +134,7 @@
   color: #ff0000;
   font-weight: bold;
   visibility: hidden;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 .register__password-icons {
   position: absolute;
