@@ -38,12 +38,14 @@ function Sidebar({ sidebar }) {
 						</div>
 					</div>
 				))}
-        <div className="sidebar__row">
-          <div className="sidebar__items" onClick={logout}>
-            <LogoutIcon fontSize="large" />
-            Wyloguj się
-          </div>
-        </div>
+				{user && (
+					<div className="sidebar__row">
+						<div className="sidebar__items" onClick={logout}>
+							<LogoutIcon fontSize="large" />
+							Wyloguj się
+						</div>
+					</div>
+				)}
 			</nav>
 		</>
 	);
