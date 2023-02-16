@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/user.js";
+import PostMessage from '../models/postMessage.js';
 
 export const signin = async (req, res) => {
 	const { email, password } = req.body;
@@ -93,5 +94,45 @@ export const getUsersBySearch = async (req, res) => {
 		res.json(users);
 	} catch (error) {
 		res.status(404).json({ message: "Użytkownik nie znaleziony" }) ;
+	}
+}
+
+export const editAccount = async (req, res) => {
+	const { name, email, username, selectedFile } = req.body;
+
+	try {
+		const existingUser = await User.findOne({ email });
+
+		if(existingUser){
+			if(existingUser._id.toString() !== req.userId){
+				return res.status(400).json({ message: "Email jest już zajęty" })
+			}
+		}
+
+		const existingUsername = await User.findOne({ username });
+
+		if(existingUsername){
+			if(existingUsername._id.toString() !== req.userId){
+				return res.status(400).json({ message: "Nazwa użytkownika jest już zajęta" })
+			}
+		}
+
+		const user = await User.findById(req.userId);
+
+		await PostMessage.updateMany({ username: {$eq: user.username} }, {$set: { username: username }})
+		
+		await User.findByIdAndUpdate(req.userId, { name: name, email: email, username: username, selectedFile: selectedFile }, { new: true })
+		
+		const newUser = await User.findById(req.userId);
+
+		const token = jwt.sign(
+			{ email: newUser.email, id: newUser._id },
+			"test",
+			{ expiresIn: "5h" }
+		);
+
+		res.status(200).json({success: true, result: newUser, token: token });
+	} catch (error) {
+		console.log(error)
 	}
 }

@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import FileBase from 'react-file-base64';
 import userImg from '../img/user.png';
+import { useDispatch, useSelector } from "react-redux";
+import { editAccount } from '../actions/auth';
 
 function MainData() {
     const [form, setForm] = useState({ name: "", email: "", username: "", selectedFile: "" });
     const user = JSON.parse(localStorage.getItem("user"));
+    const dispatch = useDispatch();
+    const { authData, error, success } = useSelector(state => state.auth)
     
     useEffect(() => {
         setForm(user.result)
-    }, [user.result.username])
+    }, [])
     
     function onChange(e){
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -16,6 +20,7 @@ function MainData() {
 
     function handleSubmit(e){
         e.preventDefault();
+        dispatch(editAccount(form));
     }
 
   return (
@@ -46,7 +51,10 @@ function MainData() {
                 <div className="edit-account__submit-btn">
                     <button type="submit">Edytuj profil</button>
                 </div>
-                <p className="edit-account__submit-message"></p>
+                <p className={success ? "edit-account__submit-message success" : "edit-account__submit-message"}>
+                    {error ? authData : ""}
+                    {success ? authData : ""}
+                </p>
             </form>
         )}
     </>

@@ -86,6 +86,10 @@
 		@include submit-message-styling;
 		font-size: 22px;
 	}
+
+	&__submit-message.success {
+		color: #008000;
+	}
 }
 
 @media (min-width: 768px){

@@ -61,7 +61,7 @@ function Navbar() {
             <ul>
               <li className="navbar__item"><a href='/' className="navbar__link">Strona główna</a></li>
               <li className="navbar__item"><a href='/create' className="navbar__link">Utwórz</a></li>
-              <li className="navbar__item"><a href={`/profile/${user.result.username}`} className="navbar__link" >Profil</a></li>
+              <li className="navbar__item"><a href={`/profile/${user?.result?.username}`} className="navbar__link" >Profil</a></li>
               <li className="navbar__item"><a className="navbar__link" onClick={showSearchInput} >Szukaj</a></li>
               <li className="navbar__item"><a className="navbar__link" onClick={logout}>Wyloguj się</a></li>
             </ul>
