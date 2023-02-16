@@ -1,0 +1,119 @@
+.edit-account {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+}
+.edit-account__container {
+  width: 300px;
+  min-height: 400px;
+  -webkit-box-shadow: 10px 10px 10px #909090;
+          box-shadow: 10px 10px 10px #909090;
+  border: 1px solid #909090;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+}
+.edit-account__main-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.edit-account__main-buttons button {
+  cursor: pointer;
+}
+.edit-account__img-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.edit-account__img-box img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 10px;
+}
+.edit-account__box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.edit-account__box input {
+  width: 100%;
+  border: 1px solid #f46036;
+  outline: none;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.edit-account__box input:focus + label,
+.edit-account__box input:valid + label {
+  -webkit-transform: translate(-5px, -25px);
+          transform: translate(-5px, -25px);
+  color: #f46036;
+  background-color: #fff;
+}
+.edit-account__box label {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #000;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.edit-account__text-error {
+  color: #ff0000;
+  font-weight: bold;
+  visibility: hidden;
+  margin-left: 20px;
+}
+.edit-account__submit-btn {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.edit-account__submit-btn button {
+  border: none;
+  background-color: #f46036;
+  color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  padding: 15px 20px;
+  font-size: 20px;
+}
+.edit-account__submit-btn button:hover {
+  background-color: #cb380f;
+}
+.edit-account__submit-message {
+  text-align: center;
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+@media (min-width: 768px) {
+  .edit-account__container {
+    width: 500px;
+  }
+}/*# sourceMappingURL=editAccount.css.map */

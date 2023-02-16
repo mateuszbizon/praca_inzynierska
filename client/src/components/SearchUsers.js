@@ -4,7 +4,7 @@ import SearchUser from './SearchUser';
 import '../sass/css/searchUsers.css';
 
 function SearchUsers() {
-    const users = useSelector(state => state.users);
+    const { users } = useSelector(state => state.users);
     console.log(users);
   return (
     !users.length ? (

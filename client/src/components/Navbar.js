@@ -50,7 +50,7 @@ function Navbar() {
           <div className='navbar__burger'>
             <MenuIcon fontSize='large' className='navbar__burger-icon' onClick={showSidebar}/>
           </div>
-          <div className={showSearch ? "search active" : "search-input"}>
+          <div className={showSearch ? "search-input active" : "search-input"}>
             <div className="search-icon-box" onClick={showSearchInput}>
               <KeyboardBackspaceIcon fontSize="large" className="search-icon"/>
             </div>

@@ -26,7 +26,7 @@ export const signin = async (req, res) => {
 			{ expiresIn: "5h" }
 		);
 
-		res.status(200).json({success: true, result: existingUser, message: "logged", token: token });
+		res.status(200).json({success: true, result: existingUser, token: token });
 	} catch (error) {
 		res.status(500).json({ message: "Coś poszło nie tak" });
 	}
@@ -75,7 +75,7 @@ export const getUser = async (req, res) => {
 
 		if(!user) return res.status(404).json({ message: "Nie znaleziono danego użytkonwika" });
 
-		res.status(200).json({ username: user.username, name: user.name, file: user.selectedFile, posts: user.posts });
+		res.status(200).json(user);
 	} catch (error) {
 		res.status(500).json({ message: "Coś poszło nie tak"})
 	}

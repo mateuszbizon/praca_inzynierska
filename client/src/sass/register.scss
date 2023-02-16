@@ -67,6 +67,7 @@
 
 	&__submit-message{
 		@include submit-message-styling;
+		margin-bottom: 15px;
 	}
 
 	&__info-box {

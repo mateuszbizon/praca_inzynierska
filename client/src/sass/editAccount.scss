@@ -1,0 +1,97 @@
+@import "./mixins";
+@import "./colors";
+
+.edit-account {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+
+	&__container {
+		width: 300px;
+		min-height: 400px;
+		box-shadow: 10px 10px 10px #909090;
+		border: 1px solid #909090;
+		border-radius: 8px;
+		padding: 20px;
+		margin-top: 20px;
+	}
+
+	&__main-buttons {
+		display: flex;
+		justify-content: center;
+		gap: 10px;
+		width: 100%;
+		margin-bottom: 10px;
+
+		button {
+			cursor: pointer;
+		}
+	}
+
+	&__img-box {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 10px;
+
+		img {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			object-fit: cover;
+            margin-right: 10px;
+		}
+	}
+
+	&__box {
+		position: relative;
+		width: 100%;
+		margin-bottom: 10px;
+
+		input {
+			@include input-styling;
+		}
+
+		input:focus + label,
+		input:valid + label {
+			@include label-animation;
+		}
+
+		label {
+			@include label-styling;
+		}
+	}
+
+	&__text-error {
+		@include text-error-styling;
+	}
+
+	&__submit-btn {
+		width: 100%;
+		margin-bottom: 10px;
+
+		button {
+			@include button;
+			padding: 15px 20px;
+			font-size: 20px;
+
+			&:hover {
+				background-color: $main-color-hover;
+			}
+		}
+	}
+
+	&__submit-message {
+		@include submit-message-styling;
+		font-size: 22px;
+	}
+}
+
+@media (min-width: 768px){
+	.edit-account {
+		&__container {
+			width: 500px;
+		}
+	}
+}

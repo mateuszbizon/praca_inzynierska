@@ -8,6 +8,7 @@ import AuthRoutes from './utils/AuthRoutes';
 import PostDetails from "./routes/PostDetails";
 import Search from "./routes/Search";
 import Navbar from "./components/Navbar";
+import EditAccount from "./routes/EditAccount";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
 					<Route path='/profile/:username' element={<ProfilesPage />} />
 					<Route path='/posts/:id' element={<PostDetails />} />
 					<Route path='/search' element={<Search />} />
+					<Route path='/edit-account' element={<EditAccount />} />
 				</Route>
 				<Route path='/' element={<HomePage />} />
 				<Route path='/login' element={<LoginPage />} />
