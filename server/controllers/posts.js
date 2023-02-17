@@ -114,12 +114,13 @@ export const likePost = async (req, res) => {
 
 export const commentPost = async (req, res) => {
     const { id } = req.params;
-    const { value } = req.body;
+    const { commentCreator, value } = req.body;
 
     try {
         const post = await PostMessage.findById(id);
+        console.log(commentCreator, value);
     
-        post.comments.push(value);
+        post.comments.push({ commentCreator: commentCreator, value: value });
     
         const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
     

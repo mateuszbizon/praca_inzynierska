@@ -16,15 +16,15 @@ function PostDetails() {
     const [currentId, setCurrentId] = useState(null);
     const user = JSON.parse(localStorage.getItem('user'));
     const { posts, isLoading } = useSelector((state) => state.posts);
-    const [comment, setComment] = useState();
+    const [comment, setComment] = useState({ commentCreator: user.result.username, value: ""});
 
     useEffect(() => {
         dispatch(getPostById(id));
       }, [currentId, dispatch]);
 
     function handleComment(){
-        dispatch(commentPost(`${user.result.username}: ${comment}`, posts._id))
-        setComment('')
+        dispatch(commentPost(comment, id))
+        setComment({ ...comment, value: "" })
     }
 
     if (!posts && !isLoading) return 'Nie ma takiego postu';
@@ -62,8 +62,8 @@ function PostDetails() {
                                 )}  
                             </div>
                             <div className="post-details__comment-input">
-                                <textarea value={comment} onChange={e => setComment(e.target.value)} placeholder='Dodaj komentarz'></textarea>
-                                <button className='post-details__add-comment' onClick={handleComment} disabled={!comment}>opublikuj</button>
+                                <textarea value={comment.value} onChange={e => setComment({ ...comment, value: e.target.value })} placeholder='Dodaj komentarz'></textarea>
+                                <button className='post-details__add-comment' onClick={handleComment} disabled={!comment.value}>opublikuj</button>
                             </div>
                         </div>
                     </div>

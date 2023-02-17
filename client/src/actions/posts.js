@@ -71,9 +71,9 @@ export const deletePost = (id) => async (dispatch) => {
   }
 };
 
-export const commentPost = (value, id) => async (dispatch) => {
+export const commentPost = (comment, id) => async (dispatch) => {
   try {
-    const { data } = await api.commentPost(value, id);
+    const { data } = await api.commentPost(comment, id);
 
     dispatch({ type: COMMENT, payload: data });
 
