@@ -119,7 +119,9 @@ export const editAccount = async (req, res) => {
 
 		const user = await User.findById(req.userId);
 
-		await PostMessage.updateMany({ username: {$eq: user.username} }, {$set: { username: username }})
+		await PostMessage.updateMany({ username: {$eq: user.username} }, {$set: { username: username }});
+
+		await PostMessage.updateMany({"comments.commentCreator": {$eq: user.username}}, {$set: {"comments.$[].commentCreator": username}})
 		
 		await User.findByIdAndUpdate(req.userId, { name: name, email: email, username: username, selectedFile: selectedFile }, { new: true })
 		
