@@ -20,7 +20,7 @@ function UserData({username}) {
     <>
           <div className="user-data">
             <div className="user-data__img-side">
-              <img src={userImg} className='user-data__img' />
+              <img src={users?.user?.selectedFile === "" ? userImg : users?.user?.selectedFile} className='user-data__img' />
             </div>
             <div className="user-data__main-side">
               <p className='user-data__info'>{users?.user?.name}</p>

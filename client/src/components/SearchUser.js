@@ -8,7 +8,7 @@ function SearchUser({user}) {
   return (
     <div className='search-user' onClick={() => navigate(`/profile/${user.username}`)}>
         <div className="search-user__img-side">
-            <img src={userImg} alt="" className='search-user__img' />
+            <img src={user.selectedFile === "" ? userImg : user.selectedFile} alt="" className='search-user__img' />
         </div>
         <div className="search-user__main-side">
             <div className="search-user__info-box">

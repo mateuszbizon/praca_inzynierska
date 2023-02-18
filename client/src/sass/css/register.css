@@ -46,7 +46,7 @@
   border: 1px solid #f46036;
   outline: none;
   padding: 15px 20px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border-radius: 5px;
 }
 .register__box input:focus + label,
