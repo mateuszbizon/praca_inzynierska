@@ -9,7 +9,7 @@ import HowToRegIcon from "@mui/icons-material/HowToReg";
 import SchoolIcon from "@mui/icons-material/School";
 import "../sass/css/navbar.css";
 
-function Sidebar({ sidebar }) {
+function Sidebar({ sidebar, setSidebar }) {
 	const navigate = useNavigate();
 	const user = JSON.parse(localStorage.getItem("user"));
 
@@ -22,6 +22,11 @@ function Sidebar({ sidebar }) {
 		{ text: "Nauka", icon: <SchoolIcon fontSize='large' />, path: "/" },
 	];
 
+	function navigateTo(path){
+		navigate(path);
+		setSidebar(!sidebar);
+	}
+
   function logout(){
     localStorage.removeItem("user");
     navigate("/login");
@@ -32,7 +37,7 @@ function Sidebar({ sidebar }) {
 			<nav className={sidebar ? "sidebar active" : "sidebar"}>
 				{sidebarItems.map(item => (
 					<div className='sidebar__row'>
-						<div className='sidebar__items' onClick={() => navigate(item.path)}>
+						<div className='sidebar__items' onClick={() => navigateTo(item.path)}>
 							{item.icon}
 							{item.text}
 						</div>
