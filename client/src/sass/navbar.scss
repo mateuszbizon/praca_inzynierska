@@ -76,6 +76,11 @@ body{
 		    @include link-style-hover;
 		}
 	}
+
+}
+
+.active {
+	color: $main-color;
 }
 
 .search-input{

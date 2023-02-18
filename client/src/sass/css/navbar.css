@@ -95,6 +95,10 @@ body {
           transform-origin: left;
 }
 
+.active {
+  color: #f46036;
+}
+
 .search-input {
   display: none;
   -webkit-box-pack: center;

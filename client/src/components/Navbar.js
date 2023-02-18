@@ -38,6 +38,19 @@ function Navbar() {
     }
   }
 
+  const navbarItems = [
+    {text: "Strona główna", path: "/"},
+    {text: "Utwórz", path: "/create"},
+    {text: "Profil", path: `/profile/${user?.result?.username}`}
+  ];
+
+  const navbarItemsNotUser = [
+    {text: "Strona główna", path: '/'},
+    {text: "Logowanie", path: '/login'},
+    {text: "Rejestracja", path: '/register'},
+    {text: "Nauka", path: '/'}
+  ]
+
 	return (
 		<>
       {user ? (
@@ -59,9 +72,9 @@ function Navbar() {
           </div>
           <div className={showSearch ? "navbar__items--hide" : "navbar__items"}>
             <ul>
-              <li className="navbar__item"><NavLink to='/' className='navbar__link'>Strona główna</NavLink></li>
-              <li className="navbar__item"><NavLink to='/create' className='navbar__link'>Utwórz</NavLink></li>
-              <li className="navbar__item"><NavLink to={`/profile/${user?.result?.username}`} className='navbar__link'>Profil</NavLink></li>
+              {navbarItems.map(item => (
+                <li className="navbar__item"><NavLink to={item.path} className='navbar__link' activeClassName='active'>{item.text}</NavLink></li>
+              ))}
               <li className="navbar__item"><a className="navbar__link" onClick={showSearchInput} >Szukaj</a></li>
               <li className="navbar__item"><a className="navbar__link" onClick={logout}>Wyloguj się</a></li>
             </ul>
@@ -80,10 +93,9 @@ function Navbar() {
               </div>
               <div className="navbar__items">
                 <ul>
-                  <li className="navbar__item"><NavLink to='/' className='navbar__link'>Strona główna</NavLink></li>
-                  <li className="navbar__item"><NavLink to='/login' className='navbar__link'>Logowanie</NavLink></li>
-                  <li className="navbar__item"><NavLink to='/register' className='navbar__link'>Rejestracja</NavLink></li>
-                  <li className="navbar__item"><NavLink to='/' className='navbar__link'>Nauka</NavLink></li>
+                  {navbarItemsNotUser.map(item => (
+                    <li className="navbar__item"><NavLink to={item.path} className='navbar__link'>{item.text}</NavLink></li>
+                  ))}
                 </ul>
               </div>
           </nav>
