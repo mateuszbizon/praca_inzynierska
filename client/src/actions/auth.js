@@ -1,8 +1,10 @@
-import { AUTH, AUTH_FAIL, REGISTER, REGISTER_FAIL, EDIT_ACCOUNT, EDIT_ACCOUNT_FAIL, EDIT_ACCOUNT_SUCCESS } from '../constants/actionTypes';
+import { AUTH, AUTH_FAIL, REGISTER, REGISTER_FAIL, EDIT_ACCOUNT, EDIT_ACCOUNT_FAIL, EDIT_ACCOUNT_SUCCESS, AUTH_LOADING } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const signin = (formData, navigate) => async (dispatch) => {
     try {
+      dispatch({ type: AUTH_LOADING })
+
       const { data } = await api.signIn(formData);
   
       dispatch({ type: AUTH, data: data });
@@ -17,6 +19,8 @@ export const signin = (formData, navigate) => async (dispatch) => {
 
 export const signup = (formData, navigate) => async (dispatch) => {
     try {
+      dispatch({ type: AUTH_LOADING })
+
       const { data } = await api.signUp(formData);
   
       dispatch({ type: REGISTER, data: data });
@@ -29,6 +33,8 @@ export const signup = (formData, navigate) => async (dispatch) => {
 
 export const editAccount = (editData) => async (dispatch) => {
   try {
+    dispatch({ type: AUTH_LOADING })
+
     const { data } = await api.editAccount(editData);
 
     dispatch({ type: EDIT_ACCOUNT, data: data })

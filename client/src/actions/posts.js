@@ -18,9 +18,11 @@ export const getPostById = (id) => async (dispatch) => {
 
   try {
     dispatch({ type: START_LOADING });
+    
     const { data } = await api.fetchPostById(id);
 
     dispatch({ type: FETCH_POST_BY_ID, payload: data });
+
     dispatch({ type: END_LOADING });
   } catch (error) {
     console.log(error);
@@ -29,9 +31,13 @@ export const getPostById = (id) => async (dispatch) => {
 
 export const createPost = (post, navigate) => async (dispatch) => {
   try {
+    dispatch({ type: START_LOADING });
+
     const { data } = await api.createPost(post);
 
     dispatch({ type: CREATE, payload: data });
+
+    dispatch({ type: END_LOADING });
 
     const user = JSON.parse(localStorage.getItem('user'));
 

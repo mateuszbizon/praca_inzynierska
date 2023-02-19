@@ -8,6 +8,7 @@ export const COMMENT = 'COMMENT';
 
 export const AUTH = 'AUTH';
 export const AUTH_FAIL = 'AUTH_FAIL';
+export const AUTH_LOADING = 'AUTH_LOADING';
 export const REGISTER = 'REGISTER';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 

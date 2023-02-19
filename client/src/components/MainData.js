@@ -3,12 +3,13 @@ import FileBase from 'react-file-base64';
 import userImg from '../img/user.png';
 import { useDispatch, useSelector } from "react-redux";
 import { editAccount } from '../actions/auth';
+import { CircularProgress } from '@mui/material';
 
 function MainData() {
     const [form, setForm] = useState({ name: "", email: "", username: "", selectedFile: "" });
     const user = JSON.parse(localStorage.getItem("user"));
     const dispatch = useDispatch();
-    const { authData, error, success } = useSelector(state => state.auth)
+    const { authData, error, success, loading } = useSelector(state => state.auth)
     const emailError = useRef();
     const nameError = useRef();
     const usernameError = useRef();
@@ -97,7 +98,7 @@ function MainData() {
                     <p className="edit-account__text-error" ref={usernameError}>error</p>
                 </div>
                 <div className="edit-account__submit-btn">
-                    <button type="submit">Edytuj profil</button>
+                    <button type="submit">Edytuj profil {loading && <CircularProgress size="25px" style={{color: "#fff"}} />}</button>
                 </div>
                 <p className={success ? "edit-account__submit-message success" : "edit-account__submit-message"}>
                     {error ? authData : ""}

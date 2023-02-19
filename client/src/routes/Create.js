@@ -2,13 +2,15 @@ import React, { useState, useRef } from "react";
 import TextField from "@mui/material/TextField";
 import "../sass/css/create.css";
 import FileBase from 'react-file-base64';
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createPost } from "../actions/posts";
+import { CircularProgress } from "@mui/material";
 
 function Create() {
     const [form, setForm] = useState({ message: '', selectedFile: '' });
     const dispatch = useDispatch();
+    const { isLoading } = useSelector(state => state.posts)
     const navigate = useNavigate();
     const messageError = useRef();
     const fileError = useRef();
@@ -68,7 +70,7 @@ function Create() {
                                     type='submit'
                                     onClick={handleSubmit}
                                     className='create__submit'>
-                                    Utwórz
+                                    Utwórz {isLoading && <CircularProgress size="25px" style={{color: "#fff"}} />}
                                 </button>
                         </div>
                     </form>

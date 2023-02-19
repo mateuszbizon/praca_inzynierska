@@ -5,11 +5,12 @@ import '../sass/css/register.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signup } from '../actions/auth';
+import { CircularProgress } from "@mui/material";
 
 function Register() {
     const [form, setForm] = useState({name: '', surname: '', email: '', username: '', password: ''});
     const dispatch = useDispatch();
-    const { authData, error} = useSelector(state => state.auth)
+    const { authData, error, loading } = useSelector(state => state.auth)
     const navigate = useNavigate();
     const submitMessage = useRef();
     const passRef = useRef();
@@ -172,7 +173,7 @@ function Register() {
                     </div>
                     <div className='register__btn-box'>
                         <button type='submit' onClick={handleSubmit} className='register__submit'>
-                            Zarejestruj się
+                            Zarejestruj się {loading && <CircularProgress size="25px" style={{color: "#fff"}} /> }
                         </button>
                     </div>
                     <p className="login__submit-message" ref={submitMessage}>

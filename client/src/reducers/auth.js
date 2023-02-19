@@ -7,13 +7,16 @@ const authReducer = (state = { authData: null, loading: false, error: false, suc
             return { ...state, authData: action.data, loading: false };
 
         case actionType.AUTH_FAIL:
-            return {...state, authData: action.data, error: true };
+            return {...state, authData: action.data, error: true, loading: false };
+
+        case actionType.AUTH_LOADING:
+            return { ...state, loading: true}
 
         case actionType.REGISTER:
             return {...state, authData: action.data, loading: false }
 
         case actionType.REGISTER_FAIL:
-            return {...state, authData: action.data, error: true}
+            return {...state, authData: action.data, error: true, loading: false }
 
         case actionType.EDIT_ACCOUNT:
             localStorage.setItem('user', JSON.stringify({...action?.data }));
@@ -23,7 +26,7 @@ const authReducer = (state = { authData: null, loading: false, error: false, suc
             return { ...state, authData: action.data, loading: false, error: false, success: true }
 
         case actionType.EDIT_ACCOUNT_FAIL:
-            return { ...state, authData: action.data, error: true, success: false }
+            return { ...state, authData: action.data, error: true, success: false, loading: false }
             
         default:
             return state;

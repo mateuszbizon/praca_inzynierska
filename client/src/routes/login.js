@@ -5,12 +5,13 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signin } from "../actions/auth";
+import { CircularProgress } from "@mui/material";
 
 function Login() {
 	const [form, setForm] = useState({password: "", email: ""});
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const { authData, error } = useSelector(state => state.auth);
+	const { authData, error, loading } = useSelector(state => state.auth);
 	const submitMessage = useRef();
 	const passRef = useRef();
 	const emailError = useRef();
@@ -100,7 +101,8 @@ function Login() {
 							</p>
 						</div>
 						<div className='login__btn-box'>
-							<button type='submit' onClick={handleSubmit} className='login__submit'> Zaloguj się
+							<button type='submit' onClick={handleSubmit} className='login__submit'>
+								Zaloguj się { loading && <CircularProgress size="25px" style={{color: "#fff"}} /> }
 							</button>
 						</div>
 							<p className="login__submit-message" ref={submitMessage}>

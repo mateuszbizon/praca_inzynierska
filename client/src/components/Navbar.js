@@ -72,8 +72,8 @@ function Navbar() {
           </div>
           <div className={showSearch ? "navbar__items--hide" : "navbar__items"}>
             <ul>
-              {navbarItems.map(item => (
-                <li className="navbar__item"><NavLink to={item.path} className='navbar__link' activeClassName='active'>{item.text}</NavLink></li>
+              {navbarItems.map((item, index) => (
+                <li key={index} className="navbar__item"><NavLink to={item.path} className='navbar__link' activeclassname='active'>{item.text}</NavLink></li>
               ))}
               <li className="navbar__item"><a className="navbar__link" onClick={showSearchInput} >Szukaj</a></li>
               <li className="navbar__item"><a className="navbar__link" onClick={logout}>Wyloguj się</a></li>
@@ -93,8 +93,8 @@ function Navbar() {
               </div>
               <div className="navbar__items">
                 <ul>
-                  {navbarItemsNotUser.map(item => (
-                    <li className="navbar__item"><NavLink to={item.path} className='navbar__link'>{item.text}</NavLink></li>
+                  {navbarItemsNotUser.map((item,  index) => (
+                    <li key={index} className="navbar__item"><NavLink to={item.path} className='navbar__link'>{item.text}</NavLink></li>
                   ))}
                 </ul>
               </div>
