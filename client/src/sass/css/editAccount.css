@@ -12,13 +12,13 @@
 }
 .edit-account__container {
   width: 300px;
-  min-height: 400px;
+  min-height: 560px;
   -webkit-box-shadow: 10px 10px 10px #909090;
           box-shadow: 10px 10px 10px #909090;
   border: 1px solid #909090;
   border-radius: 8px;
   padding: 20px;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 .edit-account__change-img {
   color: #f46036;
@@ -27,6 +27,7 @@
   font-weight: bold;
 }
 .edit-account__main-buttons {
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -38,7 +39,28 @@
   margin-bottom: 15px;
 }
 .edit-account__main-buttons button {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 5px;
   cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.edit-account__main-buttons button:hover {
+  background-color: #ddd;
+}
+.edit-account__marker {
+  position: absolute;
+  content: "";
+  left: 20px;
+  bottom: -8px;
+  width: 100px;
+  height: 3px;
+  background-color: #f46036;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 .edit-account__img-box {
   display: -webkit-box;
@@ -124,5 +146,12 @@
 @media (min-width: 768px) {
   .edit-account__container {
     width: 500px;
+  }
+  .edit-account__marker {
+    left: 120px;
+  }
+  .edit-account__img-box img {
+    width: 80px;
+    height: 80px;
   }
 }/*# sourceMappingURL=editAccount.css.map */

@@ -76,7 +76,7 @@ function MainData() {
             <div className='no-user'>Nie znaleziono danego użytkownika</div>
         ) : (
             <form onSubmit={handleSubmit} noValidate>
-                <p className="edit-account__change-img">Zdjęcie profilowe</p>
+                <p className="edit-account__change-img">Zmień zdjęcie profilowe</p>
                 <div className="edit-account__img-box">
                     <img src={user.result.selectedFile === "" ? userImg : user.result.selectedFile} alt="" />
                     <FileBase type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, selectedFile: base64 })} />
