@@ -8,7 +8,7 @@ function Likes({ posts }) {
     const dispatch = useDispatch();
     const user = JSON.parse(localStorage.getItem('user'));
     const [likes, setLikes] = useState(posts.likes);
-    const hasLikedPost = posts.likes.find((like) => like === user?.result?._id);
+    const hasLikedPost = posts.likes?.find((like) => like === user?.result?._id);
 
     function likeCurrentPost(){
         dispatch(likePost(posts._id));
@@ -28,7 +28,7 @@ function Likes({ posts }) {
             )
         }
         <p className='post-details__text'>Polub</p>
-        <div className="post-details__likes-count">Polubień: {likes.length}</div>
+        <div className="post-details__likes-count">Polubień: {likes?.length}</div>
     </>
   )
 }

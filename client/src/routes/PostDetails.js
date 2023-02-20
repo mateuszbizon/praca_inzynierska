@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import FormEdit from '../components/FormEdit';
 import moment from 'moment';
@@ -13,6 +13,7 @@ import Comments from '../components/Comments';
 function PostDetails() {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [currentId, setCurrentId] = useState(null);
     const user = JSON.parse(localStorage.getItem('user'));
     const { posts, isLoading } = useSelector((state) => state.posts);
@@ -38,7 +39,7 @@ function PostDetails() {
                     <div className="post-details__container">
                         <div className="post-details__left-side">
                             <div className="post-details__header">
-                                <a className='post-details__link' href={`/profile/${posts.username}`}><strong className="post-details__creator">{posts.username}</strong></a>
+                                <strong className="post-details__link" onClick={() => navigate(`/profile/${posts.username}`)}>{posts.username}</strong>
                                 <div className="post-details__date">{moment(posts.createdAt).fromNow()}</div>
                             </div>
                             <img src={posts.selectedFile} alt="" className='post-details__img' />

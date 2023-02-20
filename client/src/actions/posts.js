@@ -43,7 +43,7 @@ export const createPost = (post, navigate) => async (dispatch) => {
 
     navigate(`/profile/${user.result.username}`);
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 

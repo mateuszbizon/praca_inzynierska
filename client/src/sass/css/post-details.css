@@ -44,6 +44,7 @@
   color: #000;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
+  cursor: pointer;
 }
 .post-details__link:hover {
   color: #f46036;

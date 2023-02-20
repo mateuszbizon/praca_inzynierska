@@ -1,12 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Comments({ post }) {
-  console.log(post)
+  const navigate = useNavigate();
 
   return (
-    post.comments.map((c, i) => (
+    post.comments?.map((c, i) => (
         <div className='post-details__comment' key={i}>
-            <a href={`/profile/${c.commentCreator}`} className='post-details__link'><strong>{c.commentCreator}: </strong></a>
+            <strong className='post-details__link' onClick={() => navigate(`/profile/${c.commentCreator}`)}>{c.commentCreator}: </strong>
             <span className='post-details__comment-text'>{c.value}</span>
         </div>
     ))

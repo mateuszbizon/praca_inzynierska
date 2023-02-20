@@ -8,7 +8,7 @@ import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import SearchIcon from '@mui/icons-material/Search';
 import Sidebar from "./Sidebar";
 
-function Navbar({setTheme}) {
+function Navbar({theme, setTheme}) {
   const [sidebar, setSidebar] = useState(false);
   const [showSearch, setShowSearch] = useState(false)
   const navigate = useNavigate();
@@ -80,7 +80,7 @@ function Navbar({setTheme}) {
             </ul>
           </div>
         </nav>
-        <Sidebar sidebar={sidebar} setSidebar={setSidebar} setTheme={setTheme}/>
+        <Sidebar sidebar={sidebar} setSidebar={setSidebar} theme={theme} setTheme={setTheme}/>
       </>
       ) : (
         <>
@@ -99,7 +99,7 @@ function Navbar({setTheme}) {
                 </ul>
               </div>
           </nav>
-          <Sidebar sidebar={sidebar} setSidebar={setSidebar} setTheme={setTheme}/>
+          <Sidebar sidebar={sidebar} setSidebar={setSidebar} theme={theme} setTheme={setTheme}/>
         </>
       )}
     </>

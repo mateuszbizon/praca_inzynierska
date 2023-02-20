@@ -3,6 +3,7 @@
   height: 100px;
   margin-bottom: 20px;
   z-index: 0;
+  cursor: pointer;
 }
 .post:hover .post__button-box {
   opacity: 1;

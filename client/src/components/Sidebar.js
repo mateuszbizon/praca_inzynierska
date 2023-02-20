@@ -10,7 +10,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import "../sass/css/navbar.css";
 
-function Sidebar({ sidebar, setSidebar, setTheme }) {
+function Sidebar({ sidebar, setSidebar, theme, setTheme }) {
 	const navigate = useNavigate();
 	const user = JSON.parse(localStorage.getItem("user"));
 
@@ -34,7 +34,9 @@ function Sidebar({ sidebar, setSidebar, setTheme }) {
   }
 
   function toggleTheme() {
-	setTheme((curr) => (curr === "light" ? "dark" : "light"));
+	  setTheme((curr) => (curr === "light" ? "dark" : "light"));
+	  const darkMode = { value: theme }
+	  localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }
 
 	return (
