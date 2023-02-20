@@ -16,11 +16,11 @@ export const ThemeContext = createContext(null);
 
 function App() {
 	const [theme, setTheme] = useState("light");
-	const siema = JSON.parse(localStorage.getItem("darkMode"))
+	const darkMode = JSON.parse(localStorage.getItem("darkMode"))
 
   return (
 	<ThemeContext.Provider value={{theme}}>
-		<div className="App" id={siema ? siema.value : theme}>
+		<div className="App" id={siema ? darkMode.value : theme}>
 			<Router>
 				<Navbar theme={theme} setTheme={setTheme} />
 				<Routes>
