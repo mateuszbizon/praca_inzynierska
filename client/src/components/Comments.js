@@ -7,7 +7,7 @@ function Comments({ post }) {
     post.comments.map((c, i) => (
         <div className='post-details__comment' key={i}>
             <a href={`/profile/${c.commentCreator}`} className='post-details__link'><strong>{c.commentCreator}: </strong></a>
-            {c.value}
+            <span className='post-details__comment-text'>{c.value}</span>
         </div>
     ))
   )

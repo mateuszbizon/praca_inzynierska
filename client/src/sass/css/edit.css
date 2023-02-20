@@ -18,6 +18,37 @@
   margin-bottom: 30px;
   font-size: 30px;
 }
+.edit__form-box {
+  position: relative;
+}
+.edit__form-box textarea {
+  width: 100%;
+  border: 1px solid #f46036;
+  outline: none;
+  padding: 15px 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 150px;
+  max-height: 150px;
+  font-size: 15px;
+}
+.edit__form-box textarea:focus + label,
+.edit__form-box textarea:valid + label {
+  -webkit-transform: translate(-5px, -25px);
+          transform: translate(-5px, -25px);
+  color: #f46036;
+  background-color: #fff;
+}
+.edit__form-box label {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #000;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
 .edit__btn-box {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -67,4 +98,22 @@
   .edit {
     min-width: 400px;
   }
+}
+#dark .edit {
+  background-color: #372248;
+}
+#dark .edit__form-box textarea {
+  background-color: #372248;
+  color: #fff;
+}
+#dark .edit__form-box textarea:focus + label,
+#dark .edit__form-box textarea:valid + label {
+  background-color: #372248;
+  color: #f46036;
+}
+#dark .edit__form-box label {
+  color: #fff;
+}
+#dark .edit input:is(input[type=file]) {
+  color: #fff;
 }/*# sourceMappingURL=edit.css.map */

@@ -7,9 +7,10 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import SchoolIcon from "@mui/icons-material/School";
+import DarkModeIcon from '@mui/icons-material/DarkMode';
 import "../sass/css/navbar.css";
 
-function Sidebar({ sidebar, setSidebar }) {
+function Sidebar({ sidebar, setSidebar, setTheme }) {
 	const navigate = useNavigate();
 	const user = JSON.parse(localStorage.getItem("user"));
 
@@ -32,6 +33,10 @@ function Sidebar({ sidebar, setSidebar }) {
     navigate("/login");
   }
 
+  function toggleTheme() {
+	setTheme((curr) => (curr === "light" ? "dark" : "light"));
+  }
+
 	return (
 		<>
 			<nav className={sidebar ? "sidebar active" : "sidebar"}>
@@ -43,6 +48,12 @@ function Sidebar({ sidebar, setSidebar }) {
 						</div>
 					</div>
 				))}
+				<div className="sidebar__row">
+					<div className="sidebar__items" onClick={toggleTheme}>
+						<DarkModeIcon fontSize="large" />
+						Zmień wygląd
+					</div>
+				</div>
 				{user && (
 					<div className="sidebar__row">
 						<div className="sidebar__items" onClick={logout}>

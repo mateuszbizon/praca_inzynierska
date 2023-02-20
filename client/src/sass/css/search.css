@@ -6,4 +6,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+#dark .search {
+  background-color: #372248;
 }/*# sourceMappingURL=search.css.map */

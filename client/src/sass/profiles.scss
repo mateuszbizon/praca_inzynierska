@@ -1,4 +1,5 @@
 @import "./mixins";
+@import "./colors";
 
 .profiles{
     min-height: 100vh;
@@ -13,4 +14,10 @@
 	&__shadow-active {
 		@include shadow;
 	}
+}
+
+#dark {
+  .profiles {
+    background-color: $dark-mode-color;
+  }
 }

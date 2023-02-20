@@ -74,3 +74,19 @@
         }
     }
 }
+
+#dark {
+    .search-user {
+        &:hover {
+            background-color: #603782;
+
+            .search-user__info {
+                color: $main-color;
+            }
+        }
+
+        &__info {
+            color: #fff;
+        }
+    }
+}

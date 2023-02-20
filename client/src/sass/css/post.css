@@ -36,4 +36,7 @@
   .post {
     height: 150px;
   }
+}
+#dark .post__text, #dark .post__icon {
+  color: #fff;
 }/*# sourceMappingURL=post.css.map */

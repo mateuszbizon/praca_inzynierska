@@ -187,3 +187,41 @@
 
 	}
 }
+
+#dark {
+	.post-details {
+		background-color: $dark-mode-color;
+
+		&__container {
+			border: 1px solid $main-color;
+			box-shadow: none;
+		}
+
+		&__header {
+			background-color: $dark-mode-color;
+		}
+
+		&__link {
+			color: #fff;
+
+			&:hover {
+				color: $main-color;
+			}
+		}
+
+		&__date, &__msg, &__icons, &__text, &__comment-text, &__likes-count {
+			color: #fff;
+		}
+
+		&__comment-input {
+			textarea {
+				background-color: $dark-mode-color;
+				color: #fff;
+
+				&::placeholder {
+					color: #fff;
+				}
+			}
+		}
+	}
+}

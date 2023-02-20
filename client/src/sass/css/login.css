@@ -168,4 +168,28 @@
   .login__text-error {
     font-size: 15px;
   }
+}
+#dark .login {
+  background-color: #372248;
+}
+#dark .login__form {
+  background-color: #372248;
+  border: 1px solid #f46036;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+#dark .login__box input {
+  background-color: #372248;
+  color: #fff;
+}
+#dark .login__box input:focus + label,
+#dark .login__box input:valid + label {
+  background-color: #372248;
+  color: #f46036;
+}
+#dark .login__box label {
+  color: #fff;
+}
+#dark .login__info, #dark .login .show-password, #dark .login .hide-password {
+  color: #fff;
 }/*# sourceMappingURL=login.css.map */

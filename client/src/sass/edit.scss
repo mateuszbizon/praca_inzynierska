@@ -22,6 +22,28 @@
 		font-size: 30px;
 	}
 
+    &__form-box {
+        position: relative;
+
+        textarea {
+			@include input-styling;
+			max-width: 100%;
+			min-width: 100%;
+			min-height: 150px;
+			max-height: 150px;
+			font-size: 15px;
+		}
+
+		textarea:focus + label,
+		textarea:valid + label {
+			@include label-animation;
+		}
+
+		label {
+			@include label-styling;
+		}
+    }
+
     &__btn-box{
         display: flex;
 		justify-content: center;
@@ -66,5 +88,30 @@
 @media (min-width: 576px){
     .edit{
         min-width: 400px;
+    }
+}
+
+#dark {
+    .edit {
+        background-color: $dark-mode-color;
+
+        &__form-box {
+            textarea {
+                @include input-styling-dark;
+            }
+
+            textarea:focus + label,
+		    textarea:valid + label {
+                @include label-animation-dark;
+            }
+
+            label {
+                @include label-styling-dark;
+            }
+        }
+
+        input:is(input[type="file"]) {
+            color: #fff;
+        }
     }
 }

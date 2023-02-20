@@ -50,10 +50,20 @@
 	border-radius: 5px;
 }
 
+@mixin input-styling-dark {
+	background-color: $dark-mode-color;
+	color: #fff;
+}
+
 @mixin label-animation {
 	transform: translate(-5px, -25px);
 	color: $main-color;
 	background-color: #fff;
+}
+
+@mixin label-animation-dark {
+	background-color: $dark-mode-color;
+	color: $main-color;
 }
 
 @mixin label-styling {
@@ -62,6 +72,10 @@
 	left: 20px;
 	color: #000;
 	transition: all 0.3s;
+}
+
+@mixin label-styling-dark {
+	color: #fff;
 }
 
 @mixin button {

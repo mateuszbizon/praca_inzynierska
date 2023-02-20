@@ -58,7 +58,8 @@ function Create() {
                     <h1 className="create__heading">Utwórz post</h1>
                     <form>
                         <div className="create__form-box">
-                            <TextField name="message" variant="outlined" label="Wiadomość" fullWidth multiline rows={4} onChange={onChange}/>
+                            <textarea id='message' name='message' onChange={onChange} required></textarea>
+                            <label htmlFor="message">Wiadomość</label>
                             <p className="create__text-error" ref={messageError}>error</p>
                         </div>
                         <div className="create__form-box">

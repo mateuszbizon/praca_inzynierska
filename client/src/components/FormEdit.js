@@ -54,7 +54,9 @@ function FormEdit({ currentId, setCurrentId }) {
                 <h1 className="edit__heading">Edytuj post</h1>
                 <form>
                     <div className="edit__form-box">
-                        <TextField name="message" variant="outlined" label="Wiadomość" fullWidth multiline rows={4} value={form.message} onChange={onChange}/>
+                        {/* <TextField name="message" variant="outlined" label="Wiadomość" fullWidth multiline rows={4} value={form.message} onChange={onChange}/> */}
+                        <textarea id='message' name='message' value={form.message} onChange={onChange} required></textarea>
+                        <label htmlFor="message">Wiadomość</label>
                         <p className="edit__text-error" ref={messageError}>error</p>
                     </div>
                     <FileBase type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, selectedFile: base64 })} />
