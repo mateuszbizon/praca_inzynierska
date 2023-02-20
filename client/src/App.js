@@ -10,6 +10,7 @@ import Search from "./routes/Search";
 import Navbar from "./components/Navbar";
 import EditAccount from "./routes/EditAccount";
 import { createContext, useState } from "react";
+import './app.css';
 
 export const ThemeContext = createContext(null);
 
