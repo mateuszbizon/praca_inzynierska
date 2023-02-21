@@ -7,10 +7,12 @@ import SearchMobile from "./SearchMobile";
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import SearchIcon from '@mui/icons-material/Search';
 import Sidebar from "./Sidebar";
+import MoreOptions from "./MoreOptions";
 
 function Navbar({theme, setTheme}) {
   const [sidebar, setSidebar] = useState(false);
   const [showSearch, setShowSearch] = useState(false)
+  const [moreOptions, setMoreOptions] = useState(false);
   const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem('user'));
   const [search, setSearch] = useState('');
@@ -21,6 +23,10 @@ function Navbar({theme, setTheme}) {
 
   function showSearchInput(){
     setShowSearch(!showSearch)
+  }
+
+  function showMoreOptions() {
+    setMoreOptions(!moreOptions)
   }
 
   function logout(){
@@ -73,14 +79,16 @@ function Navbar({theme, setTheme}) {
           <div className={showSearch ? "navbar__items--hide" : "navbar__items"}>
             <ul>
               {navbarItems.map((item, index) => (
-                <li key={index} className="navbar__item"><NavLink to={item.path} className='navbar__link' activeclassname='active'>{item.text}</NavLink></li>
+                <li key={index} className="navbar__item"><NavLink to={item.path} className='navbar__link' activeclassname='active' onClick={() => setMoreOptions(false)}>{item.text}</NavLink></li>
               ))}
               <li className="navbar__item"><a className="navbar__link" onClick={showSearchInput} >Szukaj</a></li>
               <li className="navbar__item"><a className="navbar__link" onClick={logout}>Wyloguj się</a></li>
+              <li className="navbar__item"><a className="navbar__link" onClick={showMoreOptions}>Więcej</a></li>
             </ul>
           </div>
         </nav>
         <Sidebar sidebar={sidebar} setSidebar={setSidebar} theme={theme} setTheme={setTheme}/>
+        <MoreOptions moreOptions={moreOptions} setMoreOptions={setMoreOptions} theme={theme} setTheme={setTheme} />
       </>
       ) : (
         <>

@@ -20,7 +20,7 @@ function App() {
 
   return (
 	<ThemeContext.Provider value={{theme}}>
-		<div className="App" id={siema ? darkMode.value : theme}>
+		<div className="App" id={darkMode ? darkMode.value : theme}>
 			<Router>
 				<Navbar theme={theme} setTheme={setTheme} />
 				<Routes>
