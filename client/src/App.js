@@ -16,12 +16,13 @@ import './app.css';
 export const ThemeContext = createContext(null);
 
 function App() {
-	const [theme, setTheme] = useState("light");
 	const darkMode = JSON.parse(localStorage.getItem("darkMode"));
+	const [theme, setTheme] = useState(darkMode ? !darkMode.value : false);
+	console.log(darkMode)
 
   return (
 	<ThemeContext.Provider value={{theme}}>
-		<div className="App" id={darkMode ? darkMode.value : theme}>
+		<div className="App" id={theme ? "dark" : "light"}>
 			<Router>
 				<Navbar theme={theme} setTheme={setTheme} />
 				<Routes>

@@ -12,9 +12,10 @@ function MoreOptions({theme, setTheme, moreOptions, setMoreOptions}) {
     ]
 
     function toggleTheme() {
-        setTheme((curr) => (curr === "light" ? "dark" : "light"));
+        setTheme(!theme)
         const darkMode = { value: theme }
         localStorage.setItem("darkMode", JSON.stringify(darkMode));
+        setMoreOptions(false);
     }
 
     function navigateTo(path) {

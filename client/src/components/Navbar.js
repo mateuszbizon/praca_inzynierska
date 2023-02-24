@@ -45,7 +45,7 @@ function Navbar({theme, setTheme}) {
   }
 
   function toggleTheme() {
-	  setTheme((curr) => (curr === "light" ? "dark" : "light"));
+    setTheme(!theme)
 	  const darkMode = { value: theme }
 	  localStorage.setItem("darkMode", JSON.stringify(darkMode));
   }
