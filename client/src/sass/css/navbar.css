@@ -175,10 +175,24 @@ body {
   overflow-y: auto;
   height: calc(100vh - 60px);
   background-color: #414770;
-  padding: 40px 0;
+  padding: 10px 0;
   -webkit-transition: left 0.3s;
   transition: left 0.3s;
   z-index: 10;
+}
+.sidebar__close-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
+  color: #fff;
+  padding-right: 10px;
+}
+.sidebar__close-icon {
+  cursor: pointer;
 }
 .sidebar__row {
   display: -webkit-box;

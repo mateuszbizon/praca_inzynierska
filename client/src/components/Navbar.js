@@ -44,6 +44,12 @@ function Navbar({theme, setTheme}) {
     }
   }
 
+  function toggleTheme() {
+	  setTheme((curr) => (curr === "light" ? "dark" : "light"));
+	  const darkMode = { value: theme }
+	  localStorage.setItem("darkMode", JSON.stringify(darkMode));
+  }
+
   const navbarItems = [
     {text: "Strona główna", path: "/"},
     {text: "Utwórz", path: "/create"},
@@ -93,19 +99,20 @@ function Navbar({theme, setTheme}) {
       ) : (
         <>
           <nav className="navbar">
-              <a href='/' title='Strona główna'>
-                <img src={logo} alt='Kostka Rubika' className='navbar__logo' />
-              </a>
-              <div className='navbar__burger'>
-                <MenuIcon fontSize='large' className='navbar__burger-icon' onClick={showSidebar}/>
-              </div>
-              <div className="navbar__items">
-                <ul>
-                  {navbarItemsNotUser.map((item,  index) => (
-                    <li key={index} className="navbar__item"><NavLink to={item.path} className='navbar__link'>{item.text}</NavLink></li>
-                  ))}
-                </ul>
-              </div>
+            <NavLink to='/'>
+              <img src={logo} alt='Kostka Rubika' className='navbar__logo' />
+            </NavLink>
+            <div className='navbar__burger'>
+              <MenuIcon fontSize='large' className='navbar__burger-icon' onClick={showSidebar}/>
+            </div>
+            <div className="navbar__items">
+              <ul>
+                {navbarItemsNotUser.map((item,  index) => (
+                  <li key={index} className="navbar__item"><NavLink to={item.path} className='navbar__link'>{item.text}</NavLink></li>
+                ))}
+                <li className="navbar__item"><a className="navbar__link" onClick={toggleTheme}>Zmień wygląd</a></li>
+              </ul>
+            </div>
           </nav>
           <Sidebar sidebar={sidebar} setSidebar={setSidebar} theme={theme} setTheme={setTheme}/>
         </>

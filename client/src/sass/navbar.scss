@@ -134,9 +134,21 @@ body{
     overflow-y: auto;
 	height: calc(100vh - 60px);
 	background-color: $secondary-color;
-	padding: 40px 0;
+	padding: 10px 0;
     transition: left .3s;
 	z-index: 10;
+
+	&__close-box {
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+		color: #fff;
+		padding-right: 10px;
+	}
+
+	&__close-icon {
+		cursor: pointer;
+	}
 
     &__row{
         display: flex;

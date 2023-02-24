@@ -17,7 +17,7 @@ export const ThemeContext = createContext(null);
 
 function App() {
 	const [theme, setTheme] = useState("light");
-	const darkMode = JSON.parse(localStorage.getItem("darkMode"))
+	const darkMode = JSON.parse(localStorage.getItem("darkMode"));
 
   return (
 	<ThemeContext.Provider value={{theme}}>

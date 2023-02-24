@@ -8,11 +8,13 @@ import LoginIcon from "@mui/icons-material/Login";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import SchoolIcon from "@mui/icons-material/School";
 import DarkModeIcon from '@mui/icons-material/DarkMode';
+import CloseIcon from '@mui/icons-material/Close';
 import "../sass/css/navbar.css";
 
 function Sidebar({ sidebar, setSidebar, theme, setTheme }) {
 	const navigate = useNavigate();
 	const user = JSON.parse(localStorage.getItem("user"));
+	const currentDarkMode = JSON.parse(localStorage.getItem("darkMode"))
 
 	const sidebarItems = [
 		{ text: "Strona główna", icon: <HomeIcon fontSize='large' />, path: "/" },
@@ -34,14 +36,18 @@ function Sidebar({ sidebar, setSidebar, theme, setTheme }) {
   }
 
   function toggleTheme() {
-	  setTheme((curr) => (curr === "light" ? "dark" : "light"));
-	  const darkMode = { value: theme }
-	  localStorage.setItem("darkMode", JSON.stringify(darkMode));
+	setTheme((curr) => (curr === "light" ? "dark" : "light"));
+	const darkMode = { value: theme }
+	localStorage.setItem("darkMode", JSON.stringify(darkMode));
+	setSidebar(!sidebar)
   }
 
 	return (
 		<>
 			<nav className={sidebar ? "sidebar active" : "sidebar"}>
+				<div className="sidebar__close-box">
+					<CloseIcon fontSize="large" className="sidebar__close-icon" onClick={() => setSidebar(!sidebar)} />
+				</div>
 				{sidebarItems.map(item => (
 					<div className='sidebar__row'>
 						<div className='sidebar__items' onClick={() => navigateTo(item.path)}>
