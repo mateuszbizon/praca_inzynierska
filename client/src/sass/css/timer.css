@@ -1,0 +1,31 @@
+.timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100vh;
+  background-color: #e5e1e1;
+}
+.timer__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 70px;
+}
+.timer__container.ready-for-timing {
+  color: #27b727;
+}
+.timer__minutes, .timer__dot-minutes {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .timer__container {
+    font-size: 150px;
+  }
+}/*# sourceMappingURL=timer.css.map */

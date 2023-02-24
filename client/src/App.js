@@ -9,6 +9,7 @@ import PostDetails from "./routes/PostDetails";
 import Search from "./routes/Search";
 import Navbar from "./components/Navbar";
 import EditAccount from "./routes/EditAccount";
+import Timer from "./routes/Timer";
 import { createContext, useState } from "react";
 import './app.css';
 
@@ -31,6 +32,7 @@ function App() {
 						<Route path='/search' element={<Search />} />
 						<Route path='/edit-account' element={<EditAccount />} />
 					</Route>
+					<Route path='/timer' element={<Timer />} />
 					<Route path='/' element={<HomePage />} />
 					<Route path='/login' element={<LoginPage />} />
 					<Route path='/register' element={<RegisterPage />} />

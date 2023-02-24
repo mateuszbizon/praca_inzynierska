@@ -1,0 +1,30 @@
+@import './colors';
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $timer-background-color;
+
+    &__container {
+        display: flex;
+        font-size: 70px;
+    }
+
+    &__container.ready-for-timing {
+        color: #27b727;
+    }
+
+    &__minutes, &__dot-minutes {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .timer {
+        &__container {
+            font-size: 150px;
+        }
+    }
+}

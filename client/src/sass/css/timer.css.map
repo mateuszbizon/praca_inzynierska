@@ -1,0 +1,1 @@
+{"version":3,"sources":["../timer.scss","../_colors.scss","timer.css"],"names":[],"mappings":"AAEA;EACI,oBAAA;EAAA,oBAAA;EAAA,aAAA;EACA,wBAAA;MAAA,qBAAA;UAAA,uBAAA;EACA,yBAAA;MAAA,sBAAA;UAAA,mBAAA;EACA,aAAA;EACA,yBCHqB;ACEzB;AFGI;EACI,oBAAA;EAAA,oBAAA;EAAA,aAAA;EACA,eAAA;AEDR;AFII;EACI,cAAA;AEFR;AFKI;EACI,aAAA;AEHR;;AFOA;EAEQ;IACI,gBAAA;EELV;AACF","file":"timer.css"}
