@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../sass/css/timer.css';
+import Times from '../components/Times';
 
 function Timer() {
     const [isReadyForTiming, setIsReadyForTiming] = useState(false);
@@ -97,38 +98,7 @@ function Timer() {
                 </p>
             </div>
             <div className="timer__results-bottom">
-                <div className="timer__results-time-box">
-                    <div className="timer__results-time-number">Lp.</div>
-                    <div className="timer__results-time">Czas</div>
-                </div>
-                <div className="timer__results-time-box">
-                    <div className="timer__results-time-number">1</div>
-                    <div className="timer__results-time">11:17.15</div>
-                </div>
-                <div className="timer__results-time-box">
-                    <div className="timer__results-time-number">1</div>
-                    <div className="timer__results-time">7.15</div>
-                </div>
-                <div className="timer__results-time-box">
-                    <div className="timer__results-time-number">1</div>
-                    <div className="timer__results-time">7.15</div>
-                </div>
-                <div className="timer__results-time-box">
-                    <div className="timer__results-time-number">1</div>
-                    <div className="timer__results-time">7.15</div>
-                </div>
-                <div className="timer__results-time-box">
-                    <div className="timer__results-time-number">1</div>
-                    <div className="timer__results-time">7.15</div>
-                </div>
-                <div className="timer__results-time-box">
-                    <div className="timer__results-time-number">1</div>
-                    <div className="timer__results-time">7.15</div>
-                </div>
-                <div className="timer__results-time-box">
-                    <div className="timer__results-time-number">1</div>
-                    <div className="timer__results-time">7.15</div>
-                </div>
+                <Times />
             </div>
         </div>
     </section>

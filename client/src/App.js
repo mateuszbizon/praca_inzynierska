@@ -18,7 +18,6 @@ export const ThemeContext = createContext(null);
 function App() {
 	const darkMode = JSON.parse(localStorage.getItem("darkMode"));
 	const [theme, setTheme] = useState(darkMode ? !darkMode.value : false);
-	console.log(darkMode)
 
   return (
 	<ThemeContext.Provider value={{theme}}>
@@ -32,8 +31,8 @@ function App() {
 						<Route path='/posts/:id' element={<PostDetails />} />
 						<Route path='/search' element={<Search />} />
 						<Route path='/edit-account' element={<EditAccount />} />
+						<Route path='/timer' element={<Timer />} />
 					</Route>
-					<Route path='/timer' element={<Timer />} />
 					<Route path='/' element={<HomePage />} />
 					<Route path='/login' element={<LoginPage />} />
 					<Route path='/register' element={<RegisterPage />} />
