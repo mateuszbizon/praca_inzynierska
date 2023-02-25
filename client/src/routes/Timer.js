@@ -85,6 +85,52 @@ function Timer() {
             <div className="timer__dot-seconds">.</div>
             <div className="timer__miliseconds" ref={milisecRef}>00</div>
         </div>
+        <div className="timer__results">
+            <div className="timer__results-top">
+                <select>
+                    <option value='1'>sesja</option>
+                    <option value='2'>sesja 2</option>
+                </select>
+                <p className="timer__results-best-time">
+                    Najlepszy czas:
+                    <span> 8.08</span>
+                </p>
+            </div>
+            <div className="timer__results-bottom">
+                <div className="timer__results-time-box">
+                    <div className="timer__results-time-number">Lp.</div>
+                    <div className="timer__results-time">Czas</div>
+                </div>
+                <div className="timer__results-time-box">
+                    <div className="timer__results-time-number">1</div>
+                    <div className="timer__results-time">11:17.15</div>
+                </div>
+                <div className="timer__results-time-box">
+                    <div className="timer__results-time-number">1</div>
+                    <div className="timer__results-time">7.15</div>
+                </div>
+                <div className="timer__results-time-box">
+                    <div className="timer__results-time-number">1</div>
+                    <div className="timer__results-time">7.15</div>
+                </div>
+                <div className="timer__results-time-box">
+                    <div className="timer__results-time-number">1</div>
+                    <div className="timer__results-time">7.15</div>
+                </div>
+                <div className="timer__results-time-box">
+                    <div className="timer__results-time-number">1</div>
+                    <div className="timer__results-time">7.15</div>
+                </div>
+                <div className="timer__results-time-box">
+                    <div className="timer__results-time-number">1</div>
+                    <div className="timer__results-time">7.15</div>
+                </div>
+                <div className="timer__results-time-box">
+                    <div className="timer__results-time-number">1</div>
+                    <div className="timer__results-time">7.15</div>
+                </div>
+            </div>
+        </div>
     </section>
   )
 }

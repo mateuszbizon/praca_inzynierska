@@ -1,6 +1,7 @@
 @import './colors';
 
 .timer {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,6 +19,45 @@
 
     &__minutes, &__dot-minutes {
         display: none;
+    }
+
+    &__results {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        // box-shadow: 0 -2px 2px #000;
+        border-top: 2px solid #000;
+
+        &-top{
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            height: 30%;
+        }
+
+        &-bottom {
+            display: flex;
+            width: 100%;
+            height: 70%;
+            padding: 5px 0;
+            overflow-x: auto;
+        }
+
+        &-time-box{
+            height: 100%;
+            min-width: 60px;
+        }
+
+        &-time-number, &-time {
+            min-width: 100%;
+            height: 50%;
+            border: 1px solid #000;
+            text-align: center;
+            padding: 2px 0;
+        }
     }
 }
 
