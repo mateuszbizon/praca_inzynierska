@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Times({ sessions, session }) {
-    const currentSession = sessions.find(s => s.id === session.session);
+    const currentSession = sessions.find(s => s.id === parseInt(session.session));
   return (
     <>
         <div className="timer__results-time-box">

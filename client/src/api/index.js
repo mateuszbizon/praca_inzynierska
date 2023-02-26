@@ -25,3 +25,4 @@ export const getUsersBySearch = (search) => API.get(`/user/getUsersBySearch?sear
 export const editAccount = (editData) => API.patch(`/user/editAccount`, editData);
 export const getUserSessions = () => API.get('/user/getUserSessions');
 export const addNewTime = (session) => API.post('/user/addNewTime', session);
+export const addNewSession = () => API.post('/user/addNewSession');

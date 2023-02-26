@@ -7,6 +7,9 @@ const times = (state = { times: [] }, action) => {
 
         case actionType.ADD_NEW_TIME:
             return { ...state, times: action.data }
+
+        case actionType.ADD_NEW_SESSION:
+            return { ...state, times: action.data }
     
         default:
             return state;

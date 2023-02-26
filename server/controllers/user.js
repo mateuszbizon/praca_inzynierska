@@ -171,3 +171,21 @@ export const addNewTime = async (req, res) => {
 		console.log(error)
 	}
 }
+
+export const addNewSession = async (req, res) => {
+	try {
+		const user = await User.findById(req.userId);
+
+		const lastSession = user.sessions[user.sessions.length - 1];
+
+		const newSessionId = lastSession.id + 1;
+
+		user.sessions.push({ id: newSessionId, name: `Sesja ${newSessionId}`, times: [] });
+
+		const updatedSession = await User.findByIdAndUpdate(req.userId, user, { new: true });
+
+		res.status(200).json(updatedSession.sessions);
+	} catch (error) {
+		console.log(error)
+	}
+}
