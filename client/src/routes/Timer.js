@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../sass/css/timer.css';
 import Times from '../components/Times';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserSessions, addNewTime } from '../actions/times';
 
 function Timer() {
     const [isReadyForTiming, setIsReadyForTiming] = useState(false);
+    const [session, setSession] = useState({ session: 1 })
     let interval;
     let time = 0;
     let ms = 0;
@@ -14,6 +17,12 @@ function Timer() {
     const secRef = useRef();
     const minRef = useRef();
     const dotMinRef = useRef();
+    const dispatch = useDispatch();
+    const { times } = useSelector(state => state.times);
+
+    useEffect(() => {
+        dispatch(getUserSessions());
+    }, [])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyDown);
@@ -31,6 +40,7 @@ function Timer() {
             clearInterval(interval);
             isTiming = false;
             setIsReadyForTiming(false);
+            sendTime();
             ms = 0;
             sec = 0;
             min = 0;
@@ -77,6 +87,24 @@ function Timer() {
         minRef.current.innerText = min;
     }
 
+    function sendTime(){
+        let newTime = '';
+        console.log('tak')
+
+        if(min === 0){
+            newTime = `${sec}.${ms}`;
+            dispatch(addNewTime({ ...session, time: newTime }))
+            return;
+        }
+
+        dispatch(addNewTime({ ...session, time: newTime }))
+        newTime = `${min}:${sec}.${ms}`;
+    }
+
+    function onChange(e){
+        setSession({...session, session: e.target.value });
+    }
+
   return (
     <section className='timer'>
         <div className={!isReadyForTiming ? "timer__container" : "timer__container ready-for-timing"}>
@@ -88,9 +116,10 @@ function Timer() {
         </div>
         <div className="timer__results">
             <div className="timer__results-top">
-                <select>
-                    <option value='1'>sesja</option>
-                    <option value='2'>sesja 2</option>
+                <select onChange={onChange}>
+                    {times.map((s, i) => (
+                        <option key={i} value={s.id}>{s.name}</option>
+                    ))}
                 </select>
                 <p className="timer__results-best-time">
                     Najlepszy czas:
@@ -98,7 +127,7 @@ function Timer() {
                 </p>
             </div>
             <div className="timer__results-bottom">
-                <Times />
+                <Times session={session} sessions={times} />
             </div>
         </div>
     </section>

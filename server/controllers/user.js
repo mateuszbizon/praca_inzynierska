@@ -140,3 +140,34 @@ export const editAccount = async (req, res) => {
 		console.log(error)
 	}
 }
+
+export const getUserSessions = async (req, res) => {
+	try {
+		const user = await User.findById(req.userId);
+
+		const sessions = user.sessions;
+
+		res.status(200).json(sessions);
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+export const addNewTime = async (req, res) => {
+	const { session, time } = req.body;
+	try {
+		const user = await User.findById(req.userId);
+
+		let currentSession = user.sessions.filter(s => s.id === session);
+
+		currentSession.map(t => {
+			t.times.push(time);
+		})
+
+		const updatedSession = await User.findByIdAndUpdate(req.userId, { sessions: currentSession }, { new: true });
+
+		res.status(200).json(updatedSession.sessions);
+	} catch (error) {
+		console.log(error)
+	}
+}

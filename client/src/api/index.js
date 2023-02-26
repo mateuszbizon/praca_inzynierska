@@ -22,4 +22,6 @@ export const signIn = (formData) => API.post(`/user/signin`, formData);
 export const signUp = (formData) => API.post(`/user/signup`, formData);
 export const getUser = (username) => API.get(`/user/getUser/${username}`);
 export const getUsersBySearch = (search) => API.get(`/user/getUsersBySearch?search=${search}`)
-export const editAccount = (editData) => API.patch(`/user/editAccount`, editData)
+export const editAccount = (editData) => API.patch(`/user/editAccount`, editData);
+export const getUserSessions = () => API.get('/user/getUserSessions');
+export const addNewTime = (session) => API.post('/user/addNewTime', session);
