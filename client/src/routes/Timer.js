@@ -2,11 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../sass/css/timer.css';
 import Times from '../components/Times';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUserSessions, addNewTime, addNewSession } from '../actions/times';
 
 function Timer() {
     const [isReadyForTiming, setIsReadyForTiming] = useState(false);
-    const [session, setSession] = useState({ session: 1 })
     let interval;
     let time = 0;
     let ms = 0;
@@ -18,11 +16,6 @@ function Timer() {
     const minRef = useRef();
     const dotMinRef = useRef();
     const dispatch = useDispatch();
-    const { times } = useSelector(state => state.times);
-
-    useEffect(() => {
-        dispatch(getUserSessions());
-    }, [])
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyDown);
@@ -89,20 +82,13 @@ function Timer() {
 
     function sendTime(){
         let newTime = '';
-        console.log('tak')
 
         if(min === 0){
             newTime = `${sec}.${ms}`;
-            dispatch(addNewTime({ ...session, time: newTime }))
             return;
         }
-
-        dispatch(addNewTime({ ...session, time: newTime }))
+        
         newTime = `${min}:${sec}.${ms}`;
-    }
-
-    function addSession() {
-        dispatch(addNewSession());
     }
 
     function onChange(e){
@@ -119,20 +105,14 @@ function Timer() {
             <div className="timer__miliseconds" ref={milisecRef}>00</div>
         </div>
         <div className="timer__results">
-            <div className="timer__results-top">
-                <button onClick={addSession}>Dodaj sesję</button>
-                <select onChange={(e) => onChange(e)}>
-                    {times.map((s, i) => (
-                        <option key={i} value={s.id}>{s.name}</option>
-                    ))}
-                </select>
+            <div className="timer__results-top">         
                 <p className="timer__results-best-time">
                     Najlepszy czas:
                     <span> 8.08</span>
                 </p>
             </div>
             <div className="timer__results-bottom">
-                <Times session={session} sessions={times} />
+                <Times />
             </div>
         </div>
     </section>
