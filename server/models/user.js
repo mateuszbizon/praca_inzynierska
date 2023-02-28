@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
 	selectedFile: String,
 	posts: { type: Number, default: 0},
 	id: { type: String },
+	times: { type: [Object], default: [] }
 });
 
 export default mongoose.model("User", userSchema);

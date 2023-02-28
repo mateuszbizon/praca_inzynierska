@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../sass/css/timer.css';
 import Times from '../components/Times';
 import { useDispatch, useSelector } from 'react-redux';
+import { getAllTimes, addNewTime } from '../actions/times';
 
 function Timer() {
     const [isReadyForTiming, setIsReadyForTiming] = useState(false);
@@ -16,8 +17,10 @@ function Timer() {
     const minRef = useRef();
     const dotMinRef = useRef();
     const dispatch = useDispatch();
+    const { times } = useSelector(state => state.times);
 
     useEffect(() => {
+        dispatch(getAllTimes());
         document.addEventListener('keydown', handleKeyDown);
         document.addEventListener('keyup', handleKeyUp)
     }, [])
@@ -85,14 +88,12 @@ function Timer() {
 
         if(min === 0){
             newTime = `${sec}.${ms}`;
+            dispatch(addNewTime({ time: newTime }));
             return;
         }
         
         newTime = `${min}:${sec}.${ms}`;
-    }
-
-    function onChange(e){
-        setSession({ session: e.target.value });
+        dispatch(addNewTime({ time: newTime }));
     }
 
   return (
@@ -112,7 +113,7 @@ function Timer() {
                 </p>
             </div>
             <div className="timer__results-bottom">
-                <Times />
+                <Times times={times}/>
             </div>
         </div>
     </section>

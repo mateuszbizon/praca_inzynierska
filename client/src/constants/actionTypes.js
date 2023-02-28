@@ -18,6 +18,7 @@ export const EDIT_ACCOUNT = "EDIT_ACCOUNT";
 export const EDIT_ACCOUNT_FAIL = "EDIT_ACCOUNT_FAIL";
 export const EDIT_ACCOUNT_SUCCESS = "EDIT_ACCOUNT_SUCCESS";
 
+export const GET_ALL_TIMES = 'GET_ALL_TIMES';
 export const ADD_NEW_TIME = "ADD_NEW_TIME";
 
 export const START_LOADING = "START_LOADING";
