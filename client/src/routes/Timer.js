@@ -17,7 +17,7 @@ function Timer() {
     const minRef = useRef();
     const dotMinRef = useRef();
     const dispatch = useDispatch();
-    const { times } = useSelector(state => state.times);
+    const { times, bestTime } = useSelector(state => state.times);
 
     useEffect(() => {
         dispatch(getAllTimes());
@@ -109,7 +109,7 @@ function Timer() {
             <div className="timer__results-top">         
                 <p className="timer__results-best-time">
                     Najlepszy czas:
-                    <span> 8.08</span>
+                    <span> {bestTime}</span>
                 </p>
             </div>
             <div className="timer__results-bottom">
