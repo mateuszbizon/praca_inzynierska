@@ -7,6 +7,9 @@ const times = (state = { times: [], bestTime: 0 }, action) => {
 
         case actionType.ADD_NEW_TIME:
             return { ...state, times: action.data.times, bestTime: action.data.bestTime }
+
+        case actionType.DELETE_TIME:
+            return { ...state, times: action.data.times, bestTime: action.data.bestTime }
     
         default:
             return state;

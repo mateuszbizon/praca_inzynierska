@@ -3,9 +3,12 @@ import '../sass/css/timer.css';
 import Times from '../components/Times';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTimes, addNewTime } from '../actions/times';
+import DeleteTimesConfirm from '../components/DeleteTimesConfirm';
 
 function Timer() {
     const [isReadyForTiming, setIsReadyForTiming] = useState(false);
+    const [isShadowActive, setIsShadowActive] = useState(false);
+    const [currentTimeId, setCurrentTimeId] = useState(null);
     let interval;
     let time = 0;
     let ms = 0;
@@ -97,26 +100,30 @@ function Timer() {
     }
 
   return (
-    <section className='timer'>
-        <div className={!isReadyForTiming ? "timer__container" : "timer__container ready-for-timing"}>
-            <div className="timer__minutes" ref={minRef}>0</div>
-            <div className="timer__dot-minutes" ref={dotMinRef}>.</div>
-            <div className="timer__seconds" ref={secRef}>0</div>
-            <div className="timer__dot-seconds">.</div>
-            <div className="timer__miliseconds" ref={milisecRef}>00</div>
-        </div>
-        <div className="timer__results">
-            <div className="timer__results-top">         
-                <p className="timer__results-best-time">
-                    Najlepszy czas:
-                    <span> {bestTime}</span>
-                </p>
+    <>
+        <DeleteTimesConfirm currentTimeId={currentTimeId} setCurrentTimeId={setCurrentTimeId} isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} />
+        <section className='timer'>
+            <div className={isShadowActive ? 'timer__shadow-active' : 'timer__shadow'} onClick={() => setIsShadowActive(false)}></div>
+            <div className={!isReadyForTiming ? "timer__container" : "timer__container ready-for-timing"}>
+                <div className="timer__minutes" ref={minRef}>0</div>
+                <div className="timer__dot-minutes" ref={dotMinRef}>.</div>
+                <div className="timer__seconds" ref={secRef}>0</div>
+                <div className="timer__dot-seconds">.</div>
+                <div className="timer__miliseconds" ref={milisecRef}>00</div>
             </div>
-            <div className="timer__results-bottom">
-                <Times times={times}/>
+            <div className="timer__results">
+                <div className="timer__results-top">         
+                    <p className="timer__results-best-time">
+                        Najlepszy czas:
+                        <span> {bestTime}</span>
+                    </p>
+                </div>
+                <div className="timer__results-bottom">
+                    <Times times={times} setCurrentTimeId={setCurrentTimeId} setIsShadowActive={setIsShadowActive}/>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </>
   )
 }
 

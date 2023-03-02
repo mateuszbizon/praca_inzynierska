@@ -1,4 +1,4 @@
-import { ADD_NEW_TIME, GET_ALL_TIMES } from '../constants/actionTypes';
+import { ADD_NEW_TIME, GET_ALL_TIMES, DELETE_TIME } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const getAllTimes = () => async (dispatch) => {
@@ -16,6 +16,16 @@ export const addNewTime = (newTime) => async (dispatch) => {
     const { data } = await api.addNewTime(newTime);
 
     dispatch({ type: ADD_NEW_TIME, data: data})
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export const deleteTime = (id) => async (dispatch) => {
+  try {
+    const { data } = await api.deleteTime(id);
+
+    dispatch({ type: DELETE_TIME, data: data})
   } catch (error) {
     console.log(error);
   }

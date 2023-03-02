@@ -26,3 +26,4 @@ export const editAccount = (editData) => API.patch(`/user/editAccount`, editData
 
 export const getAllTimes = () => API.get('/times/getAllTimes');
 export const addNewTime = (newTime) => API.post('/times/addNewTime', newTime);
+export const deleteTime = (id) => API.delete(`/times/deleteTime/${id}`);

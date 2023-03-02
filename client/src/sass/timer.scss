@@ -1,4 +1,5 @@
 @import './colors';
+@import './mixins';
 
 .timer {
     position: relative;
@@ -57,7 +58,24 @@
             text-align: center;
             padding: 2px 0;
         }
+
+        &-time {
+            cursor: pointer;
+            transition: background-color .3s;
+
+            &:hover {
+                background-color: $timer-background-color-hover;
+            }
+        }
     }
+
+    &__shadow {
+		display: none;
+	}
+
+	&__shadow-active {
+		@include shadow;
+	}
 }
 
 @media (min-width: 768px) {

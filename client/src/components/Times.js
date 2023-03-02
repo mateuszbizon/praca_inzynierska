@@ -1,6 +1,11 @@
 import React from 'react';
 
-function Times({ times }) {
+function Times({ times, setCurrentTimeId, setIsShadowActive }) {
+  function handleClickTime(id) {
+    setCurrentTimeId(id);
+    setIsShadowActive(true);
+  }
+
   return (
     <>
         <div className="timer__results-time-box">
@@ -10,7 +15,7 @@ function Times({ times }) {
         {times.slice(0).reverse().map((t, i) => (
           <div key={i} className="timer__results-time-box">
             <div className="timer__results-time-number">{t.id}</div>
-            <div className="timer__results-time">{t.time}</div>
+            <div className="timer__results-time" onClick={() => handleClickTime(t.id)}>{t.time}</div>
           </div>
         ))}
     </>

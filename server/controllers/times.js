@@ -2,7 +2,9 @@ import User from "../models/user.js";
 
 function getBestTime(array) {
     let bestTime = 0;
-    let bestTimeText = '';
+    let bestTimeText = '-';
+
+	if(array.length === 0) return bestTimeText;
 
     for(let i=0; i<array.length; i++) {
 
@@ -55,6 +57,24 @@ export const addNewTime = async (req, res) => {
 		const bestTime = getBestTime(updatedTimes.times);
 
 		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime });
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+export const deleteTime = async (req, res) => {
+	const { id } = req.params;
+
+	try {
+		const user = await User.findById(req.userId);
+
+		user.times = user.times.filter(t => t.id !== parseInt(id));
+
+		const updatedTimes = await User.findByIdAndUpdate(req.userId, user, { new: true });
+
+		const bestTime = getBestTime(updatedTimes.times);
+
+		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
 		console.log(error)
 	}
