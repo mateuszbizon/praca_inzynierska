@@ -1,23 +1,47 @@
 @import './colors';
 
-.delete-times-confirm{
+.confirm-time-action{
     position: fixed;
     display: none;
     flex-direction: column;
-    justify-content: space-around;
     top: 250px;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 300px;
-    height: 200px;
-    padding: 0 10px;
+    width: 300px;
+    min-height: 200px;
+    padding: 10px 10px;
     background-color: #fff;
     color: $main-color;
     text-align: center;
     z-index: 6;
 
-    &__title{
+    &__title, &__second-title {
         font-size: 20px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    &__main-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        width: 100%;
+        margin-bottom: 30px;
+
+        button {
+            background-color: $main-color;
+            color: #fff;
+            font-size: 17px;
+            padding: 5px 10px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: background-color .3s;
+
+            &:hover {
+                background-color: $main-color-hover;
+            }
+        }
     }
 
     &__buttons{
@@ -25,6 +49,7 @@
         justify-content: center;
         width: 100%;
         gap: 50px;
+        margin-bottom: 5px;
 
         button{
             width: 25%;
@@ -44,20 +69,22 @@
     }
 }
 
-.delete-times-confirm.active{
+.confirm-time-action.active{
     display: flex;
 }
 
 @media (min-width: 576px){
-    .delete-times-confirm{
-        &__title{
+    .confirm-time-action{
+        width: 450px;
+
+        &__title, &__second-title {
             font-size: 25px;
         }
     }
 }
 
 #dark {
-    .delete-times-confirm {
+    .confirm-time-action {
         background-color: $dark-mode-color;
     }
 }

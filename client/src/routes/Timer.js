@@ -3,7 +3,7 @@ import '../sass/css/timer.css';
 import Times from '../components/Times';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTimes, addNewTime } from '../actions/times';
-import DeleteTimesConfirm from '../components/DeleteTimesConfirm';
+import ConfirmTimeAction from '../components/ConfirmTimeAction';
 
 function Timer() {
     const [isReadyForTiming, setIsReadyForTiming] = useState(false);
@@ -101,7 +101,7 @@ function Timer() {
 
   return (
     <>
-        <DeleteTimesConfirm currentTimeId={currentTimeId} setCurrentTimeId={setCurrentTimeId} isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} />
+        <ConfirmTimeAction currentTimeId={currentTimeId} setCurrentTimeId={setCurrentTimeId} isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} />
         <section className='timer'>
             <div className={isShadowActive ? 'timer__shadow-active' : 'timer__shadow'} onClick={() => setIsShadowActive(false)}></div>
             <div className={!isReadyForTiming ? "timer__container" : "timer__container ready-for-timing"}>

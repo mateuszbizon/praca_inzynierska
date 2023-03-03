@@ -1,0 +1,92 @@
+.confirm-time-action {
+  position: fixed;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  top: 250px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 300px;
+  min-height: 200px;
+  padding: 10px 10px;
+  background-color: #fff;
+  color: #f46036;
+  text-align: center;
+  z-index: 6;
+}
+.confirm-time-action__title, .confirm-time-action__second-title {
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.confirm-time-action__main-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+.confirm-time-action__main-buttons button {
+  background-color: #f46036;
+  color: #fff;
+  font-size: 17px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.confirm-time-action__main-buttons button:hover {
+  background-color: #cb380f;
+}
+.confirm-time-action__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  gap: 50px;
+  margin-bottom: 5px;
+}
+.confirm-time-action__buttons button {
+  width: 25%;
+  border: none;
+  background-color: #f46036;
+  color: #fff;
+  font-size: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.confirm-time-action__buttons button:hover {
+  background-color: #cb380f;
+}
+
+.confirm-time-action.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (min-width: 576px) {
+  .confirm-time-action {
+    width: 450px;
+  }
+  .confirm-time-action__title, .confirm-time-action__second-title {
+    font-size: 25px;
+  }
+}
+#dark .confirm-time-action {
+  background-color: #372248;
+}/*# sourceMappingURL=ConfirmTimeAction.css.map */
