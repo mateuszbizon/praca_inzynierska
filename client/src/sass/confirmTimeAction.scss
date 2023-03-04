@@ -8,14 +8,14 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
-    min-height: 200px;
+    min-height: 150px;
     padding: 10px 10px;
     background-color: #fff;
     color: $main-color;
     text-align: center;
     z-index: 6;
 
-    &__title, &__second-title {
+    &__title, &__time {
         font-size: 20px;
         margin-bottom: 20px;
         font-weight: 600;
@@ -24,6 +24,7 @@
     &__main-buttons {
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
         gap: 20px;
         width: 100%;
         margin-bottom: 30px;
@@ -44,25 +45,22 @@
         }
     }
 
-    &__buttons{
+    &__ok-btn-box {
         display: flex;
         justify-content: center;
         width: 100%;
-        gap: 50px;
-        margin-bottom: 5px;
 
-        button{
-            width: 25%;
-            border: none;
+        button {
             background-color: $main-color;
             color: #fff;
-            font-size: 20px;
+            font-size: 17px;
             padding: 5px 10px;
+            border-radius: 8px;
+            border: none;
             cursor: pointer;
-            // margin-right: 20px;
             transition: background-color .3s;
 
-            &:hover{
+            &:hover {
                 background-color: $main-color-hover;
             }
         }
@@ -77,7 +75,7 @@
     .confirm-time-action{
         width: 450px;
 
-        &__title, &__second-title {
+        &__title, &__time {
             font-size: 25px;
         }
     }

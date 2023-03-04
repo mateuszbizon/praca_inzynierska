@@ -9,6 +9,7 @@ function Timer() {
     const [isReadyForTiming, setIsReadyForTiming] = useState(false);
     const [isShadowActive, setIsShadowActive] = useState(false);
     const [currentTimeId, setCurrentTimeId] = useState(null);
+    const [currentTime, setCurrentTime] = useState(null);
     let interval;
     let time = 0;
     let ms = 0;
@@ -101,7 +102,7 @@ function Timer() {
 
   return (
     <>
-        <ConfirmTimeAction currentTimeId={currentTimeId} setCurrentTimeId={setCurrentTimeId} isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} />
+        <ConfirmTimeAction currentTimeId={currentTimeId} currentTime={currentTime} isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} />
         <section className='timer'>
             <div className={isShadowActive ? 'timer__shadow-active' : 'timer__shadow'} onClick={() => setIsShadowActive(false)}></div>
             <div className={!isReadyForTiming ? "timer__container" : "timer__container ready-for-timing"}>
@@ -119,7 +120,7 @@ function Timer() {
                     </p>
                 </div>
                 <div className="timer__results-bottom">
-                    <Times times={times} setCurrentTimeId={setCurrentTimeId} setIsShadowActive={setIsShadowActive}/>
+                    <Times times={times} setCurrentTimeId={setCurrentTimeId} setCurrentTime={setCurrentTime} setIsShadowActive={setIsShadowActive}/>
                 </div>
             </div>
         </section>

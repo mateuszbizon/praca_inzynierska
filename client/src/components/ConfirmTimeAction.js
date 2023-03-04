@@ -3,54 +3,36 @@ import '../sass/css/confirmTimeAction.css';
 import { useDispatch } from 'react-redux';
 import { deleteTime, setDnf } from '../actions/times';
 
-function ConfirmTimeAction({ currentTimeId, setCurrentTimeId, isShadowActive, setIsShadowActive }) {
-    const [changeView, setChangeView] = useState("delete-time");
+function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsShadowActive }) {
     const dispatch = useDispatch();
 
-    function handleNoAnswer() {
-        setCurrentTimeId(null);
+    function handleCloseModal() {
         setIsShadowActive(false);
     }
 
-    function handleDeleteYesAnswer() {
+    function handleDelete() {
         dispatch(deleteTime(currentTimeId));
         setIsShadowActive(false);
     }
 
-    function handleSetDnfYesAnswer() {
+    function handleSetDnf() {
         dispatch(setDnf(currentTimeId));
         setIsShadowActive(false);
-    }
-
-    function handleChangeView(view) {
-        setChangeView(view)
     }
 
     return (
         <div className={!isShadowActive ? "confirm-time-action" : "confirm-time-action active"}>
             <p className="confirm-time-action__title">Czas nr. {currentTimeId}</p>
+            <p className="confirm-time-action__time">{currentTime}</p>
             <div className="confirm-time-action__main-buttons">
-                <button onClick={() => handleChangeView("delete-time")}>Usuń czas</button>
-                <button onClick={() => handleChangeView("set-dnf")}>Ustaw DNF</button>
+                <button onClick={handleDelete}>X</button>
+                <button onClick={handleSetDnf}>DNF</button>
+                <button>+2</button>
+                <button>Czas OK</button>
             </div>
-            {changeView === "delete-time" && (
-                <>
-                    <p className="confirm-time-action__second-title">Czy na pewno chcesz usunąć ten czas?</p>
-                    <div className="confirm-time-action__buttons">
-                        <button onClick={handleDeleteYesAnswer}>Tak</button>
-                        <button onClick={handleNoAnswer}>Nie</button>
-                    </div>
-                </>
-            )}
-            {changeView === "set-dnf" && (
-                <>
-                    <p className="confirm-time-action__second-title">Czy na pewno chcesz ustawić DNF na ten czas?</p>
-                    <div className="confirm-time-action__buttons">
-                        <button onClick={handleSetDnfYesAnswer}>Tak</button>
-                        <button onClick={handleNoAnswer}>Nie</button>
-                    </div>
-                </>
-            )}
+            <div className="confirm-time-action__ok-btn-box">
+                <button onClick={handleCloseModal}>OK</button>
+            </div>
         </div>
       )
 }

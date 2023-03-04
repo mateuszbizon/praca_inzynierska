@@ -10,14 +10,14 @@
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   width: 300px;
-  min-height: 200px;
+  min-height: 150px;
   padding: 10px 10px;
   background-color: #fff;
   color: #f46036;
   text-align: center;
   z-index: 6;
 }
-.confirm-time-action__title, .confirm-time-action__second-title {
+.confirm-time-action__title, .confirm-time-action__time {
   font-size: 20px;
   margin-bottom: 20px;
   font-weight: 600;
@@ -29,6 +29,8 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 20px;
   width: 100%;
   margin-bottom: 30px;
@@ -47,7 +49,7 @@
 .confirm-time-action__main-buttons button:hover {
   background-color: #cb380f;
 }
-.confirm-time-action__buttons {
+.confirm-time-action__ok-btn-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,21 +57,19 @@
       -ms-flex-pack: center;
           justify-content: center;
   width: 100%;
-  gap: 50px;
-  margin-bottom: 5px;
 }
-.confirm-time-action__buttons button {
-  width: 25%;
-  border: none;
+.confirm-time-action__ok-btn-box button {
   background-color: #f46036;
   color: #fff;
-  font-size: 20px;
+  font-size: 17px;
   padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
   cursor: pointer;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
-.confirm-time-action__buttons button:hover {
+.confirm-time-action__ok-btn-box button:hover {
   background-color: #cb380f;
 }
 
@@ -83,7 +83,7 @@
   .confirm-time-action {
     width: 450px;
   }
-  .confirm-time-action__title, .confirm-time-action__second-title {
+  .confirm-time-action__title, .confirm-time-action__time {
     font-size: 25px;
   }
 }
