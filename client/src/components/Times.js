@@ -15,7 +15,7 @@ function Times({ times, setCurrentTimeId, setIsShadowActive }) {
         {times.slice(0).reverse().map((t, i) => (
           <div key={i} className="timer__results-time-box">
             <div className="timer__results-time-number">{t.id}</div>
-            <div className="timer__results-time" onClick={() => handleClickTime(t.id)}>{t.time}</div>
+            <div className="timer__results-time" onClick={() => handleClickTime(t.id)}>{t.textToDisplay}</div>
           </div>
         ))}
     </>

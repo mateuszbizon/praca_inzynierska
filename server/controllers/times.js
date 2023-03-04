@@ -8,7 +8,7 @@ function getBestTime(array) {
 
     for(let i=0; i<array.length; i++) {
 
-		if(array[i].time === "DNF") continue;
+		if(array[i].isDnf === true) continue;
 
         let helpArray = array[i].time.split('.') || array[i].time.split(':');
         let joinArray = helpArray.join('');
@@ -47,11 +47,11 @@ export const addNewTime = async (req, res) => {
 		const user = await User.findById(req.userId);
 
 		if (user.times.length === 0){
-			user.times.push({ id: 1, time: time })
+			user.times.push({ id: 1, time: time, isDnf: false, isPlusTwo: false, textToDisplay: time })
 		} else {
 			const lastTime = user.times[user.times.length - 1];
 
-			user.times.push({ id: lastTime.id + 1, time: time });
+			user.times.push({ id: lastTime.id + 1, time: time, isDnf: false, isPlusTwo: false, textToDisplay: time });
 		}
 
 		const updatedTimes = await User.findByIdAndUpdate(req.userId, user, { new: true });
@@ -92,7 +92,7 @@ export const setDnf = async (req, res) => {
 
 		const currentTimeIndex = user.times.indexOf(currentTime);
 
-		user.times[currentTimeIndex] = { id: currentTime.id, time: "DNF" }
+		user.times[currentTimeIndex] = { id: currentTime.id, time: currentTime.time, isDnf: true, isPlusTwo: false, textToDisplay: "DNF" }
 
 		const updatedTimes = await User.findByIdAndUpdate(req.userId, user, { new: true });
 
