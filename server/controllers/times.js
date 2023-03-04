@@ -15,6 +15,7 @@ function getBestTime(array) {
     
         if(i === 0) {
           bestTime = parseInt(joinArray);
+		  bestTimeText = array[i].time;
         }
     
         if(parseInt(joinArray) < bestTime) {
