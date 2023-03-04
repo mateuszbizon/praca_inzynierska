@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import '../sass/css/confirmTimeAction.css';
 import { useDispatch } from 'react-redux';
-import { deleteTime } from '../actions/times';
+import { deleteTime, setDnf } from '../actions/times';
 
 function ConfirmTimeAction({ currentTimeId, setCurrentTimeId, isShadowActive, setIsShadowActive }) {
     const [changeView, setChangeView] = useState("delete-time");
@@ -12,8 +12,13 @@ function ConfirmTimeAction({ currentTimeId, setCurrentTimeId, isShadowActive, se
         setIsShadowActive(false);
     }
 
-    function handleYesAnswer() {
+    function handleDeleteYesAnswer() {
         dispatch(deleteTime(currentTimeId));
+        setIsShadowActive(false);
+    }
+
+    function handleSetDnfYesAnswer() {
+        dispatch(setDnf(currentTimeId));
         setIsShadowActive(false);
     }
 
@@ -32,7 +37,7 @@ function ConfirmTimeAction({ currentTimeId, setCurrentTimeId, isShadowActive, se
                 <>
                     <p className="confirm-time-action__second-title">Czy na pewno chcesz usunąć ten czas?</p>
                     <div className="confirm-time-action__buttons">
-                        <button onClick={handleYesAnswer}>Tak</button>
+                        <button onClick={handleDeleteYesAnswer}>Tak</button>
                         <button onClick={handleNoAnswer}>Nie</button>
                     </div>
                 </>
@@ -41,8 +46,8 @@ function ConfirmTimeAction({ currentTimeId, setCurrentTimeId, isShadowActive, se
                 <>
                     <p className="confirm-time-action__second-title">Czy na pewno chcesz ustawić DNF na ten czas?</p>
                     <div className="confirm-time-action__buttons">
-                        <button>Tak</button>
-                        <button>Nie</button>
+                        <button onClick={handleSetDnfYesAnswer}>Tak</button>
+                        <button onClick={handleNoAnswer}>Nie</button>
                     </div>
                 </>
             )}

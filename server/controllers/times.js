@@ -8,6 +8,8 @@ function getBestTime(array) {
 
     for(let i=0; i<array.length; i++) {
 
+		if(array[i].time === "DNF") continue;
+
         let helpArray = array[i].time.split('.') || array[i].time.split(':');
         let joinArray = helpArray.join('');
     
@@ -69,6 +71,28 @@ export const deleteTime = async (req, res) => {
 		const user = await User.findById(req.userId);
 
 		user.times = user.times.filter(t => t.id !== parseInt(id));
+
+		const updatedTimes = await User.findByIdAndUpdate(req.userId, user, { new: true });
+
+		const bestTime = getBestTime(updatedTimes.times);
+
+		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime })
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+export const setDnf = async (req, res) => {
+	const { id } = req.params;
+
+	try {
+		const user = await User.findById(req.userId);
+
+		const currentTime = user.times.find(t => t.id === parseInt(id));
+
+		const currentTimeIndex = user.times.indexOf(currentTime);
+
+		user.times[currentTimeIndex] = { id: currentTime.id, time: "DNF" }
 
 		const updatedTimes = await User.findByIdAndUpdate(req.userId, user, { new: true });
 
