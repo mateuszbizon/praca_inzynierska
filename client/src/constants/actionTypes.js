@@ -23,6 +23,7 @@ export const ADD_NEW_TIME = "ADD_NEW_TIME";
 export const DELETE_TIME = "DELETE_TIME";
 export const SET_DNF = "SET_DNF";
 export const SET_TIME_OK = "SET_TIME_OK";
+export const SET_PLUS_TWO = "SET_PLUS_TWO";
 
 export const START_LOADING = "START_LOADING";
 export const END_LOADING = "END_LOADING";

@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import '../sass/css/confirmTimeAction.css';
 import { useDispatch } from 'react-redux';
-import { deleteTime, setDnf, setTimeOk } from '../actions/times';
+import { deleteTime, setDnf, setTimeOk, setPlusTwo } from '../actions/times';
 
 function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsShadowActive }) {
     const [showDeleteTime, setShowDeleteTime] = useState(false);
@@ -23,7 +23,12 @@ function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsSh
     }
 
     function handleTimeOk() {
-        dispatch(setTimeOk(currentTimeId))
+        dispatch(setTimeOk(currentTimeId));
+        setIsShadowActive(false);
+    }
+
+    function handlePlusTwoTime() {
+        dispatch(setPlusTwo(currentTimeId));
         setIsShadowActive(false);
     }
 
@@ -34,7 +39,7 @@ function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsSh
             <div className="confirm-time-action__main-buttons">
                 <button onClick={() => setShowDeleteTime(true)}>X</button>
                 <button onClick={handleSetDnf}>DNF</button>
-                <button>+2</button>
+                <button onClick={handlePlusTwoTime}>+2</button>
                 <button onClick={handleTimeOk}>Czas OK</button>
             </div>
             {showDeleteTime && (

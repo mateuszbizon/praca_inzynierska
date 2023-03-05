@@ -29,3 +29,4 @@ export const addNewTime = (newTime) => API.post('/times/addNewTime', newTime);
 export const deleteTime = (id) => API.delete(`/times/deleteTime/${id}`);
 export const setDnf = (id) => API.patch(`/times/setDnf/${id}`);
 export const setTimeOk = (id) => API.patch(`/times/setTimeOk/${id}`);
+export const setPlusTwo = (id) => API.patch(`/times/setPlusTwo/${id}`);
