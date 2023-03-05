@@ -3,6 +3,8 @@ import User from "../models/user.js";
 function getBestTime(array) {
     let bestTime = 600000;
     let bestTimeText = '-';
+	let helpArray;
+	let joinArray;
 
 	if(array.length === 0) return bestTimeText;
 
@@ -10,12 +12,39 @@ function getBestTime(array) {
 
 		if(array[i].isDnf === true) continue;
 
-        let helpArray = array[i].time.split('.') || array[i].time.split(':');
-        let joinArray = helpArray.join('');
+		if(array[i].plusTwo === null) {
+			if(array[i].time.includes(":")) {
+				helpArray = array[i].time.split('.');
+				joinArray = helpArray.join('');
+	
+				helpArray = joinArray.split(':');
+				joinArray = helpArray.join('');
+			} else {
+				helpArray = array[i].time.split('.');
+				joinArray = helpArray.join('');
+			}
+		} else {
+			if(array[i].plusTwo.includes(":")) {
+				helpArray = array[i].plusTwo.split('.');
+				joinArray = helpArray.join('');
+	
+				helpArray = joinArray.split(':');
+				joinArray = helpArray.join('');
+			} else {
+				helpArray = array[i].plusTwo.split('.');
+				joinArray = helpArray.join('');
+			}
+		}
+
     
         if(parseInt(joinArray) < bestTime) {
           bestTime = parseInt(joinArray);
-          bestTimeText = array[i].time;
+		  
+		  if(array[i].plusTwo === null) {
+			bestTimeText = array[i].time;
+		  } else {
+			bestTimeText = array[i].plusTwo;
+		  }
         }
     }
 
