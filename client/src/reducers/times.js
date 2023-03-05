@@ -13,6 +13,9 @@ const times = (state = { times: [], bestTime: 0 }, action) => {
 
         case actionType.SET_DNF:
             return { ...state, times: action.data.times, bestTime: action.data.bestTime }
+
+        case actionType.SET_TIME_OK:
+            return { ...state, times: action.data.times, bestTime: action.data.bestTime }
     
         default:
             return state;

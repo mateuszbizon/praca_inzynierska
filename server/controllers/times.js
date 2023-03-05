@@ -1,7 +1,7 @@
 import User from "../models/user.js";
 
 function getBestTime(array) {
-    let bestTime = 0;
+    let bestTime = 600000;
     let bestTimeText = '-';
 
 	if(array.length === 0) return bestTimeText;
@@ -12,11 +12,6 @@ function getBestTime(array) {
 
         let helpArray = array[i].time.split('.') || array[i].time.split(':');
         let joinArray = helpArray.join('');
-    
-        if(i === 0) {
-          bestTime = parseInt(joinArray);
-		  bestTimeText = array[i].time;
-        }
     
         if(parseInt(joinArray) < bestTime) {
           bestTime = parseInt(joinArray);
@@ -94,6 +89,28 @@ export const setDnf = async (req, res) => {
 		const currentTimeIndex = user.times.indexOf(currentTime);
 
 		user.times[currentTimeIndex] = { id: currentTime.id, time: currentTime.time, isDnf: true, isPlusTwo: false, textToDisplay: "DNF" }
+
+		const updatedTimes = await User.findByIdAndUpdate(req.userId, user, { new: true });
+
+		const bestTime = getBestTime(updatedTimes.times);
+
+		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime })
+	} catch (error) {
+		console.log(error)
+	}
+}
+
+export const setTimeOk = async (req, res) => {
+	const { id } = req.params;
+
+	try {
+		const user = await User.findById(req.userId);
+
+		const currentTime = user.times.find(t => t.id === parseInt(id));
+
+		const currentTimeIndex = user.times.indexOf(currentTime);
+
+		user.times[currentTimeIndex] = { id: currentTime.id, time: currentTime.time, isDnf: false, isPlusTwo: false, textToDisplay: currentTime.time }
 
 		const updatedTimes = await User.findByIdAndUpdate(req.userId, user, { new: true });
 
