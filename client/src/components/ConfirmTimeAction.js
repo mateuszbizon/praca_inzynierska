@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { deleteTime, setDnf } from '../actions/times';
 
 function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsShadowActive }) {
+    const [showDeleteTime, setShowDeleteTime] = useState(false);
     const dispatch = useDispatch();
 
     function handleCloseModal() {
@@ -13,6 +14,7 @@ function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsSh
     function handleDelete() {
         dispatch(deleteTime(currentTimeId));
         setIsShadowActive(false);
+        setShowDeleteTime(false)
     }
 
     function handleSetDnf() {
@@ -25,13 +27,22 @@ function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsSh
             <p className="confirm-time-action__title">Czas nr. {currentTimeId}</p>
             <p className="confirm-time-action__time">{currentTime}</p>
             <div className="confirm-time-action__main-buttons">
-                <button onClick={handleDelete}>X</button>
+                <button onClick={() => setShowDeleteTime(true)}>X</button>
                 <button onClick={handleSetDnf}>DNF</button>
                 <button>+2</button>
                 <button>Czas OK</button>
             </div>
+            {showDeleteTime && (
+                <>
+                    <p className="confirm-time-action__delete-title">Czy na pewno chcesz usunąć czas?</p>
+                    <div className="confirm-time-action__delete-buttons">
+                        <button onClick={handleDelete}>Tak</button>
+                        <button onClick={() => setShowDeleteTime(false)}>Nie</button>
+                    </div>
+                </>
+            )}
             <div className="confirm-time-action__ok-btn-box">
-                <button onClick={handleCloseModal}>OK</button>
+                <button onClick={handleCloseModal}>Zamknij</button>
             </div>
         </div>
       )

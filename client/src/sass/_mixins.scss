@@ -104,3 +104,14 @@
 	color: #ff0000;
 	font-weight: bold;
 }
+
+@mixin button-styling {
+	background-color: $main-color;
+	color: #fff;
+	font-size: 17px;
+	padding: 5px 10px;
+	border-radius: 8px;
+	border: none;
+	cursor: pointer;
+	transition: background-color .3s;
+}
