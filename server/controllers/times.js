@@ -143,6 +143,22 @@ export const deleteTime = async (req, res) => {
 	}
 }
 
+export const deleteAllTimes = async (req, res) => {
+	try {
+		const user = await User.findById(req.userId);
+
+		user.times = [];
+
+		const updatedTimes = await User.findByIdAndUpdate(req.userId, user, { new: true });
+
+		const bestTime = getBestTime(updatedTimes.times);
+
+		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime })
+	} catch (error) {
+		console.log(error)
+	}
+}
+
 export const setDnf = async (req, res) => {
 	const { id } = req.params;
 

@@ -21,6 +21,7 @@ export const EDIT_ACCOUNT_SUCCESS = "EDIT_ACCOUNT_SUCCESS";
 export const GET_ALL_TIMES = 'GET_ALL_TIMES';
 export const ADD_NEW_TIME = "ADD_NEW_TIME";
 export const DELETE_TIME = "DELETE_TIME";
+export const DELETE_ALL_TIMES = "DELETE_ALL_TIMES";
 export const SET_DNF = "SET_DNF";
 export const SET_TIME_OK = "SET_TIME_OK";
 export const SET_PLUS_TWO = "SET_PLUS_TWO";

@@ -10,6 +10,7 @@ function Timer() {
     const [isShadowActive, setIsShadowActive] = useState(false);
     const [currentTimeId, setCurrentTimeId] = useState(null);
     const [currentTime, setCurrentTime] = useState(null);
+    const [showDeleteAllTimes, setShowDeleteAllTimes] = useState(false)
     let interval;
     let time = 0;
     let ms = 0;
@@ -100,9 +101,14 @@ function Timer() {
         dispatch(addNewTime({ time: newTime }));
     }
 
+    function handleShowConfirmModal() {
+        setShowDeleteAllTimes(true);
+        setIsShadowActive(true);
+    }
+
   return (
     <>
-        <ConfirmTimeAction currentTimeId={currentTimeId} currentTime={currentTime} isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} />
+        <ConfirmTimeAction currentTimeId={currentTimeId} currentTime={currentTime} isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} showDeleteAllTimes={showDeleteAllTimes} />
         <section className='timer'>
             <div className={isShadowActive ? 'timer__shadow-active' : 'timer__shadow'} onClick={() => setIsShadowActive(false)}></div>
             <div className={!isReadyForTiming ? "timer__container" : "timer__container ready-for-timing"}>
@@ -114,13 +120,16 @@ function Timer() {
             </div>
             <div className="timer__results">
                 <div className="timer__results-top">         
+                    <button onClick={handleShowConfirmModal}>Usuń</button>
+                    <button>Zapisz</button>
+                    <button>Historia</button>
                     <p className="timer__results-best-time">
                         Najlepszy czas:
                         <span> {bestTime}</span>
                     </p>
                 </div>
                 <div className="timer__results-bottom">
-                    <Times times={times} setCurrentTimeId={setCurrentTimeId} setCurrentTime={setCurrentTime} setIsShadowActive={setIsShadowActive}/>
+                    <Times times={times} setCurrentTimeId={setCurrentTimeId} setCurrentTime={setCurrentTime} setIsShadowActive={setIsShadowActive} setShowDeleteAllTimes={setShowDeleteAllTimes}/>
                 </div>
             </div>
         </section>

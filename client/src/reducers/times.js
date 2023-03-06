@@ -19,6 +19,9 @@ const times = (state = { times: [], bestTime: 0 }, action) => {
 
         case actionType.SET_PLUS_TWO:
             return { ...state, times: action.data.times, bestTime: action.data.bestTime }
+
+        case actionType.DELETE_ALL_TIMES:
+            return { ...state, times: action.data.times, bestTime: action.data.bestTime }
     
         default:
             return state;
