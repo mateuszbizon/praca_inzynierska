@@ -10,6 +10,7 @@ import Search from "./routes/Search";
 import Navbar from "./components/Navbar";
 import EditAccount from "./routes/EditAccount";
 import Timer from "./routes/Timer";
+import TimesHistory from "./routes/TimesHistory";
 import { createContext, useState } from "react";
 import './app.css';
 
@@ -36,6 +37,7 @@ function App() {
 					<Route path='/' element={<HomePage />} />
 					<Route path='/login' element={<LoginPage />} />
 					<Route path='/register' element={<RegisterPage />} />
+					<Route path='/times-history' element={<TimesHistory />} />
 				</Routes>
 			</Router>
 		</div>

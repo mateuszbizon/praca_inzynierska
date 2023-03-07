@@ -1,0 +1,113 @@
+.times-history {
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.times-history__accordion {
+  width: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+  margin-top: 70px;
+  overflow-x: auto;
+}
+.times-history__accordion-box {
+  width: 100%;
+}
+.times-history__accordion-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 50px;
+  border: 1px solid #f46036;
+  padding: 0 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
+}
+.times-history__accordion-header:hover {
+  background-color: #f46036;
+  color: #fff;
+}
+.times-history__accordion-body {
+  width: 100%;
+}
+.times-history__best-time {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 10px;
+}
+.times-history__time-box {
+  min-height: 60px;
+  min-width: 60px;
+}
+.times-history__time-number, .times-history__time {
+  min-width: 100%;
+  height: 50%;
+  border: 1px solid #000;
+  text-align: center;
+  padding: 3px 0;
+}
+.times-history__times {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@media (min-width: 768px) {
+  .times-history__accordion {
+    width: 75%;
+  }
+  .times-history__accordion-header {
+    height: 70px;
+    font-size: 20px;
+  }
+  .times-history__best-time {
+    font-size: 20px;
+  }
+  .times-history__time-box {
+    width: 80px;
+    height: 80px;
+  }
+  .times-history__time-number, .times-history__time {
+    font-size: 20px;
+    padding: 8px;
+  }
+  .times-history__times {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+  }
+}/*# sourceMappingURL=times-history.css.map */
