@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Times({ times, setCurrentTimeId, setCurrentTime, setIsShadowActive, setShowDeleteAllTimes }) {
+function Times({ times, setCurrentTimeId, setCurrentTime, setIsShadowActive, setTimeAction }) {
   function handleClickTime(id, time) {
     setCurrentTimeId(id);
     setCurrentTime(time)
     setIsShadowActive(true);
-    setShowDeleteAllTimes(false);
+    setTimeAction("choose-time-action");
   }
 
   return (

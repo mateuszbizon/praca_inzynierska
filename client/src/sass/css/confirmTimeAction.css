@@ -96,6 +96,75 @@
 .confirm-time-action__delete-buttons button:hover {
   background-color: #cb380f;
 }
+.confirm-time-action__form-heading {
+  text-align: center;
+  color: #f46036;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+.confirm-time-action__form-box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.confirm-time-action__form-box input {
+  width: 100%;
+  border: 1px solid #f46036;
+  outline: none;
+  padding: 15px 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.confirm-time-action__form-box input:focus + label,
+.confirm-time-action__form-box input:valid + label {
+  -webkit-transform: translate(-5px, -25px);
+          transform: translate(-5px, -25px);
+  color: #f46036;
+  background-color: #fff;
+}
+.confirm-time-action__form-box label {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #000;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.confirm-time-action__text-error {
+  color: #ff0000;
+  font-weight: bold;
+  visibility: hidden;
+  margin-left: 20px;
+  text-align: left;
+}
+.confirm-time-action__btn-box {
+  width: 100%;
+}
+.confirm-time-action__btn-box button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+  border: none;
+  background-color: #f46036;
+  color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 17px;
+}
+.confirm-time-action__btn-box button:hover {
+  background-color: #cb380f;
+}
 
 .confirm-time-action.active {
   display: -webkit-box;
@@ -109,6 +178,9 @@
   }
   .confirm-time-action__title, .confirm-time-action__time, .confirm-time-action__delete-title {
     font-size: 25px;
+  }
+  .confirm-time-action__btn-box button {
+    font-size: 20px;
   }
 }
 #dark .confirm-time-action {
