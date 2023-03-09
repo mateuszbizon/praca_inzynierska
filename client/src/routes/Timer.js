@@ -4,13 +4,15 @@ import Times from '../components/Times';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllTimes, addNewTime } from '../actions/times';
 import ConfirmTimeAction from '../components/ConfirmTimeAction';
+import { useNavigate } from 'react-router-dom';
 
 function Timer() {
     const [isReadyForTiming, setIsReadyForTiming] = useState(false);
     const [isShadowActive, setIsShadowActive] = useState(false);
     const [currentTimeId, setCurrentTimeId] = useState(null);
     const [currentTime, setCurrentTime] = useState(null);
-    const [timeAction, setTimeAction] = useState(null)
+    const [timeAction, setTimeAction] = useState(null);
+    const navigate = useNavigate();
     let interval;
     let time = 0;
     let ms = 0;
@@ -122,7 +124,7 @@ function Timer() {
                 <div className="timer__results-top">         
                     <button onClick={() => handleShowConfirmModal("delete-all-times")}>Usuń</button>
                     <button onClick={() => handleShowConfirmModal("save-session")}>Zapisz</button>
-                    <button>Historia</button>
+                    <button onClick={() => navigate('/times-history')}>Historia</button>
                     <p className="timer__results-best-time">
                         Najlepszy czas:
                         <span> {bestTime}</span>

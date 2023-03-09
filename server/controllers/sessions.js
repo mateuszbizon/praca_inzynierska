@@ -28,7 +28,7 @@ export const addNewSession = async (req, res) => {
 
         const updatedSessions = await User.findByIdAndUpdate(req.userId, user, { new: true });
 
-        res.status(200).json(updatedSessions);
+        res.status(200).json(updatedSessions.sessions);
     } catch (error) {
         console.log(error)
     }
