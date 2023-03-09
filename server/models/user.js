@@ -8,7 +8,8 @@ const userSchema = mongoose.Schema({
 	selectedFile: String,
 	posts: { type: Number, default: 0},
 	id: { type: String },
-	times: { type: [Object], default: [] }
+	times: { type: [Object], default: [] },
+	sessions: { type: [Object], default: [] }
 });
 
 export default mongoose.model("User", userSchema);

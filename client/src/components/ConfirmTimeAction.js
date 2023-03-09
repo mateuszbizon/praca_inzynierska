@@ -2,8 +2,9 @@ import React, { useState, useRef } from 'react';
 import '../sass/css/confirmTimeAction.css';
 import { useDispatch } from 'react-redux';
 import { deleteTime, setDnf, setTimeOk, setPlusTwo, deleteAllTimes } from '../actions/times';
+import { addNewSession } from '../actions/sessions';
 
-function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsShadowActive, timeAction }) {
+function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsShadowActive, timeAction, times, bestTime }) {
     const [showDeleteTime, setShowDeleteTime] = useState(false);
     const [nameSession, setNameSession] = useState('');
     const nameSessionError = useRef();
@@ -63,6 +64,7 @@ function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsSh
             return false;
         }
 
+        dispatch(addNewSession({ nameSession, times, bestTime }))
         return true;
     }
 

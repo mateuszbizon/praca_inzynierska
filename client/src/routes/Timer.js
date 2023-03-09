@@ -108,7 +108,7 @@ function Timer() {
 
   return (
     <>
-        <ConfirmTimeAction currentTimeId={currentTimeId} currentTime={currentTime} isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} timeAction={timeAction} />
+        <ConfirmTimeAction times={times} bestTime={bestTime} currentTimeId={currentTimeId} currentTime={currentTime} isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} timeAction={timeAction} />
         <section className='timer'>
             <div className={isShadowActive ? 'timer__shadow-active' : 'timer__shadow'} onClick={() => setIsShadowActive(false)}></div>
             <div className={!isReadyForTiming ? "timer__container" : "timer__container ready-for-timing"}>

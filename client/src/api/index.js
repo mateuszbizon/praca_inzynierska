@@ -31,3 +31,6 @@ export const deleteAllTimes = () => API.delete(`/times/deleteAllTimes`);
 export const setDnf = (id) => API.patch(`/times/setDnf/${id}`);
 export const setTimeOk = (id) => API.patch(`/times/setTimeOk/${id}`);
 export const setPlusTwo = (id) => API.patch(`/times/setPlusTwo/${id}`);
+
+export const getAllSessions = () => API.get('/sessions/getAllSessions');
+export const addNewSession = (session) => API.post('/sessions/addNewSession', session);

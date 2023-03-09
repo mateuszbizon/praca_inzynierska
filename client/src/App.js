@@ -33,11 +33,11 @@ function App() {
 						<Route path='/search' element={<Search />} />
 						<Route path='/edit-account' element={<EditAccount />} />
 						<Route path='/timer' element={<Timer />} />
+						<Route path='/times-history' element={<TimesHistory />} />
 					</Route>
 					<Route path='/' element={<HomePage />} />
 					<Route path='/login' element={<LoginPage />} />
 					<Route path='/register' element={<RegisterPage />} />
-					<Route path='/times-history' element={<TimesHistory />} />
 				</Routes>
 			</Router>
 		</div>
