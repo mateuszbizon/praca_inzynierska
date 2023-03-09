@@ -5,5 +5,6 @@ import auth from './auth';
 import users from './users';
 import times from './times';
 import sessions from './sessions';
+import loaders from './loaders';
 
-export const reducers = combineReducers({ posts, auth, users, times, sessions });
+export const reducers = combineReducers({ posts, auth, users, times, sessions, loaders });

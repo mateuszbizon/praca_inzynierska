@@ -1,4 +1,4 @@
-import { GET_ALL_SESSIONS, ADD_NEW_SESSION } from '../constants/actionTypes';
+import { GET_ALL_SESSIONS, ADD_NEW_SESSION, START_LOADING, END_LOADING } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const getAllSessions = () => async (dispatch) => {
@@ -13,9 +13,13 @@ export const getAllSessions = () => async (dispatch) => {
 
 export const addNewSession = (session) => async (dispatch) => {
     try {
+      dispatch({ type: START_LOADING });
+
       const { data } = await api.addNewSession(session);
   
       dispatch({ type: ADD_NEW_SESSION, data: data})
+
+      dispatch({ type: END_LOADING });
     } catch (error) {
       console.log(error);
     }

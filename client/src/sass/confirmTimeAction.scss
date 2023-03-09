@@ -113,6 +113,16 @@
             }
         }
     }
+
+    &__submit-message {
+        @include submit-message-styling;
+        font-size: 22px;
+        margin-top: 10px;
+    }
+
+    &__submit-message.success {
+        color: #008000;
+    }
 }
 
 .confirm-time-action.active{

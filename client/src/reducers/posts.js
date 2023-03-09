@@ -1,13 +1,7 @@
-import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL_BY_USERNAME, FETCH_POST_BY_ID, START_LOADING, END_LOADING, COMMENT } from '../constants/actionTypes';
+import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL_BY_USERNAME, FETCH_POST_BY_ID, COMMENT } from '../constants/actionTypes';
 
-export default (state = { isLoading: true, posts: [] }, action) => {
+export default (state = { posts: [] }, action) => {
   switch (action.type) {
-    case START_LOADING:
-      return { ...state, isLoading: true };
-
-    case END_LOADING:
-      return { ...state, isLoading: false };
-
     case FETCH_ALL_BY_USERNAME:
       return { ...state, posts: action.payload };
 

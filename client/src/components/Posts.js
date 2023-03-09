@@ -6,7 +6,8 @@ import { CircularProgress } from '@mui/material';
 import DeleteConfirm from './DeleteConfirm';
 
 function posts({currentId, setCurrentId}) {
-  const { posts, isLoading } = useSelector((state) => state.posts);
+  const { posts } = useSelector((state) => state.posts);
+  const { isLoading } = useSelector(state => state.loaders)
   const [currentPostId, setCurrentPostId] = useState(null);
 
   if (!posts.length && !isLoading) return 'Brak postów';

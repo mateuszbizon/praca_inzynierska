@@ -16,7 +16,8 @@ function PostDetails() {
     const navigate = useNavigate();
     const [currentId, setCurrentId] = useState(null);
     const user = JSON.parse(localStorage.getItem('user'));
-    const { posts, isLoading } = useSelector((state) => state.posts);
+    const { posts } = useSelector((state) => state.posts);
+    const { isLoading } = useSelector(state => state.loaders)
     const [comment, setComment] = useState({ commentCreator: user.result.username, value: ""});
 
     useEffect(() => {

@@ -191,7 +191,7 @@ body{
 	background-color: $secondary-color;
 	min-width: 200px;
 	padding: 10px 20px;
-	z-index: 0;
+	z-index: -5;
 	transition: opacity .3s;
 
 	&__item {

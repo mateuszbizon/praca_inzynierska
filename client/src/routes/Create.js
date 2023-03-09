@@ -10,7 +10,7 @@ import { CircularProgress } from "@mui/material";
 function Create() {
     const [form, setForm] = useState({ message: '', selectedFile: '' });
     const dispatch = useDispatch();
-    const { isLoading } = useSelector(state => state.posts)
+    const { isLoading } = useSelector(state => state.loaders)
     const navigate = useNavigate();
     const messageError = useRef();
     const fileError = useRef();

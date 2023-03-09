@@ -256,7 +256,7 @@ body {
   background-color: #414770;
   min-width: 200px;
   padding: 10px 20px;
-  z-index: 0;
+  z-index: -5;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
 }

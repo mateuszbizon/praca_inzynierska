@@ -1,14 +1,17 @@
 import React, { useState, useRef } from 'react';
 import '../sass/css/confirmTimeAction.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { deleteTime, setDnf, setTimeOk, setPlusTwo, deleteAllTimes } from '../actions/times';
 import { addNewSession } from '../actions/sessions';
+import { CircularProgress } from "@mui/material";
 
 function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsShadowActive, timeAction, times, bestTime }) {
     const [showDeleteTime, setShowDeleteTime] = useState(false);
     const [nameSession, setNameSession] = useState('');
     const nameSessionError = useRef();
     const dispatch = useDispatch();
+    const { isLoading } = useSelector(state => state.loaders)
+    const { message, success } = useSelector(state => state.sessions)
 
     function handleCloseModal() {
         setIsShadowActive(false);
@@ -65,6 +68,7 @@ function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsSh
         }
 
         dispatch(addNewSession({ nameSession, times, bestTime }))
+        setNameSession("")
         return true;
     }
 
@@ -108,13 +112,14 @@ function ConfirmTimeAction({ currentTimeId, currentTime, isShadowActive, setIsSh
                     <div className="confirm-time-action__form-heading">Zapisz czasy</div>  
                     <form onSubmit={handleSubmit} noValidate>
                         <div className="confirm-time-action__form-box">
-                            <input id='session-name' type="text" onChange={(e) => setNameSession(e.target.value)} required/>
+                            <input id='session-name' type="text" value={nameSession} onChange={(e) => setNameSession(e.target.value)} required/>
                             <label htmlFor="session-name">Nazwa sesji</label>
                             <p className="confirm-time-action__text-error" ref={nameSessionError} >error</p>
                         </div>  
                         <div className="confirm-time-action__btn-box">
-                            <button type="submit">Zapisz</button>               
+                            <button type="submit">Zapisz {isLoading && <CircularProgress size="25px" style={{color: "#fff"}} />}</button>               
                         </div> 
+                        <div className={success ? "confirm-time-action__submit-message success" : "confirm-time-action__submit-message"}>{message}</div>
                     </form>                
                 </>
             )}
