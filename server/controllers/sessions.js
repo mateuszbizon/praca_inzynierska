@@ -1,5 +1,23 @@
 import User from "../models/user.js";
 
+function getDate() {
+    let newDate = new Date();
+    let year = newDate.getFullYear();
+    let month = newDate.getMonth();
+    let day = newDate.getDay();
+
+    if(month < 10) {
+        month = `0${month}`;
+    }
+
+    if(day < 10) {
+        day = `0${day}`;
+    }
+
+    newDate = `${year}-${month}-${day}`;
+    return newDate;
+}
+
 export const getAllSessions = async (req, res) => {
     try {
         const user = await User.findById(req.userId);
@@ -15,15 +33,17 @@ export const getAllSessions = async (req, res) => {
 export const addNewSession = async (req, res) => {
     const { nameSession, times, bestTime } = req.body;
 
+    const sessionDate = getDate();
+
     try {
         const user = await User.findById(req.userId);
 
         if (user.sessions.length === 0){
-			user.sessions.push({ id: 1, date: new Date(), name: nameSession, bestTime: bestTime, times: times })
+			user.sessions.push({ id: 1, date: sessionDate, name: nameSession, bestTime: bestTime, times: times })
 		} else {
 			const lastTime = user.sessions[user.sessions.length - 1];
 
-			user.sessions.push({ id: lastTime.id + 1, date: new Date(), name: nameSession, bestTime: bestTime, times: times });
+			user.sessions.push({ id: lastTime.id + 1, date: sessionDate, name: nameSession, bestTime: bestTime, times: times });
 		}
 
         const updatedSessions = await User.findByIdAndUpdate(req.userId, user, { new: true });

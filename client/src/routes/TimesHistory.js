@@ -9,14 +9,8 @@ function TimesHistory() {
   const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
   const { sessions } = useSelector(state => state.sessions);
-  console.log(sessions)
-  // const data = [
-  //   { name: "Sesja 1", date: "07.03.2023" },
-  //   { name: "Sesja 2", date: "07.03.2023" }
-  // ];
 
   useEffect(() => {
-    console.log('tak')
     dispatch(getAllSessions());
   }, [])
 
@@ -33,7 +27,7 @@ function TimesHistory() {
       <div className="times-history__accordion">
         {sessions.map((item, index) => (
           <div className="times-history__accordion-box" key={index}>
-            <div className="times-history__accordion-header" onClick={() => toggle(index)}>{item.name} Utworzono: {item.date} {clicked === index ? <RemoveIcon fontSize='large' /> : <AddIcon fontSize='large'/>}</div>
+            <div className="times-history__accordion-header" onClick={() => toggle(index)}>{item.name}, utworzono: {item.date} {clicked === index ? <RemoveIcon fontSize='large' /> : <AddIcon fontSize='large'/>}</div>
             {clicked === index ? (
               <div className="times-history__accordion-body">
                 <div className="times-history__best-time">
