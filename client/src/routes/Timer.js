@@ -33,6 +33,7 @@ function Timer() {
     }, [])
 
     function handleKeyDown(e) {
+        if(e.keyCode !== 32) return;
         if(!isTiming){
             if (e.repeat) return;
             interval = setInterval(() => {
