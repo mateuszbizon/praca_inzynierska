@@ -1,16 +1,16 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import LoginPage from "./routes/login";
-import RegisterPage from "./routes/Register";
-import HomePage from "./routes/Home";
-import CreatePage from "./routes/Create";
-import ProfilesPage from "./routes/Profiles";
+import LoginPage from "./routes/Login/login";
+import RegisterPage from "./routes/Register/Register";
+import HomePage from "./routes/Home/Home";
+import CreatePage from "./routes/Create/Create";
+import ProfilesPage from "./routes/Profiles/Profiles";
 import AuthRoutes from "./utils/AuthRoutes";
-import PostDetails from "./routes/PostDetails";
-import Search from "./routes/Search";
-import Navbar from "./components/Navbar";
-import EditAccount from "./routes/EditAccount";
-import Timer from "./routes/Timer";
-import TimesHistory from "./routes/TimesHistory";
+import PostDetails from "./routes/PostDetails/PostDetails";
+import Search from "./routes/Search/Search";
+import Navbar from "./components/Navbar/Navbar";
+import EditAccount from "./routes/EditAccount/EditAccount";
+import Timer from "./routes/Timer/Timer";
+import TimesHistory from "./routes/TimesHistory/TimesHistory";
 import "./app.css";
 
 function App() {

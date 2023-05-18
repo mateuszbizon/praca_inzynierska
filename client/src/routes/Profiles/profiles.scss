@@ -1,0 +1,19 @@
+@import "../../sass/colors";
+@import "../../sass/mixins";
+
+.profiles{
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // margin-bottom: 30px;
+
+  &__shadow {
+		display: none;
+	}
+
+	&__shadow-active {
+		@include shadow;
+	}
+}

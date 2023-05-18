@@ -1,0 +1,25 @@
+.likes {
+    &__icons {
+		cursor: pointer;
+	}
+
+    &__text{
+		margin-left: 5px;
+	}
+
+    &__likes-count {
+		display: flex;
+		align-items: center;
+		padding-left: 10px;
+		font-weight: bold;
+		margin-left: 20px;
+	}
+}
+
+@media (min-width: 768px) {
+    .likes {
+        &__likes-count{
+			height: 10%;
+		}
+    }
+}

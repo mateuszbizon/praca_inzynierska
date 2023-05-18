@@ -1,0 +1,84 @@
+@import "../../sass/colors";
+@import "../../sass/mixins";
+
+.main-data {
+    &__change-img {
+		color: $main-color;
+		margin-bottom: 15px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+
+    &__img-box {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		margin-bottom: 20px;
+
+		img {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			object-fit: cover;
+            margin-right: 10px;
+		}
+	}
+
+	&__box {
+		position: relative;
+		width: 100%;
+		margin-bottom: 20px;
+
+		input {
+			@include input-styling;
+		}
+
+		input:focus + label,
+		input:valid + label {
+			@include label-animation;
+		}
+
+		label {
+			@include label-styling;
+		}
+	}
+
+	&__text-error {
+		@include text-error-styling;
+	}
+
+	&__submit-btn {
+		width: 100%;
+		margin-bottom: 10px;
+
+		button {
+			@include button;
+			padding: 15px 20px;
+			font-size: 20px;
+
+			&:hover {
+				background-color: $main-color-hover;
+			}
+		}
+	}
+
+	&__submit-message {
+		@include submit-message-styling;
+		font-size: 22px;
+	}
+
+	&__submit-message.success {
+		color: #008000;
+	}
+}
+
+@media (min-width: 768px){
+	.main-data {
+		&__img-box {
+			img {
+				width: 80px;
+				height: 80px;
+			}
+		}
+	}
+}

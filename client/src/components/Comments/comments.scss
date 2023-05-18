@@ -1,0 +1,19 @@
+@import "../../sass/colors";
+@import "../../sass/mixins";
+
+.comments {
+    &__link{
+        text-decoration: none;
+        color: #000;
+        transition: color .3s;
+        cursor: pointer;	
+    
+        &:hover{
+            color: $main-color;
+        }
+    }
+    
+    &__comment{
+        margin-bottom: 10px;
+    }
+}

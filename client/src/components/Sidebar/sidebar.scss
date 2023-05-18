@@ -1,0 +1,64 @@
+@import "../../sass/colors";
+@import "../../sass/mixins";
+
+.sidebar {
+	position: fixed;
+	top: 60px;
+	left: -100%;
+	width: 100%;
+    overflow-y: auto;
+	height: calc(100vh - 60px);
+	background-color: $secondary-color;
+	padding: 10px 0;
+    transition: left .3s;
+	z-index: 10;
+
+	&__close-box {
+		display: flex;
+		justify-content: flex-end;
+		width: 100%;
+		color: #fff;
+		padding-right: 10px;
+	}
+
+	&__close-icon {
+		cursor: pointer;
+	}
+
+    &__row{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+	&__items {
+        position: relative;
+		display: flex;
+		align-items: center;
+		gap: 20px;
+        width: 220px;
+		color: #fff;
+        border-radius: 8px;
+		font-size: 25px;
+        cursor: pointer;
+
+		&::after{
+		    @include link-style;
+		}
+
+		&:hover::after{
+		    @include link-style-hover;
+		}
+	}
+}
+
+.sidebar.active{
+    left: 0;
+}
+
+@media (min-width: 576px) {
+    .sidebar{
+        width: 250px;
+    }
+}

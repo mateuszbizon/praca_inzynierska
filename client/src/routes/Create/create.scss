@@ -1,0 +1,72 @@
+@import "../../sass/colors";
+@import "../../sass/mixins";
+
+.create {
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&__form {
+		width: 400px;
+		min-height: 300px;
+		background-color: #fff;
+		border: 1px solid #909090;
+		border-radius: 8px;
+		box-shadow: 10px 10px 10px #909090;
+		padding: 20px;
+        margin-top: 70px;
+	}
+
+    &__form-box{
+		position: relative;
+        margin-bottom: 20px;
+
+		textarea {
+			@include input-styling;
+			max-width: 100%;
+			min-width: 100%;
+			min-height: 150px;
+			max-height: 150px;
+			font-size: 15px;
+		}
+
+		textarea:focus + label,
+		textarea:valid + label {
+			@include label-animation;
+		}
+
+		label {
+			@include label-styling;
+		}
+    }
+
+	&__heading {
+		text-align: center;
+		color: $main-color;
+		margin-bottom: 30px;
+		font-size: 30px;
+	}
+
+    &__btn-box{
+        display: flex;
+		justify-content: center;
+		margin-bottom: 15px;
+        margin-top: 15px;
+    }
+
+    &__submit {
+		@include button;
+		padding: 15px 20px;
+		font-size: 20px;
+
+		&:hover {
+			background-color: $main-color-hover;
+		}
+	}
+
+    &__text-error{
+        @include text-error-styling;
+    }
+}

@@ -1,0 +1,13 @@
+.comments__link {
+  text-decoration: none;
+  color: #000;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+.comments__link:hover {
+  color: #f46036;
+}
+.comments__comment {
+  margin-bottom: 10px;
+}/*# sourceMappingURL=comments.css.map */

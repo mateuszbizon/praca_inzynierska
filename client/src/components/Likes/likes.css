@@ -1,0 +1,23 @@
+.likes__icons {
+  cursor: pointer;
+}
+.likes__text {
+  margin-left: 5px;
+}
+.likes__likes-count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10px;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+@media (min-width: 768px) {
+  .likes__likes-count {
+    height: 10%;
+  }
+}/*# sourceMappingURL=likes.css.map */
