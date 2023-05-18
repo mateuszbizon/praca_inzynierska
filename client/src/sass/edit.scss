@@ -90,28 +90,3 @@
         min-width: 400px;
     }
 }
-
-#dark {
-    .edit {
-        background-color: $dark-mode-color;
-
-        &__form-box {
-            textarea {
-                @include input-styling-dark;
-            }
-
-            textarea:focus + label,
-		    textarea:valid + label {
-                @include label-animation-dark;
-            }
-
-            label {
-                @include label-styling-dark;
-            }
-        }
-
-        input:is(input[type="file"]) {
-            color: #fff;
-        }
-    }
-}

@@ -186,28 +186,4 @@
   .register__text-error {
     font-size: 15px;
   }
-}
-#dark .register {
-  background-color: #372248;
-}
-#dark .register__form {
-  background-color: #372248;
-  border: 1px solid #f46036;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-#dark .register__box input {
-  background-color: #372248;
-  color: #fff;
-}
-#dark .register__box input:focus + label,
-#dark .register__box input:valid + label {
-  background-color: #372248;
-  color: #f46036;
-}
-#dark .register__box label {
-  color: #fff;
-}
-#dark .register__info, #dark .register .show-password, #dark .register .hide-password {
-  color: #fff;
 }/*# sourceMappingURL=register.css.map */

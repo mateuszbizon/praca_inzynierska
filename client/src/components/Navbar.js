@@ -44,12 +44,6 @@ function Navbar({theme, setTheme}) {
     }
   }
 
-  function toggleTheme() {
-    setTheme(!theme)
-	  const darkMode = { value: theme }
-	  localStorage.setItem("darkMode", JSON.stringify(darkMode));
-  }
-
   const navbarItems = [
     {text: "Strona główna", path: "/"},
     {text: "Utwórz", path: "/create"},
@@ -93,8 +87,8 @@ function Navbar({theme, setTheme}) {
             </ul>
           </div>
         </nav>
-        <Sidebar sidebar={sidebar} setSidebar={setSidebar} theme={theme} setTheme={setTheme}/>
-        <MoreOptions moreOptions={moreOptions} setMoreOptions={setMoreOptions} theme={theme} setTheme={setTheme} />
+        <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
+        <MoreOptions moreOptions={moreOptions} setMoreOptions={setMoreOptions} />
       </>
       ) : (
         <>
@@ -110,11 +104,10 @@ function Navbar({theme, setTheme}) {
                 {navbarItemsNotUser.map((item,  index) => (
                   <li key={index} className="navbar__item"><NavLink to={item.path} className='navbar__link'>{item.text}</NavLink></li>
                 ))}
-                <li className="navbar__item"><a className="navbar__link" onClick={toggleTheme}>Zmień wygląd</a></li>
               </ul>
             </div>
           </nav>
-          <Sidebar sidebar={sidebar} setSidebar={setSidebar} theme={theme} setTheme={setTheme}/>
+          <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
         </>
       )}
     </>

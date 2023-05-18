@@ -197,43 +197,4 @@
   .post-details__comment-input {
     height: 15%;
   }
-}
-#dark .post-details {
-  background-color: #372248;
-}
-#dark .post-details__container {
-  border: 1px solid #f46036;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-#dark .post-details__header {
-  background-color: #372248;
-}
-#dark .post-details__link {
-  color: #fff;
-}
-#dark .post-details__link:hover {
-  color: #f46036;
-}
-#dark .post-details__date, #dark .post-details__msg, #dark .post-details__icons, #dark .post-details__text, #dark .post-details__comment-text, #dark .post-details__likes-count {
-  color: #fff;
-}
-#dark .post-details__comment-input textarea {
-  background-color: #372248;
-  color: #fff;
-}
-#dark .post-details__comment-input textarea::-webkit-input-placeholder {
-  color: #fff;
-}
-#dark .post-details__comment-input textarea::-moz-placeholder {
-  color: #fff;
-}
-#dark .post-details__comment-input textarea:-ms-input-placeholder {
-  color: #fff;
-}
-#dark .post-details__comment-input textarea::-ms-input-placeholder {
-  color: #fff;
-}
-#dark .post-details__comment-input textarea::placeholder {
-  color: #fff;
 }/*# sourceMappingURL=post-details.css.map */

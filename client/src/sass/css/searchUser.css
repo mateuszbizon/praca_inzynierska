@@ -94,13 +94,4 @@
     margin-right: 10px;
     font-size: 25px;
   }
-}
-#dark .search-user:hover {
-  background-color: #603782;
-}
-#dark .search-user:hover .search-user__info {
-  color: #f46036;
-}
-#dark .search-user__info {
-  color: #fff;
 }/*# sourceMappingURL=searchUser.css.map */

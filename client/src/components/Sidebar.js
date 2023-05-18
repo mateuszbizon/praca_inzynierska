@@ -11,7 +11,7 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 import CloseIcon from '@mui/icons-material/Close';
 import "../sass/css/navbar.css";
 
-function Sidebar({ sidebar, setSidebar, theme, setTheme }) {
+function Sidebar({ sidebar, setSidebar }) {
 	const navigate = useNavigate();
 	const user = JSON.parse(localStorage.getItem("user"));
 	const currentDarkMode = JSON.parse(localStorage.getItem("darkMode"))
@@ -35,13 +35,6 @@ function Sidebar({ sidebar, setSidebar, theme, setTheme }) {
     navigate("/login");
   }
 
-  function toggleTheme() {
-	setTheme(!theme)
-	const darkMode = { value: theme }
-	localStorage.setItem("darkMode", JSON.stringify(darkMode));
-	setSidebar(!sidebar)
-  }
-
 	return (
 		<>
 			<nav className={sidebar ? "sidebar active" : "sidebar"}>
@@ -56,12 +49,6 @@ function Sidebar({ sidebar, setSidebar, theme, setTheme }) {
 						</div>
 					</div>
 				))}
-				<div className="sidebar__row">
-					<div className="sidebar__items" onClick={toggleTheme}>
-						<DarkModeIcon fontSize="large" />
-						Zmień wygląd
-					</div>
-				</div>
 				{user && (
 					<div className="sidebar__row">
 						<div className="sidebar__items" onClick={logout}>

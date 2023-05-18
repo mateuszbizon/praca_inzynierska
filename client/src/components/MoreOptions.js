@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function MoreOptions({theme, setTheme, moreOptions, setMoreOptions}) {
+function MoreOptions({moreOptions, setMoreOptions}) {
     const navigate = useNavigate();
 
     const moreOptionsItems = [
@@ -11,13 +11,6 @@ function MoreOptions({theme, setTheme, moreOptions, setMoreOptions}) {
         {text: "Zawody", path: '/'},
     ]
 
-    function toggleTheme() {
-        setTheme(!theme)
-        const darkMode = { value: theme }
-        localStorage.setItem("darkMode", JSON.stringify(darkMode));
-        setMoreOptions(false);
-    }
-
     function navigateTo(path) {
         navigate(path);
         setMoreOptions(false);
@@ -25,9 +18,6 @@ function MoreOptions({theme, setTheme, moreOptions, setMoreOptions}) {
 
   return (
     <div className={moreOptions ? "more-options active" : "more-options"}>
-        <div className="more-options__item" onClick={toggleTheme}>
-            <p className="more-options__text">Zmień wygląd</p>
-        </div>
         {moreOptionsItems.map((item, index) => (
             <div key={index} className="more-options__item" onClick={() => navigateTo(item.path)}>
                 <p className="more-options__text">{item.text}</p>

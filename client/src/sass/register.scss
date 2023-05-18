@@ -145,34 +145,3 @@
 		}
 	}
 }
-
-#dark {
-	.register {
-		background-color: $dark-mode-color;
-
-		&__form {
-			background-color: $dark-mode-color;
-			border: 1px solid $main-color;
-			box-shadow: none;
-		}
-
-		&__box {
-			input {
-				@include input-styling-dark;
-			}
-
-			input:focus + label,
-			input:valid + label {
-				@include label-animation-dark;
-			}
-
-			label {
-				@include label-styling-dark;
-			}
-		}
-
-		&__info, .show-password, .hide-password {
-			color: #fff;
-		}
-	}
-}

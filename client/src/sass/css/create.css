@@ -100,29 +100,4 @@
   font-weight: bold;
   visibility: hidden;
   margin-left: 20px;
-}
-
-#dark .create {
-  background-color: #372248;
-}
-#dark .create__form {
-  background-color: #372248;
-  border: 1px solid #f46036;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-#dark .create__form-box textarea {
-  background-color: #372248;
-  color: #fff;
-}
-#dark .create__form-box textarea:focus + label,
-#dark .create__form-box textarea:valid + label {
-  background-color: #372248;
-  color: #f46036;
-}
-#dark .create__form-box label {
-  color: #fff;
-}
-#dark .create__form-box input:is(input[type=file]) {
-  color: #fff;
 }/*# sourceMappingURL=create.css.map */

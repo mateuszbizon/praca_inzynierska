@@ -164,33 +164,4 @@
     width: 80px;
     height: 80px;
   }
-}
-#dark .edit-account {
-  background-color: #372248;
-}
-#dark .edit-account__container {
-  border: 1px solid #f46036;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-#dark .edit-account__box input {
-  background-color: #372248;
-  color: #fff;
-}
-#dark .edit-account__box input:focus + label,
-#dark .edit-account__box input:valid + label {
-  background-color: #372248;
-  color: #f46036;
-}
-#dark .edit-account__box label {
-  color: #fff;
-}
-#dark .edit-account__img-box input:is(input[type=file]) {
-  color: #fff;
-}
-#dark .edit-account__main-buttons button {
-  color: #fff;
-}
-#dark .edit-account__main-buttons button:hover {
-  background-color: #603782;
 }/*# sourceMappingURL=editAccount.css.map */

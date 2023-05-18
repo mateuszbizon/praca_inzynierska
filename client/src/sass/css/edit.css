@@ -98,22 +98,4 @@
   .edit {
     min-width: 400px;
   }
-}
-#dark .edit {
-  background-color: #372248;
-}
-#dark .edit__form-box textarea {
-  background-color: #372248;
-  color: #fff;
-}
-#dark .edit__form-box textarea:focus + label,
-#dark .edit__form-box textarea:valid + label {
-  background-color: #372248;
-  color: #f46036;
-}
-#dark .edit__form-box label {
-  color: #fff;
-}
-#dark .edit input:is(input[type=file]) {
-  color: #fff;
 }/*# sourceMappingURL=edit.css.map */
