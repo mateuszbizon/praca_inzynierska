@@ -69,4 +69,8 @@
     &__text-error{
         @include text-error-styling;
     }
+
+	&__show-input-error {
+		visibility: visible;
+	}
 }

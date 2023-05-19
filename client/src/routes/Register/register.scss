@@ -113,6 +113,10 @@
 			display: block;
 		}
 	}
+
+	&__show-input-error {
+		visibility: visible;
+	}
 }
 
 @media (min-width: 576px) {

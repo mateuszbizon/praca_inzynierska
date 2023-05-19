@@ -123,6 +123,10 @@
     &__submit-message.success {
         color: #008000;
     }
+
+    &__show-input-error {
+        visibility: visible;
+    }
 }
 
 .confirm-time-action.active{

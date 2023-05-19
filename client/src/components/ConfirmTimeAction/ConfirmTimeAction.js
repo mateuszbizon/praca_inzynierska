@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./confirmTimeAction.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -10,6 +10,7 @@ import {
 } from "../../actions/times";
 import { addNewSession } from "../../actions/sessions";
 import { CircularProgress } from "@mui/material";
+import sessionValid from "../../validations/SessionValid";
 
 function ConfirmTimeAction({
 	currentTimeId,
@@ -22,7 +23,7 @@ function ConfirmTimeAction({
 }) {
 	const [showDeleteTime, setShowDeleteTime] = useState(false);
 	const [nameSession, setNameSession] = useState("");
-	const nameSessionError = useRef();
+	const [errors, setErrors] = useState({})
 	const dispatch = useDispatch();
 	const { isLoading } = useSelector(state => state.loaders);
 	const { message, success } = useSelector(state => state.sessions);
@@ -57,35 +58,18 @@ function ConfirmTimeAction({
 		setIsShadowActive(false);
 	}
 
-	function checkNameSession() {
-		if (nameSession === "") {
-			nameSessionError.current.textContent = "Nazwa nie może być pusta";
-			nameSessionError.current.style.visibility = "visible";
-			return false;
-		}
-
-		if (nameSession.length > 15) {
-			nameSessionError.current.textContent =
-				"Nazwa nie może mieć więcej niż 15 znaków";
-			nameSessionError.current.style.visibility = "visible";
-			return false;
-		}
-
-		nameSessionError.current.style.visibility = "hidden";
-		return true;
-	}
-
 	function handleSubmit(e) {
 		e.preventDefault();
 
-		if (!checkNameSession()) {
-			return false;
-		}
-
-		dispatch(addNewSession({ nameSession, times, bestTime }));
-		setNameSession("");
-		return true;
+		setErrors(sessionValid(nameSession))
 	}
+
+	useEffect(() => {
+		if (Object.keys(errors).length == 0 && nameSession !== "") {
+			dispatch(addNewSession({ nameSession, times, bestTime }));
+			setNameSession("");
+		}
+	}, [errors])
 
 	return (
 		<div
@@ -143,9 +127,8 @@ function ConfirmTimeAction({
 							/>
 							<label htmlFor='session-name'>Nazwa sesji</label>
 							<p
-								className='confirm-time-action__text-error'
-								ref={nameSessionError}>
-								error
+								className={errors.nameSession ? "confirm-time-action__text-error confirm-time-action__show-input-error" : "confirm-time-action__text-error"} >
+								{errors.nameSession ? errors.nameSession : "error"}
 							</p>
 						</div>
 						<div className='confirm-time-action__btn-box'>

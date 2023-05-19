@@ -149,6 +149,9 @@
 .login__password-icons .hide-password {
   display: block;
 }
+.login__show-input-error {
+  visibility: visible;
+}
 
 @media (min-width: 576px) {
   .login__form {

@@ -100,4 +100,7 @@
   font-weight: bold;
   visibility: hidden;
   margin-left: 20px;
+}
+.create__show-input-error {
+  visibility: visible;
 }/*# sourceMappingURL=create.css.map */

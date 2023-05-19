@@ -159,6 +159,9 @@
 .register__password-icons .hide-password {
   display: block;
 }
+.register__show-input-error {
+  visibility: visible;
+}
 
 @media (min-width: 576px) {
   .register__form {

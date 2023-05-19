@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import "./register.css";
@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../actions/auth";
 import { CircularProgress } from "@mui/material";
+import registerValid from "../../validations/RegisterValid";
 
 function Register() {
 	const [form, setForm] = useState({
@@ -15,91 +16,15 @@ function Register() {
 		username: "",
 		password: "",
 	});
+	const [errors, setErrors] = useState({})
 	const dispatch = useDispatch();
 	const { authData, error, loading } = useSelector(state => state.auth);
 	const navigate = useNavigate();
 	const submitMessage = useRef();
 	const passRef = useRef();
-	const emailError = useRef();
-	const passError = useRef();
-	const nameError = useRef();
-	const surnameError = useRef();
-	const usernameError = useRef();
 
 	const showPass = useRef();
 	const hidePass = useRef();
-
-	function checkEmail() {
-		const emailRegex =
-			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-		if (form.email.length == 0) {
-			emailError.current.textContent = "Email nie może być pusty";
-			emailError.current.style.visibility = "visible";
-			return false;
-		}
-
-		if (!form.email.match(emailRegex)) {
-			emailError.current.textContent = "Nieprawidłowy email";
-			emailError.current.style.visibility = "visible";
-			return false;
-		}
-
-		emailError.current.style.visibility = "hidden";
-		return true;
-	}
-
-	function checkPassword() {
-		if (form.password.length == 0) {
-			passError.current.textContent = "Hasło nie może być puste";
-			passError.current.style.visibility = "visible";
-			return false;
-		}
-
-		if (form.password.length < 7) {
-			passError.current.textContent =
-				"Hasło musi zawierać co najmniej 7 znaków";
-			passError.current.style.visibility = "visible";
-			return false;
-		}
-
-		passError.current.style.visibility = "hidden";
-		return true;
-	}
-
-	function checkName() {
-		if (form.name.length == 0) {
-			nameError.current.textContent = "Imię nie może być puste";
-			nameError.current.style.visibility = "visible";
-			return false;
-		}
-
-		nameError.current.style.visibility = "hidden";
-		return true;
-	}
-
-	function checkSurname() {
-		if (form.surname.length == 0) {
-			surnameError.current.textContent = "Nazwisko nie może być puste";
-			surnameError.current.style.visibility = "visible";
-			return false;
-		}
-
-		surnameError.current.style.visibility = "hidden";
-		return true;
-	}
-
-	function checkUsername() {
-		if (form.username.length == 0) {
-			usernameError.current.textContent =
-				"Nazwa użytkownika nie może być pusta";
-			usernameError.current.style.visibility = "visible";
-			return false;
-		}
-
-		usernameError.current.style.visibility = "hidden";
-		return true;
-	}
 
 	function showPassword() {
 		if (passRef.current.type === "password") {
@@ -120,18 +45,23 @@ function Register() {
 	function handleSubmit(e) {
 		e.preventDefault();
 
-		if (
-			!checkEmail() ||
-			!checkPassword() ||
-			!checkUsername() ||
-			!checkName() ||
-			!checkSurname()
-		) {
-			return false;
-		}
-
-		dispatch(signup(form, navigate));
+		setErrors(registerValid(form))
 	}
+
+	function checkIfValuesAreEmpty() {
+		for (const element in form) {
+			if (form[element] === "") {
+				return true
+			}
+		}
+		return false
+	}
+
+	useEffect(() => {
+		if (Object.keys(errors).length === 0 && !checkIfValuesAreEmpty()) {
+			dispatch(signup(form, navigate));
+		}
+	}, [errors])
 
 	return (
 		<>
@@ -149,8 +79,8 @@ function Register() {
 									required
 								/>
 								<label htmlFor='name'>Imię</label>
-								<p className='register__text-error' ref={nameError}>
-									error
+								<p className={errors.name ? "register__text-error register__show-input-error" : "register__text-error"} >
+								{errors.name ? errors.name : "error"}
 								</p>
 							</div>
 
@@ -163,8 +93,8 @@ function Register() {
 									required
 								/>
 								<label htmlFor='surname'>Nazwisko</label>
-								<p className='register__text-error' ref={surnameError}>
-									error
+								<p className={errors.surname ? "register__text-error register__show-input-error" : "register__text-error"} >
+								{errors.surname ? errors.surname : "error"}
 								</p>
 							</div>
 						</div>
@@ -179,8 +109,8 @@ function Register() {
 									required
 								/>
 								<label htmlFor='username'>Nazwa użytkownika</label>
-								<p className='register__text-error' ref={usernameError}>
-									error
+								<p className={errors.username ? "register__text-error register__show-input-error" : "register__text-error"} >
+								{errors.username ? errors.username : "error"}
 								</p>
 							</div>
 
@@ -193,8 +123,8 @@ function Register() {
 									required
 								/>
 								<label htmlFor='email'>Adres email</label>
-								<p className='register__text-error' ref={emailError}>
-									error
+								<p className={errors.email ? "register__text-error register__show-input-error" : "register__text-error"} >
+								{errors.email ? errors.email : "error"}
 								</p>
 							</div>
 						</div>
@@ -221,8 +151,8 @@ function Register() {
 										onClick={showPassword}
 									/>
 								</span>
-								<p className='register__text-error' ref={passError}>
-									error
+								<p className={errors.password ? "register__text-error register__show-input-error" : "register__text-error"} >
+									{errors.password ? errors.password : "error"}
 								</p>
 							</div>
 						</div>

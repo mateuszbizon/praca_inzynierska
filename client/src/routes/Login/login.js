@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import "./login.css";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -6,50 +6,19 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signin } from "../../actions/auth";
 import { CircularProgress } from "@mui/material";
+import loginValid from "../../validations/LoginValid";
 
 function Login() {
 	const [form, setForm] = useState({ password: "", email: "" });
+	const [errors, setErrors] = useState({})
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { authData, error, loading } = useSelector(state => state.auth);
 	const submitMessage = useRef();
 	const passRef = useRef();
-	const emailError = useRef();
-	const passError = useRef();
 
 	const showPass = useRef();
 	const hidePass = useRef();
-
-	function checkEmail() {
-		const emailRegex =
-			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-		if (form.email.length == 0) {
-			emailError.current.textContent = "Email nie może być pusty";
-			emailError.current.style.visibility = "visible";
-			return false;
-		}
-
-		if (!form.email.match(emailRegex)) {
-			emailError.current.textContent = "Nieprawidłowy email";
-			emailError.current.style.visibility = "visible";
-			return false;
-		}
-
-		emailError.current.style.visibility = "hidden";
-		return true;
-	}
-
-	function checkPassword() {
-		if (form.password.length == 0) {
-			passError.current.textContent = "Hasło nie może być puste";
-			passError.current.style.visibility = "visible";
-			return false;
-		}
-
-		passError.current.style.visibility = "hidden";
-		return true;
-	}
 
 	function showPassword() {
 		if (passRef.current.type === "password") {
@@ -70,12 +39,16 @@ function Login() {
 	function handleSubmit(e) {
 		e.preventDefault();
 
-		if (!checkEmail() || !checkPassword()) {
-			return false;
+		setErrors(loginValid(form))
+	}
+
+	useEffect(() => {
+		if (Object.keys(errors).length === 0 && form.email !== "" && form.password !== "") {
+			dispatch(signin(form, navigate));
 		}
 
-		dispatch(signin(form, navigate));
-	}
+	}, [errors])
+
 	return (
 		<>
 			<section className='login'>
@@ -91,8 +64,8 @@ function Login() {
 								required
 							/>
 							<label htmlFor='email'>Adres email</label>
-							<p className='login__text-error' ref={emailError}>
-								error
+							<p className={errors.email ? "login__text-error login__show-input-error" : "login__text-error"} >
+								{errors.email ? errors.email : "error"}
 							</p>
 						</div>
 						<div className='login__box'>
@@ -117,8 +90,8 @@ function Login() {
 									onClick={showPassword}
 								/>
 							</span>
-							<p className='login__text-error' ref={passError}>
-								error
+							<p className={errors.password ? "login__text-error login__show-input-error" : "login__text-error"} >
+								{errors.password ? errors.password : "error"}
 							</p>
 						</div>
 						<div className='login__btn-box'>

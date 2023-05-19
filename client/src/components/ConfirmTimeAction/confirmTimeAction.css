@@ -175,6 +175,9 @@
 .confirm-time-action__submit-message.success {
   color: #008000;
 }
+.confirm-time-action__show-input-error {
+  visibility: visible;
+}
 
 .confirm-time-action.active {
   display: -webkit-box;
