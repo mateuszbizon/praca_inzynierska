@@ -34,3 +34,4 @@ export const setPlusTwo = (id) => API.patch(`/times/setPlusTwo/${id}`);
 
 export const getAllSessions = () => API.get('/sessions/getAllSessions');
 export const addNewSession = (session) => API.post('/sessions/addNewSession', session);
+export const deleteSession = (id) => API.delete(`/sessions/deleteSession/${id}`)

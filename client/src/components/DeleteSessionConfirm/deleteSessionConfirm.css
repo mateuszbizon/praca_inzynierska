@@ -1,0 +1,65 @@
+.delete-session-confirm {
+  position: fixed;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  top: 250px;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 10px 10px;
+  background-color: #fff;
+  color: #f46036;
+  text-align: center;
+  z-index: 6;
+}
+.delete-session-confirm__title {
+  font-size: 20px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+.delete-session-confirm__main-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 15px;
+  width: 100%;
+}
+.delete-session-confirm__main-buttons button {
+  background-color: #f46036;
+  color: #fff;
+  font-size: 17px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.delete-session-confirm__main-buttons button:hover {
+  background-color: #cb380f;
+}
+
+.delete-session-confirm.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (min-width: 576px) {
+  .delete-session-confirm {
+    width: 450px;
+  }
+  .delete-session-confirm__title {
+    font-size: 25px;
+  }
+  .delete-session-confirm__main-buttons button {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=deleteSessionConfirm.css.map */

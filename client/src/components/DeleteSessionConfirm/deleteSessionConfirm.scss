@@ -1,0 +1,58 @@
+@import "../../sass/colors";
+@import "../../sass/mixins";
+
+.delete-session-confirm {
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    top: 250px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 10px 10px;
+    background-color: #fff;
+    color: $main-color;
+    text-align: center;
+    z-index: 6;
+
+    &__title {
+        font-size: 20px;
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+    &__main-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+
+        button {
+            @include button-styling;
+
+            &:hover {
+                background-color: $main-color-hover;
+            }
+        }
+    }
+}
+
+.delete-session-confirm.active {
+    display: flex;
+}
+
+@media (min-width: 576px){
+    .delete-session-confirm {
+        width: 450px;
+
+        &__title {
+            font-size: 25px;
+        }
+
+        &__main-buttons {
+            button {
+                font-size: 20px;
+            }
+        }
+    }
+}

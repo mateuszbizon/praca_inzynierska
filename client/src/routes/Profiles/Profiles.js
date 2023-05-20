@@ -18,7 +18,6 @@ function Profiles() {
 
 	return (
 		<>
-			<DeleteConfirm />
 			<section className='profiles'>
 				<div
 					className={currentId ? "profiles__shadow-active" : "profiles__shadow"}

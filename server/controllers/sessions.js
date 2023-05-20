@@ -53,3 +53,19 @@ export const addNewSession = async (req, res) => {
         console.log(error)
     }
 }
+
+export const deleteSession = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const user = await User.findById(req.userId);
+
+        user.sessions = user.sessions.filter(s => s.id !== parseInt(id))
+
+        const updatedSessions = await User.findByIdAndUpdate(req.userId, user, { new: true });
+
+        res.status(200).json(updatedSessions.sessions);
+    } catch (error) {
+        console.log(error)
+    }
+}

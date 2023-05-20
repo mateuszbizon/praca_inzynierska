@@ -28,6 +28,7 @@ export const SET_PLUS_TWO = "SET_PLUS_TWO";
 
 export const GET_ALL_SESSIONS = "GET_ALL_SESSIONS";
 export const ADD_NEW_SESSION = "ADD_NEW_SESSION";
+export const DELETE_SESSION = "DELETE_SESSION";
 
 export const START_LOADING = "START_LOADING";
 export const END_LOADING = "END_LOADING";

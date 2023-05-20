@@ -7,6 +7,9 @@ const sessions = (state = { sessions: [], message: "", success: false }, action)
 
         case actionType.ADD_NEW_SESSION:
             return { ...state, sessions: action.data, message: "Zapisano pomyślnie", success: true }
+
+        case actionType.DELETE_SESSION:
+            return { ...state, sessions: action.data }
     
         default:
             return state;
