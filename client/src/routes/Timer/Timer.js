@@ -65,13 +65,16 @@ function Timer() {
 	}
 
 	function startTimer() {
+		let start = Date.now();
+
 		interval = setInterval(() => {
-			ms++;
+			ms = Math.floor((Date.now() - start) / 10)
 			ms = ms < 10 ? "0" + ms : ms;
 
-			if (ms === 100) {
+			if (ms > 100) {
 				sec++;
 				ms = "00";
+				start = Date.now();
 			}
 
 			if (sec === 60) {
@@ -134,7 +137,7 @@ function Timer() {
 						0
 					</div>
 					<div className='timer__dot-minutes' ref={dotMinRef}>
-						.
+						:
 					</div>
 					<div className='timer__seconds' ref={secRef}>
 						0

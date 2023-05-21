@@ -30,32 +30,32 @@ function ConfirmTimeAction({
 
 	function handleCloseModal() {
 		setIsShadowActive(false);
+		setShowDeleteTime(false);
 	}
 
 	function handleDelete() {
 		dispatch(deleteTime(currentTimeId));
-		setIsShadowActive(false);
-		setShowDeleteTime(false);
+		handleCloseModal();
 	}
 
 	function handleSetDnf() {
 		dispatch(setDnf(currentTimeId));
-		setIsShadowActive(false);
+		handleCloseModal();
 	}
 
 	function handleTimeOk() {
 		dispatch(setTimeOk(currentTimeId));
-		setIsShadowActive(false);
+		handleCloseModal();
 	}
 
 	function handlePlusTwoTime() {
 		dispatch(setPlusTwo(currentTimeId));
-		setIsShadowActive(false);
+		handleCloseModal();
 	}
 
 	function handleDeleteAllTimes() {
 		dispatch(deleteAllTimes());
-		setIsShadowActive(false);
+		handleCloseModal();
 	}
 
 	function handleSubmit(e) {
