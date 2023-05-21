@@ -47,6 +47,10 @@
 		@include text-error-styling;
 	}
 
+	&__show-input-error {
+		visibility: visible;
+	}
+
 	&__submit-btn {
 		width: 100%;
 		margin-bottom: 10px;

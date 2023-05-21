@@ -12,7 +12,7 @@
 }
 .edit-account__container {
   width: 300px;
-  min-height: 560px;
+  min-height: 500px;
   -webkit-box-shadow: 10px 10px 10px #909090;
           box-shadow: 10px 10px 10px #909090;
   border: 1px solid #909090;
