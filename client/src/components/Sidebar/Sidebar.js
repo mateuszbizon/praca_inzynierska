@@ -6,23 +6,23 @@ import EditIcon from "@mui/icons-material/Edit";
 import LogoutIcon from "@mui/icons-material/Logout";
 import LoginIcon from "@mui/icons-material/Login";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
-import SchoolIcon from "@mui/icons-material/School";
-import DarkModeIcon from '@mui/icons-material/DarkMode';
 import CloseIcon from '@mui/icons-material/Close';
+import ViewInArIcon from '@mui/icons-material/ViewInAr';
+import SportsKabaddiIcon from '@mui/icons-material/SportsKabaddi';
 import "./sidebar.css";
 
 function Sidebar({ sidebar, setSidebar }) {
 	const navigate = useNavigate();
 	const user = JSON.parse(localStorage.getItem("user"));
-	const currentDarkMode = JSON.parse(localStorage.getItem("darkMode"))
 
 	const sidebarItems = [
 		{ text: "Strona główna", icon: <HomeIcon fontSize='large' />, path: "/" },
 		{ text: "Utwórz", icon: <AddIcon fontSize='large' />, path: "/create" },
 		{ text: "Profil", icon: <EditIcon fontSize='large' />, path: `/profile/${user?.result?.username}`},
+		{ text: "Trening", icon: <ViewInArIcon fontSize='large' />, path: "/timer" },
+		{ text: "Zawody", icon: <SportsKabaddiIcon fontSize='large' />, path: "/" },
 		{ text: "Logowanie", icon: <LoginIcon fontSize='large' />, path: "/login" },
-		{ text: "Rejestrcja", icon: <HowToRegIcon fontSize='large' />, path: "/register" },
-		{ text: "Nauka", icon: <SchoolIcon fontSize='large' />, path: "/" },
+		{ text: "Rejestracja", icon: <HowToRegIcon fontSize='large' />, path: "/register" },
 	];
 
 	function navigateTo(path){

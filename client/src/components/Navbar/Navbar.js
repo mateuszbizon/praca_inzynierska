@@ -9,7 +9,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import Sidebar from "../Sidebar/Sidebar";
 import MoreOptions from "../MoreOptions/MoreOptions";
 
-function Navbar({ theme, setTheme }) {
+function Navbar() {
 	const [sidebar, setSidebar] = useState(false);
 	const [showSearch, setShowSearch] = useState(false);
 	const [moreOptions, setMoreOptions] = useState(false);
@@ -54,7 +54,6 @@ function Navbar({ theme, setTheme }) {
 		{ text: "Strona główna", path: "/" },
 		{ text: "Logowanie", path: "/login" },
 		{ text: "Rejestracja", path: "/register" },
-		{ text: "Nauka", path: "/" },
 	];
 
 	return (

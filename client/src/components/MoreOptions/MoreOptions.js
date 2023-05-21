@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './more-options.css';
 
@@ -6,9 +6,7 @@ function MoreOptions({moreOptions, setMoreOptions}) {
     const navigate = useNavigate();
 
     const moreOptionsItems = [
-        {text: "Czat", path: '/'},
-        {text: "Nauka", path: '/'},
-        {text: "Trening", path: '/'},
+        {text: "Trening", path: '/timer'},
         {text: "Zawody", path: '/'},
     ]
 
