@@ -35,6 +35,8 @@ function Navbar() {
 	}
 
 	function searchUsers() {
+		if (search === "") return
+
 		navigate(`/search?search=${search}`);
 	}
 

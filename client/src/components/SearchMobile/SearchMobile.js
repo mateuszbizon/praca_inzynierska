@@ -8,6 +8,8 @@ function SearchMobile() {
   const [search, setSearch] = useState('')
 
   function searchUsers(){
+    if (search === "") return
+
     navigate(`/search?search=${search}`)
   }
 

@@ -5,7 +5,7 @@ import "./searchUsers.css";
 
 function SearchUsers() {
 	const { users } = useSelector(state => state.users);
-	console.log(users);
+
 	return !users.length ? (
 		<div>Nie znaleziono użytkownika</div>
 	) : (
