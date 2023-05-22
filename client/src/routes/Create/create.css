@@ -11,7 +11,7 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.create__form {
+.create__container {
   width: 400px;
   min-height: 300px;
   background-color: #fff;
@@ -22,85 +22,40 @@
   padding: 20px;
   margin-top: 70px;
 }
-.create__form-box {
+.create__main-buttons {
   position: relative;
-  margin-bottom: 20px;
-}
-.create__form-box textarea {
-  width: 100%;
-  border: 1px solid #f46036;
-  outline: none;
-  padding: 15px 20px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-  max-width: 100%;
-  min-width: 100%;
-  min-height: 150px;
-  max-height: 150px;
-  font-size: 15px;
-}
-.create__form-box textarea:focus + label,
-.create__form-box textarea:valid + label {
-  -webkit-transform: translate(-5px, -25px);
-          transform: translate(-5px, -25px);
-  color: #f46036;
-  background-color: #fff;
-}
-.create__form-box label {
-  position: absolute;
-  top: 15px;
-  left: 20px;
-  color: #000;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-.create__heading {
-  text-align: center;
-  color: #f46036;
-  margin-bottom: 30px;
-  font-size: 30px;
-}
-.create__btn-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-bottom: 15px;
-  margin-top: 15px;
-}
-.create__submit {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   gap: 10px;
-  border: none;
-  background-color: #f46036;
-  color: #fff;
-  border-radius: 8px;
   width: 100%;
+  margin-bottom: 20px;
+}
+.create__main-buttons button {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 5px;
+  cursor: pointer;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
-  cursor: pointer;
-  padding: 15px 20px;
-  font-size: 20px;
 }
-.create__submit:hover {
-  background-color: #cb380f;
+.create__main-buttons button:hover {
+  background-color: #ddd;
 }
-.create__text-error {
-  color: #ff0000;
-  font-weight: bold;
-  visibility: hidden;
-  margin-left: 20px;
-}
-.create__show-input-error {
-  visibility: visible;
+.create__marker {
+  position: absolute;
+  content: "";
+  left: 20px;
+  bottom: -8px;
+  width: 100px;
+  height: 3px;
+  background-color: #f46036;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  left: 50px;
 }/*# sourceMappingURL=create.css.map */
