@@ -40,7 +40,7 @@ function CreatePost() {
                 <label htmlFor="message">Wiadomość</label>
                 <p className={errors.message ? "create-post__text-error create-post__show-input-error" : "create-post__text-error"} >{errors.message ? errors.message : "error"}</p>
             </div>
-            <div className="create__form-box">
+            <div className="create-post__form-box">
                 <FileBase name="selectedFile" type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, selectedFile: base64 })} />
                 <p className={errors.selectedFile ? "create-post__text-error create-post__show-input-error" : "create-post__text-error"} >{errors.selectedFile ? errors.selectedFile : "error"}</p>
             </div>

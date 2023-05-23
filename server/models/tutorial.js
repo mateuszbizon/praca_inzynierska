@@ -4,8 +4,8 @@ const tutorialSchema = mongoose.Schema({
     title: String,
     description: String,
     username: String,
+    creator: String,
     selectedFile: String,
-    links: { type: [Object], default: [] },
 });
 
 const Tutorial = mongoose.model('Tutorial', tutorialSchema);
