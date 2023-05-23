@@ -12,7 +12,7 @@
           align-items: center;
 }
 .create__container {
-  width: 400px;
+  width: 300px;
   min-height: 300px;
   background-color: #fff;
   border: 1px solid #909090;
@@ -38,7 +38,7 @@
   border: none;
   background: none;
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 13px;
   padding: 5px;
   cursor: pointer;
   -webkit-transition: background-color 0.3s;
@@ -50,12 +50,24 @@
 .create__marker {
   position: absolute;
   content: "";
-  left: 20px;
+  left: 25px;
   bottom: -8px;
   width: 100px;
   height: 3px;
   background-color: #f46036;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  left: 50px;
+  left: 10px;
+}
+
+@media (min-width: 768px) {
+  .create__container {
+    width: 500px;
+  }
+  .create__main-buttons button {
+    font-size: 15px;
+  }
+  .create__marker {
+    left: 100px;
+  }
 }/*# sourceMappingURL=create.css.map */

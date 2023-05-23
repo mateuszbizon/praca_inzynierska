@@ -36,7 +36,7 @@
   border: none;
   background: none;
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 13px;
   padding: 5px;
   cursor: pointer;
   -webkit-transition: background-color 0.3s;
@@ -48,7 +48,7 @@
 .edit-account__marker {
   position: absolute;
   content: "";
-  left: 20px;
+  left: 25px;
   bottom: -8px;
   width: 100px;
   height: 3px;
@@ -152,6 +152,6 @@
     width: 500px;
   }
   .edit-account__marker {
-    left: 120px;
+    left: 125px;
   }
 }/*# sourceMappingURL=editAccount.css.map */

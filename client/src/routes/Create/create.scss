@@ -9,7 +9,7 @@
 	align-items: center;
 
 	&__container {
-		width: 400px;
+		width: 300px;
 		min-height: 300px;
 		background-color: #fff;
 		border: 1px solid #909090;
@@ -38,6 +38,24 @@
 
 	&__marker {
 		@include marker;
-		left: 50px
+		left: 10px
+	}
+}
+
+@media (min-width: 768px){
+	.create {
+		&__container {
+			width: 500px;
+		}
+
+		&__main-buttons {
+			button {
+				font-size: 15px;
+			}
+		}
+
+		&__marker {
+			left: 100px;
+		}
 	}
 }
