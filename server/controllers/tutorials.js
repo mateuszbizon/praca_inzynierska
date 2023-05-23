@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Tutorial from '../models/tutorial';
+import Tutorial from '../models/tutorial.js';
 
 export const createTutorial = async (req, res) => {
     const tutorial = req.body;
@@ -11,6 +11,7 @@ export const createTutorial = async (req, res) => {
 
         res.status(201).json(newTutorial);
     } catch (error) {
-        res.status(409).json({ message: error.message })
+        console.log(error)
+        res.status(409).json({ message: error.message });
     }
 }

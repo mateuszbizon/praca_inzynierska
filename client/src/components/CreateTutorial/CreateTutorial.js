@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from "react-redux";
+import { createTutorial } from "../../actions/tutorials";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import createTutorialValid from "../../validations/CreateTutorialValid";
@@ -26,7 +27,7 @@ function CreateTutorial() {
 
     useEffect(() => {
         if (Object.keys(errors).length == 0 && form.title !== "" && form.selectedFile !== "" && form.description !== "") {
-            console.log('wyslano')
+            dispatch(createTutorial({ ...form, username: user.result.username }, navigate))
         }
     }, [errors])
 

@@ -14,9 +14,9 @@ export default function createTutorialValid(values) {
         errors.description = "Opis nie może być pusty";
     }
 
-    if (!values.selectedFile.includes("data:video")) {
-        errors.selectedFile = "Zły format pliku. Wybierz film";
-    }
+    // if (!values.selectedFile.includes("data:video")) {
+    //     errors.selectedFile = "Zły format pliku. Wybierz film";
+    // }
 
     if (values.selectedFile.length == 0) {
         errors.selectedFile = "Wybierz plik!";
