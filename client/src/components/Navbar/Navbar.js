@@ -8,11 +8,13 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import SearchIcon from "@mui/icons-material/Search";
 import Sidebar from "../Sidebar/Sidebar";
 import MoreOptions from "../MoreOptions/MoreOptions";
+import MoreCreateOptions from "../MoreCreateOptions/MoreCreateOptions";
 
 function Navbar() {
 	const [sidebar, setSidebar] = useState(false);
 	const [showSearch, setShowSearch] = useState(false);
 	const [moreOptions, setMoreOptions] = useState(false);
+	const [moreCreateOptions, setMoreCreateOptions] = useState(false);
 	const navigate = useNavigate();
 	const user = JSON.parse(localStorage.getItem("user"));
 	const [search, setSearch] = useState("");
@@ -26,7 +28,18 @@ function Navbar() {
 	}
 
 	function showMoreOptions() {
+		setMoreCreateOptions(false)
 		setMoreOptions(!moreOptions);
+	}
+
+	function showMoreCreateOptions() {
+		setMoreOptions(false)
+		setMoreCreateOptions(!moreCreateOptions);
+	}
+
+	function clearOptions() {
+		setMoreOptions(false)
+		setMoreCreateOptions(false)
 	}
 
 	function logout() {
@@ -48,7 +61,6 @@ function Navbar() {
 
 	const navbarItems = [
 		{ text: "Strona główna", path: "/" },
-		{ text: "Utwórz", path: "/create" },
 		{ text: "Profil", path: `/profile/${user?.result?.username}` },
 	];
 
@@ -102,7 +114,7 @@ function Navbar() {
 											to={item.path}
 											className='navbar__link'
 											activeclassname='active'
-											onClick={() => setMoreOptions(false)}>
+											onClick={() => clearOptions(false)}>
 											{item.text}
 										</NavLink>
 									</li>
@@ -113,8 +125,8 @@ function Navbar() {
 									</a>
 								</li>
 								<li className='navbar__item'>
-									<a className='navbar__link' onClick={logout}>
-										Wyloguj się
+									<a className='navbar__link' onClick={showMoreCreateOptions}>
+										Utwórz
 									</a>
 								</li>
 								<li className='navbar__item'>
@@ -122,10 +134,16 @@ function Navbar() {
 										Więcej
 									</a>
 								</li>
+								<li className='navbar__item'>
+									<a className='navbar__link' onClick={logout}>
+										Wyloguj się
+									</a>
+								</li>
 							</ul>
 						</div>
 					</nav>
 					<Sidebar sidebar={sidebar} setSidebar={setSidebar} />
+					<MoreCreateOptions moreCreateOptions={moreCreateOptions} setMoreCreateOptions={setMoreCreateOptions} />
 					<MoreOptions
 						moreOptions={moreOptions}
 						setMoreOptions={setMoreOptions}

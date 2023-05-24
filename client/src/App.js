@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LoginPage from "./routes/Login/login";
 import RegisterPage from "./routes/Register/Register";
 import HomePage from "./routes/Home/Home";
-import CreatePage from "./routes/Create/Create";
+import CreatePage from "./routes/CreatePost/CreatePost";
 import ProfilesPage from "./routes/Profiles/Profiles";
 import AuthRoutes from "./utils/AuthRoutes";
 import PostDetails from "./routes/PostDetails/PostDetails";
@@ -19,7 +19,7 @@ function App() {
 			<Navbar />
 			<Routes>
 				<Route element={<AuthRoutes />}>
-					<Route path='/create' element={<CreatePage />} />
+					<Route path='/create-post' element={<CreatePage />} />
 					<Route path='/profile/:username' element={<ProfilesPage />} />
 					<Route path='/posts/:id' element={<PostDetails />} />
 					<Route path='/search' element={<Search />} />

@@ -1,3 +1,27 @@
+.create-post {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.create-post__container {
+  width: 300px;
+  min-height: 300px;
+  background-color: #fff;
+  border: 1px solid #909090;
+  border-radius: 8px;
+  -webkit-box-shadow: 10px 10px 10px #909090;
+          box-shadow: 10px 10px 10px #909090;
+  padding: 20px;
+  margin-top: 70px;
+}
 .create-post__form-box {
   position: relative;
   margin-bottom: 20px;
@@ -79,4 +103,10 @@
 }
 .create-post__show-input-error {
   visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .create-post__container {
+    width: 500px;
+  }
 }/*# sourceMappingURL=create-post.css.map */

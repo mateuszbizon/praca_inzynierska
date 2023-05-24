@@ -17,7 +17,8 @@ function Sidebar({ sidebar, setSidebar }) {
 
 	const sidebarItems = [
 		{ text: "Strona główna", icon: <HomeIcon fontSize='large' />, path: "/" },
-		{ text: "Utwórz", icon: <AddIcon fontSize='large' />, path: "/create" },
+		{ text: "Utwórz post", icon: <AddIcon fontSize='large' />, path: "/create-post" },
+		{ text: "Utwórz poradnik", icon: <AddIcon fontSize='large' />, path: "/create-tutorial" },
 		{ text: "Profil", icon: <EditIcon fontSize='large' />, path: `/profile/${user?.result?.username}`},
 		{ text: "Trening", icon: <ViewInArIcon fontSize='large' />, path: "/timer" },
 		{ text: "Zawody", icon: <SportsKabaddiIcon fontSize='large' />, path: "/" },
