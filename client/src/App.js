@@ -3,6 +3,7 @@ import LoginPage from "./routes/Login/login";
 import RegisterPage from "./routes/Register/Register";
 import HomePage from "./routes/Home/Home";
 import CreatePage from "./routes/CreatePost/CreatePost";
+import CreateTutorialPage from "./routes/CreateTutorial/CreateTutorial";
 import ProfilesPage from "./routes/Profiles/Profiles";
 import AuthRoutes from "./utils/AuthRoutes";
 import PostDetails from "./routes/PostDetails/PostDetails";
@@ -20,6 +21,7 @@ function App() {
 			<Routes>
 				<Route element={<AuthRoutes />}>
 					<Route path='/create-post' element={<CreatePage />} />
+					<Route path='/create-tutorial' element={<CreateTutorialPage />} />
 					<Route path='/profile/:username' element={<ProfilesPage />} />
 					<Route path='/posts/:id' element={<PostDetails />} />
 					<Route path='/search' element={<Search />} />

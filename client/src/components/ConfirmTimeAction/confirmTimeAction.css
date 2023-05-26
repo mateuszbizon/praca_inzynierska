@@ -37,7 +37,7 @@
 .confirm-time-action__main-buttons button {
   background-color: #f46036;
   color: #fff;
-  font-size: 17px;
+  font-size: 15px;
   padding: 5px 10px;
   border-radius: 8px;
   border: none;
@@ -60,7 +60,7 @@
 .confirm-time-action__ok-btn-box button {
   background-color: #f46036;
   color: #fff;
-  font-size: 17px;
+  font-size: 15px;
   padding: 5px 10px;
   border-radius: 8px;
   border: none;
@@ -85,7 +85,7 @@
 .confirm-time-action__delete-buttons button {
   background-color: #f46036;
   color: #fff;
-  font-size: 17px;
+  font-size: 15px;
   padding: 5px 10px;
   border-radius: 8px;
   border: none;

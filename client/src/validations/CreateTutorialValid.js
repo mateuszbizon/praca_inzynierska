@@ -1,25 +1,40 @@
-export default function createTutorialValid(values) {
+export function checkTitle(title) {
     const errors = {}
-    const titleLength = 50;
+    const titleLength = 100;
 
-    if (values.title.length > titleLength ) {
+    if (title.length > titleLength ) {
         errors.title = `Tytuł nie może być dłuższy niż ${titleLength} znaków`
     }
 
-    if (values.title.length == 0) {
+    if (title.length == 0) {
         errors.title = "Tytuł nie może być pusty";
     }
 
-    if (values.description.length == 0) {
-        errors.description = "Opis nie może być pusty";
+    return errors;
+}
+
+export function checkStage(values) {
+    const errors = {}
+    const stageNameLength = 50;
+
+    if (values.name.length > stageNameLength) {
+        errors.name = `Nazwa etapu nie może być dłuższa niż ${stageNameLength} znaków`;
     }
 
-    // if (!values.selectedFile.includes("data:video")) {
-    //     errors.selectedFile = "Zły format pliku. Wybierz film";
-    // }
+    if (values.name.length == 0) {
+        errors.name = "Nazwa etapu nie może być pusta";
+    }
+
+    if (values.desc.length == 0 ) {
+        errors.desc = "Opis nie może być pusty";
+    }
+
+    if (!values.selectedFile.includes("data:image")) {
+        errors.selectedFile = "Zły format pliku. Wybierz zdjęcie"
+    }
 
     if (values.selectedFile.length == 0) {
-        errors.selectedFile = "Wybierz plik!";
+        errors.selectedFile = "Wybierz plik";
     }
 
     return errors;
