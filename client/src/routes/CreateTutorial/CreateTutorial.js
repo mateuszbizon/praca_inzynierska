@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react';
 import "./create-tutorial.css";
 import { checkTitle, checkStage } from "../../validations/CreateTutorialValid";
 import FileBase from 'react-file-base64';
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { createTutorial } from '../../actions/tutorials';
+import { CircularProgress } from "@mui/material";
 
 function CreateTutorial() {
     const [shadowActive, setShadowActive] = useState(true)
@@ -12,6 +16,10 @@ function CreateTutorial() {
     const [allStages, setAllStages] = useState([])
     const [errors, setErrors] = useState({})
     const [isEdited, setIsEdited] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const user = JSON.parse(localStorage.getItem("user"));
+    const { isLoading } = useSelector(state => state.loaders)
 
     function showTitleModal() {
         setShadowActive(true);
@@ -71,6 +79,10 @@ function CreateTutorial() {
         setTitleModalActive(false);
         setStageModalActive(false);
         setIsEdited(false)
+    }
+
+    function finishTutorial() {
+        dispatch(createTutorial({ title: title, stages: allStages, username: user.result.username }, navigate))
     }
 
     useEffect(() => {
@@ -133,7 +145,7 @@ function CreateTutorial() {
         <div className='create-tutorial__main-buttons'>
             <button className='create-tutorial__btn' onClick={showTitleModal}>Zmień tytuł</button>
             <button className='create-tutorial__btn' onClick={showStageModal}>Dodaj etap</button>
-            <button className='create-tutorial__btn'>Zakończ</button>
+            <button className='create-tutorial__btn' onClick={finishTutorial}>{isLoading ? <CircularProgress /> : "Zakończ"}</button>
         </div>
         <p className='create-tutorial__title'>{title}</p>
         <div className='create-tutorial__stages'>
