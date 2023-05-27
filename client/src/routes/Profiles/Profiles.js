@@ -5,12 +5,11 @@ import "./profiles.css";
 import { getPostsByUsername } from "../../actions/posts";
 import { useDispatch } from "react-redux";
 import UserData from "../../components/UserData/UserData";
-import DeleteConfirm from "../../components/DeleteConfirm/DeleteConfirm";
 
 function Profiles() {
 	const { username } = useParams();
 	const dispatch = useDispatch();
-	const [currentId, setCurrentId] = useState(false);
+	const [shadowActive, setShadowActive] = useState(false);
 
 	useEffect(() => {
 		dispatch(getPostsByUsername(username));
@@ -20,10 +19,10 @@ function Profiles() {
 		<>
 			<section className='profiles'>
 				<div
-					className={currentId ? "profiles__shadow-active" : "profiles__shadow"}
-					onClick={() => setCurrentId(false)}></div>
+					className={shadowActive ? "profiles__shadow-active" : "profiles__shadow"}
+					onClick={() => setShadowActive(false)}></div>
 				<UserData username={username} />
-				<Posts currentId={currentId} setCurrentId={setCurrentId} />
+				<Posts shadowActive={shadowActive} setShadowActive={setShadowActive} />
 			</section>
 		</>
 	);

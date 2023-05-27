@@ -3,13 +3,13 @@ import './post.css';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import { useNavigate } from 'react-router-dom';
 
-function post({post, setCurrentId, setCurrentPostId}) {
+function post({post, setShadowActive, setCurrentId}) {
     const user = JSON.parse(localStorage.getItem('user'));
     const navigate = useNavigate();
 
     function handleDeleteData(){
-        setCurrentId(true);
-        setCurrentPostId(post._id);
+        setShadowActive(true);
+        setCurrentId(post._id);
     }
 
   return (

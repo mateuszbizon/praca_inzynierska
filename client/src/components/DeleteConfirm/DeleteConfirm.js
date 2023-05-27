@@ -1,30 +1,30 @@
 import React from "react";
 import "./deleteConfirm.css";
-import { deletePost } from "../../actions/posts";
 import { useDispatch } from "react-redux";
 
 function DeleteConfirm({
+	shadowActive,
+	setShadowActive,
 	currentId,
 	setCurrentId,
-	currentPostId,
-	setCurrentPostId,
+	deleteFunc
 }) {
 	const dispatch = useDispatch();
 
 	function deleteCurrentPost() {
-		dispatch(deletePost(currentPostId));
-		setCurrentPostId(null);
-		setCurrentId(false);
+		dispatch(deleteFunc(currentId))
+		setCurrentId(null);
+		setShadowActive(false);
 	}
 
 	return (
-		<div className={currentId ? "delete-confirm active" : "delete-confirm"}>
+		<div className={shadowActive ? "delete-confirm active" : "delete-confirm"}>
 			<p className='delete-confirm__title'>
 				Czy na pewno chcesz usunąć ten post?
 			</p>
 			<div className='delete-confirm__buttons'>
 				<button onClick={deleteCurrentPost}>Tak</button>
-				<button onClick={() => setCurrentId(false)}>Nie</button>
+				<button onClick={() => setShadowActive(false)}>Nie</button>
 			</div>
 		</div>
 	);
