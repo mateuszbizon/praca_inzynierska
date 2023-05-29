@@ -42,7 +42,7 @@ function Profiles() {
 						Posty
 					</button>
 					<button onClick={e => changeViewAndMarker(e, "tutorials")}>
-						Tutoriale
+						Poradniki
 					</button>
 					<div className='profiles__marker' ref={markerRef}></div>
 				</div>

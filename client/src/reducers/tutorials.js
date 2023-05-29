@@ -7,6 +7,9 @@ export default (state = { tutorials: [] }, action) => {
 
       case actionTypes.GET_TUTORIALS_BY_USERNAME:
         return { ...state, tutorials: action.payload }
+
+      case actionTypes.DELETE_TUTORIAL_BY_ID:
+        return { ...state, tutorials: state.tutorials.filter(tutorial => tutorial._id !== action.payload) }
         
       default:
         return state;

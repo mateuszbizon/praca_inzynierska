@@ -11,7 +11,11 @@ function posts({ shadowActive, setShadowActive }) {
 	const { isLoading } = useSelector(state => state.loaders);
 	const [currentId, setCurrentId] = useState(null);
 
-	if (!posts.length && !isLoading) return "Brak postów";
+	if (!posts.length && !isLoading) return (
+		<div className="no-posts">
+			Brak postów
+		</div>
+	);
 
 	return (
 		<>

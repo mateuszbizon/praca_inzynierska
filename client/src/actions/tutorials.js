@@ -28,3 +28,13 @@ export const getTutorialsByUsername = (username) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const deleteTutorialById = (id) => async (dispatch) => {
+    try {
+        await api.deleteTutorialById(id)
+
+        dispatch({ type: actionTypes.DELETE_TUTORIAL_BY_ID, payload: id })
+    } catch (error) {
+        console.log(error)
+    }
+}

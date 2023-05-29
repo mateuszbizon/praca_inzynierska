@@ -26,3 +26,15 @@ export const getTutorialsByUsername = async (req, res) => {
         console.log(error)
     }
 }
+
+export const deleteTutorialById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await Tutorial.findByIdAndRemove(id);
+
+        res.status(200).json({ message: "Usunięto poradnik pomyślnie" })
+    } catch (error) {
+        console.log(error)
+    }
+}

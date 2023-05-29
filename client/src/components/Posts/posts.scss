@@ -9,8 +9,17 @@
     margin-bottom: 30px;
 }
 
+.no-posts {
+    margin-top: 15px;
+    font-size: 17px;
+}
+
 @media (min-width: 576px){
     .posts{
         width: 60%;
+    }
+
+    .no-posts {
+        font-size: 20px;
     }
 }
