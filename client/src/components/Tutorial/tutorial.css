@@ -1,0 +1,52 @@
+.tutorial {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-bottom: 1px solid #000;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+.tutorial:hover {
+  background-color: #e5e1e1;
+}
+.tutorial__title {
+  width: 70%;
+  padding: 10px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+.tutorial__btns {
+  width: 15%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.tutorial__btn {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 5px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.tutorial__btn:hover {
+  color: #f46036;
+}
+
+@media (min-width: 576px) {
+  .tutorial__title {
+    font-size: 16px;
+  }
+}/*# sourceMappingURL=tutorial.css.map */

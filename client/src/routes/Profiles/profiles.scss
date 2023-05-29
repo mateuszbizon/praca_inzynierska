@@ -7,7 +7,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    // margin-bottom: 30px;
 
   &__shadow {
 		display: none;
@@ -16,4 +15,43 @@
 	&__shadow-active {
 		@include shadow;
 	}
+
+  &__main-buttons {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		gap: 10px;
+		width: 300px;
+		margin-bottom: 15px;
+    margin-top: 10px;
+
+		button {
+			@include buttonToChangeView;
+
+			&:hover {
+				background-color: #ddd;
+			}
+		}
+	}
+
+	&__marker {
+		@include marker;
+    width: 40px;
+    left: 85px;
+	}
+}
+
+@media (min-width: 576px) {
+  .profiles {
+    &__main-buttons {
+      button {
+        font-size: 17px;
+      }
+    }
+
+    &__marker {
+      width: 50px;
+      left: 70px;
+    }
+  }
 }

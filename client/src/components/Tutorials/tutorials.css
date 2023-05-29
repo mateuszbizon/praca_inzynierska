@@ -1,0 +1,9 @@
+.tutorials {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  .tutorials {
+    width: 60%;
+  }
+}/*# sourceMappingURL=tutorials.css.map */

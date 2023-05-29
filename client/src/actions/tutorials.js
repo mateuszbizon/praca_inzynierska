@@ -5,7 +5,7 @@ export const createTutorial = (newTutorial, navigate) => async (dispatch) => {
     try {
         dispatch({ type: actionTypes.START_LOADING })
 
-        const { data } = api.createTutorial(newTutorial);
+        const { data } = await api.createTutorial(newTutorial);
 
         dispatch({ type: actionTypes.CREATE_TUTORIAL, payload: data })
 
@@ -14,6 +14,16 @@ export const createTutorial = (newTutorial, navigate) => async (dispatch) => {
         const user = JSON.parse(localStorage.getItem('user'));
 
         navigate(`/profile/${user.result.username}`);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getTutorialsByUsername = (username) => async (dispatch) => {
+    try {
+        const { data } = await api.getTutorialsByUsername(username);
+
+        dispatch({ type: actionTypes.GET_TUTORIALS_BY_USERNAME, payload: data })
     } catch (error) {
         console.log(error)
     }

@@ -37,3 +37,4 @@ export const addNewSession = (session) => API.post('/sessions/addNewSession', se
 export const deleteSession = (id) => API.delete(`/sessions/deleteSession/${id}`)
 
 export const createTutorial = (newTutorial) => API.post('/tutorials/createTutorial', newTutorial);
+export const getTutorialsByUsername = (username) => API.get(`/tutorials/getTutorialsByUsername/${username}`);

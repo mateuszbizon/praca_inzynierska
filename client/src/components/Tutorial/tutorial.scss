@@ -1,0 +1,46 @@
+@import "../../sass/mixins";
+@import "../../sass/colors";
+
+.tutorial {
+    width: 100%;
+    display: flex;
+    border-bottom: 1px solid #000;
+    transition: background-color .3s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $timer-background-color;
+    }
+
+    &__title {
+        width: 70%;
+        padding: 10px;
+        font-size: 14px;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__btns {
+        width: 15%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__btn {
+        @include buttonToChangeView;
+
+        &:hover {
+            color: $main-color;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .tutorial {
+        &__title {
+            font-size: 16px;
+        }
+    }
+}
