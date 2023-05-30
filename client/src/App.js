@@ -12,6 +12,7 @@ import Navbar from "./components/Navbar/Navbar";
 import EditAccount from "./routes/EditAccount/EditAccount";
 import Timer from "./routes/Timer/Timer";
 import TimesHistory from "./routes/TimesHistory/TimesHistory";
+import TutorialDetails from "./routes/TutorialDetails/TutorialDetails";
 import "./app.css";
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
 					<Route path='/create-tutorial' element={<CreateTutorialPage />} />
 					<Route path='/profile/:username' element={<ProfilesPage />} />
 					<Route path='/posts/:id' element={<PostDetails />} />
+					<Route path='/tutorials/:id' element={<TutorialDetails />} />
 					<Route path='/search' element={<Search />} />
 					<Route path='/edit-account' element={<EditAccount />} />
 					<Route path='/timer' element={<Timer />} />

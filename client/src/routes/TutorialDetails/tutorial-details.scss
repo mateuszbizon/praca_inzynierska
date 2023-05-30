@@ -1,0 +1,66 @@
+@import "../../sass/colors";
+@import "../../sass/animations";
+
+.tutorial-details {
+    &__header {
+        position: relative;
+        height: 100vh;
+        padding: 10px;
+    }
+
+    &__header-heading {
+        text-align: center;
+        color: $main-color;
+        margin-top: 70px;
+        margin-bottom: 30px;
+    }
+
+    &__list {
+        margin-left: 40px;
+    }
+
+    &__list-item {
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+
+    &__list-link {
+        text-decoration: none;
+        color: $main-color;
+        transition: all .3s;
+
+        &:hover {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    }
+
+    &__bounce-icon {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 30px;
+        // cursor: pointer;
+    }
+}
+
+@media (min-width: 768px) {
+    .tutorial-details {
+        &__header-heading {
+            font-size: 35px;
+        }
+
+        &__list {
+            margin-left: 70px;
+        }
+
+        &__list-item {
+            font-size: 25px;
+        }
+
+        &__bounce-icon {
+            font-size: 40px;
+        }
+    }
+}

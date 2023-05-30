@@ -38,3 +38,13 @@ export const deleteTutorialById = (id) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const getTutorialById = (id) => async (dispatch) => {
+    try {
+        const { data } = await api.getTutorialById(id);
+
+        dispatch({ type: actionTypes.GET_TUTORIAL_BY_ID, payload: data })
+    } catch (error) {
+        console.log(error)
+    }
+}

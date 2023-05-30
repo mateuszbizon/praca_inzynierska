@@ -38,3 +38,15 @@ export const deleteTutorialById = async (req, res) => {
         console.log(error)
     }
 }
+
+export const getTutorialById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const tutorial = await Tutorial.findById(id);
+
+        res.status(200).json(tutorial)
+    } catch (error) {
+        console.log(error)
+    }
+}
