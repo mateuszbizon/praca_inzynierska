@@ -41,7 +41,45 @@
         left: 50%;
         transform: translate(-50%, -50%);
         font-size: 30px;
-        // cursor: pointer;
+    }
+
+    &__section {
+        padding: 10px 0;
+        margin: 10px 0 200px 0;
+
+        &:last-child {
+            margin: 10px 0;
+        }
+    }
+
+    &__stage-box {
+        margin-right: 20px;
+        margin-bottom: 50px;
+        padding: 30px;
+        background-color: #000;
+        border-bottom-right-radius: 150px;
+        border-top-right-radius: 150px;
+        text-align: center;
+        color: #fff;
+    }
+
+    &__stage-name {
+        margin-bottom: 25px;
+    }
+
+    &__stage-desc {
+        font-size: 19px;
+    }
+
+    &__img {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__img-box {
+        width: 300px;
+        height: 300px;
     }
 }
 
@@ -61,6 +99,20 @@
 
         &__bounce-icon {
             font-size: 40px;
+        }
+
+        &__stage-box {
+            margin-right: 100px;
+            padding: 30px 60px;
+        }
+
+        &__stage-name {
+            font-size: 30px;
+        }
+
+        &__img-box {
+            width: 600px;
+            height: 600px;
         }
     }
 }

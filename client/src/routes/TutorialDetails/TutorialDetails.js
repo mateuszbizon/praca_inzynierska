@@ -5,6 +5,7 @@ import { getTutorialById } from '../../actions/tutorials'
 import "./tutorial-details.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
+import ImgSlider from '../../components/ImgSlider/ImgSlider';
 
 function TutorialDetails() {
     const { id } = useParams()
@@ -27,6 +28,22 @@ function TutorialDetails() {
         </ol>
         <a className='tutorial-details__bounce-icon bounce-top'><FontAwesomeIcon icon={faChevronDown} /></a>
       </header>
+
+      <main>
+        {tutorial.stages?.map((stage, index) => (
+          <section key={index} id={stage.name} className='tutorial-details__section'>
+            <div className='tutorial-details__stage-box'>
+              <h2 className='tutorial-details__stage-name'>{index + 1}. {stage.name}</h2>
+              <p className='tutorial-details__stage-desc'>{stage.desc}</p>
+            </div>
+            <div className='tutorial-details__img'>
+              <div className='tutorial-details__img-box'>
+                <ImgSlider imgsArray={stage.selectedFile} />
+              </div>
+            </div>
+          </section>
+        ))}
+      </main>
     </>
   )
 }

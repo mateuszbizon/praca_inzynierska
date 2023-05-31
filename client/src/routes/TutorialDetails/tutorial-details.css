@@ -148,6 +148,42 @@
           transform: translate(-50%, -50%);
   font-size: 30px;
 }
+.tutorial-details__section {
+  padding: 10px 0;
+  margin: 10px 0 200px 0;
+}
+.tutorial-details__section:last-child {
+  margin: 10px 0;
+}
+.tutorial-details__stage-box {
+  margin-right: 20px;
+  margin-bottom: 50px;
+  padding: 30px;
+  background-color: #000;
+  border-bottom-right-radius: 150px;
+  border-top-right-radius: 150px;
+  text-align: center;
+  color: #fff;
+}
+.tutorial-details__stage-name {
+  margin-bottom: 25px;
+}
+.tutorial-details__stage-desc {
+  font-size: 19px;
+}
+.tutorial-details__img {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.tutorial-details__img-box {
+  width: 300px;
+  height: 300px;
+}
 
 @media (min-width: 768px) {
   .tutorial-details__header-heading {
@@ -161,5 +197,16 @@
   }
   .tutorial-details__bounce-icon {
     font-size: 40px;
+  }
+  .tutorial-details__stage-box {
+    margin-right: 100px;
+    padding: 30px 60px;
+  }
+  .tutorial-details__stage-name {
+    font-size: 30px;
+  }
+  .tutorial-details__img-box {
+    width: 600px;
+    height: 600px;
   }
 }/*# sourceMappingURL=tutorial-details.css.map */
