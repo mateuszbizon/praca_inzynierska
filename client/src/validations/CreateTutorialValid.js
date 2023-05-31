@@ -29,12 +29,19 @@ export function checkStage(values) {
         errors.desc = "Opis nie może być pusty";
     }
 
-    if (!values.selectedFile.includes("data:image")) {
-        errors.selectedFile = "Zły format pliku. Wybierz zdjęcie"
+    if (values.selectedFile.length > 5) {
+        errors.selectedFile = "Maksymalnie można dodać 5 zdjęć na etap";
+    }
+
+    for (const element of values.selectedFile) {
+        if (!element.base64.includes("data:image")) {
+            errors.selectedFile = "Zły format pliku. Wybierz zdjęcie/zdjęcia";
+            break;
+        }
     }
 
     if (values.selectedFile.length == 0) {
-        errors.selectedFile = "Wybierz plik";
+        errors.selectedFile = "Wybierz plik/pliki";
     }
 
     return errors;

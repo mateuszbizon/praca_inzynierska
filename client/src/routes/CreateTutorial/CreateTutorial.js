@@ -6,13 +6,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { createTutorial } from '../../actions/tutorials';
 import { CircularProgress } from "@mui/material";
+import ImgSlider from '../../components/ImgSlider/ImgSlider';
 
 function CreateTutorial() {
     const [shadowActive, setShadowActive] = useState(true)
     const [titleModalActive, setTitleModalActive] = useState(true)
     const [stageModalActive, setStageModalActive] = useState(false)
     const [title, setTitle] = useState("")
-    const [stage, setStage] = useState({id: "", name: "", desc: "", selectedFile: "" })
+    const [stage, setStage] = useState({id: "", name: "", desc: "", selectedFile: [] })
     const [allStages, setAllStages] = useState([])
     const [errors, setErrors] = useState({})
     const [isEdited, setIsEdited] = useState(false);
@@ -40,7 +41,7 @@ function CreateTutorial() {
     }
 
     function clearStageData() {
-        setStage({ ...stage, id: "", name: "", desc: "", selectedFile: "" });
+        setStage({ ...stage, id: "", name: "", desc: "", selectedFile: [] });
     }
 
     function addStage() {
@@ -85,12 +86,17 @@ function CreateTutorial() {
         dispatch(createTutorial({ title: title, stages: allStages, username: user.result.username }, navigate))
     }
 
+    // function test(base64) {
+    //     console.log(base64)
+    //     setStage({ ...stage, selectedFile: base64 })
+    // }
+
     useEffect(() => {
         if (Object.keys(errors).length == 0 && title !== "") {
             closeModals()
         }
 
-        if (Object.keys(errors).length == 0 && stage.name !== "" && stage.desc !== "" && stage.selectedFile !== "" && stage.id === "") {
+        if (Object.keys(errors).length == 0 && stage.name !== "" && stage.desc !== "" && stage.selectedFile.length > 0 && stage.id === "") {
             addStage()
             closeModals()
         }
@@ -128,10 +134,12 @@ function CreateTutorial() {
                 </p>
             </div>
             <div className="create-tutorial__form-box">
-                <FileBase name="selectedFile" type="file" value={stage.selectedFile} multiple={false} onDone={({ base64 }) => setStage({ ...stage, selectedFile: base64 })} />
+                <FileBase name="selectedFile" type="image" value={stage.selectedFile} multiple={true} onDone={(base64) => setStage({ ...stage, selectedFile: base64 })} />
                 <p className={errors.selectedFile ? "create-tutorial__text-error create-tutorial__show-input-error" : "create-tutorial__text-error"} >{errors.selectedFile ? errors.selectedFile : "error"}</p>
 			</div>
-            <img className='create-tutorial__img' src={stage.selectedFile !== "" ? stage.selectedFile : null} />
+            <div className='create-tutorial__img-box'>
+                <ImgSlider imgsArray={stage.selectedFile} />
+            </div>
             {!isEdited ? (
                 <button className='create-tutorial__submit-btn' onClick={saveStage}>Zapisz</button>
             ) : (
@@ -157,7 +165,7 @@ function CreateTutorial() {
                     <p className='create-tutorial__stage-text'>
                         {stage.name}
                     </p>
-                    <img className='create-tutorial__stage-img' src={stage.selectedFile} />
+                    <img className='create-tutorial__stage-img' src={stage.selectedFile[0].base64} />
                 </div>
             ))}
         </div>

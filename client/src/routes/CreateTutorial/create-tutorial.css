@@ -100,11 +100,9 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.create-tutorial__img {
+.create-tutorial__img-box {
   width: 100%;
   height: 250px;
-  -o-object-fit: cover;
-     object-fit: cover;
   margin-bottom: 10px;
 }
 .create-tutorial__text-error {
