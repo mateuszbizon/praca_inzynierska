@@ -4,6 +4,7 @@ import "./tutorial.css";
 
 function tutorial({tutorial, setShadowActive, setCurrentId}) {
     const navigate = useNavigate()
+    const user = JSON.parse(localStorage.getItem("user"));
 
     function handleDeleteData() {
         setShadowActive(true)
@@ -15,16 +16,13 @@ function tutorial({tutorial, setShadowActive, setCurrentId}) {
         <div className='tutorial__title' onClick={() => navigate(`/tutorials/${tutorial._id}`)}>
             {tutorial.title}
         </div>
-        <div className='tutorial__btns'>
-            <button className='tutorial__btn'>
-                Edytuj
-            </button>
-        </div>
-        <div className='tutorial__btns'>
-            <button className='tutorial__btn' onClick={handleDeleteData}>
-                Usuń
-            </button>
-        </div>
+        {user.result._id === tutorial.creator && (
+            <div className='tutorial__btn'>
+                <button className='tutorial__btn-delete' onClick={handleDeleteData}>
+                    Usuń
+                </button>
+            </div>
+        )}
     </div>
   )
 }
