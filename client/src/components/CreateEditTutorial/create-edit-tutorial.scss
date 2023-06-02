@@ -1,7 +1,7 @@
 @import '../../sass/colors';
 @import '../../sass/mixins';
 
-.create-tutorial {
+.create-edit-tutorial {
     position: relative;
     min-height: 100vh;
     padding: 70px 10px 0 10px;
@@ -156,7 +156,7 @@
 }
 
 @media (min-width: 576px) {
-    .create-tutorial {
+    .create-edit-tutorial {
         &__form-container, &__form-container--title {
             width: 500px;
         }

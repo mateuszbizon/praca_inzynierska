@@ -19,7 +19,7 @@ function tutorial({tutorial, setShadowActive, setCurrentId}) {
         {user.result._id === tutorial.creator && (
             <>
                 <div className='tutorial__btn-box'>
-                    <button className='tutorial__btn'>
+                    <button className='tutorial__btn' onClick={() => navigate(`/edit-tutorial/${tutorial._id}`)}>
                         Edytuj
                     </button>
                 </div>

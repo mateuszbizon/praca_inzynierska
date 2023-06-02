@@ -13,6 +13,7 @@ import EditAccount from "./routes/EditAccount/EditAccount";
 import Timer from "./routes/Timer/Timer";
 import TimesHistory from "./routes/TimesHistory/TimesHistory";
 import TutorialDetails from "./routes/TutorialDetails/TutorialDetails";
+import EditTutorial from "./routes/EditTutorial/EditTutorial";
 import "./app.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
 				<Route element={<AuthRoutes />}>
 					<Route path='/create-post' element={<CreatePage />} />
 					<Route path='/create-tutorial' element={<CreateTutorialPage />} />
+					<Route path='/edit-tutorial/:id' element={<EditTutorial />} />
 					<Route path='/profile/:username' element={<ProfilesPage />} />
 					<Route path='/posts/:id' element={<PostDetails />} />
 					<Route path='/tutorials/:id' element={<TutorialDetails />} />

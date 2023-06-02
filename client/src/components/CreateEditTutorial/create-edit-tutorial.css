@@ -1,10 +1,10 @@
-.create-tutorial {
+.create-edit-tutorial {
   position: relative;
   min-height: 100vh;
   padding: 70px 10px 0 10px;
   width: 100%;
 }
-.create-tutorial__shadow {
+.create-edit-tutorial__shadow {
   position: absolute;
   top: 0;
   left: 0;
@@ -13,7 +13,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 5;
 }
-.create-tutorial__form-container {
+.create-edit-tutorial__form-container {
   display: none;
   position: fixed;
   left: 50%;
@@ -28,7 +28,7 @@
   border-radius: 5px;
   z-index: 10;
 }
-.create-tutorial__form-container--title {
+.create-edit-tutorial__form-container--title {
   display: none;
   position: fixed;
   left: 50%;
@@ -44,20 +44,20 @@
   z-index: 10;
   height: 200px;
 }
-.create-tutorial__form-container.active, .create-tutorial__form-container--title.active {
+.create-edit-tutorial__form-container.active, .create-edit-tutorial__form-container--title.active {
   display: block;
 }
-.create-tutorial__heading {
+.create-edit-tutorial__heading {
   text-align: center;
   color: #f46036;
   margin-bottom: 15px;
 }
-.create-tutorial__form-box {
+.create-edit-tutorial__form-box {
   position: relative;
   width: 100%;
   margin-bottom: 20px;
 }
-.create-tutorial__form-box input:not([type=file]) {
+.create-edit-tutorial__form-box input:not([type=file]) {
   width: 100%;
   border: 1px solid #f46036;
   outline: none;
@@ -65,14 +65,14 @@
   margin-bottom: 5px;
   border-radius: 5px;
 }
-.create-tutorial__form-box input:focus + label,
-.create-tutorial__form-box input:valid + label {
+.create-edit-tutorial__form-box input:focus + label,
+.create-edit-tutorial__form-box input:valid + label {
   -webkit-transform: translate(-5px, -25px);
           transform: translate(-5px, -25px);
   color: #f46036;
   background-color: #fff;
 }
-.create-tutorial__form-box textarea {
+.create-edit-tutorial__form-box textarea {
   width: 100%;
   border: 1px solid #f46036;
   outline: none;
@@ -85,14 +85,14 @@
   max-height: 150px;
   font-size: 15px;
 }
-.create-tutorial__form-box textarea:focus + label,
-.create-tutorial__form-box textarea:valid + label {
+.create-edit-tutorial__form-box textarea:focus + label,
+.create-edit-tutorial__form-box textarea:valid + label {
   -webkit-transform: translate(-5px, -25px);
           transform: translate(-5px, -25px);
   color: #f46036;
   background-color: #fff;
 }
-.create-tutorial__form-box label {
+.create-edit-tutorial__form-box label {
   position: absolute;
   top: 15px;
   left: 20px;
@@ -100,21 +100,21 @@
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.create-tutorial__img-box {
+.create-edit-tutorial__img-box {
   width: 100%;
   height: 250px;
   margin-bottom: 10px;
 }
-.create-tutorial__text-error {
+.create-edit-tutorial__text-error {
   color: #ff0000;
   font-weight: bold;
   visibility: hidden;
   margin-left: 20px;
 }
-.create-tutorial__show-input-error {
+.create-edit-tutorial__show-input-error {
   visibility: visible;
 }
-.create-tutorial__submit-btn {
+.create-edit-tutorial__submit-btn {
   background-color: #f46036;
   color: #fff;
   font-size: 15px;
@@ -127,16 +127,16 @@
   width: 100%;
   margin-bottom: 10px;
 }
-.create-tutorial__submit-btn:hover {
+.create-edit-tutorial__submit-btn:hover {
   background-color: #cb380f;
 }
-.create-tutorial__submit-btn--delete-btn {
+.create-edit-tutorial__submit-btn--delete-btn {
   background-color: #c70000;
 }
-.create-tutorial__submit-btn--delete-btn:hover {
+.create-edit-tutorial__submit-btn--delete-btn:hover {
   background-color: #ef1111;
 }
-.create-tutorial__main-buttons {
+.create-edit-tutorial__main-buttons {
   width: 100%;
   margin-bottom: 25px;
   display: -webkit-box;
@@ -151,13 +151,13 @@
           align-items: center;
   gap: 10px;
 }
-.create-tutorial__title {
+.create-edit-tutorial__title {
   text-align: center;
   font-size: 20px;
   width: 100%;
   word-wrap: break-word;
 }
-.create-tutorial__btn {
+.create-edit-tutorial__btn {
   background-color: #f46036;
   color: #fff;
   font-size: 15px;
@@ -168,10 +168,10 @@
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
-.create-tutorial__btn:hover {
+.create-edit-tutorial__btn:hover {
   background-color: #cb380f;
 }
-.create-tutorial__stages {
+.create-edit-tutorial__stages {
   width: 100%;
   margin-top: 20px;
   display: -webkit-box;
@@ -186,7 +186,7 @@
           align-items: center;
   gap: 50px;
 }
-.create-tutorial__stage {
+.create-edit-tutorial__stage {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -205,13 +205,13 @@
   padding: 5px;
   cursor: pointer;
 }
-.create-tutorial__stage-text {
+.create-edit-tutorial__stage-text {
   font-size: 16px;
   text-align: center;
   width: 100%;
   word-wrap: break-word;
 }
-.create-tutorial__stage-img {
+.create-edit-tutorial__stage-img {
   width: 100%;
   height: 90%;
   -o-object-fit: cover;
@@ -219,10 +219,10 @@
 }
 
 @media (min-width: 576px) {
-  .create-tutorial__form-container, .create-tutorial__form-container--title {
+  .create-edit-tutorial__form-container, .create-edit-tutorial__form-container--title {
     width: 500px;
   }
-  .create-tutorial__main-buttons {
+  .create-edit-tutorial__main-buttons {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -231,13 +231,13 @@
         -ms-flex-pack: center;
             justify-content: center;
   }
-  .create-tutorial__title {
+  .create-edit-tutorial__title {
     font-size: 30px;
   }
-  .create-tutorial__btn, .create-tutorial__submit-btn, .create-tutorial__stage-text {
+  .create-edit-tutorial__btn, .create-edit-tutorial__submit-btn, .create-edit-tutorial__stage-text {
     font-size: 20px;
   }
-  .create-tutorial__stages {
+  .create-edit-tutorial__stages {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -249,4 +249,4 @@
         flex-wrap: wrap;
     padding: 10px;
   }
-}/*# sourceMappingURL=create-tutorial.css.map */
+}/*# sourceMappingURL=create-edit-tutorial.css.map */

@@ -48,3 +48,15 @@ export const getTutorialById = (id) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const updateTutorial = (tutorial, navigate, id) => async (dispatch) => {
+    try {
+        const { data } = await api.updateTutorial(tutorial, id)
+
+        dispatch({ type: actionTypes.UPDATE_TUTORIAL, payload: data })
+
+        navigate(`/tutorials/${id}`);
+    } catch (error) {
+        console.log(error)
+    }
+}

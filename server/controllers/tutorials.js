@@ -50,3 +50,18 @@ export const getTutorialById = async (req, res) => {
         console.log(error)
     }
 }
+
+export const updateTutorial = async (req, res) => {
+    const { id } = req.params;
+    const tutorial = req.body;
+
+    try {
+        await Tutorial.findByIdAndUpdate(id, tutorial, { new: true })
+
+        const updatedTutorial = await Tutorial.findById(id)
+
+        res.status(200).json(updatedTutorial)
+    } catch (error) {
+        console.log(error)
+    }
+}

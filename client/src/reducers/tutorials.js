@@ -13,6 +13,9 @@ export default (state = { tutorials: [], tutorial: {} }, action) => {
 
       case actionTypes.GET_TUTORIAL_BY_ID:
         return { ...state, tutorial: action.payload }
+
+      case actionTypes.UPDATE_TUTORIAL:
+        return { ...state, tutorial: action.payload }
         
       default:
         return state;
