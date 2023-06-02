@@ -17,11 +17,18 @@ function tutorial({tutorial, setShadowActive, setCurrentId}) {
             {tutorial.title}
         </div>
         {user.result._id === tutorial.creator && (
-            <div className='tutorial__btn'>
-                <button className='tutorial__btn-delete' onClick={handleDeleteData}>
-                    Usuń
-                </button>
-            </div>
+            <>
+                <div className='tutorial__btn-box'>
+                    <button className='tutorial__btn'>
+                        Edytuj
+                    </button>
+                </div>
+                <div className='tutorial__btn-box'>
+                    <button className='tutorial__btn' onClick={handleDeleteData}>
+                        Usuń
+                    </button>
+                </div>
+            </>
         )}
     </div>
   )

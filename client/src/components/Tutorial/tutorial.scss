@@ -13,7 +13,7 @@
     }
 
     &__title {
-        width: 85%;
+        width: 70%;
         padding: 10px;
         font-size: 14px;
         white-space: nowrap;
@@ -21,14 +21,14 @@
         text-overflow: ellipsis;
     }
 
-    &__btn {
+    &__btn-box {
         width: 15%;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    &__btn-delete {
+    &__btn {
         @include buttonToChangeView;
 
         &:hover {

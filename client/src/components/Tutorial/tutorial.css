@@ -12,14 +12,14 @@
   background-color: #e5e1e1;
 }
 .tutorial__title {
-  width: 85%;
+  width: 70%;
   padding: 10px;
   font-size: 14px;
   white-space: nowrap;
   overflow-x: hidden;
   text-overflow: ellipsis;
 }
-.tutorial__btn {
+.tutorial__btn-box {
   width: 15%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,7 +31,7 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.tutorial__btn-delete {
+.tutorial__btn {
   border: none;
   background: none;
   text-transform: uppercase;
@@ -41,7 +41,7 @@
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
-.tutorial__btn-delete:hover {
+.tutorial__btn:hover {
   color: #f46036;
 }
 
