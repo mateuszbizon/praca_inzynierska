@@ -41,9 +41,13 @@ export const deleteTutorialById = (id) => async (dispatch) => {
 
 export const getTutorialById = (id) => async (dispatch) => {
     try {
+        dispatch({ type: actionTypes.START_LOADING })
+
         const { data } = await api.getTutorialById(id);
 
         dispatch({ type: actionTypes.GET_TUTORIAL_BY_ID, payload: data })
+
+        dispatch({ type: actionTypes.END_LOADING })
     } catch (error) {
         console.log(error)
     }
@@ -51,9 +55,13 @@ export const getTutorialById = (id) => async (dispatch) => {
 
 export const updateTutorial = (tutorial, navigate, id) => async (dispatch) => {
     try {
+        dispatch({ type: actionTypes.START_LOADING })
+
         const { data } = await api.updateTutorial(tutorial, id)
 
         dispatch({ type: actionTypes.UPDATE_TUTORIAL, payload: data })
+
+        dispatch({ type: actionTypes.END_LOADING })
 
         navigate(`/tutorials/${id}`);
     } catch (error) {
