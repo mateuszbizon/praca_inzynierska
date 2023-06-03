@@ -32,13 +32,6 @@ export const createPost = async (req, res) => {
     const newPost = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() });
     try {
         await newPost.save();
-        
-        const user = await User.findById(req.userId);
-
-        let newUserPosts = user.posts;
-        newUserPosts++;
-
-        await User.findByIdAndUpdate(req.userId, {posts: newUserPosts}, { new: true});
 
         res.status(201).json(newPost);
     } catch (error) {
@@ -70,13 +63,6 @@ export const deletePost = async (req, res) => {
         if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("Nie ma takiego posta z tym id");
 
         await PostMessage.findByIdAndRemove(id);
-
-        const user = await User.findById(req.userId);
-
-        let newUserPosts = user.posts;
-        newUserPosts--;
-
-        await User.findByIdAndUpdate(req.userId, {posts: newUserPosts}, { new: true });
 
         res.json({message: "Usunięto post pomyślnie"});
     } catch (error) {

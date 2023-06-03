@@ -6,7 +6,6 @@ const userSchema = mongoose.Schema({
 	email: { type: String, required: true },
 	password: { type: String, required: true },
 	selectedFile: String,
-	posts: { type: Number, default: 0},
 	id: { type: String },
 	times: { type: [Object], default: [] },
 	sessions: { type: [Object], default: [] }

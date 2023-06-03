@@ -31,7 +31,6 @@ function UserData({ username }) {
 				</div>
 				<div className='user-data__main-side'>
 					<p className='user-data__info'>{users?.user?.name}</p>
-					<p className='user-data__info'>Posty: {users?.posts}</p>
 					<p className='user-data__info'>{users?.user?.username}</p>
 					{currentUser.result.username === users?.user?.username && (
 						<button
