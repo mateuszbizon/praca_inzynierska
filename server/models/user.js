@@ -6,7 +6,7 @@ const userSchema = mongoose.Schema({
 	email: { type: String, required: true },
 	password: { type: String, required: true },
 	selectedFile: String,
-	id: { type: String },
+	isAdmin: { type: Boolean, default: false },
 	times: { type: [Object], default: [] },
 	sessions: { type: [Object], default: [] }
 });
