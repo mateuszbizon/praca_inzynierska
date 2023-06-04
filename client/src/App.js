@@ -14,6 +14,7 @@ import Timer from "./routes/Timer/Timer";
 import TimesHistory from "./routes/TimesHistory/TimesHistory";
 import TutorialDetails from "./routes/TutorialDetails/TutorialDetails";
 import EditTutorial from "./routes/EditTutorial/EditTutorial";
+import ContestsDashboard from "./routes/ContestsDashboard/ContestsDashboard";
 import "./app.css";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
 					<Route path='/edit-account' element={<EditAccount />} />
 					<Route path='/timer' element={<Timer />} />
 					<Route path='/times-history' element={<TimesHistory />} />
+					<Route path='/contests' element={<ContestsDashboard />} />
 				</Route>
 				<Route path='/' element={<HomePage />} />
 				<Route path='/login' element={<LoginPage />} />

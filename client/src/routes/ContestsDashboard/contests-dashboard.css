@@ -1,0 +1,34 @@
+.contests-dashboard {
+  width: 100%;
+  min-height: 100vh;
+  padding: 80px 15px 0 15px;
+}
+.contests-dashboard__heading {
+  margin-bottom: 20px;
+}
+.contests-dashboard__btn {
+  background-color: #f46036;
+  color: #fff;
+  font-size: 15px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.contests-dashboard__btn:hover {
+  background-color: #cb380f;
+}
+
+@media (min-width: 576px) {
+  .contests-dashboard {
+    padding: 80px 25px 0 25px;
+  }
+  .contests-dashboard__heading {
+    font-size: 40px;
+  }
+  .contests-dashboard__btn {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=contests-dashboard.css.map */

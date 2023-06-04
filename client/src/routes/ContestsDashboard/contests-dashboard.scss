@@ -1,0 +1,35 @@
+@import "../../sass/mixins";
+@import "../../sass/colors";
+
+.contests-dashboard {
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px 15px 0 15px;
+
+    &__heading {
+        margin-bottom: 20px;
+    }
+
+
+    &__btn {
+        @include button-styling;
+
+        &:hover {
+            background-color: $main-color-hover;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .contests-dashboard {
+        padding: 80px 25px 0 25px;
+
+        &__heading {
+            font-size: 40px;
+        }
+
+        &__btn {
+            font-size: 20px;
+        }
+    }
+}

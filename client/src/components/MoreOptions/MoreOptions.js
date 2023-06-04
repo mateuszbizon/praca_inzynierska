@@ -7,7 +7,7 @@ function MoreOptions({moreOptions, setMoreOptions}) {
 
     const moreOptionsItems = [
         {text: "Trening", path: '/timer'},
-        {text: "Zawody", path: '/'},
+        {text: "Zawody", path: '/contests'},
     ]
 
     function navigateTo(path) {

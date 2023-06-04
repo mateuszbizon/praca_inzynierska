@@ -21,7 +21,7 @@ function Sidebar({ sidebar, setSidebar }) {
 		{ text: "Utwórz poradnik", icon: <AddIcon fontSize='large' />, path: "/create-tutorial" },
 		{ text: "Profil", icon: <EditIcon fontSize='large' />, path: `/profile/${user?.result?.username}`},
 		{ text: "Trening", icon: <ViewInArIcon fontSize='large' />, path: "/timer" },
-		{ text: "Zawody", icon: <SportsKabaddiIcon fontSize='large' />, path: "/" },
+		{ text: "Zawody", icon: <SportsKabaddiIcon fontSize='large' />, path: "/contests" },
 		{ text: "Logowanie", icon: <LoginIcon fontSize='large' />, path: "/login" },
 		{ text: "Rejestracja", icon: <HowToRegIcon fontSize='large' />, path: "/register" },
 	];
