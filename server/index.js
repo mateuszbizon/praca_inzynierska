@@ -9,6 +9,7 @@ import userRoutes from "./routes/users.js";
 import timesRoutes from './routes/times.js';
 import sessionsRoutes from './routes/sessions.js';
 import tutorialsRoutes from "./routes/tutorials.js";
+import contestsRoutes from "./routes/contests.js";
 
 const app = express();
 dotenv.config();
@@ -22,6 +23,7 @@ app.use("/user", userRoutes);
 app.use("/times", timesRoutes);
 app.use("/sessions", sessionsRoutes);
 app.use("/tutorials", tutorialsRoutes);
+app.use("/contests", contestsRoutes);
 
 const PORT = process.env.PORT || 5000;
 

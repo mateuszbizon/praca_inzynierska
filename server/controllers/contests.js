@@ -1,0 +1,1 @@
+import Contest from "../models/contest.js";

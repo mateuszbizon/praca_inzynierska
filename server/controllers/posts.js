@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import PostMessage from '../models/postMessage.js';
-import User from "../models/user.js";
 
 export const getPostsByUsername = async (req, res) => {
     const { username } = req.params;
