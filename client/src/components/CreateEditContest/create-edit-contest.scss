@@ -1,0 +1,74 @@
+@import "../../sass/mixins";
+@import "../../sass/colors";
+
+.create-edit-contest {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+
+    &__form-container {
+        @include form-container;
+    }
+
+    &__heading {
+        text-align: center;
+		color: $main-color;
+		margin-bottom: 20px;
+		font-size: 30px;
+    }
+
+    &__box {
+        position: relative;
+        width: 100%;
+		margin-bottom: 25px;
+
+		input {
+			@include input-styling;
+		}
+
+        select {
+            @include select-styling;
+        }
+
+		input:focus + label,
+		input:valid + label {
+			@include label-animation;
+		}
+
+		label {
+			@include label-styling;
+		}
+    }
+
+    &__text-error {
+        @include text-error-styling;
+    }
+
+    &__btn-box {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__submit-btn {
+        @include button-styling;
+        width: 100%;
+
+        &:hover {
+            background-color: $main-color-hover;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+	.create-edit-contest {
+        &__form-container {
+            width: 500px;
+        }
+
+        &__submit-btn {
+            font-size: 20px;
+        }
+    }
+}

@@ -52,6 +52,15 @@
 	border-radius: 5px;
 }
 
+@mixin select-styling {
+	width: 100%;
+	border: none;
+	outline: none;
+	padding: 15px 20px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+}
+
 @mixin label-animation {
 	transform: translate(-5px, -25px);
 	color: $main-color;
@@ -97,7 +106,7 @@
 	background-color: $main-color;
 	color: #fff;
 	font-size: 15px;
-	padding: 5px 10px;
+	padding: 10px 20px;
 	border-radius: 8px;
 	border: none;
 	cursor: pointer;
@@ -117,6 +126,17 @@
 	background-color: #fff;
 	border-radius: 5px;
 	z-index: 10;
+}
+
+@mixin form-container {
+	margin-top: 80px;
+	width: 300px;
+	min-height: 300px;
+	border: 1px solid #909090;
+	border-radius: 8px;
+	box-shadow: 10px 10px 10px #909090;
+	background-color: #fff;
+	padding: 20px;
 }
 
 @mixin buttonToChangeView {

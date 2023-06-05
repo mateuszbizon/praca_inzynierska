@@ -1,0 +1,102 @@
+.create-edit-contest {
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.create-edit-contest__form-container {
+  margin-top: 80px;
+  width: 300px;
+  min-height: 300px;
+  border: 1px solid #909090;
+  border-radius: 8px;
+  -webkit-box-shadow: 10px 10px 10px #909090;
+          box-shadow: 10px 10px 10px #909090;
+  background-color: #fff;
+  padding: 20px;
+}
+.create-edit-contest__heading {
+  text-align: center;
+  color: #f46036;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+.create-edit-contest__box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.create-edit-contest__box input {
+  width: 100%;
+  border: 1px solid #f46036;
+  outline: none;
+  padding: 15px 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.create-edit-contest__box select {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 15px 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.create-edit-contest__box input:focus + label,
+.create-edit-contest__box input:valid + label {
+  -webkit-transform: translate(-5px, -25px);
+          transform: translate(-5px, -25px);
+  color: #f46036;
+  background-color: #fff;
+}
+.create-edit-contest__box label {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #000;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.create-edit-contest__text-error {
+  color: #ff0000;
+  font-weight: bold;
+  visibility: hidden;
+  margin-left: 20px;
+}
+.create-edit-contest__btn-box {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.create-edit-contest__submit-btn {
+  background-color: #f46036;
+  color: #fff;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+.create-edit-contest__submit-btn:hover {
+  background-color: #cb380f;
+}
+
+@media (min-width: 576px) {
+  .create-edit-contest__form-container {
+    width: 500px;
+  }
+  .create-edit-contest__submit-btn {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=create-edit-contest.css.map */
