@@ -3,6 +3,19 @@
   min-height: 100vh;
   padding: 80px 15px 0 15px;
 }
+.contests-dashboard__shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 5;
+  display: none;
+}
+.contests-dashboard__shadow.active {
+  display: block;
+}
 .contests-dashboard__heading {
   margin-bottom: 20px;
 }

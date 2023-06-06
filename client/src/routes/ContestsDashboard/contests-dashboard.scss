@@ -6,6 +6,15 @@
     min-height: 100vh;
     padding: 80px 15px 0 15px;
 
+    &__shadow {
+        @include shadow;
+        display: none;
+    }
+
+    &__shadow.active {
+        display: block;
+    }
+
     &__heading {
         margin-bottom: 20px;
     }

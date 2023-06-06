@@ -20,7 +20,19 @@ export const getAllContests = async (req, res) => {
 
         const contestsEnd = await Contest.find({ isEnded: true })
 
-        res.status(201).json({ contests: contests, contestsEnd: contestsEnd });
+        res.status(200).json({ contests: contests, contestsEnd: contestsEnd });
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const deleteContestById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await Contest.findByIdAndRemove(id);
+
+        res.status(200).json({ message: "Usunięto zawody pomyślnie" });
     } catch (error) {
         console.log(error)
     }

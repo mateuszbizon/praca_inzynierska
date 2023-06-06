@@ -1,8 +1,13 @@
 import React from 'react'
 import "./contest.css"
 
-function Contest({contest}) {
+function Contest({contest, setShadowActive, setCurrentId}) {
     const user = JSON.parse(localStorage.getItem("user"))
+
+    function handleDelete() {
+        setShadowActive(true)
+        setCurrentId(contest._id)
+    }
 
   return (
     <div className='contest'>
@@ -14,7 +19,7 @@ function Contest({contest}) {
         {user.result.isAdmin && (
             <div className='contest__buttons-side'>
                 <button className='contest__btn'>Edytuj</button>
-                <button className='contest__btn'>Usuń</button>
+                <button className='contest__btn' onClick={handleDelete}>Usuń</button>
             </div>
         )}
     </div>

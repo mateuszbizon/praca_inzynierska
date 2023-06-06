@@ -12,6 +12,7 @@ function ContestsDashboard() {
     const markerRef = useRef()
     const firstButtonRef = useRef()
     const [changeView, setChangeView] = useState("contests")
+    const [shadowActive, setShadowActive] = useState(false)
     const dispatch = useDispatch()
 
     function setMarkerFirst() {
@@ -36,6 +37,7 @@ function ContestsDashboard() {
 
   return (
     <section className='contests-dashboard'>
+        <div className={shadowActive ? 'contests-dashboard__shadow active' : "contests-dashboard__shadow"} onClick={() => setShadowActive(false)}></div>
         <h2 className='contests-dashboard__heading'>Zawody</h2>
         {user.result.isAdmin && (
             <div>
@@ -47,8 +49,8 @@ function ContestsDashboard() {
             <button className='contests-dashboard__btn-change-view' onClick={e => changeViewAndMarker(e, "contests-end")}>Minione</button>
             <div className='contests-dashboard__marker' ref={markerRef}></div>
         </div>
-        {changeView === "contests" && <Contests />}
-        {changeView === "contests-end" && <ContestsEnd />}
+        {changeView === "contests" && <Contests shadowActive={shadowActive} setShadowActive={setShadowActive} />}
+        {changeView === "contests-end" && <ContestsEnd shadowActive={shadowActive} setShadowActive={setShadowActive} />}
     </section>
   )
 }
