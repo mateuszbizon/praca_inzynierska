@@ -20,6 +20,42 @@
 .contests-dashboard__btn:hover {
   background-color: #cb380f;
 }
+.contests-dashboard__main-buttons {
+  position: relative;
+  width: 100%;
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 10px;
+}
+.contests-dashboard__btn-change-view {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 5px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+}
+.contests-dashboard__btn-change-view:hover {
+  background-color: #ddd;
+}
+.contests-dashboard__marker {
+  position: absolute;
+  content: "";
+  left: 25px;
+  bottom: -8px;
+  width: 100px;
+  height: 3px;
+  background-color: #f46036;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
 
 @media (min-width: 576px) {
   .contests-dashboard {
@@ -30,5 +66,13 @@
   }
   .contests-dashboard__btn {
     font-size: 20px;
+  }
+  .contests-dashboard__main-buttons {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
+  .contests-dashboard__btn-change-view {
+    font-size: 18px;
   }
 }/*# sourceMappingURL=contests-dashboard.css.map */

@@ -18,6 +18,27 @@
             background-color: $main-color-hover;
         }
     }
+
+    &__main-buttons {
+        position: relative;
+        width: 100%;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    &__btn-change-view {
+        @include buttonToChangeView;
+
+        &:hover {
+            background-color: #ddd;
+        }
+    }
+
+    &__marker {
+        @include marker;
+    }
 }
 
 @media (min-width: 576px) {
@@ -30,6 +51,14 @@
 
         &__btn {
             font-size: 20px;
+        }
+
+        &__main-buttons {
+            justify-content: flex-start;
+        }
+
+        &__btn-change-view {
+            font-size: 18px;
         }
     }
 }

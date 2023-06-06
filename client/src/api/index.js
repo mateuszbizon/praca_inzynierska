@@ -43,3 +43,4 @@ export const getTutorialById = (id) => API.get(`/tutorials/getTutorialById/${id}
 export const updateTutorial = (tutorial, id) => API.patch(`/tutorials/updateTutorial/${id}`, tutorial);
 
 export const createContest = (contest) => API.post("/contests/createContest", contest);
+export const getAllContests = () => API.get("/contests/getAllContests");

@@ -1,0 +1,76 @@
+@import "../../sass/colors";
+@import "../../sass/mixins";
+
+.contest {
+	width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: #eee;
+    border-radius: 5px;
+    border: 3px solid #eee;
+    transition: background-color .3s;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #fff;
+    }
+
+	&__main-side {
+        width: 100%;
+		text-align: center;
+		padding: 10px;
+	}
+
+    &__buttons-side {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    &__btn {
+        @include buttonToChangeView;
+        font-size: 15px;
+
+        &:hover {
+            color: $main-color;
+        }
+    }
+
+	&__text {
+		margin-bottom: 5px;
+        font-size: 17px;
+	}
+}
+
+@media (min-width: 576px) {
+    .contest {
+        &__text {
+            font-size: 20px;
+        }
+
+        &__btn {
+            font-size: 18px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .contest {
+        width: 50%;
+        flex-direction: row;
+
+        &__main-side {
+            width: 70%;
+            text-align: left;
+        }
+
+        &__buttons-side {
+            width: 30%;
+            justify-content: center;
+        }
+    }
+}

@@ -16,3 +16,17 @@ export const createContest = (contest, navigate) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const getAllContests = () => async (dispatch) => {
+    try {
+        dispatch({ type: actionTypes.START_LOADING })
+
+        const { data } = await api.getAllContests()
+
+        dispatch({ type: actionTypes.GET_ALL_CONTESTS, payload: data })
+
+        dispatch({ type: actionTypes.END_LOADING })
+    } catch (error) {
+        console.log(error)
+    }
+}

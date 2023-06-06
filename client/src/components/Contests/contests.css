@@ -1,0 +1,32 @@
+.contests {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.no-contents {
+  margin-top: 30px;
+  font-size: 17px;
+}
+
+@media (min-width: 768px) {
+  .contests {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .no-contents {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=contests.css.map */
