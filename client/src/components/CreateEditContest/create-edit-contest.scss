@@ -45,6 +45,10 @@
         @include text-error-styling;
     }
 
+    &__show-input-error {
+        visibility: visible;
+    }
+
     &__btn-box {
         width: 100%;
         display: flex;

@@ -7,5 +7,6 @@ import times from './times';
 import sessions from './sessions';
 import loaders from './loaders';
 import tutorials from './tutorials';
+import contests from './contests';
 
-export const reducers = combineReducers({ posts, auth, users, times, sessions, loaders, tutorials });
+export const reducers = combineReducers({ posts, auth, users, times, sessions, loaders, tutorials, contests });

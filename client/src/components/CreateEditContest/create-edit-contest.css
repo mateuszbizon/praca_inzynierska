@@ -67,6 +67,9 @@
   visibility: hidden;
   margin-left: 20px;
 }
+.create-edit-contest__show-input-error {
+  visibility: visible;
+}
 .create-edit-contest__btn-box {
   width: 100%;
   display: -webkit-box;

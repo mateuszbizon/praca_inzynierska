@@ -40,4 +40,6 @@ export const createTutorial = (newTutorial) => API.post('/tutorials/createTutori
 export const getTutorialsByUsername = (username) => API.get(`/tutorials/getTutorialsByUsername/${username}`);
 export const deleteTutorialById = (id) => API.delete(`/tutorials/deleteTutorial/${id}`);
 export const getTutorialById = (id) => API.get(`/tutorials/getTutorialById/${id}`);
-export const updateTutorial = (tutorial, id) => API.patch(`/tutorials/updateTutorial/${id}`, tutorial)
+export const updateTutorial = (tutorial, id) => API.patch(`/tutorials/updateTutorial/${id}`, tutorial);
+
+export const createContest = (contest) => API.post("/contests/createContest", contest);
