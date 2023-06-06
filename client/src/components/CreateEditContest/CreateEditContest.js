@@ -75,7 +75,7 @@ function CreateEditContest({headingText, dispatchFunc}) {
                 <div className='create-edit-contest__box'>
                     <select name="typeContest" value={form.typeContest} onChange={onChange}>
                         <option value="default" disabled>Wybierz rodzaj zawodów</option>
-                        <option value="online">on-line</option>
+                        <option value="on-line">on-line</option>
                         <option value="stationary">stacjonarnie</option>
                     </select>
                     <p className={errors.typeContest ? "create-edit-contest__text-error create-edit-contest__show-input-error" : "create-edit-contest__text-error"} >

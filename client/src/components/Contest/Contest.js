@@ -9,7 +9,7 @@ function Contest({contest}) {
         <div className='contest__main-side'>
             <p className='contest__text'>{contest.name}</p>
             <p className='contest__text'>{new Date(contest.startContest).getDate()} - {new Date(contest.endContest).getDate()} {new Date(contest.startContest).toLocaleString('default', { month: 'long' })}, {new Date(contest.startContest).getFullYear()}</p>
-            <p className='contest__text'>zawody {contest.typeContest}{contest.typeContest !== "online" && `, ${contest.city}`}</p>
+            <p className='contest__text'>{contest.typeContest === "on-line" ? `zawody ${contest.typeContest}` : contest.city}</p>
         </div>
         {user.result.isAdmin && (
             <div className='contest__buttons-side'>
