@@ -37,5 +37,9 @@ export default function createContestValid(values) {
         errors.city = "Nazwa miasta nie może być pusta"
     }
 
+    if (values.typeContest === "stationary" && values.place === "") {
+        errors.place = "Miejsce wydarzenia nie może być puste"
+    }
+
     return errors
 }

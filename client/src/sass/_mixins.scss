@@ -52,6 +52,14 @@
 	border-radius: 5px;
 }
 
+@mixin textarea-styling {
+	max-width: 100%;
+	min-width: 100%;
+	min-height: 150px;
+	max-height: 150px;
+	font-size: 15px;
+}
+
 @mixin select-styling {
 	width: 100%;
 	border: none;

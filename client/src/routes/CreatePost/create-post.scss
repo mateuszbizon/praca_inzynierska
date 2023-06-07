@@ -25,11 +25,7 @@
 
 		textarea {
 			@include input-styling;
-			max-width: 100%;
-			min-width: 100%;
-			min-height: 150px;
-			max-height: 150px;
-			font-size: 15px;
+			@include textarea-styling;
 		}
 
 		textarea:focus + label,

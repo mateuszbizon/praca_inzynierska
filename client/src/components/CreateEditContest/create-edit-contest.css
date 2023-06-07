@@ -30,14 +30,6 @@
   width: 100%;
   margin-bottom: 25px;
 }
-.create-edit-contest__box input {
-  width: 100%;
-  border: 1px solid #f46036;
-  outline: none;
-  padding: 15px 20px;
-  margin-bottom: 5px;
-  border-radius: 5px;
-}
 .create-edit-contest__box select {
   width: 100%;
   border: none;
@@ -46,14 +38,28 @@
   margin-bottom: 5px;
   border-radius: 5px;
 }
-.create-edit-contest__box input:focus + label,
-.create-edit-contest__box input:valid + label {
+.create-edit-contest__input {
+  width: 100%;
+  border: 1px solid #f46036;
+  outline: none;
+  padding: 15px 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.create-edit-contest__textarea {
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 150px;
+  max-height: 150px;
+  font-size: 15px;
+}
+.create-edit-contest__input:focus + .create-edit-contest__label, .create-edit-contest__input:valid + .create-edit-contest__label {
   -webkit-transform: translate(-5px, -25px);
           transform: translate(-5px, -25px);
   color: #f46036;
   background-color: #fff;
 }
-.create-edit-contest__box label {
+.create-edit-contest__label {
   position: absolute;
   top: 15px;
   left: 20px;

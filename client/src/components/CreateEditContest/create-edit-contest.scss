@@ -23,22 +23,26 @@
         width: 100%;
 		margin-bottom: 25px;
 
-		input {
-			@include input-styling;
-		}
-
         select {
             @include select-styling;
         }
+    }
 
-		input:focus + label,
-		input:valid + label {
-			@include label-animation;
-		}
+    &__input {
+        @include input-styling;
+    }
 
-		label {
-			@include label-styling;
-		}
+    &__textarea {
+        @include textarea-styling;
+    }
+
+    &__input:focus + &__label,
+    &__input:valid + &__label {
+        @include label-animation;
+    }
+
+    &__label {
+        @include label-styling;
     }
 
     &__text-error {
