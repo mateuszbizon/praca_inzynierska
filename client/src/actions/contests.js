@@ -50,3 +50,33 @@ export const deleteContestEndById = (id) => async (dispatch) => {
         console.log(error.message)
     }
 }
+
+export const getContestById = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: actionTypes.START_LOADING })
+
+        const { data } = await api.getContestById(id)
+
+        dispatch({ type: actionTypes.GET_CONTEST_BY_ID, payload: data })
+
+        dispatch({ type: actionTypes.END_LOADING })
+    } catch (error) {
+        console.log(error.message)
+    }
+}
+
+export const updateContest = (contest, navigate, id) => async (dispatch) => {
+    try {
+        dispatch({ type: actionTypes.START_LOADING })
+
+        const { data } = await api.updateContest(contest, id)
+
+        dispatch({ type: actionTypes.UPDATE_CONTEST, payload: data })
+
+        dispatch({ type: actionTypes.END_LOADING })
+
+        navigate('/contests');
+    } catch (error) {
+        console.log(error)
+    }
+}

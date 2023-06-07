@@ -17,6 +17,7 @@ import TutorialDetails from "./routes/TutorialDetails/TutorialDetails";
 import EditTutorial from "./routes/EditTutorial/EditTutorial";
 import ContestsDashboard from "./routes/ContestsDashboard/ContestsDashboard";
 import CreateContest from "./routes/CreateContest/CreateContest";
+import EditContest from "./routes/EditContest/EditContest";
 import "./app.css";
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
 				</Route>
 				<Route element={<AdminRoutes />}>
 					<Route path="/create-contest" element={<CreateContest />} />
+					<Route path="/edit-contest/:id" element={<EditContest />} />
 				</Route>
 				<Route path='/' element={<HomePage />} />
 				<Route path='/login' element={<LoginPage />} />

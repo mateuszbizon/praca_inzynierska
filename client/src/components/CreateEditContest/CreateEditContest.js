@@ -5,10 +5,11 @@ import "./create-edit-contest.css"
 import createContestValid from '../../validations/CreateContestValid'
 import checkAreInputsEmpty from '../../validations/CheckAreInputsEmpty'
 
-function CreateEditContest({headingText, dispatchFunc}) {
+function CreateEditContest({headingText, isEditing, dispatchFunc}) {
     const [form, setForm] = useState({ name: "", startRegistration: "", endRegistration: "", startContest: "", endContest: "", typeContest: "default", city: "" })
     const [errors, setErrors] = useState({})
     const { isLoading } = useSelector(state => state.loaders)
+    const { contest } = useSelector(state => state.contests)
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
@@ -28,9 +29,15 @@ function CreateEditContest({headingText, dispatchFunc}) {
 
     useEffect(() => {
         if (Object.keys(errors).length == 0 && !checkAreInputsEmpty(form)) {
-            dispatch(dispatchFunc(form, navigate))
+            dispatch(dispatchFunc(form, navigate, contest._id))
         }
     }, [errors])
+
+    useEffect(() => {
+        if (Object.keys(contest).length > 0 && isEditing) {
+            setForm(contest)
+        }
+    }, [contest])
 
   return (
     <section className='create-edit-contest'>

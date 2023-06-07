@@ -37,3 +37,30 @@ export const deleteContestById = async (req, res) => {
         console.log(error)
     }
 }
+
+export const getContestById = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        const contest = await Contest.findById(id);
+
+        res.status(200).json(contest);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const updateContest = async (req, res) => {
+    const { id } = req.params;
+    const contest = req.body;
+
+    try {
+        await Contest.findByIdAndUpdate(id, contest, { new: true })
+
+        const updatedContest = await Contest.findById(id)
+
+        res.status(200).json(updatedContest);
+    } catch (error) {
+        console.log(error)
+    }
+}

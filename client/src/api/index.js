@@ -45,3 +45,5 @@ export const updateTutorial = (tutorial, id) => API.patch(`/tutorials/updateTuto
 export const createContest = (contest) => API.post("/contests/createContest", contest);
 export const getAllContests = () => API.get("/contests/getAllContests");
 export const deleteContestById = (id) => API.delete(`/contests/deleteContestById/${id}`);
+export const getContestById = (id) => API.get(`/contests/getContestById/${id}`);
+export const updateContest = (contest, id) => API.patch(`/contests/updateContest/${id}`, contest);

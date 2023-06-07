@@ -4,7 +4,7 @@ import { createContest } from '../../actions/contests'
 
 function CreateContest() {
   return (
-    <CreateEditContest headingText={"Dodaj zawody"} dispatchFunc={createContest} />
+    <CreateEditContest headingText={"Dodaj zawody"} isEditing={false} dispatchFunc={createContest} />
   )
 }
 
