@@ -1,9 +1,10 @@
 import Contest from "../models/contest.js";
+import { events, usersLimit } from "../data/ContestData.js";
 
 export const createContest = async (req, res) => {
     const contest = req.body;
 
-    const newContest = new Contest(contest)
+    const newContest = new Contest({ ...contest, events: events, usersLimit: usersLimit })
 
     try {
         await newContest.save();

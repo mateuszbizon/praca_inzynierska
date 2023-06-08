@@ -12,7 +12,7 @@ function Contest({contest, setShadowActive, setCurrentId}) {
     }
 
   return (
-    <div className='contest'>
+    <div className='contest' onClick={() => navigate(`/contests/${contest._id}`)}>
         <div className='contest__main-side'>
             <p className='contest__text'>{contest.name}</p>
             <p className='contest__text'>{new Date(contest.startContest).getDate()} - {new Date(contest.endContest).getDate()} {new Date(contest.startContest).toLocaleString('default', { month: 'long' })}, {new Date(contest.startContest).getFullYear()}</p>

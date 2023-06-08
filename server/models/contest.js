@@ -2,11 +2,13 @@ import mongoose from "mongoose";
 
 const contestSchema = mongoose.Schema({
     name: String,
-    events: { type: [Object], default: [] },
-    startRegistration: { type: Date, default: new Date() },
-    endRegistration: { type: Date, default: new Date() },
-    startContest: { type: Date, default: new Date() },
-    endContest: { type: Date, default: new Date() },
+    events: [Object],
+    users: { type: [Object], default: [] },
+    usersLimit: Number,
+    startRegistration: Date,
+    endRegistration: Date,
+    startContest: Date,
+    endContest: Date,
     typeContest: String,
     city: { type: String, default: "" },
     place: { type: String, default: "" },
