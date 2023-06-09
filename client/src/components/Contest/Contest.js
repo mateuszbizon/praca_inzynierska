@@ -12,8 +12,8 @@ function Contest({contest, setShadowActive, setCurrentId}) {
     }
 
   return (
-    <div className='contest' onClick={() => navigate(`/contests/${contest._id}`)}>
-        <div className='contest__main-side'>
+    <div className='contest'>
+        <div className='contest__main-side' onClick={() => navigate(`/contests/${contest._id}`)}>
             <p className='contest__text'>{contest.name}</p>
             <p className='contest__text'>{new Date(contest.startContest).getDate()} - {new Date(contest.endContest).getDate()} {new Date(contest.startContest).toLocaleString('default', { month: 'long' })}, {new Date(contest.startContest).getFullYear()}</p>
             <p className='contest__text'>{contest.typeContest === "on-line" ? `zawody ${contest.typeContest}` : contest.city}</p>

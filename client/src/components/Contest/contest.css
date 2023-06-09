@@ -14,7 +14,6 @@
   border: 3px solid #eee;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
-  cursor: pointer;
 }
 .contest:hover {
   background-color: #fff;
@@ -23,6 +22,7 @@
   width: 100%;
   text-align: center;
   padding: 10px;
+  cursor: pointer;
 }
 .contest__buttons-side {
   width: 100%;
