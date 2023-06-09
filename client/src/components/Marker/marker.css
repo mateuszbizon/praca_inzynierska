@@ -1,0 +1,12 @@
+.marker {
+  position: absolute;
+  content: "";
+  left: 25px;
+  bottom: -8px;
+  width: 100px;
+  height: 3px;
+  background-color: #f46036;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  z-index: 100000;
+}/*# sourceMappingURL=marker.css.map */

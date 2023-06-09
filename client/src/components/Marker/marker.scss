@@ -1,0 +1,13 @@
+@import "../../sass/colors";
+
+.marker {
+    position: absolute;
+	content: "";
+	left: 25px;
+	bottom: -8px;
+	width: 100px;
+	height: 3px;
+	background-color: $main-color;
+	transition: all 0.3s;
+    z-index: 100000;
+}

@@ -5,34 +5,25 @@ import { getAllContests } from '../../actions/contests'
 import "./contests-dashboard.css"
 import Contests from '../../components/Contests/Contests'
 import ContestsEnd from '../../components/ContestsEnd/ContestsEnd'
+import Marker from '../../components/Marker/Marker'
 
 function ContestsDashboard() {
     const user = JSON.parse(localStorage.getItem("user"))
     const navigate = useNavigate()
-    const markerRef = useRef()
+    // const markerRef = useRef()
     const firstButtonRef = useRef()
     const [changeView, setChangeView] = useState("contests")
+    const [indicator, setIndicator] = useState(null)
     const [shadowActive, setShadowActive] = useState(false)
     const dispatch = useDispatch()
-
-    function setMarkerFirst() {
-      markerRef.current.style.left = `${firstButtonRef.current.offsetLeft}px`
-      markerRef.current.style.width = `${firstButtonRef.current.offsetWidth}px`
-    }
-
-    function indicator(e) {
-      markerRef.current.style.left = `${e.offsetLeft}px`;
-      markerRef.current.style.width = `${e.offsetWidth}px`;
-    }
   
     function changeViewAndMarker(e, viewToChange) {
       setChangeView(viewToChange);
-      indicator(e.target);
+      setIndicator(e.target)
     }
 
     useEffect(() => {
       dispatch(getAllContests())
-      setMarkerFirst()
     }, [])
 
   return (
@@ -47,7 +38,7 @@ function ContestsDashboard() {
         <div className='contests-dashboard__main-buttons'>
             <button className='contests-dashboard__btn-change-view' ref={firstButtonRef} onClick={e => changeViewAndMarker(e, "contests")}>Nadchodzące</button>
             <button className='contests-dashboard__btn-change-view' onClick={e => changeViewAndMarker(e, "contests-end")}>Minione</button>
-            <div className='contests-dashboard__marker' ref={markerRef}></div>
+            <Marker firstButtonRef={firstButtonRef} indicator={indicator} />
         </div>
         {changeView === "contests" && <Contests shadowActive={shadowActive} setShadowActive={setShadowActive} />}
         {changeView === "contests-end" && <ContestsEnd shadowActive={shadowActive} setShadowActive={setShadowActive} />}

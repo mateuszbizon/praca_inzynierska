@@ -3,6 +3,7 @@
 .contest-details {
 	min-height: 100vh;
 	padding: 80px 10px 10px 10px;
+	z-index: 0;
 
 	&__box {
 		width: 100%;
@@ -30,6 +31,7 @@
 	}
 
 	&__change-view-btns {
+		position: relative;
 		width: 100%;
 		display: flex;
 		gap: 10px;
@@ -51,6 +53,7 @@
 	.contest-details {
 		&__change-view-btns {
 			justify-content: center;
+			overflow: visible;
 		}
 
 		&__change-view-btn {

@@ -1,15 +1,23 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import "./contest-details.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getContestById } from '../../actions/contests'
 import RegisterUserToContest from '../../components/RegisterUserToContest/RegisterUserToContest'
+import Marker from '../../components/Marker/Marker'
 
 function ContestDetails() {
     const [changeView, setChangeView] = useState("register")
     const { id } = useParams()
     const dispatch = useDispatch()
     const { contest } = useSelector(state => state.contests)
+    const firstButtonRef = useRef()
+    const [indicator, setIndicator] = useState(null)
+
+    function changeViewAndMarker(e, viewToChange) {
+        setChangeView(viewToChange);
+        setIndicator(e.target)
+    }
 
     useEffect(() => {
         dispatch(getContestById(id))
@@ -46,10 +54,11 @@ function ContestDetails() {
             </div>
         </div>
         <div className='contest-details__change-view-btns'>
-            <button className='contest-details__change-view-btn' onClick={() => setChangeView("register")}>Rejestracja</button>
-            <button className='contest-details__change-view-btn' onClick={() => setChangeView("users")}>Zawodnicy</button>
-            <button className='contest-details__change-view-btn' onClick={() => setChangeView("regulations")}>Regulamin</button>
-            <button className='contest-details__change-view-btn' onClick={() => setChangeView("live")}>Wyniki live</button>
+            <button className='contest-details__change-view-btn' ref={firstButtonRef} onClick={e => changeViewAndMarker(e, "register")}>Rejestracja</button>
+            <button className='contest-details__change-view-btn' onClick={e => changeViewAndMarker(e, "users")}>Zawodnicy</button>
+            <button className='contest-details__change-view-btn' onClick={e => changeViewAndMarker(e, "regulations")}>Regulamin</button>
+            <button className='contest-details__change-view-btn' onClick={e => changeViewAndMarker(e, "live")}>Wyniki live</button>
+            <Marker firstButtonRef={firstButtonRef} indicator={indicator} />
         </div>
         {changeView === "register" && <RegisterUserToContest startRegistration={contest.startRegistration} endRegistration={contest.endRegistration} id={contest._id} />}
     </section>

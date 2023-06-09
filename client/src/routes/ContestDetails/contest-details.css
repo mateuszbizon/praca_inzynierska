@@ -1,6 +1,7 @@
 .contest-details {
   min-height: 100vh;
   padding: 80px 10px 10px 10px;
+  z-index: 0;
 }
 .contest-details__box {
   width: 100%;
@@ -31,6 +32,7 @@
   font-weight: 600;
 }
 .contest-details__change-view-btns {
+  position: relative;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -59,6 +61,7 @@
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+    overflow: visible;
   }
   .contest-details__change-view-btn {
     font-size: 17px;
