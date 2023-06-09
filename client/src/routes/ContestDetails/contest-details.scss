@@ -1,3 +1,5 @@
+@import "../../sass/mixins";
+
 .contest-details {
 	min-height: 100vh;
 	padding: 80px 10px 10px 10px;
@@ -25,6 +27,35 @@
 		font-size: 17px;
 		color: #808080;
 		font-weight: 600;
+	}
+
+	&__change-view-btns {
+		width: 100%;
+		display: flex;
+		gap: 10px;
+		margin-top: 30px;
+		overflow-x: auto;
+	}
+
+	&__change-view-btn {
+		@include buttonToChangeView;
+		font-size: 15px;
+
+		&:hover {
+            background-color: #ddd;
+        }
+	}
+}
+
+@media (min-width: 576px) {
+	.contest-details {
+		&__change-view-btns {
+			justify-content: center;
+		}
+
+		&__change-view-btn {
+			font-size: 17px;
+		}
 	}
 }
 

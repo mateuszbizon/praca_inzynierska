@@ -30,7 +30,40 @@
   color: #808080;
   font-weight: 600;
 }
+.contest-details__change-view-btns {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  margin-top: 30px;
+  overflow-x: auto;
+}
+.contest-details__change-view-btn {
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  font-size: 13px;
+  padding: 5px;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  font-size: 15px;
+}
+.contest-details__change-view-btn:hover {
+  background-color: #ddd;
+}
 
+@media (min-width: 576px) {
+  .contest-details__change-view-btns {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .contest-details__change-view-btn {
+    font-size: 17px;
+  }
+}
 @media (min-width: 768px) {
   .contest-details__box {
     -webkit-box-orient: horizontal;

@@ -1,0 +1,130 @@
+.register-user-contest-form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: 30px;
+}
+.register-user-contest-form__container {
+  margin-top: 80px;
+  width: 300px;
+  min-height: 300px;
+  border: 1px solid #909090;
+  border-radius: 8px;
+  -webkit-box-shadow: 10px 10px 10px #909090;
+          box-shadow: 10px 10px 10px #909090;
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 0;
+}
+.register-user-contest-form__heading {
+  text-align: center;
+  color: #f46036;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+.register-user-contest-form__box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 25px;
+}
+.register-user-contest-form__input {
+  width: 100%;
+  border: 1px solid #f46036;
+  outline: none;
+  padding: 15px 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.register-user-contest-form__select {
+  width: 100%;
+  border: none;
+  outline: none;
+  padding: 15px 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 0;
+}
+.register-user-contest-form__input:focus + .register-user-contest-form__label, .register-user-contest-form__input:valid + .register-user-contest-form__label {
+  -webkit-transform: translate(-5px, -25px);
+          transform: translate(-5px, -25px);
+  color: #f46036;
+  background-color: #fff;
+}
+.register-user-contest-form__label {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #000;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.register-user-contest-form__text-error {
+  color: #ff0000;
+  font-weight: bold;
+  visibility: hidden;
+  margin-left: 20px;
+}
+.register-user-contest-form__show-input-error {
+  visibility: visible;
+}
+.register-user-contest-form__btn-box {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.register-user-contest-form__submit-btn {
+  background-color: #f46036;
+  color: #fff;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+.register-user-contest-form__submit-btn:hover {
+  background-color: #cb380f;
+}
+
+.register-user-contest-end {
+  padding: 10px;
+}
+.register-user-contest-end__title {
+  font-size: 25px;
+}
+
+.register-user-contest-start {
+  padding: 10px;
+}
+.register-user-contest-start__title {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+.register-user-contest-start__text {
+  font-size: 17px;
+}
+
+@media (min-width: 576px) {
+  .register-user-contest-form__container {
+    width: 500px;
+  }
+  .register-user-contest-form__submit-btn {
+    font-size: 20px;
+  }
+  .register-user-contest-end, .register-user-contest-start {
+    padding: 30px;
+  }
+  .register-user-contest-end__text, .register-user-contest-start__text {
+    font-size: 18px;
+  }
+}/*# sourceMappingURL=register-user-contest.css.map */

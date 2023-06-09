@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./contest-details.css"
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getContestById } from '../../actions/contests'
+import RegisterUserToContest from '../../components/RegisterUserToContest/RegisterUserToContest'
 
 function ContestDetails() {
+    const [changeView, setChangeView] = useState("register")
     const { id } = useParams()
     const dispatch = useDispatch()
     const { contest } = useSelector(state => state.contests)
-    console.log(contest)
 
     useEffect(() => {
         dispatch(getContestById(id))
@@ -44,6 +45,13 @@ function ContestDetails() {
                 <p className='contest-details__text'>{contest.usersLimit}</p>
             </div>
         </div>
+        <div className='contest-details__change-view-btns'>
+            <button className='contest-details__change-view-btn' onClick={() => setChangeView("register")}>Rejestracja</button>
+            <button className='contest-details__change-view-btn' onClick={() => setChangeView("users")}>Zawodnicy</button>
+            <button className='contest-details__change-view-btn' onClick={() => setChangeView("regulations")}>Regulamin</button>
+            <button className='contest-details__change-view-btn' onClick={() => setChangeView("live")}>Wyniki live</button>
+        </div>
+        {changeView === "register" && <RegisterUserToContest startRegistration={contest.startRegistration} endRegistration={contest.endRegistration} id={contest._id} />}
     </section>
   )
 }

@@ -1,15 +1,15 @@
+import checkEmail from "./CheckEmail";
+
 export default function registerValid(values) {
     const errors = {}
-    const emailRegex =
-			/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const passwordLength = 7;
+
+    if (!checkEmail(values.email)) {
+        errors.email = "Nieprawidłowy email"
+    }
 
     if (values.email.length === 0) {
         errors.email = "Email nie może być pusty"
-    }
-
-    if (!values.email.match(emailRegex)) {
-        errors.email = "Nieprawidłowy email"
     }
 
     if (values.password.length === 0) {

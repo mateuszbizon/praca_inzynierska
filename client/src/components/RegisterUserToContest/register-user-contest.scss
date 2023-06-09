@@ -1,0 +1,109 @@
+@import "../../sass/mixins";
+@import "../../sass/colors";
+
+.register-user-contest-form {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+
+    &__container {
+        @include form-container;
+        margin-top: 0;
+    }
+
+    &__heading {
+        text-align: center;
+		color: $main-color;
+		margin-bottom: 20px;
+		font-size: 30px;
+    }
+
+    &__box {
+        position: relative;
+        width: 100%;
+		margin-bottom: 25px;
+    }
+
+    &__input {
+        @include input-styling;
+    }
+
+    &__select {
+        @include select-styling;
+        padding: 0;
+    }
+
+    &__input:focus + &__label,
+    &__input:valid + &__label {
+        @include label-animation;
+    }
+
+    &__label {
+        @include label-styling;
+    }
+
+    &__text-error {
+        @include text-error-styling;
+    }
+
+    &__show-input-error {
+        visibility: visible;
+    }
+
+    &__btn-box {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__submit-btn {
+        @include button-styling;
+        width: 100%;
+
+        &:hover {
+            background-color: $main-color-hover;
+        }
+    }
+}
+
+.register-user-contest-end {
+    padding: 10px;
+
+    &__title {
+        font-size: 25px;
+    }
+}
+
+.register-user-contest-start {
+    padding: 10px;
+
+    &__title {
+        font-size: 25px;
+        margin-bottom: 10px;
+    }
+
+    &__text {
+        font-size: 17px;
+    }
+}
+
+@media (min-width: 576px) {
+	.register-user-contest-form {
+        &__container {
+            width: 500px;
+        }
+
+        &__submit-btn {
+            font-size: 20px;
+        }
+    }
+
+    .register-user-contest-end, .register-user-contest-start {
+        padding: 30px;
+
+        &__text {
+            font-size: 18px;
+        }
+    }
+}
