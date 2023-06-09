@@ -95,6 +95,17 @@
 .register-user-contest-form__submit-btn:hover {
   background-color: #cb380f;
 }
+.register-user-contest-form__submit-message {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+.register-user-contest-form__submit-message.bad-color {
+  color: #ff0000;
+}
+.register-user-contest-form__submit-message.good-color {
+  color: #53bb41;
+}
 
 .register-user-contest-end {
   padding: 10px;

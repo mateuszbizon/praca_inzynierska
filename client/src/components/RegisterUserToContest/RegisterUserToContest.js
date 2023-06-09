@@ -17,6 +17,8 @@ function RegisterUserToContest({ startRegistration, endRegistration, id }) {
   const [errors, setErrors] = useState({})
   const dispatch = useDispatch()
   const { isLoading } = useSelector(state => state.loaders)
+  const { isBadRequest, badMessage } = useSelector(state => state.badRequest)
+  const { message } = useSelector(state => state.contests)
 
   function onChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -75,6 +77,7 @@ function RegisterUserToContest({ startRegistration, endRegistration, id }) {
                     {errors.events ? errors.events : "error"}
                 </p>
               </div>
+              <p className={isBadRequest ? "register-user-contest-form__submit-message bad-color" : "register-user-contest-form__submit-message good-color"}>{isBadRequest ? badMessage : message}</p>
               <div className='register-user-contest-form__btn-box'>
                 <button type='submit' className='register-user-contest-form__submit-btn' disabled={isLoading}>
                     Zarejestruj
