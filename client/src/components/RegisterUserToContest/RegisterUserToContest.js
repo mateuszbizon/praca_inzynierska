@@ -3,6 +3,8 @@ import Select from "react-select"
 import "./register-user-contest.css"
 import registerUserContestValid from '../../validations/RegisterUserContestvalid'
 import checkAreInputsEmpty from "../../validations/CheckAreInputsEmpty"
+import { useDispatch, useSelector } from "react-redux"
+import { addUserToContest } from '../../actions/contests'
 
 const events = [
   { value: "3x3x3", label: "Kostka 3x3x3" },
@@ -13,6 +15,8 @@ const events = [
 function RegisterUserToContest({ startRegistration, endRegistration, id }) {
   const [form, setForm] = useState({ email: "", name: "", surname: "", place: "", events: [] })
   const [errors, setErrors] = useState({})
+  const dispatch = useDispatch()
+  const { isLoading } = useSelector(state => state.loaders)
 
   function onChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -26,7 +30,7 @@ function RegisterUserToContest({ startRegistration, endRegistration, id }) {
 
   useEffect(() => {
     if (Object.keys(errors).length == 0 && !checkAreInputsEmpty(form) && form.events.length > 0) {
-      console.log('wyslano')
+      dispatch(addUserToContest(form, id))
     }
   }, [errors])
     
@@ -72,7 +76,7 @@ function RegisterUserToContest({ startRegistration, endRegistration, id }) {
                 </p>
               </div>
               <div className='register-user-contest-form__btn-box'>
-                <button type='submit' className='register-user-contest-form__submit-btn'>
+                <button type='submit' className='register-user-contest-form__submit-btn' disabled={isLoading}>
                     Zarejestruj
                 </button>
               </div>

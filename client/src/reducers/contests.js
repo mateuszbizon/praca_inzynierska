@@ -1,6 +1,6 @@
 import * as actionTypes from "../constants/actionTypes";
 
-export default (state = { contests: [], contestsEnd: [], contest: {} }, action) => {
+export default (state = { contests: [], contestsEnd: [], contest: {}, message: "" }, action) => {
     switch (action.type) {
       case actionTypes.CREATE_CONTEST:
         return { ...state, contests: [...state.contests, action.payload] };
@@ -19,6 +19,9 @@ export default (state = { contests: [], contestsEnd: [], contest: {} }, action) 
 
       case actionTypes.UPDATE_TUTORIAL:
         return { ...state, contest: action.payload }
+
+      case actionTypes.ADD_USER_TO_CONTEST:
+        return { ...state, message: action.payload.message }
         
       default:
         return state;

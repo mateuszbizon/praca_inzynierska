@@ -80,3 +80,17 @@ export const updateContest = (contest, navigate, id) => async (dispatch) => {
         console.log(error)
     }
 }
+
+export const addUserToContest = (user, id) => async (dispatch) => {
+    try {
+        dispatch({ type: actionTypes.START_LOADING })
+
+        const { data } = await api.addUserToContest(user, id)
+
+        dispatch({ type: actionTypes.ADD_USER_TO_CONTEST, payload: data })
+
+        dispatch({ type: actionTypes.END_LOADING })
+    } catch (error) {
+        console.log(error)
+    }
+}

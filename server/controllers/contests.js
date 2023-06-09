@@ -65,3 +65,32 @@ export const updateContest = async (req, res) => {
         console.log(error)
     }
 }
+
+export const addUserToContest = async (req, res) => {
+    const { id } = req.params;
+    const user = req.body;
+
+    try {
+        const contest = await Contest.findById(id)
+
+        const existingUser = contest.users.find(u => u.email === user.email)
+
+        if (contest.users.indexOf(existingUser) !== -1) return res.status(400).json({ message: "Email już zarejestrowany"} )
+
+        contest.users.push(user)
+
+        for (const elementContest of contest.events) {
+            for (const elementUser of user.events) {
+                if (elementUser.value === elementContest.name) {
+                    elementContest.users.push({ name: user.name, surname: user.surname, times: [], average: "-", bestTime: "-" })
+                } 
+            }
+        }
+
+        await Contest.findByIdAndUpdate(id, contest, { new: true });
+
+        res.status(200).json({ message: "Dodano pomyślnie" });
+    } catch (error) {
+        console.log(error)
+    }
+}
