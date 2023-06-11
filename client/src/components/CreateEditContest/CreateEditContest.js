@@ -4,9 +4,11 @@ import { useNavigate } from "react-router-dom"
 import "./create-edit-contest.css"
 import createContestValid from '../../validations/CreateContestValid'
 import checkAreInputsEmpty from '../../validations/CheckAreInputsEmpty'
+import Select from "react-select"
+import { events } from '../../data/ContestEvents'
 
 function CreateEditContest({headingText, isEditing, dispatchFunc}) {
-    const [form, setForm] = useState({ name: "", startRegistration: "", endRegistration: "", startContest: "", endContest: "", typeContest: "default", city: "", place: "" })
+    const [form, setForm] = useState({ name: "", startRegistration: "", endRegistration: "", startContest: "", endContest: "", typeContest: "default", city: "", place: "", events: [], usersLimit: 0 })
     const [errors, setErrors] = useState({})
     const { isLoading } = useSelector(state => state.loaders)
     const { contest } = useSelector(state => state.contests)
@@ -17,10 +19,6 @@ function CreateEditContest({headingText, isEditing, dispatchFunc}) {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
 
-    // function handleSubmit(e) {
-    //     e.preventDefault()
-    // }
-
     function handleSubmit(e) {
         e.preventDefault()
 
@@ -28,7 +26,7 @@ function CreateEditContest({headingText, isEditing, dispatchFunc}) {
     }
 
     useEffect(() => {
-        if (Object.keys(errors).length == 0 && !checkAreInputsEmpty(form)) {
+        if (Object.keys(errors).length == 0 && !checkAreInputsEmpty(form) && form.events.length > 0) {
             dispatch(dispatchFunc(form, navigate, contest._id))
         }
     }, [errors])
@@ -107,6 +105,19 @@ function CreateEditContest({headingText, isEditing, dispatchFunc}) {
                         </div>                   
                     </>
                 )}
+                <div className='create-edit-contest__box'>
+                    <Select placeholder="Wybierz konkurencje" isMulti options={events} onChange={item => setForm({ ...form, events: item })} closeMenuOnSelect={false} />
+                    <p className={errors.events ? "create-edit-contest__text-error create-edit-contest__show-input-error" : "create-edit-contest__text-error"} >
+                        {errors.events ? errors.events : "error"}
+                    </p>
+                </div>
+                <div className='create-edit-contest__box'>
+                    <input className='create-edit-contest__input' id="usersLimit" type='number' name="usersLimit" value={form.usersLimit} onChange={onChange} required/>
+                    <label className='create-edit-contest__label' htmlFor='usersLimit'>Limit zawodników</label>
+                    <p className={errors.usersLimit ? "create-edit-contest__text-error create-edit-contest__show-input-error" : "create-edit-contest__text-error"} >
+                    {errors.usersLimit ? errors.usersLimit : "error"}
+                    </p>
+                </div>
                 <div className='create-edit-contest__btn-box'>
                     <button type='submit' className='create-edit-contest__submit-btn' disabled={isLoading}>
                         {headingText}

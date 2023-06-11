@@ -6,13 +6,7 @@ import checkAreInputsEmpty from "../../validations/CheckAreInputsEmpty"
 import { useDispatch, useSelector } from "react-redux"
 import { addUserToContest } from '../../actions/contests'
 
-const events = [
-  { value: "3x3x3", label: "Kostka 3x3x3" },
-  { value: "2x2x2", label: "Kostka 2x2x2" },
-  { value: "pyraminx", label: "Pyraminx" },
-]
-
-function RegisterUserToContest({ startRegistration, endRegistration, id }) {
+function RegisterUserToContest({ startRegistration, endRegistration, id, events }) {
   const [form, setForm] = useState({ email: "", name: "", surname: "", place: "", events: [] })
   const [errors, setErrors] = useState({})
   const dispatch = useDispatch()
@@ -42,7 +36,7 @@ function RegisterUserToContest({ startRegistration, endRegistration, id }) {
         <div className='register-user-contest-form'>
           <div className='register-user-contest-form__container'>
             <h1 className='register-user-contest-form__heading'>Rejestracja na zawody</h1>
-            <form onSubmit={handleSubmit} noValidate>
+            <form>
               <div className='register-user-contest-form__box'>
                 <input className='register-user-contest-form__input' id="email" type='text' name="email" value={form.email} onChange={onChange} required/>
                 <label className='register-user-contest-form__label' htmlFor='email'>Adres email</label>
@@ -79,7 +73,7 @@ function RegisterUserToContest({ startRegistration, endRegistration, id }) {
               </div>
               <p className={isBadRequest ? "register-user-contest-form__submit-message bad-color" : "register-user-contest-form__submit-message good-color"}>{isBadRequest ? badMessage : message}</p>
               <div className='register-user-contest-form__btn-box'>
-                <button type='submit' className='register-user-contest-form__submit-btn' disabled={isLoading}>
+                <button type='submit' onClick={handleSubmit} className='register-user-contest-form__submit-btn' disabled={isLoading}>
                     Zarejestruj
                 </button>
               </div>

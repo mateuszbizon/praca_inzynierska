@@ -1,5 +1,6 @@
 export default function createContestValid(values) {
     const errors = {}
+    const usersLimit = 0;
 
     if (values.name === "") {
         errors.name = "Nazwa nie może być pusta"
@@ -39,6 +40,14 @@ export default function createContestValid(values) {
 
     if (values.typeContest === "stationary" && values.place === "") {
         errors.place = "Miejsce wydarzenia nie może być puste"
+    }
+
+    if (values.events.length == 0) {
+        errors.events = "Wybierz minimum jedną konkurencję"
+    }
+
+    if (values.usersLimit <= usersLimit) {
+        errors.usersLimit = `Limit zawodników musi być większy niż ${usersLimit}`
     }
 
     return errors

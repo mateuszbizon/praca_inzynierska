@@ -5,7 +5,7 @@ import { sortArrayBySurname } from "../utils/sortArrays.js";
 export const createContest = async (req, res) => {
     const contest = req.body;
 
-    const newContest = new Contest({ ...contest, events: events, usersLimit: usersLimit })
+    const newContest = new Contest(contest)
 
     try {
         await newContest.save();
@@ -83,7 +83,7 @@ export const addUserToContest = async (req, res) => {
         sortArrayBySurname(contest.users)
 
         for (const element of contest.events) {
-            if (user.events.some(u => u.value === element.name)) {
+            if (user.events.some(u => u.value === element.value)) {
                 element.users.push({ name: user.name, surname: user.surname, times: [], average: "-", bestTime: "-" })
             }
         }

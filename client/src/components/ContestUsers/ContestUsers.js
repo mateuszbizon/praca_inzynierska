@@ -11,7 +11,7 @@ function ContestUsers({ users, events }) {
                     <th className='contest-users__table-header'>Zawodnik</th>
                     <th className='contest-users__table-header'>Miejscowość</th>
                     {events.map((event, index) => (
-                        <th key={index} className='contest-users__table-events'>{event.name}</th>
+                        <th key={index} className='contest-users__table-events'>{event.value}</th>
                     ))}
                 </tr>
             </thead>
@@ -22,7 +22,7 @@ function ContestUsers({ users, events }) {
                         <td className='contest-users__table-header'>{user.name} {user.surname}</td>
                         <td className='contest-users__table-header'>{user.place}</td>
                         {events.map((event, index) => (
-                            <td key={index} className='contest-users__table-events'>{user.events.some(e => e.value === event.name) ? event.name : ""}</td>
+                            <td key={index} className='contest-users__table-events'>{user.events.some(e => e.value === event.value) ? event.value : ""}</td>
                         ))}
                     </tr>
                 ))}

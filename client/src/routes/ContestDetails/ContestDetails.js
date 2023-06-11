@@ -50,7 +50,7 @@ function ContestDetails() {
                     <div className='contest-details__box-item'>
                         <h3 className='contest-details__title'>Konkurencje</h3>
                         {contest.events?.map((event, index) => (
-                            <span className='contest-details__text' key={index}>{event.displayText}{index < contest.events.length - 1 && ","} </span>
+                            <span className='contest-details__text' key={index}>{event.label}{index < contest.events.length - 1 && ","} </span>
                         ))}
                     </div>
                     <div className='contest-details__box-item'>
@@ -65,7 +65,7 @@ function ContestDetails() {
                     <button className='contest-details__change-view-btn' onClick={e => changeViewAndMarker(e, "live")}>Wyniki live</button>
                     <Marker firstButtonRef={firstButtonRef} indicator={indicator} />
                 </div>
-                {changeView === "register" && <RegisterUserToContest startRegistration={contest.startRegistration} endRegistration={contest.endRegistration} id={contest._id} />}
+                {changeView === "register" && <RegisterUserToContest startRegistration={contest.startRegistration} endRegistration={contest.endRegistration} id={contest._id} events={contest.events} />}
                 {changeView === "users" && <ContestUsers users={contest.users} events={contest.events} />}
             </>
         )}

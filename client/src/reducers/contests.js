@@ -15,7 +15,7 @@ export default (state = { contests: [], contestsEnd: [], contest: {}, message: "
         return { ...state, contestsEnd: state.contestsEnd.filter(contest => contest._id !== action.payload) }
 
       case actionTypes.GET_CONTEST_BY_ID:
-        return { ...state, contest: action.payload }
+        return { ...state, contest: action.payload, message: "" }
 
       case actionTypes.UPDATE_TUTORIAL:
         return { ...state, contest: action.payload }
