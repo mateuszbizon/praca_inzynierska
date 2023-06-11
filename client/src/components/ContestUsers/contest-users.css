@@ -1,0 +1,28 @@
+.contest-users {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 40px;
+}
+.contest-users table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.contest-users__table-row {
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  border-bottom: 1px solid #808080;
+}
+.contest-users__table-row:not(.contest-users__table-row--first-row):hover {
+  background-color: #eee;
+}
+.contest-users__table-lp {
+  max-width: 10px;
+  text-align: right;
+}
+.contest-users__table-header {
+  padding: 8px 15px;
+  text-align: left;
+}
+.contest-users__table-events {
+  text-align: center;
+}/*# sourceMappingURL=contest-users.css.map */

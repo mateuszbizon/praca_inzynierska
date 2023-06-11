@@ -21,7 +21,7 @@ export default (state = { contests: [], contestsEnd: [], contest: {}, message: "
         return { ...state, contest: action.payload }
 
       case actionTypes.ADD_USER_TO_CONTEST:
-        return { ...state, message: action.payload.message }
+        return { ...state, message: action.payload.message, contest: action.payload.contest }
         
       default:
         return state;

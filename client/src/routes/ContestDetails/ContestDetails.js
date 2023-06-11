@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getContestById } from '../../actions/contests'
 import RegisterUserToContest from '../../components/RegisterUserToContest/RegisterUserToContest'
+import ContestUsers from '../../components/ContestUsers/ContestUsers'
 import Marker from '../../components/Marker/Marker'
 
 function ContestDetails() {
@@ -61,6 +62,7 @@ function ContestDetails() {
             <Marker firstButtonRef={firstButtonRef} indicator={indicator} />
         </div>
         {changeView === "register" && <RegisterUserToContest startRegistration={contest.startRegistration} endRegistration={contest.endRegistration} id={contest._id} />}
+        {changeView === "users" && <ContestUsers users={contest.users} events={contest.events} />}
     </section>
   )
 }

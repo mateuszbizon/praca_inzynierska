@@ -1,0 +1,33 @@
+.contest-users {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 40px;
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    &__table-row {
+        transition: background-color .3s;
+        border-bottom: 1px solid #808080;
+
+        &:not(.contest-users__table-row--first-row):hover {
+            background-color: #eee;
+        }
+    }
+
+    &__table-lp {
+        max-width: 10px;
+        text-align: right;
+    }
+
+    &__table-header {
+        padding: 8px 15px;
+        text-align: left;
+    }
+
+    &__table-events {
+        text-align: center;
+    }
+}

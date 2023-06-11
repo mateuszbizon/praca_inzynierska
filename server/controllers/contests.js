@@ -1,5 +1,6 @@
 import Contest from "../models/contest.js";
 import { events, usersLimit } from "../data/ContestData.js";
+import { sortArrayBySurname } from "../utils/sortArrays.js";
 
 export const createContest = async (req, res) => {
     const contest = req.body;
@@ -79,17 +80,17 @@ export const addUserToContest = async (req, res) => {
 
         contest.users.push(user)
 
-        for (const elementContest of contest.events) {
-            for (const elementUser of user.events) {
-                if (elementUser.value === elementContest.name) {
-                    elementContest.users.push({ name: user.name, surname: user.surname, times: [], average: "-", bestTime: "-" })
-                } 
+        sortArrayBySurname(contest.users)
+
+        for (const element of contest.events) {
+            if (user.events.some(u => u.value === element.name)) {
+                element.users.push({ name: user.name, surname: user.surname, times: [], average: "-", bestTime: "-" })
             }
         }
 
-        await Contest.findByIdAndUpdate(id, contest, { new: true });
+        const updatedContest = await Contest.findByIdAndUpdate(id, contest, { new: true });
 
-        res.status(200).json({ message: "Dodano pomyślnie" });
+        res.status(200).json({ message: "Dodano pomyślnie", contest: updatedContest });
     } catch (error) {
         console.log(error)
     }
