@@ -78,7 +78,7 @@ function CreateEditContest({headingText, isEditing, dispatchFunc}) {
                     </p>
                 </div>
                 <div className='create-edit-contest__box'>
-                    <select name="typeContest" value={form.typeContest} onChange={onChange}>
+                    <select className='create-edit-contest__select' name="typeContest" value={form.typeContest} onChange={onChange}>
                         <option value="default" disabled>Wybierz rodzaj zawodów</option>
                         <option value="on-line">on-line</option>
                         <option value="stationary">stacjonarnie</option>
