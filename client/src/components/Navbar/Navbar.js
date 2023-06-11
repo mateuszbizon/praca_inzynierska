@@ -68,6 +68,7 @@ function Navbar() {
 		{ text: "Strona główna", path: "/" },
 		{ text: "Logowanie", path: "/login" },
 		{ text: "Rejestracja", path: "/register" },
+		{ text: "Zawody", path: "/contests"}
 	];
 
 	return (

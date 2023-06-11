@@ -10,7 +10,6 @@ import Marker from '../../components/Marker/Marker'
 function ContestsDashboard() {
     const user = JSON.parse(localStorage.getItem("user"))
     const navigate = useNavigate()
-    // const markerRef = useRef()
     const firstButtonRef = useRef()
     const [changeView, setChangeView] = useState("contests")
     const [indicator, setIndicator] = useState(null)
@@ -30,11 +29,11 @@ function ContestsDashboard() {
     <section className='contests-dashboard'>
         <div className={shadowActive ? 'contests-dashboard__shadow active' : "contests-dashboard__shadow"} onClick={() => setShadowActive(false)}></div>
         <h2 className='contests-dashboard__heading'>Zawody</h2>
-        {user.result.isAdmin && (
+        {user !== null ? user.result.isAdmin && (
             <div>
                 <button className='contests-dashboard__btn' onClick={() => navigate("/create-contest")}>Dodaj zawody</button>
             </div>
-        )}
+        ) : null}
         <div className='contests-dashboard__main-buttons'>
             <button className='contests-dashboard__btn-change-view' ref={firstButtonRef} onClick={e => changeViewAndMarker(e, "contests")}>Nadchodzące</button>
             <button className='contests-dashboard__btn-change-view' onClick={e => changeViewAndMarker(e, "contests-end")}>Minione</button>

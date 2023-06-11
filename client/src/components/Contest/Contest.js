@@ -18,12 +18,12 @@ function Contest({contest, setShadowActive, setCurrentId}) {
             <p className='contest__text'>{new Date(contest.startContest).getDate()} - {new Date(contest.endContest).getDate()} {new Date(contest.startContest).toLocaleString('default', { month: 'long' })}, {new Date(contest.startContest).getFullYear()}</p>
             <p className='contest__text'>{contest.typeContest === "on-line" ? `zawody ${contest.typeContest}` : contest.city}</p>
         </div>
-        {user.result.isAdmin && !contest.isEnded && (
+        {user !== null ? user.result.isAdmin && !contest.isEnded && (
             <div className='contest__buttons-side'>
                 <button className='contest__btn' onClick={() => navigate(`/edit-contest/${contest._id}`)}>Edytuj</button>
                 <button className='contest__btn' onClick={handleDelete}>Usuń</button>
             </div>
-        )}
+        ) : null}
     </div>
   )
 }
