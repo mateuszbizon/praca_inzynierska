@@ -16,7 +16,7 @@
   background-color: #eee;
 }
 .contest-users__table-lp {
-  max-width: 10px;
+  max-width: 20px;
   text-align: right;
 }
 .contest-users__table-header {
@@ -25,4 +25,5 @@
 }
 .contest-users__table-events {
   text-align: center;
+  padding: 5px 10px;
 }/*# sourceMappingURL=contest-users.css.map */

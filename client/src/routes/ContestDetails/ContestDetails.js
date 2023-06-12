@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { getContestById } from '../../actions/contests'
 import RegisterUserToContest from '../../components/RegisterUserToContest/RegisterUserToContest'
 import ContestUsers from '../../components/ContestUsers/ContestUsers'
+import LiveResultsInfo from '../../components/LiveResultsInfo/LiveResultsInfo'
 import Marker from '../../components/Marker/Marker'
 import Loader from "../../components/Loader/Loader"
 
@@ -67,6 +68,7 @@ function ContestDetails() {
                 </div>
                 {changeView === "register" && <RegisterUserToContest startRegistration={contest.startRegistration} endRegistration={contest.endRegistration} id={contest._id} events={contest.events} />}
                 {changeView === "users" && <ContestUsers users={contest.users} events={contest.events} />}
+                {changeView === "live" && <LiveResultsInfo contest={contest} />}
             </>
         )}
     </section>

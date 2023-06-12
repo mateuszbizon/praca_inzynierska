@@ -1,5 +1,4 @@
 import Contest from "../models/contest.js";
-import { events, usersLimit } from "../data/ContestData.js";
 import { sortArrayBySurname } from "../utils/sortArrays.js";
 
 export const createContest = async (req, res) => {
