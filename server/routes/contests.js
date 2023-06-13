@@ -1,6 +1,6 @@
 import express from "express";
 import auth from "../middleware/auth.js";
-import { createContest, getAllContests, deleteContestById, getContestById, updateContest, addUserToContest } from "../controllers/contests.js";
+import { createContest, getAllContests, deleteContestById, getContestById, updateContest, addUserToContest, getContestEvent } from "../controllers/contests.js";
 
 const router = express.Router();
 
@@ -10,5 +10,6 @@ router.delete("/deleteContestById/:id", deleteContestById);
 router.get("/getContestById/:id", getContestById);
 router.patch("/updateContest/:id", auth, updateContest);
 router.patch("/addUserToContest/:id", addUserToContest)
+router.get("/getContestEvent/:id/:event", getContestEvent)
 
 export default router;

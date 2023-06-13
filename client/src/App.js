@@ -19,6 +19,8 @@ import ContestsDashboard from "./routes/ContestsDashboard/ContestsDashboard";
 import CreateContest from "./routes/CreateContest/CreateContest";
 import EditContest from "./routes/EditContest/EditContest";
 import ContestDetails from "./routes/ContestDetails/ContestDetails";
+import LiveResults from "./routes/LiveResults/LiveResults";
+import AddUserTime from "./routes/AddUserTime/AddUserTime";
 import "./app.css";
 
 function App() {
@@ -41,12 +43,14 @@ function App() {
 				<Route element={<AdminRoutes />}>
 					<Route path="/create-contest" element={<CreateContest />} />
 					<Route path="/edit-contest/:id" element={<EditContest />} />
+					<Route path='/live-results/:id/:event/submit' element={<AddUserTime />} />
 				</Route>
 				<Route path='/' element={<HomePage />} />
 				<Route path='/login' element={<LoginPage />} />
 				<Route path='/register' element={<RegisterPage />} />
 				<Route path='/contests' element={<ContestsDashboard />} />
 				<Route path='/contests/:id' element={<ContestDetails />} />
+				<Route path='/live-results/:id/:event' element={<LiveResults />} />
 			</Routes>
 		</Router>
 	);

@@ -83,7 +83,7 @@ export const addUserToContest = async (req, res) => {
 
         for (const element of contest.events) {
             if (user.events.some(u => u.value === element.value)) {
-                element.users.push({ name: user.name, surname: user.surname, times: [], average: "-", bestTime: "-" })
+                element.users.push({email: user.email, name: user.name, surname: user.surname, times: [], average: "-", bestTime: "-" })
             }
         }
 
@@ -92,5 +92,21 @@ export const addUserToContest = async (req, res) => {
         res.status(200).json({ message: "Dodano pomyślnie", contest: updatedContest });
     } catch (error) {
         console.log(error)
+    }
+}
+
+export const getContestEvent = async (req, res) => {
+    const { id, event } = req.params;
+
+    try {
+        const contest = await Contest.findById(id);
+
+        const contestEvent = contest.events.find(e => e.value === event)
+
+        if (contest.events.indexOf(contestEvent) === -1) return res.status(404).json({ message: "Nie znaleziono danego eventu" })
+
+        res.status(200).json({ contest: contest, contestEvent: contestEvent });
+    } catch (error) {
+        console.log(error.message)
     }
 }

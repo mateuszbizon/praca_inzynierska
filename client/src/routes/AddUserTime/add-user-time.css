@@ -1,0 +1,88 @@
+.add-user-time {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 100vh;
+}
+.add-user-time__container {
+  margin-top: 80px;
+  width: 300px;
+  min-height: 300px;
+  border: 1px solid #909090;
+  border-radius: 8px;
+  -webkit-box-shadow: 10px 10px 10px #909090;
+          box-shadow: 10px 10px 10px #909090;
+  background-color: #fff;
+  padding: 20px;
+}
+.add-user-time__heading {
+  text-align: center;
+  color: #f46036;
+  margin-bottom: 15px;
+}
+.add-user-time__box {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.add-user-time__input {
+  width: 100%;
+  border: 1px solid #f46036;
+  outline: none;
+  padding: 15px 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+.add-user-time__input:focus + .add-user-time__label, .add-user-time__input:valid + .add-user-time__label {
+  -webkit-transform: translate(-5px, -25px);
+          transform: translate(-5px, -25px);
+  color: #f46036;
+  background-color: #fff;
+}
+.add-user-time__label {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  color: #000;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.add-user-time__btn-box {
+  width: 100%;
+}
+.add-user-time__submit-btn {
+  background-color: #f46036;
+  color: #fff;
+  font-size: 15px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+.add-user-time__submit-btn:hover {
+  background-color: #cb380f;
+}
+.add-user-time__text-error {
+  color: #ff0000;
+  font-weight: bold;
+  visibility: hidden;
+  margin-left: 20px;
+}
+.add-user-time__show-input-error {
+  visibility: visible;
+}
+
+@media (min-width: 576px) {
+  .add-user-time__container {
+    width: 500px;
+  }
+  .add-user-time__submit-btn {
+    font-size: 20px;
+  }
+}/*# sourceMappingURL=add-user-time.css.map */

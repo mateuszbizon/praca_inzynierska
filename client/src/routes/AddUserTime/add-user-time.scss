@@ -1,0 +1,76 @@
+@import "../../sass/mixins";
+@import "../../sass/colors";
+
+.add-user-time {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+
+    &__container {
+        @include form-container;
+    }
+
+    &__heading {
+        text-align: center;
+        color: $main-color;
+        margin-bottom: 15px;
+    }
+
+    &__box {
+        position: relative;
+		width: 100%;
+		margin-bottom: 20px;
+    }
+
+    &__input {
+        @include input-styling;
+    }
+
+    &__input:focus + &__label,
+    &__input:valid + &__label {
+        @include label-animation;
+    }
+
+    &__label {
+        @include label-styling;
+    }
+
+    &__btn-box {
+        width: 100%;
+    }
+
+    &__submit-btn {
+        @include button-styling;
+        width: 100%;
+
+        &:hover {
+            background-color: $main-color-hover;
+        }
+    }
+
+    &__text-error {
+        @include text-error-styling;
+    }
+
+    &__show-input-error {
+        visibility: visible;
+    }
+}
+
+@media (min-width: 576px) {
+    .add-user-time {
+       &__container {
+            width: 500px;
+       }
+
+        &__submit-btn {
+            font-size: 20px;
+        }
+    }
+}
+
+// @media (min-width: 992px) {
+//     .add-user-time {
+//         margin-top: 250px;
+//     }
+// }
