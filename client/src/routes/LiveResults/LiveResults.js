@@ -70,12 +70,12 @@ function LiveResults() {
                     <tbody>
                         {contestEventusers?.map((user, index) => (
                             <tr key={index} className='live-results__table-row'>
-                                <td className='live-results__table-lp'>{index + 1}</td>
+                                <td className='live-results__table-lp'>{user.average !== 1000000 && index + 1}</td>
                                 <td className='live-results__table-header'>{user.name} {user.surname}</td>
                                 {user.times.map((time, index) => (
                                     <td key={index} className='live-results__table-time'>{time}</td>
                                 ))}
-                                <td className='live-results__table-time'>{user.average}</td>
+                                <td className='live-results__table-time'>{user.averageText}</td>
                                 <td className='live-results__table-time'>{user.bestTime}</td>
                             </tr>
                         ))}

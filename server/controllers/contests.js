@@ -1,5 +1,8 @@
 import Contest from "../models/contest.js";
-import { sortArrayBySurname } from "../utils/sortArrays.js";
+import { sortArrayBySurname, sortArrayByAverage } from "../utils/sortArrays.js";
+import getBestTime from "../utils/getBestTime.js";
+import deleteWorstAndBestTime from "../utils/deleteWorstAndBestTime.js";
+import getAverage from "../utils/getAverage.js";
 
 export const createContest = async (req, res) => {
     const contest = req.body;
@@ -83,7 +86,7 @@ export const addUserToContest = async (req, res) => {
 
         for (const element of contest.events) {
             if (user.events.some(u => u.value === element.value)) {
-                element.users.push({email: user.email, name: user.name, surname: user.surname, times: ["", "", "", "", ""], average: "", bestTime: "" })
+                element.users.push({email: user.email, name: user.name, surname: user.surname, times: ["", "", "", "", ""], average: 1000000, averageText: "", bestTime: "" })
             }
         }
 
@@ -105,6 +108,8 @@ export const getContestEvent = async (req, res) => {
 
         if (contest.events.indexOf(contestEvent) === -1) return res.status(404).json({ message: "Nie znaleziono danego eventu" })
 
+        sortArrayByAverage(contestEvent.users)
+
         res.status(200).json({ contest: contest, contestEvent: contestEvent });
     } catch (error) {
         console.log(error.message)
@@ -118,7 +123,23 @@ export const addUserTimesToContestEvent = async (req, res) => {
     try {
         const contest = await Contest.findById(id);
 
+        const currentEvent = contest.events.find(e => e.value === event)
+
+        const currentUser = currentEvent.users.find(u => u.email === user.email)
+
+        const bestTime = getBestTime(user.times)
+
+        const arrayAverage = deleteWorstAndBestTime(user.times, bestTime)
+
+        const average = getAverage(arrayAverage)
+
+        const currentUserIndex = currentEvent.users.indexOf(currentUser)
+
+        currentEvent.users[currentUserIndex] = { ...currentUser, times: user.times, average: average.average, averageText: average.averageText, bestTime: bestTime }
         
+        const updatedContest = await Contest.findByIdAndUpdate(id, contest, { new: true });
+
+        res.status(200).json({ updatedContest })
     } catch (error) {
         console.log(error);
     }

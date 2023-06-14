@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import './add-user-time.css'
 import checkAreInputsEmpty from '../../validations/CheckAreInputsEmpty'
 import addUserTimeValid from '../../validations/AddUserTimeValid'
@@ -11,6 +11,7 @@ function AddUserTime() {
     const [form, setForm] = useState({ email: "", time1: "", time2: "", time3: "", time4: "", time5: "" })
     const [errors, setErrors] = useState({})
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const { contestEvent } = useSelector(state => state.contests)
 
     function onChange(e) {
@@ -26,7 +27,7 @@ function AddUserTime() {
     useEffect(() => {
         if (Object.keys(errors).length == 0 && !checkAreInputsEmpty(form)) {
             const times = [form.time1, form.time2, form.time3, form.time4, form.time5]
-            dispatch(addUserTimesToContestEvent(id, event, { times, email: form.email }))
+            dispatch(addUserTimesToContestEvent(id, event, { times, email: form.email }, navigate))
         }
     }, [errors])
 
