@@ -1,7 +1,11 @@
 import checkTime from "./CheckTime"
 
-export default function addUserTimeValid(values) {
+export default function addUserTimeValid(values, contestEvent) {
     const errors = {}
+
+    if (!contestEvent.users.some(u => u.email === values.email)) {
+        errors.email = "Nie znaleziono podanego adresu w tej konkurencji"
+    }
 
     if (values.email === "") {
         errors.email = "Email nie może być pusty"

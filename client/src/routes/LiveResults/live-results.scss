@@ -75,6 +75,11 @@
         padding: 10px 0;
     }
 
+    &__link {
+        text-decoration: none;
+        color: #000;
+    }
+
     table {
         width: 100%;
         border-collapse: collapse;

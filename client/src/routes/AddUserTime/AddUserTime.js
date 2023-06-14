@@ -4,12 +4,14 @@ import { useParams } from 'react-router-dom'
 import './add-user-time.css'
 import checkAreInputsEmpty from '../../validations/CheckAreInputsEmpty'
 import addUserTimeValid from '../../validations/AddUserTimeValid'
+import { addUserTimesToContestEvent, getContestEvent } from '../../actions/contests'
 
 function AddUserTime() {
     const {id, event } = useParams()
     const [form, setForm] = useState({ email: "", time1: "", time2: "", time3: "", time4: "", time5: "" })
     const [errors, setErrors] = useState({})
-    const { contest, contestEvent } = useSelector(state => state.contests)
+    const dispatch = useDispatch()
+    const { contestEvent } = useSelector(state => state.contests)
 
     function onChange(e) {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -18,14 +20,19 @@ function AddUserTime() {
     function handleSubmit(e) {
         e.preventDefault()
 
-        setErrors(addUserTimeValid(form))
+        setErrors(addUserTimeValid(form, contestEvent))
     }
 
     useEffect(() => {
         if (Object.keys(errors).length == 0 && !checkAreInputsEmpty(form)) {
-            console.log('wyslano')
+            const times = [form.time1, form.time2, form.time3, form.time4, form.time5]
+            dispatch(addUserTimesToContestEvent(id, event, { times, email: form.email }))
         }
     }, [errors])
+
+    useEffect(() => {
+        dispatch(getContestEvent(id, event))
+    }, [])
 
   return (
     <div className='add-user-time'>

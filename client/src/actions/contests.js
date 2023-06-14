@@ -110,3 +110,15 @@ export const getContestEvent = (id, event) => async (dispatch) => {
         console.log(error.message)
     }
 }
+
+export const addUserTimesToContestEvent = (id, event, userTimes) => async (dispatch) => {
+    try {
+        dispatch({ type: actionTypes.START_LOADING })
+
+        await api.addUserTimesToContestEvent(id, event, userTimes)
+
+        dispatch({ type: actionTypes.END_LOADING })
+    } catch (error) {
+        console.log(error)
+    }
+}

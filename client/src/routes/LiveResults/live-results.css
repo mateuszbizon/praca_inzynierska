@@ -90,6 +90,10 @@
   overflow-x: auto;
   padding: 10px 0;
 }
+.live-results__link {
+  text-decoration: none;
+  color: #000;
+}
 .live-results table {
   width: 100%;
   border-collapse: collapse;

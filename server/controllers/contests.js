@@ -83,7 +83,7 @@ export const addUserToContest = async (req, res) => {
 
         for (const element of contest.events) {
             if (user.events.some(u => u.value === element.value)) {
-                element.users.push({email: user.email, name: user.name, surname: user.surname, times: [], average: "-", bestTime: "-" })
+                element.users.push({email: user.email, name: user.name, surname: user.surname, times: ["", "", "", "", ""], average: "", bestTime: "" })
             }
         }
 
@@ -108,5 +108,18 @@ export const getContestEvent = async (req, res) => {
         res.status(200).json({ contest: contest, contestEvent: contestEvent });
     } catch (error) {
         console.log(error.message)
+    }
+}
+
+export const addUserTimesToContestEvent = async (req, res) => {
+    const { id, event } = req.params;
+    const user = req.body
+
+    try {
+        const contest = await Contest.findById(id);
+
+        
+    } catch (error) {
+        console.log(error);
     }
 }

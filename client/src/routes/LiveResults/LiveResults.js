@@ -13,6 +13,7 @@ function LiveResults() {
     const navigate = useNavigate()
     const { contest, contestEvent } = useSelector(state => state.contests)
     const [asideOpen, setAsideOpen] = useState(false)
+    const [contestEventusers, setContestEventUsers] = useState([])
     const user = JSON.parse(localStorage.getItem("user"))
 
     function openAside() {
@@ -23,12 +24,18 @@ function LiveResults() {
         dispatch(getContestEvent(id, event))
     }, [])
 
+    useEffect(() => {
+        if (Object.keys(contestEvent).length > 0) {
+            setContestEventUsers(contestEvent.users)
+        }
+    }, [contestEvent])
+
   return (
     <section className='live-results'>
         <div className={asideOpen ? 'live-results__shadow' : "live-results__shadow closed"} onClick={openAside}></div>
         <aside className='live-results__aside'>
             {contest.events?.map((event, index) => (
-                <div key={index} className='live-results__aside-item'>{event.label}</div>
+                <div key={index} className='live-results__aside-item'><a className='live-results__link' href={`/live-results/${id}/${event.value}`}>{event.label}</a></div>
             ))}
         </aside>
         <div className='live-results__main'>
@@ -61,17 +68,17 @@ function LiveResults() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className='live-results__table-row'>
-                            <td className='live-results__table-lp'>1</td>
-                            <td className='live-results__table-header'>Mateusz Bizoń</td>
-                            <td className='live-results__table-time'>15.15</td>
-                            <td className='live-results__table-time'>16.16</td>
-                            <td className='live-results__table-time'>17.18</td>
-                            <td className='live-results__table-time'>18.17</td>
-                            <td className='live-results__table-time'>5.01</td>
-                            <td className='live-results__table-time'>10.11</td>
-                            <td className='live-results__table-time'>5.01</td>
-                        </tr>
+                        {contestEventusers?.map((user, index) => (
+                            <tr key={index} className='live-results__table-row'>
+                                <td className='live-results__table-lp'>{index + 1}</td>
+                                <td className='live-results__table-header'>{user.name} {user.surname}</td>
+                                {user.times.map((time, index) => (
+                                    <td key={index} className='live-results__table-time'>{time}</td>
+                                ))}
+                                <td className='live-results__table-time'>{user.average}</td>
+                                <td className='live-results__table-time'>{user.bestTime}</td>
+                            </tr>
+                        ))}
                     </tbody>
                 </table>
             </div>
@@ -79,7 +86,7 @@ function LiveResults() {
         <div className={asideOpen ? 'live-results__aside-mobile open' : "live-results__aside-mobile"}>
             <div className='live-results__aside-mobile-close'><FontAwesomeIcon className='live-results__aside-mobile-close-icon' icon={faArrowLeft} onClick={openAside} /></div>
             {contest.events?.map((event, index) => (
-                <div key={index} className='live-results__aside-item'>{event.label}</div>
+                <div key={index} className='live-results__aside-item'><a className='live-results__link' href={`/live-results/${id}/${event.value}`}>{event.label}</a></div>
             ))}
         </div>
     </section>
