@@ -83,15 +83,11 @@ export const updateContest = (contest, navigate, id) => async (dispatch) => {
 
 export const addUserToContest = (user, id) => async (dispatch) => {
     try {
-        dispatch({ type: actionTypes.START_LOADING })
-
         const { data } = await api.addUserToContest(user, id)
 
         dispatch({ type: actionTypes.BAD_REQUEST_FALSE })
 
         dispatch({ type: actionTypes.ADD_USER_TO_CONTEST, payload: data })
-
-        dispatch({ type: actionTypes.END_LOADING })
     } catch (error) {
         dispatch({ type: actionTypes.BAD_REQUEST_TRUE, payload: error.response.data.message })
     }

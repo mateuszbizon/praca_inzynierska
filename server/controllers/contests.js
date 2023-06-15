@@ -3,6 +3,7 @@ import { sortArrayBySurname, sortArrayByAverage } from "../utils/sortArrays.js";
 import getBestTime from "../utils/getBestTime.js";
 import deleteWorstAndBestTime from "../utils/deleteWorstAndBestTime.js";
 import getAverage from "../utils/getAverage.js";
+import User from "../models/user.js";
 
 export const createContest = async (req, res) => {
     const contest = req.body;
@@ -76,11 +77,15 @@ export const addUserToContest = async (req, res) => {
     try {
         const contest = await Contest.findById(id)
 
-        const existingUser = contest.users.find(u => u.email === user.email)
+        const existingUser = await User.findOne({ email: user.email });
 
-        if (contest.users.indexOf(existingUser) !== -1) return res.status(400).json({ message: "Email już zarejestrowany"} )
+        if (!existingUser) { return res.status(404).json({ message: "Nie znaleziono podanego adresu w naszym systemie" })}
 
-        contest.users.push(user)
+        const currentUser = contest.users.find(u => u.email === user.email)
+
+        if (contest.users.indexOf(currentUser) !== -1) return res.status(400).json({ message: "Email już zarejestrowany"} )
+
+        contest.users.push({ ...user, name: existingUser.name.split(" ")[0], surname: existingUser.name.split(" ")[1] })
 
         sortArrayBySurname(contest.users)
 

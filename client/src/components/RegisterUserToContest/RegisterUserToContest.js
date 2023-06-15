@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { addUserToContest } from '../../actions/contests'
 
 function RegisterUserToContest({ startRegistration, endRegistration, id, events }) {
-  const [form, setForm] = useState({ email: "", name: "", surname: "", place: "", events: [] })
+  const [form, setForm] = useState({ email: "", place: "", events: [] })
   const [errors, setErrors] = useState({})
   const dispatch = useDispatch()
   const { isLoading } = useSelector(state => state.loaders)
@@ -42,20 +42,6 @@ function RegisterUserToContest({ startRegistration, endRegistration, id, events 
                 <label className='register-user-contest-form__label' htmlFor='email'>Adres email</label>
                 <p className={errors.email ? "register-user-contest-form__text-error register-user-contest-form__show-input-error" : "register-user-contest-form__text-error"} >
                     {errors.email ? errors.email : "error"}
-                </p>
-              </div>
-              <div className='register-user-contest-form__box'>
-                <input className='register-user-contest-form__input' id="name" type='text' name="name" value={form.name} onChange={onChange} required/>
-                <label className='register-user-contest-form__label' htmlFor='name'>Imię</label>
-                <p className={errors.name ? "register-user-contest-form__text-error register-user-contest-form__show-input-error" : "register-user-contest-form__text-error"} >
-                    {errors.name ? errors.name : "error"}
-                </p>
-              </div>
-              <div className='register-user-contest-form__box'>
-                <input className='register-user-contest-form__input' id="surname" type='text' name="surname" value={form.surname} onChange={onChange} required/>
-                <label className='register-user-contest-form__label' htmlFor='surname'>Nazwisko</label>
-                <p className={errors.surname ? "register-user-contest-form__text-error register-user-contest-form__show-input-error" : "register-user-contest-form__text-error"} >
-                    {errors.surname ? errors.surname : "error"}
                 </p>
               </div>
               <div className='register-user-contest-form__box'>

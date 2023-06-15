@@ -11,14 +11,6 @@ export default function registerUserContestValid(values) {
         errors.email = "email nie może być pusty"
     }
 
-    if (values.name.length == 0) {
-        errors.name = "Imię nie może być puste"
-    }
-
-    if (values.surname.length == 0) {
-        errors.surname = "Nazwisko nie może być puste"
-    }
-
     if (values.place.length == 0) {
         errors.place = "Miejscowość nie może być pusta"
     }
