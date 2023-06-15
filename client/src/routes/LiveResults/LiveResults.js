@@ -56,42 +56,48 @@ function LiveResults() {
                     </div>
                     <p className='live-results__event-name'>{contestEvent.value}</p>
                 </div>
-                {user ? user.result.isAdmin && (
+                {user ? user.result.isAdmin && (Date.now() >= Date.parse(contest.startContest) && Date.now() < Date.parse(contest.endContest)) && (
                     <div className='live-results__main-header-right-side'>
                         <button className='live-results__add-btn' onClick={() => navigate(`/live-results/${contest._id}/${contestEvent.value}/submit`)}>Dodaj wyniki</button>
                     </div>
                 ) : null}
             </div>
-            <div className='live-results__main-content'>
-                <table>
-                    <thead>
-                        <tr className='live-results__table-row live-results__table-row--first-row'>
-                            <th className='live-results__table-lp'>Lp.</th>
-                            <th className='live-results__table-header'>Zawodnik</th>
-                            <th className='live-results__table-time'>1</th>
-                            <th className='live-results__table-time'>2</th>
-                            <th className='live-results__table-time'>3</th>
-                            <th className='live-results__table-time'>4</th>
-                            <th className='live-results__table-time'>5</th>
-                            <th className='live-results__table-time'>Średnia</th>
-                            <th className='live-results__table-time'>Najlepszy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {contestEventusers?.map((user, index) => (
-                            <tr key={index} className='live-results__table-row'>
-                                <td className='live-results__table-lp'>{user.average !== 1000000 && index + 1}</td>
-                                <td className='live-results__table-header'>{user.name} {user.surname}</td>
-                                {user.times.map((time, index) => (
-                                    <td key={index} className='live-results__table-time'>{time}</td>
-                                ))}
-                                <td className='live-results__table-time'>{user.averageText}</td>
-                                <td className='live-results__table-time'>{user.bestTime}</td>
+            {Date.now() < Date.parse(contest.startContest) ? (
+                <div className='contest-not-started'>
+                    <h2 className='contest-not-started__title'>Zawody rozpoczną się wkrótce</h2>
+                </div>
+            ) : (
+                <div className='live-results__main-content'>
+                    <table>
+                        <thead>
+                            <tr className='live-results__table-row live-results__table-row--first-row'>
+                                <th className='live-results__table-lp'>Lp.</th>
+                                <th className='live-results__table-header'>Zawodnik</th>
+                                <th className='live-results__table-time'>1</th>
+                                <th className='live-results__table-time'>2</th>
+                                <th className='live-results__table-time'>3</th>
+                                <th className='live-results__table-time'>4</th>
+                                <th className='live-results__table-time'>5</th>
+                                <th className='live-results__table-time'>Średnia</th>
+                                <th className='live-results__table-time'>Najlepszy</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                        </thead>
+                        <tbody>
+                            {contestEventusers?.map((user, index) => (
+                                <tr key={index} className='live-results__table-row'>
+                                    <td className='live-results__table-lp'>{user.average !== 1000000 && index + 1}</td>
+                                    <td className='live-results__table-header'>{user.name} {user.surname}</td>
+                                    {user.times.map((time, index) => (
+                                        <td key={index} className='live-results__table-time'>{time}</td>
+                                    ))}
+                                    <td className='live-results__table-time'>{user.averageText}</td>
+                                    <td className='live-results__table-time'>{user.bestTime}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
         <div className={asideOpen ? 'live-results__aside-mobile open' : "live-results__aside-mobile"}>
             <div className='live-results__aside-mobile-close'><FontAwesomeIcon className='live-results__aside-mobile-close-icon' icon={faArrowLeft} onClick={openAside} /></div>
