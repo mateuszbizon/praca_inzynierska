@@ -1,5 +1,7 @@
+@import "../../sass/colors";
+
 .live-results-info {
-    margin-top: 20px;
+    padding: 10px;
 
     &__text {
         line-height: 1.5;
@@ -7,12 +9,18 @@
 
     &__link {
         font-weight: bold;
-        text-decoration: none;
+        transition: color .5s;
+
+        &:hover {
+            color: $main-color;
+        }
     }
 }
 
 @media (min-width: 768px) {
     .live-results-info {
+        padding: 30px;
+
         &__text {
             font-size: 20px;
         }

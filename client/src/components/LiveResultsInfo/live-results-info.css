@@ -1,15 +1,22 @@
 .live-results-info {
-  margin-top: 20px;
+  padding: 10px;
 }
 .live-results-info__text {
   line-height: 1.5;
 }
 .live-results-info__link {
   font-weight: bold;
-  text-decoration: none;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+.live-results-info__link:hover {
+  color: #f46036;
 }
 
 @media (min-width: 768px) {
+  .live-results-info {
+    padding: 30px;
+  }
   .live-results-info__text {
     font-size: 20px;
   }

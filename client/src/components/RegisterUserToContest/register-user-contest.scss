@@ -81,6 +81,23 @@
     }
 }
 
+.register-info {
+    padding: 10px;
+
+    &__text {
+        font-size: 17px;
+    }
+
+    &__link {
+        font-weight: bold;
+        transition: color .5s;
+
+        &:hover {
+            color: $main-color;
+        }
+    }
+}
+
 .register-user-contest-end {
     padding: 10px;
 
@@ -113,11 +130,11 @@
         }
     }
 
-    .register-user-contest-end, .register-user-contest-start {
+    .register-user-contest-end, .register-user-contest-start, .register-info {
         padding: 30px;
 
         &__text {
-            font-size: 18px;
+            font-size: 20px;
         }
     }
 }

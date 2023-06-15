@@ -1,1 +1,1 @@
-{"version":3,"sources":["live-results-info.scss","live-results-info.css"],"names":[],"mappings":"AAAA;EACI,gBAAA;ACCJ;ADCI;EACI,gBAAA;ACCR;ADEI;EACI,iBAAA;EACA,qBAAA;ACAR;;ADIA;EAEQ;IACI,eAAA;ECFV;AACF","file":"live-results-info.css"}
+{"version":3,"sources":["live-results-info.scss","live-results-info.css","../../sass/_colors.scss"],"names":[],"mappings":"AAEA;EACI,aAAA;ACDJ;ADGI;EACI,gBAAA;ACDR;ADII;EACI,iBAAA;EACA,8BAAA;EAAA,sBAAA;ACFR;ADIQ;EACI,cEdC;ADYb;;ADOA;EACI;IACI,aAAA;ECJN;EDMM;IACI,eAAA;ECJV;AACF","file":"live-results-info.css"}

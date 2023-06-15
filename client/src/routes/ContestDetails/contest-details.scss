@@ -42,6 +42,7 @@
 	&__change-view-btn {
 		@include buttonToChangeView;
 		font-size: 15px;
+		white-space: nowrap;
 
 		&:hover {
             background-color: #ddd;

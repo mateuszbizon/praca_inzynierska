@@ -110,6 +110,21 @@
   color: #53bb41;
 }
 
+.register-info {
+  padding: 10px;
+}
+.register-info__text {
+  font-size: 17px;
+}
+.register-info__link {
+  font-weight: bold;
+  -webkit-transition: color 0.5s;
+  transition: color 0.5s;
+}
+.register-info__link:hover {
+  color: #f46036;
+}
+
 .register-user-contest-end {
   padding: 10px;
 }
@@ -135,10 +150,10 @@
   .register-user-contest-form__submit-btn {
     font-size: 20px;
   }
-  .register-user-contest-end, .register-user-contest-start {
+  .register-user-contest-end, .register-user-contest-start, .register-info {
     padding: 30px;
   }
-  .register-user-contest-end__text, .register-user-contest-start__text {
-    font-size: 18px;
+  .register-user-contest-end__text, .register-user-contest-start__text, .register-info__text {
+    font-size: 20px;
   }
 }/*# sourceMappingURL=register-user-contest.css.map */
