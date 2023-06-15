@@ -42,8 +42,8 @@ function Sidebar({ sidebar, setSidebar }) {
 				<div className="sidebar__close-box">
 					<CloseIcon fontSize="large" className="sidebar__close-icon" onClick={() => setSidebar(!sidebar)} />
 				</div>
-				{sidebarItems.map(item => (
-					<div className='sidebar__row'>
+				{sidebarItems.map((item, index) => (
+					<div key={index} className='sidebar__row'>
 						<div className='sidebar__items' onClick={() => navigateTo(item.path)}>
 							{item.icon}
 							{item.text}

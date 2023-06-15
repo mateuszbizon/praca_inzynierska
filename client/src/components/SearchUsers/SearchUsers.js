@@ -10,9 +10,9 @@ function SearchUsers() {
 		<div>Nie znaleziono użytkownika</div>
 	) : (
 		<div className='search-users'>
-			{users.map(user => (
+			{users.map((user, index) => (
 				<>
-					<SearchUser user={user} />
+					<SearchUser key={index} user={user} />
 				</>
 			))}
 		</div>
