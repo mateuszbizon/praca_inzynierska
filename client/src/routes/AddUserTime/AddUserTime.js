@@ -5,6 +5,9 @@ import './add-user-time.css'
 import checkAreInputsEmpty from '../../validations/CheckAreInputsEmpty'
 import addUserTimeValid from '../../validations/AddUserTimeValid'
 import { addUserTimesToContestEvent, getContestEvent } from '../../actions/contests'
+import io from "socket.io-client"
+
+const socket = io.connect("http://localhost:5000")
 
 function AddUserTime() {
     const {id, event } = useParams()
@@ -28,6 +31,7 @@ function AddUserTime() {
         if (Object.keys(errors).length == 0 && !checkAreInputsEmpty(form)) {
             const times = [form.time1, form.time2, form.time3, form.time4, form.time5]
             dispatch(addUserTimesToContestEvent(id, event, { times, email: form.email }, navigate))
+            socket.emit("send_time", { users: contestEvent.users, room: `${id}${event}`, times, email: form.email })
         }
     }, [errors])
 

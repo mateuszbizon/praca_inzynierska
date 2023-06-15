@@ -6,6 +6,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import "./live-results.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import io from "socket.io-client"
+
+const socket = io.connect("http://localhost:5000")
 
 function LiveResults() {
     const { id, event } = useParams()
@@ -22,6 +25,7 @@ function LiveResults() {
 
     useEffect(() => {
         dispatch(getContestEvent(id, event))
+        socket.emit("join_room", { room: `${id}${event}`})
     }, [])
 
     useEffect(() => {
@@ -29,6 +33,12 @@ function LiveResults() {
             setContestEventUsers(contestEvent.users)
         }
     }, [contestEvent])
+
+    useEffect(() => {
+        socket.on("get_times", (data) => {
+            setContestEventUsers(data)
+        })
+    }, [socket])
 
   return (
     <section className='live-results'>
