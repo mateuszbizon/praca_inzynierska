@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import "./create-edit-tutorial.css"
-import { checkTitle, checkStage } from "../../validations/CreateTutorialValid";
+import { checkTitle, checkStage, checkTutorial } from "../../validations/CreateTutorialValid";
 import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -80,7 +80,9 @@ function CreateEditTutorial({title, setTitle, allStages, setAllStages, dispatchF
     }
 
     function finishTutorial() {
-        dispatch(dispatchFunc({ title: title, stages: allStages, username: user.result.username }, navigate, tutorial._id))
+        if (checkTutorial(title, allStages)) {
+            dispatch(dispatchFunc({ title: title, stages: allStages, username: user.result.username }, navigate, tutorial._id))
+        }
     }
 
     useEffect(() => {
@@ -149,7 +151,7 @@ function CreateEditTutorial({title, setTitle, allStages, setAllStages, dispatchF
         <div className='create-edit-tutorial__main-buttons'>
             <button className='create-edit-tutorial__btn' onClick={showTitleModal}>Dodaj/Zmień tytuł</button>
             <button className='create-edit-tutorial__btn' onClick={showStageModal}>Dodaj etap</button>
-            <button className='create-edit-tutorial__btn' onClick={finishTutorial}>{isLoading ? <CircularProgress /> : "Zakończ"}</button>
+            <button className='create-edit-tutorial__btn' onClick={finishTutorial}>Zakończ {isLoading && <CircularProgress size='20px' style={{ color: "#fff" }} />}</button>
         </div>
         <p className='create-edit-tutorial__title'>{title}</p>
         <div className='create-edit-tutorial__stages'>

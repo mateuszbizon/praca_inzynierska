@@ -21,7 +21,7 @@ export const getTutorialsByUsername = async (req, res) => {
 
     try {
         const tutorials = await Tutorial.find({ username: username });
-        res.status(200).json(tutorials);
+        res.status(200).json(tutorials.slice(0).reverse());
     } catch (error) {
         console.log(error)
     }

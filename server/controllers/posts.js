@@ -6,7 +6,7 @@ export const getPostsByUsername = async (req, res) => {
 
     try {
         const postMessages = await PostMessage.find({ username: username });
-        res.status(200).json(postMessages);
+        res.status(200).json(postMessages.slice(0).reverse());
     } catch (error) {
         console.log(error)
     }

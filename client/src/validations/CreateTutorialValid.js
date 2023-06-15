@@ -46,3 +46,11 @@ export function checkStage(values) {
 
     return errors;
 }
+
+export function checkTutorial(title, allStages) {
+    if (title == "" || allStages.length == 0) {
+        return false
+    }
+
+    return true
+}
