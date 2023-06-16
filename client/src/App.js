@@ -21,6 +21,7 @@ import EditContest from "./routes/EditContest/EditContest";
 import ContestDetails from "./routes/ContestDetails/ContestDetails";
 import LiveResults from "./routes/LiveResults/LiveResults";
 import AddUserTime from "./routes/AddUserTime/AddUserTime";
+import VerifyRegisterEmail from "./routes/VerifyRegisterEmail/VerifyRegisterEmail";
 import "./app.css";
 
 function App() {
@@ -51,6 +52,7 @@ function App() {
 				<Route path='/contests' element={<ContestsDashboard />} />
 				<Route path='/contests/:id' element={<ContestDetails />} />
 				<Route path='/live-results/:id/:event' element={<LiveResults />} />
+				<Route path='/users/:id/verify/:token' element={<VerifyRegisterEmail />} />
 			</Routes>
 		</Router>
 	);

@@ -1,0 +1,53 @@
+@import "../../sass/colors";
+@import "../../sass/mixins";
+
+.verify-register-email {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__container {
+        width: 300px;
+		border: 1px solid #909090;
+		border-radius: 8px;
+		box-shadow: 10px 10px 10px #909090;
+		padding: 20px;
+        text-align: center;
+    }
+
+    &__container-title {
+        margin-bottom: 20px;
+        color: $main-color;
+    }
+
+    &__container-text {
+        margin-bottom: 20px;
+    }
+
+    &__container-btn-box {
+        width: 100%;
+    }
+
+    &__container-btn {
+        @include button-styling;
+        width: 100%;
+
+        &:hover {
+            background-color: $main-color-hover;
+        }
+    }
+}
+
+@media (min-width: 576px) {
+    .verify-register-email {
+        &__container {
+            width: 500px;
+        }
+
+        &__container-text, &__container-btn {
+            font-size: 18px;
+        }
+    }
+}

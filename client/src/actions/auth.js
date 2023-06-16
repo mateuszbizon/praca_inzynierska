@@ -17,15 +17,13 @@ export const signin = (formData, navigate) => async (dispatch) => {
     }
 };
 
-export const signup = (formData, navigate) => async (dispatch) => {
+export const signup = (formData) => async (dispatch) => {
     try {
       dispatch({ type: AUTH_LOADING })
 
       const { data } = await api.signUp(formData);
   
       dispatch({ type: REGISTER, data: data });
-  
-      navigate('/login');
     } catch (error) {
       dispatch({ type: REGISTER_FAIL, data: error.response.data.message });
     }

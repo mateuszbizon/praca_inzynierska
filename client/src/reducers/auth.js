@@ -13,6 +13,7 @@ const authReducer = (state = { authData: null, loading: false, error: false, suc
             return { ...state, loading: true}
 
         case actionType.REGISTER:
+            localStorage.setItem("email", action.data.email)
             return {...state, authData: action.data, loading: false }
 
         case actionType.REGISTER_FAIL:
@@ -32,8 +33,5 @@ const authReducer = (state = { authData: null, loading: false, error: false, suc
             return state;
     }
 }
-
-
-
 
 export default authReducer;

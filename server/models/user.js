@@ -8,7 +8,8 @@ const userSchema = mongoose.Schema({
 	selectedFile: String,
 	isAdmin: { type: Boolean, default: false },
 	times: { type: [Object], default: [] },
-	sessions: { type: [Object], default: [] }
+	sessions: { type: [Object], default: [] },
+	verified: { type: Boolean, default: false }
 });
 
 export default mongoose.model("User", userSchema);

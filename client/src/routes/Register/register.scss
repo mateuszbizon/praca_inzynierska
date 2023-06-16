@@ -8,6 +8,20 @@
 	min-height: 100vh;
 	background-color: #fff;
 
+	&__verify-container {
+		width: 300px;
+		border: 1px solid #909090;
+		border-radius: 8px;
+		box-shadow: 10px 10px 10px #909090;
+		padding: 20px;
+		text-align: center;
+	}
+
+	&__verify-title {
+		margin-bottom: 20px;
+		color: $main-color;
+	}
+
 	&__form {
 		width: 300px;
 		min-height: 400px;
@@ -124,6 +138,14 @@
 		&__form {
 			width: 500px;
 			margin-top: 0;
+		}
+
+		&__verify-container {
+			width: 500px;
+		}
+
+		&__verify-text {
+			font-size: 18px;
 		}
 
 		&__row {

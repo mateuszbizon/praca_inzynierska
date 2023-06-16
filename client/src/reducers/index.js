@@ -9,5 +9,6 @@ import loaders from './loaders';
 import tutorials from './tutorials';
 import contests from './contests';
 import badRequest from './badRequest';
+import verifyEmails from './verifyEmails';
 
-export const reducers = combineReducers({ posts, auth, users, times, sessions, loaders, tutorials, contests, badRequest });
+export const reducers = combineReducers({ posts, auth, users, times, sessions, loaders, tutorials, contests, badRequest, verifyEmails });

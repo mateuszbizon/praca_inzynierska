@@ -2,6 +2,9 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/user.js";
 import PostMessage from '../models/postMessage.js';
+import Token from "../models/token.js";
+import crypto from "crypto";
+import sendEmail from "../utils/sendEmail.js";
 
 export const signin = async (req, res) => {
 	const { email, password } = req.body;
@@ -20,6 +23,10 @@ export const signin = async (req, res) => {
 		if (!isPasswordCorrect){
 			return res.status(400).json({success: false, message: "Błędne dane logowania" });
         }
+
+		if (!existingUser.verified) {
+			return res.status(400).json({ success: false, message: "Potwierdź rejestrację" })
+		}
 
 		const token = jwt.sign(
 			{ email: existingUser.email, id: existingUser._id },
@@ -50,7 +57,7 @@ export const signup = async (req, res) => {
 
 		const hashedPassword = await bcrypt.hash(password, 12);
 
-		const result = await User.create({
+		const user = await User.create({
 			email,
 			password: hashedPassword,
 			name: `${name} ${surname}`,
@@ -58,11 +65,13 @@ export const signup = async (req, res) => {
 			selectedFile,
 		});
 
-		const token = jwt.sign({ email: result.email, id: result.id }, "test", {
-			expiresIn: "1h",
-		});
+		const token = await Token.create({ userId: user._id, token: crypto.randomBytes(32).toString("hex") })
 
-		res.status(200).json({success: true, result, token: token });
+		const url = `${process.env.BASE_URL}users/${user._id}/verify/${token.token}`;
+
+		await sendEmail(user.email, "Weryfikacja rejestracji", url);
+
+		res.status(200).json({ email: user.email, message: "Zarejestrowano pomyślnie" });
 	} catch (error) {
 		res.status(500).json({ message: "Coś poszło nie tak" });
 	}
