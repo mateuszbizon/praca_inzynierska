@@ -10,4 +10,10 @@
 }
 .comments__comment {
   margin-bottom: 10px;
+}
+
+.no-comments {
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
 }/*# sourceMappingURL=comments.css.map */

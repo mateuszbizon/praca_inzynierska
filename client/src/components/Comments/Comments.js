@@ -6,12 +6,18 @@ function Comments({ post }) {
   const navigate = useNavigate();
 
   return (
-    post.comments?.map((c, i) => (
-        <div className='comments__comment' key={i}>
-            <strong className='comments__link' onClick={() => navigate(`/profile/${c.commentCreator}`)}>{c.commentCreator}: </strong>
-            <span className='comments__comment-text'>{c.value}</span>
-        </div>
-    ))
+    <>
+      {!post.comments?.length ? (
+        <div className='no-comments'>Brak komentarzy</div>
+      ) : (
+        post.comments?.map((c, i) => (
+          <div className='comments__comment' key={i}>
+              <strong className='comments__link' onClick={() => navigate(`/profile/${c.commentCreator}`)}>{c.commentCreator}: </strong>
+              <span className='comments__comment-text'>{c.value}</span>
+          </div>
+      ))
+      )}
+    </>
   )
 }
 
