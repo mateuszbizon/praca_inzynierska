@@ -1,4 +1,4 @@
-import { AUTH, AUTH_FAIL, REGISTER, REGISTER_FAIL, EDIT_ACCOUNT, EDIT_ACCOUNT_FAIL, EDIT_ACCOUNT_SUCCESS, AUTH_LOADING } from '../constants/actionTypes';
+import { AUTH, AUTH_FAIL, REGISTER, REGISTER_FAIL, EDIT_ACCOUNT, EDIT_ACCOUNT_FAIL, AUTH_LOADING, EDIT_PASSWORD, EDIT_PASSWORD_FAIL } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const signin = (formData, navigate) => async (dispatch) => {
@@ -38,5 +38,17 @@ export const editAccount = (editData) => async (dispatch) => {
     dispatch({ type: EDIT_ACCOUNT, data: data })
   } catch (error) {
     dispatch({ type: EDIT_ACCOUNT_FAIL, data: error.response.data.message })
+  }
+}
+
+export const editPassword = (passwords, id) => async (dispatch) => {
+  try {
+    dispatch({ type: AUTH_LOADING })
+
+    const { data } = await api.editPassword(passwords, id)
+
+    dispatch({ type: EDIT_PASSWORD, data: data })
+  } catch (error) {
+    dispatch({ type: EDIT_PASSWORD_FAIL, data: error.response.data.message })
   }
 }

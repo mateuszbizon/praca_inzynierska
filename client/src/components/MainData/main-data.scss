@@ -53,22 +53,21 @@
 
 	&__submit-btn {
 		width: 100%;
-		margin-bottom: 10px;
+	}
 
-		button {
-			@include button;
-			padding: 15px 20px;
-			font-size: 20px;
+	&__submit {
+		@include button-styling;
+		width: 100%;
 
-			&:hover {
-				background-color: $main-color-hover;
-			}
+		&:hover {
+			background-color: $main-color-hover;
 		}
 	}
 
 	&__submit-message {
 		@include submit-message-styling;
-		font-size: 22px;
+		font-size: 18px;
+		margin-bottom: 15px;
 	}
 
 	&__submit-message.success {
@@ -83,6 +82,14 @@
 				width: 80px;
 				height: 80px;
 			}
+		}
+
+		&__submit-message {
+			font-size: 22px;
+		}
+
+		&__submit {
+			font-size: 20px;
 		}
 	}
 }

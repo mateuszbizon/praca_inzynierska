@@ -149,3 +149,29 @@ export const editAccount = async (req, res) => {
 		console.log(error)
 	}
 }
+
+export const editPassword = async (req, res) => {
+	const { id } = req.params;
+	const { oldPassword, newPassword } = req.body
+	
+	try {
+		const user = await User.findById(id)
+
+		const isPasswordCorrect = await bcrypt.compare(
+			oldPassword,
+			user.password
+		);
+
+		if (!isPasswordCorrect) return res.status(400).json({ message: "Nieprawidłowe hasło" })
+
+		const newHashedPassword = await bcrypt.hash(newPassword, 12);
+
+		user.password = newHashedPassword
+
+		await User.findByIdAndUpdate(id, user, { new: true })
+
+		res.status(200).json({ message: "Pomyślnie zmieniono hasło" })
+	} catch (error) {
+		console.log(error)
+	}
+}
