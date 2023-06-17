@@ -176,11 +176,15 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 70%;
-    height: 400px;
+    width: 90%;
+    height: 550px;
   }
-  .post-details__left-side, .post-details__right-side {
-    width: 50%;
+  .post-details__left-side {
+    width: 65%;
+    height: 100%;
+  }
+  .post-details__right-side {
+    width: 35%;
     height: 100%;
   }
   .post-details__img {

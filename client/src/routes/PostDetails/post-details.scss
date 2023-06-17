@@ -8,13 +8,13 @@
 	justify-content: center;
 	align-items: center;
 
-    &__container{
-        width: 300px;
-        min-height: 500px;
+	&__container {
+		width: 300px;
+		min-height: 500px;
 		margin-top: 60px;
 		margin-bottom: 80px;
 		box-shadow: 10px 10px 10px #909090;
-    }
+	}
 
 	&__img {
 		width: 100%;
@@ -33,13 +33,13 @@
 		background-color: #eee;
 	}
 
-	&__link{
+	&__link {
 		text-decoration: none;
 		color: #000;
-		transition: color .3s;
-		cursor: pointer;	
-	
-		&:hover{
+		transition: color 0.3s;
+		cursor: pointer;
+
+		&:hover {
 			color: $main-color;
 		}
 	}
@@ -53,7 +53,7 @@
 		border-bottom: 1px solid #ccc;
 	}
 
-	&__comments{
+	&__comments {
 		height: 100px;
 		padding-left: 10px;
 		padding-top: 10px;
@@ -61,15 +61,15 @@
 		border-bottom: 1px solid #ccc;
 	}
 
-	&__comment{
+	&__comment {
 		margin-bottom: 10px;
 	}
 
-	&__comment-input{
+	&__comment-input {
 		position: relative;
 		height: 70px;
 
-		textarea{
+		textarea {
 			width: 100%;
 			max-width: 100%;
 			min-width: 100%;
@@ -81,14 +81,13 @@
 			font-size: 15px;
 			z-index: 0;
 
-			&::placeholder{
+			&::placeholder {
 				font-size: 15px;
 			}
 		}
-
 	}
 
-	&__add-comment{
+	&__add-comment {
 		position: absolute;
 		top: 25px;
 		right: 10px;
@@ -97,10 +96,10 @@
 		font-weight: bold;
 		color: $main-color;
 		cursor: pointer;
-		transition: color .3s;
+		transition: color 0.3s;
 		z-index: 10;
 
-		&:hover{
+		&:hover {
 			color: $main-color-hover;
 		}
 
@@ -127,7 +126,7 @@
 		align-items: center;
 	}
 
-	&__text{
+	&__text {
 		margin-left: 5px;
 	}
 
@@ -148,44 +147,47 @@
 	}
 }
 
-@media (min-width: 768px){
-	.post-details{
-		
-		&__container{
+@media (min-width: 768px) {
+	.post-details {
+		&__container {
 			display: flex;
-			width: 70%;
-			height: 400px;
+			width: 90%;
+			height: 550px;
 		}
 
-		&__left-side, &__right-side{
-			width: 50%;
+		&__left-side {
+			width: 65%;
 			height: 100%;
 		}
 
-		&__img{
+		&__right-side {
+			width: 35%;
+			height: 100%;
+		}
+
+		&__img {
 			height: 90%;
 		}
 
-		&__header{
+		&__header {
 			height: 10%;
 		}
 
-		&__msg{
+		&__msg {
 			height: 25%;
 		}
 
-		&__comments{
+		&__comments {
 			height: 50%;
 		}
 
-		&__buttons, &__likes-count{
+		&__buttons,
+		&__likes-count {
 			height: 10%;
 		}
 
-		&__comment-input{
+		&__comment-input {
 			height: 15%;
-			
 		}
-
 	}
 }

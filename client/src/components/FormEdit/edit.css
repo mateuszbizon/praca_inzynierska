@@ -1,7 +1,7 @@
 .edit {
   position: fixed;
   opacity: 0;
-  top: 250px;
+  top: 300px;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
