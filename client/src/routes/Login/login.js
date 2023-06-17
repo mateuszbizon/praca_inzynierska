@@ -13,7 +13,7 @@ function Login() {
 	const [errors, setErrors] = useState({})
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
-	const { authData, error, loading } = useSelector(state => state.auth);
+	const { authData, success, loading } = useSelector(state => state.auth);
 	const submitMessage = useRef();
 	const passRef = useRef();
 
@@ -106,7 +106,7 @@ function Login() {
 							</button>
 						</div>
 						<p className='login__submit-message' ref={submitMessage}>
-							{error ? authData : ""}
+							{!success && authData}
 						</p>
 						<div className='login__info-box'>
 							<p className='login__info'>Nie masz konta?</p>

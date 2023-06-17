@@ -17,7 +17,7 @@ function Register() {
 	});
 	const [errors, setErrors] = useState({})
 	const dispatch = useDispatch();
-	const { authData, error, loading, success } = useSelector(state => state.auth);
+	const { authData, loading, success } = useSelector(state => state.auth);
 	const email = localStorage.getItem("email");
 	const submitMessage = useRef();
 	const passRef = useRef();
@@ -172,7 +172,7 @@ function Register() {
 								</button>
 							</div>
 							<p className='login__submit-message' ref={submitMessage}>
-								{error ? authData : ""}
+								{!success && authData}
 							</p>
 							<div className='register__info-box'>
 								<p className='register__info'>Masz już konto?</p>

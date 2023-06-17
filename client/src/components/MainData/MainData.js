@@ -16,7 +16,7 @@ function MainData() {
 	const [errors, setErrors] = useState({})
 	const user = JSON.parse(localStorage.getItem("user"));
 	const dispatch = useDispatch();
-	const { authData, error, success, loading } = useSelector(
+	const { authData, success, loading } = useSelector(
 		state => state.auth
 	);
 
@@ -106,8 +106,8 @@ function MainData() {
 								? "main-data__submit-message success"
 								: "main-data__submit-message"
 						}>
-						{error ? authData : ""}
-						{success ? authData : ""}
+						{!success && authData}
+						{success && authData}
 					</p>
 				</form>
 			)}

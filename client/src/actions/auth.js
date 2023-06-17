@@ -36,8 +36,6 @@ export const editAccount = (editData) => async (dispatch) => {
     const { data } = await api.editAccount(editData);
 
     dispatch({ type: EDIT_ACCOUNT, data: data })
-
-    dispatch({ type: EDIT_ACCOUNT_SUCCESS, data: "Zaktualizowano pomyślnie" })
   } catch (error) {
     dispatch({ type: EDIT_ACCOUNT_FAIL, data: error.response.data.message })
   }

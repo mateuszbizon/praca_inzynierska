@@ -144,7 +144,7 @@ export const editAccount = async (req, res) => {
 			{ expiresIn: "5h" }
 		);
 
-		res.status(200).json({success: true, result: newUser, token: token });
+		res.status(200).json({success: true, message: "Zaktualizowano pomyślnie", result: newUser, token: token });
 	} catch (error) {
 		console.log(error)
 	}
