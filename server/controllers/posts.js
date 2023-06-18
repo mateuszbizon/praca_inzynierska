@@ -6,9 +6,10 @@ export const getPostsByUsername = async (req, res) => {
 
     try {
         const postMessages = await PostMessage.find({ username: username });
+
         res.status(200).json(postMessages.slice(0).reverse());
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -16,12 +17,13 @@ export const getPostById = async (req, res) => {
     const { id } = req.params;
     
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("Nie ma takiego posta z tym id");
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+
         const post = await PostMessage.findById(id);
         
         res.status(200).json(post);
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -34,7 +36,7 @@ export const createPost = async (req, res) => {
 
         res.status(201).json(newPost);
     } catch (error) {
-        res.status(409).json({message: error.message});
+        res.status(409).json({ message: "Nie udało się utworzyć postu.", desc: error.message });
     }
 }
 
@@ -43,15 +45,15 @@ export const updatePost = async (req, res) => {
     const post = req.body;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("Nie ma takiego posta z tym id");
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
 
-        await PostMessage.findByIdAndUpdate(id, post, {new: true });
+        await PostMessage.findByIdAndUpdate(id, post, { new: true });
 
         const updatedPost = await PostMessage.findById(id);
 
-        res.json(updatedPost);
+        res.status(200).json(updatedPost);
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -59,13 +61,13 @@ export const deletePost = async (req, res) => {
     const { id } = req.params;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("Nie ma takiego posta z tym id");
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
 
         await PostMessage.findByIdAndRemove(id);
 
-        res.json({message: "Usunięto post pomyślnie"});
+        res.status(200).json({message: "Usunięto post pomyślnie"});
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -73,9 +75,7 @@ export const likePost = async (req, res) => {
     const { id } = req.params;
     
     try {
-        if(!req.userId) return res.json({ message: "Użytkownik nie jest zalogowany!" });
-
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send("Nie ma takiego posta z tym id");
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
 
         const post = await PostMessage.findById(id);
 
@@ -91,9 +91,9 @@ export const likePost = async (req, res) => {
 
         const updatedPost = await PostMessage.findById(id);
 
-        res.json(updatedPost);
+        res.status(200).json(updatedPost);
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -102,17 +102,16 @@ export const commentPost = async (req, res) => {
     const { commentCreator, value } = req.body;
 
     try {
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+
         const post = await PostMessage.findById(id);
-        console.log(commentCreator, value);
     
         post.comments.push({ commentCreator: commentCreator, value: value });
     
         const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
     
-        res.json(updatedPost);
-        
+        res.status(200).json(updatedPost); 
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
-
 }

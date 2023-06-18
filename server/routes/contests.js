@@ -6,11 +6,11 @@ const router = express.Router();
 
 router.post("/createContest", auth, createContest);
 router.get("/getAllContests", getAllContests);
-router.delete("/deleteContestById/:id", deleteContestById);
+router.delete("/deleteContestById/:id", auth, deleteContestById);
 router.get("/getContestById/:id", getContestById);
 router.patch("/updateContest/:id", auth, updateContest);
 router.patch("/addUserToContest/:id", addUserToContest)
 router.get("/getContestEvent/:id/:event", getContestEvent)
-router.patch("/addUserTimesToContestEvent/:id/:event", addUserTimesToContestEvent)
+router.patch("/addUserTimesToContestEvent/:id/:event", auth, addUserTimesToContestEvent)
 
 export default router;

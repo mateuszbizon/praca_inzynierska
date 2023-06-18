@@ -97,7 +97,7 @@ export const getAllTimes = async (req, res) => {
 
 		res.status(200).json({ times: allTimes, bestTime: bestTime });
 	} catch (error) {
-		console.log(error)
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
 
@@ -121,7 +121,7 @@ export const addNewTime = async (req, res) => {
 
 		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime });
 	} catch (error) {
-		console.log(error)
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
 
@@ -139,7 +139,7 @@ export const deleteTime = async (req, res) => {
 
 		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
-		console.log(error)
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
 
@@ -155,7 +155,7 @@ export const deleteAllTimes = async (req, res) => {
 
 		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
-		console.log(error)
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
 
@@ -177,7 +177,7 @@ export const setDnf = async (req, res) => {
 
 		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
-		console.log(error)
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
 
@@ -199,7 +199,7 @@ export const setTimeOk = async (req, res) => {
 
 		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
-		console.log(error)
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
 
@@ -223,6 +223,6 @@ export const setPlusTwo = async (req, res) => {
 
 		res.status(200).json({ times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
-		console.log(error)
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }

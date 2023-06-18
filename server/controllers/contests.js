@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Contest from "../models/contest.js";
 import { sortArrayBySurname, sortArrayByAverage } from "../utils/sortArrays.js";
 import getBestTime from "../utils/getBestTime.js";
@@ -15,7 +16,7 @@ export const createContest = async (req, res) => {
 
         res.status(201).json(newContest);
     } catch (error) {
-        res.status(409).json({message: error.message});
+        res.status(409).json({ message: "Nie udało się utworzyć zawodów.", desc: error.message });
     }
 }
 
@@ -27,7 +28,7 @@ export const getAllContests = async (req, res) => {
 
         res.status(200).json({ contests: contests, contestsEnd: contestsEnd });
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -35,11 +36,13 @@ export const deleteContestById = async (req, res) => {
     const { id } = req.params;
 
     try {
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+
         await Contest.findByIdAndRemove(id);
 
         res.status(200).json({ message: "Usunięto zawody pomyślnie" });
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -47,11 +50,13 @@ export const getContestById = async (req, res) => {
     const { id } = req.params;
 
     try {
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+
         const contest = await Contest.findById(id);
 
         res.status(200).json(contest);
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -60,13 +65,15 @@ export const updateContest = async (req, res) => {
     const contest = req.body;
 
     try {
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+
         await Contest.findByIdAndUpdate(id, contest, { new: true })
 
         const updatedContest = await Contest.findById(id)
 
         res.status(200).json(updatedContest);
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -75,6 +82,8 @@ export const addUserToContest = async (req, res) => {
     const user = req.body;
 
     try {
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+
         const contest = await Contest.findById(id)
 
         const existingUser = await User.findOne({ email: user.email });
@@ -99,7 +108,7 @@ export const addUserToContest = async (req, res) => {
 
         res.status(200).json({ message: "Dodano pomyślnie", contest: updatedContest });
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -107,6 +116,8 @@ export const getContestEvent = async (req, res) => {
     const { id, event } = req.params;
 
     try {
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+
         const contest = await Contest.findById(id);
 
         const contestEvent = contest.events.find(e => e.value === event)
@@ -117,7 +128,7 @@ export const getContestEvent = async (req, res) => {
 
         res.status(200).json({ contest: contest, contestEvent: contestEvent });
     } catch (error) {
-        console.log(error.message)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -126,6 +137,8 @@ export const addUserTimesToContestEvent = async (req, res) => {
     const user = req.body
 
     try {
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+
         const contest = await Contest.findById(id);
 
         const currentEvent = contest.events.find(e => e.value === event)
@@ -146,6 +159,6 @@ export const addUserTimesToContestEvent = async (req, res) => {
 
         res.status(200).json({ updatedContest })
     } catch (error) {
-        console.log(error);
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }

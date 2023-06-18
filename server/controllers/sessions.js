@@ -26,7 +26,7 @@ export const getAllSessions = async (req, res) => {
 
         res.status(200).json(allSessions);
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -50,7 +50,7 @@ export const addNewSession = async (req, res) => {
 
         res.status(200).json(updatedSessions.sessions);
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
 
@@ -66,6 +66,6 @@ export const deleteSession = async (req, res) => {
 
         res.status(200).json(updatedSessions.sessions);
     } catch (error) {
-        console.log(error)
+        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }

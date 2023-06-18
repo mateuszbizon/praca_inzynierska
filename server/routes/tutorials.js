@@ -6,8 +6,8 @@ const router = express.Router();
 
 router.post("/createTutorial", auth, createTutorial);
 router.get("/getTutorialsByUsername/:username", getTutorialsByUsername);
-router.delete("/deleteTutorial/:id", deleteTutorialById);
+router.delete("/deleteTutorial/:id", auth, deleteTutorialById);
 router.get("/getTutorialById/:id", getTutorialById);
-router.patch("/updateTutorial/:id", updateTutorial);
+router.patch("/updateTutorial/:id", auth, updateTutorial);
 
 export default router;

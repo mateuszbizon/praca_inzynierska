@@ -36,7 +36,7 @@ export const signin = async (req, res) => {
 
 		res.status(200).json({success: true, result: existingUser, token: token });
 	} catch (error) {
-		res.status(500).json({ message: "Coś poszło nie tak" });
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 };
 
@@ -73,7 +73,7 @@ export const signup = async (req, res) => {
 
 		res.status(200).json({ email: user.email, message: "Zarejestrowano pomyślnie" });
 	} catch (error) {
-		res.status(500).json({ message: "Coś poszło nie tak" });
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 };
 
@@ -89,7 +89,7 @@ export const getUser = async (req, res) => {
 
 		res.status(200).json({ user: user, posts: posts.length });
 	} catch (error) {
-		res.status(500).json({ message: "Coś poszło nie tak"})
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
 
@@ -104,7 +104,7 @@ export const getUsersBySearch = async (req, res) => {
 		
 		res.json(users);
 	} catch (error) {
-		res.status(404).json({ message: "Użytkownik nie znaleziony" }) ;
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
 
@@ -146,7 +146,7 @@ export const editAccount = async (req, res) => {
 
 		res.status(200).json({success: true, message: "Zaktualizowano pomyślnie", result: newUser, token: token });
 	} catch (error) {
-		console.log(error)
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
 
@@ -172,6 +172,6 @@ export const editPassword = async (req, res) => {
 
 		res.status(200).json({ message: "Pomyślnie zmieniono hasło" })
 	} catch (error) {
-		console.log(error)
+		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
