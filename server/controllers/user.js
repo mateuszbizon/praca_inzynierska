@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/user.js";
@@ -13,7 +14,7 @@ export const signin = async (req, res) => {
 		const existingUser = await User.findOne({ email });
 
 		if (!existingUser)
-			return res.status(404).json({success: false, message: "Błędne dane logowania" });
+			return res.status(404).json({ message: "Błędne dane logowania" });
 
 		const isPasswordCorrect = await bcrypt.compare(
 			password,
@@ -21,11 +22,11 @@ export const signin = async (req, res) => {
 		);
 
 		if (!isPasswordCorrect){
-			return res.status(400).json({success: false, message: "Błędne dane logowania" });
+			return res.status(400).json({ message: "Błędne dane logowania" });
         }
 
 		if (!existingUser.verified) {
-			return res.status(400).json({ success: false, message: "Potwierdź rejestrację" })
+			return res.status(400).json({ message: "Potwierdź rejestrację" })
 		}
 
 		const token = jwt.sign(
@@ -34,7 +35,7 @@ export const signin = async (req, res) => {
 			{ expiresIn: "5h" }
 		);
 
-		res.status(200).json({success: true, result: existingUser, token: token });
+		res.status(200).json({ result: existingUser, token: token });
 	} catch (error) {
 		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
@@ -48,12 +49,12 @@ export const signup = async (req, res) => {
 		const existingUser = await User.findOne({ email });
 
 		if (existingUser)
-			return res.status(400).json({success: false, message: "Email jest już zajęty" });
+			return res.status(400).json({ message: "Email jest już zajęty" });
 
 		const existingUsername = await User.findOne({ username });
 
 		if (existingUsername)
-			return res.status(400).json({success: false, message: "Nazwa użytkownika jest już zajęta" });
+			return res.status(400).json({ message: "Nazwa użytkownika jest już zajęta" });
 
 		const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -102,24 +103,16 @@ export const getUsersBySearch = async (req, res) => {
 		
 		const users = await User.find({$or: [{username}, {name}]});
 		
-		res.json(users);
+		res.status(200).json(users);
 	} catch (error) {
 		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
 
 export const editAccount = async (req, res) => {
-	const { name, email, username, selectedFile } = req.body;
+	const { name, username, selectedFile } = req.body;
 
 	try {
-		const existingUser = await User.findOne({ email });
-
-		if(existingUser){
-			if(existingUser._id.toString() !== req.userId){
-				return res.status(400).json({ message: "Email jest już zajęty" })
-			}
-		}
-
 		const existingUsername = await User.findOne({ username });
 
 		if(existingUsername){
@@ -134,7 +127,7 @@ export const editAccount = async (req, res) => {
 
 		await PostMessage.updateMany({"comments.commentCreator": {$eq: user.username}}, {$set: {"comments.$[].commentCreator": username}})
 		
-		await User.findByIdAndUpdate(req.userId, { name: name, email: email, username: username, selectedFile: selectedFile }, { new: true })
+		await User.findByIdAndUpdate(req.userId, { name: name, username: username, selectedFile: selectedFile }, { new: true })
 		
 		const newUser = await User.findById(req.userId);
 
@@ -144,7 +137,7 @@ export const editAccount = async (req, res) => {
 			{ expiresIn: "5h" }
 		);
 
-		res.status(200).json({success: true, message: "Zaktualizowano pomyślnie", result: newUser, token: token });
+		res.status(200).json({ message: "Zaktualizowano pomyślnie", result: newUser, token: token });
 	} catch (error) {
 		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
@@ -152,13 +145,19 @@ export const editAccount = async (req, res) => {
 
 export const editPassword = async (req, res) => {
 	const { id } = req.params;
-	const { oldPassword, newPassword } = req.body
+	const { password, newPassword } = req.body
 	
 	try {
+		if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie znaleziono użytkownika" });
+
 		const user = await User.findById(id)
 
+		if (user && id !== req.userId) {
+			res.status(400).json({ message: "Nie można zmienić hasła innego użytkownika" })
+		}
+
 		const isPasswordCorrect = await bcrypt.compare(
-			oldPassword,
+			password,
 			user.password
 		);
 
