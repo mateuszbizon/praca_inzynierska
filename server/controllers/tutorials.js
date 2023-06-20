@@ -31,7 +31,7 @@ export const deleteTutorialById = async (req, res) => {
     const { id } = req.params;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego poradnika z tym id" });
 
         await Tutorial.findByIdAndRemove(id);
 
@@ -45,7 +45,7 @@ export const getTutorialById = async (req, res) => {
     const { id } = req.params;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego poradnika z tym id" });
 
         const tutorial = await Tutorial.findById(id);
 
@@ -60,7 +60,7 @@ export const updateTutorial = async (req, res) => {
     const tutorial = req.body;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego poradnika z tym id" });
 
         await Tutorial.findByIdAndUpdate(id, tutorial, { new: true })
 
