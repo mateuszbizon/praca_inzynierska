@@ -20,6 +20,10 @@ const router = express.Router();
  *         username:
  *           type: string
  *           description: Autor poradnika
+ *       example:
+ *         title: "string"
+ *         stages: [{ id: 1, name: "string", desc: "string", selectedFile: [] }]
+ *         usernmae: "string"
  */
 
 /**

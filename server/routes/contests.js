@@ -41,6 +41,16 @@ const router = express.Router();
  *         usersLimit: 
  *           type: number
  *           description: Limit zawodników
+ *       example:
+ *         name: "string"
+ *         startregistration: 2023-06-20T13:15:00.000+00:00
+ *         endRegistration: 2023-06-20T13:15:00.000+00:00
+ *         startContest: 2023-06-20T13:15:00.000+00:00
+ *         endContest: 2023-06-20T13:15:00.000+00:00
+ *         typeContest: "string"
+ *         city: "string"
+ *         place: "string"
+ *         events: [{ value: "3x3x3", label: "Kostka 3x3x3" }]
  *     UserContest:
  *       type: object
  *       properties:
@@ -53,6 +63,10 @@ const router = express.Router();
  *         events:
  *           type: array
  *           description: Konkurencje w których użytkownik weźmie udział
+ *       example:
+ *         email: "string"
+ *         place: "string"
+ *         events: [{ value: "3x3x3", label: "Kostka 3x3x3" }]
  *     UserTimesEvent:
  *       type: object
  *       properties:
@@ -62,6 +76,9 @@ const router = express.Router();
  *         times:
  *           type: array
  *           description: Pomiary czasowe użytkownika
+ *       example:
+ *         email: "string"
+ *         times: ["15.15", "15.15", "15.15", "15.14", "15.16"]
  */
 
 /**
