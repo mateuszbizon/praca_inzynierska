@@ -48,7 +48,7 @@ export const addNewSession = async (req, res) => {
 
         const updatedSessions = await User.findByIdAndUpdate(req.userId, user, { new: true });
 
-        res.status(200).json(updatedSessions.sessions);
+        res.status(200).json({ message: "Zapisano pomyślnie", sessions: updatedSessions.sessions });
     } catch (error) {
         res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
@@ -60,11 +60,15 @@ export const deleteSession = async (req, res) => {
     try {
         const user = await User.findById(req.userId);
 
+        const currentSessionIndex = user.sessions.indexOf(user.sessions.find(s => s.id === parseInt(id)))
+
+        if (currentSessionIndex === -1) return res.status(404).json({ message: "Nie znaleziono sesji z tym id" })
+
         user.sessions = user.sessions.filter(s => s.id !== parseInt(id))
 
         const updatedSessions = await User.findByIdAndUpdate(req.userId, user, { new: true });
 
-        res.status(200).json(updatedSessions.sessions);
+        res.status(200).json({ message: "Usunięto pomyślnie", sessions: updatedSessions.sessions });
     } catch (error) {
         res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
