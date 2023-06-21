@@ -4,13 +4,260 @@ import { createContest, getAllContests, deleteContestById, getContestById, updat
 
 const router = express.Router();
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Contest:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: Nazwa zawodów
+ *         startRegistration:
+ *           type: string
+ *           description: Start rejestracji
+ *         endRegistration:
+ *           type: string
+ *           description: Koniec rejestracji
+ *         startContest:
+ *           type: string
+ *           description: Start zawodów
+ *         endContest:
+ *           type: string
+ *           description: Koniec zawodów
+ *         typeContest:
+ *           type: string
+ *           description: Typ zawodów
+ *         city:
+ *           type: string
+ *           description: Miasto w którym odbywają się zawody stacjonarne
+ *         place:
+ *           type: string
+ *           description: Dokładny adres odbywania się zawodów stacjonarnych
+ *         events:
+ *           type: array
+ *           description: Konkurencję które odbędą się na zawodach
+ *         usersLimit: 
+ *           type: number
+ *           description: Limit zawodników
+ *     UserContest:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *           description: Email użytkownika
+ *         place:
+ *           type: string
+ *           description: Miejscowość z której pochodzi zawodnik
+ *         events:
+ *           type: array
+ *           description: Konkurencje w których użytkownik weźmie udział
+ *     UserTimesEvent:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *           description: Email użytkownika
+ *         times:
+ *           type: array
+ *           description: Pomiary czasowe użytkownika
+ */
+
+/**
+ * @swagger
+ * tags:
+ *   name: contests
+ */
+
+/**
+ * @swagger
+ * /contests/createContest:
+ *   post:
+ *     description: Dodawanie nowych zawodów
+ *     tags: [contests]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Contest'
+ *     responses:
+ *       201:
+ *         description: Dodano nowe zawody
+ *       409:
+ *         description: Nie dodano nowych zawodów konflikt
+ *       401:
+ *         description: Administrator nie zalogowany
+ */
+
 router.post("/createContest", auth, createContest);
+
+/**
+ * @swagger
+ * /contests/getAllContests:
+ *   get:
+ *     description: Pobieranie wszystkich nadchodzących zawodów oraz wszystkich minionych zawodów
+ *     tags: [contests]
+ *     responses:
+ *       200:
+ *         description: Pobrano zawody
+ */
+
 router.get("/getAllContests", getAllContests);
+
+/**
+ * @swagger
+ * /contests/deleteContestById/{id}:
+ *   delete:
+ *     description: Usuwanie zawodów po id
+ *     tags: [contests]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Usunięto zawody
+ *       404:
+ *         description: Nie znaleziono zawodów
+ *       401:
+ *         description: Administrator nie zalogowany
+ */
+
 router.delete("/deleteContestById/:id", auth, deleteContestById);
+
+/**
+ * @swagger
+ * /contests/getContestById/{id}:
+ *   get:
+ *     description: Pobieranie zawodów po id
+ *     tags: [contests]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Pobrano zawody
+ *       404:
+ *         description: Nie znaleziono zawodów
+ */
+
 router.get("/getContestById/:id", getContestById);
+
+/**
+ * @swagger
+ * /contests/updateContest/{id}:
+ *   patch:
+ *     decsription: Aktualizowanie zawodów
+ *     tags: [contests]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Contest'
+ *     responses:
+ *       200:
+ *         description: Zaktualizowano zawody
+ *       404:
+ *         description: Nie znaleziono zawodów
+ *       401:
+ *         description: Administrator nie zalogowany
+ */
+
 router.patch("/updateContest/:id", auth, updateContest);
+
+/**
+ * @swagger
+ * /contests/addUserToContest/{id}:
+ *   patch:
+ *     description: Dodawanie użytkownika do zawodów
+ *     tags: [contests]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UserContest'
+ *     responses:
+ *       200:
+ *         description: Dodano użytkownika do zawodów
+ *       404:
+ *         description: Nie znaleziono zawodów. Nie znaleziono użytkownika
+ *       400:
+ *         description: Użytkownik z tym emailem już zarejestrowany
+ */
+
 router.patch("/addUserToContest/:id", addUserToContest)
+
+/**
+ * @swagger
+ * /contests/getContestEvent/{id}/{event}:
+ *   get:
+ *     description: Pobieranie danej konkurencji
+ *     tags: [contests]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         type: string
+ *       - in: path
+ *         name: event
+ *         required: true
+ *         type: string
+ *     responses: 
+ *       200:
+ *         description: Pobrano konkurencję
+ *       404:
+ *         description: Nie znaleziono zawodów. Nie znaleziono konkurencji
+ */
+
 router.get("/getContestEvent/:id/:event", getContestEvent)
+
+/**
+ * @swagger
+ * /contests/addUserTimesToContestEvent/{id}/{event}:
+ *   patch:
+ *     description: Dodawanie pomiarów czasowych użytkownika do konkurencji
+ *     tags: [contests]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         type: string
+ *       - in: path
+ *         name: event
+ *         required: true
+ *         type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UserTimesEvent'
+ *     responses:
+ *       200:
+ *         description: Dodano pomiary czasowe użytkownika
+ *       404:
+ *         description: Nie znaleziono zawodów. Nie znaleziono konkurencji
+ *       401:
+ *         description: Administrator nie zalogowany
+ */
+
 router.patch("/addUserTimesToContestEvent/:id/:event", auth, addUserTimesToContestEvent)
 
 export default router;

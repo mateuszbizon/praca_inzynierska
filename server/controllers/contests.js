@@ -36,7 +36,7 @@ export const deleteContestById = async (req, res) => {
     const { id } = req.params;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
 
         await Contest.findByIdAndRemove(id);
 
@@ -50,7 +50,7 @@ export const getContestById = async (req, res) => {
     const { id } = req.params;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
 
         const contest = await Contest.findById(id);
 
@@ -65,7 +65,7 @@ export const updateContest = async (req, res) => {
     const contest = req.body;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
 
         await Contest.findByIdAndUpdate(id, contest, { new: true })
 
@@ -82,7 +82,7 @@ export const addUserToContest = async (req, res) => {
     const user = req.body;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
 
         const contest = await Contest.findById(id)
 
@@ -116,7 +116,7 @@ export const getContestEvent = async (req, res) => {
     const { id, event } = req.params;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
 
         const contest = await Contest.findById(id);
 
@@ -137,11 +137,13 @@ export const addUserTimesToContestEvent = async (req, res) => {
     const user = req.body
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
 
         const contest = await Contest.findById(id);
 
         const currentEvent = contest.events.find(e => e.value === event)
+
+        if (contest.events.indexOf(currentEvent) === -1) return res.status(404).json({ message: "Nie znaleziono danego eventu" })
 
         const currentUser = currentEvent.users.find(u => u.email === user.email)
 
