@@ -86,9 +86,7 @@ export const getUser = async (req, res) => {
 
 		if(!user) return res.status(404).json({ message: "Nie znaleziono danego użytkonwika" });
 
-		const posts = await PostMessage.find({ username });
-
-		res.status(200).json({ user: user, posts: posts.length });
+		res.status(200).json({ user: user });
 	} catch (error) {
 		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
