@@ -8,30 +8,54 @@ const router = express.Router();
  * @swagger
  * components:
  *   schemas:
- *     User:
+ *     SignIn:
  *       type: object
  *       properties:
- *         name:
- *           type: string
- *           description: Imię użytkownika
- *         surname:
- *           type: string
- *           description: Nazwisko użytkownika
  *         email:
  *           type: string
  *           description: Email użytkownika
  *         password:
  *           type: string
  *           description: Hasło użytkownika
+ *     SignUp:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: Imie użytkownika
+ *         surname:
+ *           type: string
+ *           description: Nazwisko użytkownika
+ *         email:
+ *           type: string
+ *           description: Email użytkownika
+ *         username:
+ *           type: string
+ *           description: Nazwa użytkownika
+ *         password:
+ *           type: string
+ *           description: Hasło użytkownika
+ *     EditAccount:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: Imie i nazwisko użytkownika
  *         username:
  *           type: string
  *           description: Nazwa użytkownika
  *         selectedFile:
  *           type: string
  *           description: Zdjęcie profilowe użytkownika
+ *     EditPassword:
+ *       type: object
+ *       properties:
+ *         password:
+ *           type: string
+ *           description: Stare hasło użytkownika
  *         newPassword:
  *           type: string
- *           description: Nowe hasło użytkownika podczas zmiany hasła
+ *           description: Nowe hasło użytkownika
  */
 
 /**
@@ -51,7 +75,7 @@ const router = express.Router();
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/SignIn'
  *     responses:
  *       200:
  *         description: Zalogowano
@@ -74,7 +98,7 @@ router.post("/signin", signin);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/SignUp'
  *     responses:
  *       200:
  *         description: Zarejestrowano pomyślnie.
@@ -135,7 +159,7 @@ router.get("/getUsersBySearch", getUsersBySearch);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/EditAccount'
  *     responses:
  *       200:
  *         description: Zaktualizowano pomyślnie
@@ -158,7 +182,7 @@ router.patch("/editAccount", auth, editAccount);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/User'
+ *             $ref: '#/components/schemas/EditPassword'
  *     parameters:
  *       - in: path
  *         name: id
