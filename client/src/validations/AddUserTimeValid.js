@@ -11,7 +11,7 @@ export default function addUserTimeValid(values, contestEvent) {
         errors.email = "Email nie może być pusty"
     }
 
-    if (!checkTime(values.time1)) {
+    if (!checkTime(values.time1) && values.time1 !== "DNF") {
         errors.time1 = "Zły format!"
     }
 
@@ -19,7 +19,7 @@ export default function addUserTimeValid(values, contestEvent) {
         errors.time1 = "Czas nie może być pusty"
     }
 
-    if (!checkTime(values.time2)) {
+    if (!checkTime(values.time2) && values.time1 !== "DNF") {
         errors.time2 = "Zły format!"
     }
 
@@ -27,7 +27,7 @@ export default function addUserTimeValid(values, contestEvent) {
         errors.time2 = "Czas nie może być pusty"
     }
 
-    if (!checkTime(values.time3)) {
+    if (!checkTime(values.time3) && values.time1 !== "DNF") {
         errors.time3 = "Zły format!"
     }
 
@@ -35,7 +35,7 @@ export default function addUserTimeValid(values, contestEvent) {
         errors.time3 = "Czas nie może być pusty"
     }
 
-    if (!checkTime(values.time4)) {
+    if (!checkTime(values.time4) && values.time1 !== "DNF") {
         errors.time4 = "Zły format!"
     }
 
@@ -43,7 +43,7 @@ export default function addUserTimeValid(values, contestEvent) {
         errors.time4 = "Czas nie może być pusty"
     }
 
-    if (!checkTime(values.time5)) {
+    if (!checkTime(values.time5) && values.time1 !== "DNF") {
         errors.time5 = "Zły format!"
     }
 

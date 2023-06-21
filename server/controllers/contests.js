@@ -100,7 +100,7 @@ export const addUserToContest = async (req, res) => {
 
         for (const element of contest.events) {
             if (user.events.some(u => u.value === element.value)) {
-                element.users.push({email: user.email, name: user.name, surname: user.surname, times: ["", "", "", "", ""], average: 1000000, averageText: "", bestTime: "" })
+                element.users.push({email: user.email, name: existingUser.name.split(" ")[0], surname: existingUser.name.split(" ")[1], times: ["", "", "", "", ""], average: 1000000, averageText: "", bestTime: "" })
             }
         }
 

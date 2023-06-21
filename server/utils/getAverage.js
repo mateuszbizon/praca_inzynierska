@@ -5,6 +5,10 @@ export default function getAverage(array) {
     let average = 0
     let averageText = ""
 
+    if (array.some(t => t === "DNF")) {
+        return { average: 1000000, averageText: "DNF" }
+    }
+
     array.forEach(element => {
         restTime = element
 
