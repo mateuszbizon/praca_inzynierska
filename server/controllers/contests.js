@@ -1,12 +1,12 @@
-import mongoose from "mongoose";
-import Contest from "../models/contest.js";
-import { sortArrayBySurname, sortArrayByAverage } from "../utils/sortArrays.js";
-import getBestTime from "../utils/getBestTime.js";
-import deleteWorstAndBestTime from "../utils/deleteWorstAndBestTime.js";
-import getAverage from "../utils/getAverage.js";
-import User from "../models/user.js";
+const mongoose = require("mongoose");
+const Contest = require("../models/contest.js");
+const { sortArrayBySurname, sortArrayByAverage } = require("../utils/sortArrays.js");
+const getBestTime = require("../utils/getBestTime.js");
+const deleteWorstAndBestTime = require("../utils/deleteWorstAndBestTime.js");
+const getAverage = require("../utils/getAverage.js");
+const User = require("../models/user.js");
 
-export const createContest = async (req, res) => {
+const createContest = async (req, res) => {
     const contest = req.body;
 
     const newContest = new Contest(contest)
@@ -20,7 +20,7 @@ export const createContest = async (req, res) => {
     }
 }
 
-export const getAllContests = async (req, res) => {
+const getAllContests = async (req, res) => {
     try {
         const contests = await Contest.find({ isEnded: false })
 
@@ -32,7 +32,7 @@ export const getAllContests = async (req, res) => {
     }
 }
 
-export const deleteContestById = async (req, res) => {
+const deleteContestById = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -46,7 +46,7 @@ export const deleteContestById = async (req, res) => {
     }
 }
 
-export const getContestById = async (req, res) => {
+const getContestById = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -60,7 +60,7 @@ export const getContestById = async (req, res) => {
     }
 }
 
-export const updateContest = async (req, res) => {
+const updateContest = async (req, res) => {
     const { id } = req.params;
     const contest = req.body;
 
@@ -77,7 +77,7 @@ export const updateContest = async (req, res) => {
     }
 }
 
-export const addUserToContest = async (req, res) => {
+const addUserToContest = async (req, res) => {
     const { id } = req.params;
     const user = req.body;
 
@@ -112,7 +112,7 @@ export const addUserToContest = async (req, res) => {
     }
 }
 
-export const getContestEvent = async (req, res) => {
+const getContestEvent = async (req, res) => {
     const { id, event } = req.params;
 
     try {
@@ -132,7 +132,7 @@ export const getContestEvent = async (req, res) => {
     }
 }
 
-export const addUserTimesToContestEvent = async (req, res) => {
+const addUserTimesToContestEvent = async (req, res) => {
     const { id, event } = req.params;
     const user = req.body
 
@@ -164,3 +164,5 @@ export const addUserTimesToContestEvent = async (req, res) => {
         res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
+
+module.exports = { addUserTimesToContestEvent, addUserToContest, getContestEvent, getContestById, createContest, getAllContests, updateContest, deleteContestById }

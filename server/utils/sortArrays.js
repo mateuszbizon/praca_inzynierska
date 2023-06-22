@@ -1,4 +1,4 @@
-export function sortArrayBySurname(array) {
+function sortArrayBySurname(array) {
     array.sort((a, b) => {
         if (a.surname > b.surname) {
             return 1
@@ -12,7 +12,7 @@ export function sortArrayBySurname(array) {
     })
 }
 
-export function sortArrayByAverage(array) {
+function sortArrayByAverage(array) {
     array.sort((a, b) => {
         if (a.average > b.average) {
             return 1
@@ -35,3 +35,5 @@ export function sortArrayByAverage(array) {
         return 0
     })
 }
+
+module.exports = { sortArrayByAverage, sortArrayBySurname }

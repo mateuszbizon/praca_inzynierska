@@ -1,5 +1,5 @@
-import express from 'express';
-import { verifyRegisterEmail } from '../controllers/verifyEmails.js';
+const express = require('express');
+const { verifyRegisterEmail } = require('../controllers/verifyEmails.js');
 
 const router = express.Router();
 
@@ -33,4 +33,4 @@ const router = express.Router();
 
 router.get("/users/:id/verify/:token", verifyRegisterEmail);
 
-export default router;
+module.exports =  router;

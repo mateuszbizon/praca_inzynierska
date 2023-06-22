@@ -1,6 +1,6 @@
-import express from "express";
-import { getPostsByUsername, getPostById, createPost, updatePost, deletePost, likePost, commentPost } from "../controllers/posts.js";
-import auth from "../middleware/auth.js";
+const express = require("express");
+const { getPostsByUsername, getPostById, createPost, updatePost, deletePost, likePost, commentPost } = require("../controllers/posts.js");
+const auth = require("../middleware/auth.js");
 
 const router = express.Router();
 
@@ -201,4 +201,4 @@ router.patch("/likePost/:id", auth, likePost);
 
 router.patch("/commentPost/:id", auth, commentPost)
 
-export default router;
+module.exports = router;

@@ -1,4 +1,4 @@
-import User from "../models/user.js";
+const User = require("../models/user.js");
 
 function getDate() {
     let newDate = new Date();
@@ -18,7 +18,7 @@ function getDate() {
     return newDate;
 }
 
-export const getAllSessions = async (req, res) => {
+const getAllSessions = async (req, res) => {
     try {
         const user = await User.findById(req.userId);
 
@@ -30,7 +30,7 @@ export const getAllSessions = async (req, res) => {
     }
 }
 
-export const addNewSession = async (req, res) => {
+const addNewSession = async (req, res) => {
     const { nameSession, times, bestTime } = req.body;
 
     const sessionDate = getDate();
@@ -54,7 +54,7 @@ export const addNewSession = async (req, res) => {
     }
 }
 
-export const deleteSession = async (req, res) => {
+const deleteSession = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -73,3 +73,5 @@ export const deleteSession = async (req, res) => {
         res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
+
+module.exports = {deleteSession, addNewSession, getAllSessions }

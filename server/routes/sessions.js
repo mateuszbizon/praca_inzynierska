@@ -1,6 +1,6 @@
-import express from "express";
-import { addNewSession, getAllSessions, deleteSession } from "../controllers/sessions.js";
-import auth from "../middleware/auth.js";
+const express = require("express");
+const { addNewSession, getAllSessions, deleteSession } = require("../controllers/sessions.js");
+const auth = require("../middleware/auth.js");
 
 const router = express.Router();
 
@@ -86,4 +86,4 @@ router.post("/addNewSession", auth, addNewSession);
 
 router.delete("/deleteSession/:id", auth, deleteSession);
 
-export default router;
+module.exports =  router;

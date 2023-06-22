@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import PostMessage from '../models/postMessage.js';
+const mongoose = require('mongoose');
+const PostMessage = require('../models/postMessage.js');
 
-export const getPostsByUsername = async (req, res) => {
+ const getPostsByUsername = async (req, res) => {
     const { username } = req.params;
 
     try {
@@ -13,7 +13,7 @@ export const getPostsByUsername = async (req, res) => {
     }
 }
 
-export const getPostById = async (req, res) => {
+ const getPostById = async (req, res) => {
     const { id } = req.params;
     
     try {
@@ -27,7 +27,7 @@ export const getPostById = async (req, res) => {
     }
 }
 
-export const createPost = async (req, res) => {
+ const createPost = async (req, res) => {
     const post = req.body;
 
     const newPost = new PostMessage({ ...post, creator: req.userId, createdAt: new Date().toISOString() });
@@ -40,7 +40,7 @@ export const createPost = async (req, res) => {
     }
 }
 
-export const updatePost = async (req, res) => {
+ const updatePost = async (req, res) => {
     const { id } = req.params;
     const post = req.body;
 
@@ -57,7 +57,7 @@ export const updatePost = async (req, res) => {
     }
 }
 
-export const deletePost = async (req, res) => {
+ const deletePost = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -71,7 +71,7 @@ export const deletePost = async (req, res) => {
     }
 }
 
-export const likePost = async (req, res) => {
+ const likePost = async (req, res) => {
     const { id } = req.params;
     
     try {
@@ -97,7 +97,7 @@ export const likePost = async (req, res) => {
     }
 }
 
-export const commentPost = async (req, res) => {
+ const commentPost = async (req, res) => {
     const { id } = req.params;
     const { commentCreator, value } = req.body;
 
@@ -115,3 +115,5 @@ export const commentPost = async (req, res) => {
         res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
+
+module.exports = { commentPost, likePost, deletePost, updatePost, getPostsByUsername, getPostById, createPost }

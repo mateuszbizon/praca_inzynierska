@@ -1,24 +1,24 @@
-import express from "express";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
-import cors from "cors";
-import dotenv from "dotenv";
-import http from "http";
-import { Server } from "socket.io";
-import getBestTime from "./utils/getBestTime.js";
-import deleteWorstAndBestTime from "./utils/deleteWorstAndBestTime.js";
-import getAverage from "./utils/getAverage.js";
-import { sortArrayByAverage } from "./utils/sortArrays.js";
-import swaggerJsDoc from "swagger-jsdoc";
-import swaggerUI from "swagger-ui-express";
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const http = require("http");
+const { Server } = require("socket.io");
+const getBestTime = require("./utils/getBestTime.js");
+const deleteWorstAndBestTime = require("./utils/deleteWorstAndBestTime.js");
+const getAverage = require("./utils/getAverage.js");
+const { sortArrayByAverage } = require("./utils/sortArrays.js");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUI = require("swagger-ui-express");
 
-import postRoutes from "./routes/posts.js";
-import userRoutes from "./routes/users.js";
-import timesRoutes from "./routes/times.js";
-import sessionsRoutes from "./routes/sessions.js";
-import tutorialsRoutes from "./routes/tutorials.js";
-import contestsRoutes from "./routes/contests.js";
-import verifyEmailsRoutes from "./routes/verifyEmails.js";
+const postRoutes = require("./routes/posts.js");
+const userRoutes = require("./routes/users.js");
+const timesRoutes = require("./routes/times.js");
+const sessionsRoutes = require("./routes/sessions.js");
+const tutorialsRoutes = require("./routes/tutorials.js");
+const contestsRoutes = require("./routes/contests.js");
+const verifyEmailsRoutes = require("./routes/verifyEmails.js");
 
 const app = express();
 dotenv.config();
@@ -115,3 +115,5 @@ mongoose
 	.catch(error => console.log(`${error} did not connect`));
 
 // mongoose.set("useFindAndModify", false);
+
+module.exports = app;

@@ -1,6 +1,6 @@
-import express from "express";
-import auth from "../middleware/auth.js";
-import { createContest, getAllContests, deleteContestById, getContestById, updateContest, addUserToContest, getContestEvent, addUserTimesToContestEvent } from "../controllers/contests.js";
+const express = require("express");
+const auth = require("../middleware/auth.js");
+const { createContest, getAllContests, deleteContestById, getContestById, updateContest, addUserToContest, getContestEvent, addUserTimesToContestEvent } = require("../controllers/contests.js");
 
 const router = express.Router();
 
@@ -277,4 +277,4 @@ router.get("/getContestEvent/:id/:event", getContestEvent)
 
 router.patch("/addUserTimesToContestEvent/:id/:event", auth, addUserTimesToContestEvent)
 
-export default router;
+module.exports =  router;

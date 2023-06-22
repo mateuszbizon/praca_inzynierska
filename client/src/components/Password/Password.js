@@ -14,7 +14,7 @@ function Password() {
   const dispatch = useDispatch()
   const { passwordMessage, successPassword, loading } = useSelector(state => state.auth)
   const user = JSON.parse(localStorage.getItem("user"))
-  console.log(successPassword)
+  console.log(user.result._id)
 
   const oldPass = useRef()
   const oldPassShow = useRef()
@@ -53,7 +53,7 @@ function Password() {
   useEffect(() => {
     if (Object.keys(errors).length == 0 && !checkAreInputsEmpty(form)) {
       console.log('wyslano')
-      dispatch(editPassword({ oldPassword: form.oldPassword, newPassword: form.newPassword }, user.result._id))
+      dispatch(editPassword({ password: form.oldPassword, newPassword: form.newPassword }, user.result._id))
     }
   }, [errors])
 

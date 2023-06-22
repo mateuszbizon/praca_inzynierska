@@ -1,6 +1,6 @@
-import express from 'express';
-import { getAllTimes, addNewTime, deleteTime, setDnf, setTimeOk, setPlusTwo, deleteAllTimes } from "../controllers/times.js";
-import auth from "../middleware/auth.js";
+const express = require('express');
+const { getAllTimes, addNewTime, deleteTime, setDnf, setTimeOk, setPlusTwo, deleteAllTimes } = require("../controllers/times.js");
+const auth = require("../middleware/auth.js");
 
 const router = express.Router();
 
@@ -153,4 +153,4 @@ router.patch("/setTimeOk/:id", auth, setTimeOk);
 
 router.patch("/setPlusTwo/:id", auth, setPlusTwo);
 
-export default router;
+module.exports =  router;

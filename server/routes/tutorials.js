@@ -1,6 +1,6 @@
-import express from 'express';
-import auth from "../middleware/auth.js";
-import { createTutorial, getTutorialsByUsername, deleteTutorialById, getTutorialById, updateTutorial } from '../controllers/tutorials.js';
+const express = require('express');
+const auth = require("../middleware/auth.js");
+const { createTutorial, getTutorialsByUsername, deleteTutorialById, getTutorialById, updateTutorial } = require('../controllers/tutorials.js');
 
 const router = express.Router();
 
@@ -143,4 +143,4 @@ router.get("/getTutorialById/:id", getTutorialById);
 
 router.patch("/updateTutorial/:id", auth, updateTutorial);
 
-export default router;
+module.exports =  router;

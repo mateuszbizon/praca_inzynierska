@@ -1,13 +1,13 @@
-import mongoose from "mongoose";
-import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
-import User from "../models/user.js";
-import PostMessage from '../models/postMessage.js';
-import Token from "../models/token.js";
-import crypto from "crypto";
-import sendEmail from "../utils/sendEmail.js";
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const User = require("../models/user.js");
+const PostMessage = require('../models/postMessage.js');
+const Token = require("../models/token.js");
+const crypto = require("crypto");
+const sendEmail = require("../utils/sendEmail.js");
 
-export const signin = async (req, res) => {
+ const signin = async (req, res) => {
 	const { email, password } = req.body;
 
 	try {
@@ -41,7 +41,7 @@ export const signin = async (req, res) => {
 	}
 };
 
-export const signup = async (req, res) => {
+ const signup = async (req, res) => {
 	const { name, surname, email, username, password } = req.body;
 	const selectedFile = '';
 
@@ -78,7 +78,7 @@ export const signup = async (req, res) => {
 	}
 };
 
-export const getUser = async (req, res) => {
+ const getUser = async (req, res) => {
 	const {username} = req.params;
 
 	try {
@@ -92,7 +92,7 @@ export const getUser = async (req, res) => {
 	}
 }
 
-export const getUsersBySearch = async (req, res) => {
+ const getUsersBySearch = async (req, res) => {
 	const { search } = req.query;
 	
 	try {
@@ -107,7 +107,7 @@ export const getUsersBySearch = async (req, res) => {
 	}
 }
 
-export const editAccount = async (req, res) => {
+ const editAccount = async (req, res) => {
 	const { name, username, selectedFile } = req.body;
 
 	try {
@@ -141,7 +141,7 @@ export const editAccount = async (req, res) => {
 	}
 }
 
-export const editPassword = async (req, res) => {
+ const editPassword = async (req, res) => {
 	const { id } = req.params;
 	const { password, newPassword } = req.body
 	
@@ -172,3 +172,5 @@ export const editPassword = async (req, res) => {
 		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
+
+module.exports = { signin, signup, editAccount, editPassword, getUser, getUsersBySearch }

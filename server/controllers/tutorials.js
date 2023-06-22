@@ -1,7 +1,7 @@
-import mongoose from 'mongoose';
-import Tutorial from '../models/tutorial.js';
+const mongoose = require('mongoose');
+const Tutorial = require('../models/tutorial.js');
 
-export const createTutorial = async (req, res) => {
+const createTutorial = async (req, res) => {
     const tutorial = req.body;
 
     const newTutorial = new Tutorial({ ...tutorial, creator: req.userId })
@@ -16,7 +16,7 @@ export const createTutorial = async (req, res) => {
     }
 }
 
-export const getTutorialsByUsername = async (req, res) => {
+const getTutorialsByUsername = async (req, res) => {
     const { username } = req.params;
 
     try {
@@ -27,7 +27,7 @@ export const getTutorialsByUsername = async (req, res) => {
     }
 }
 
-export const deleteTutorialById = async (req, res) => {
+const deleteTutorialById = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -41,7 +41,7 @@ export const deleteTutorialById = async (req, res) => {
     }
 }
 
-export const getTutorialById = async (req, res) => {
+const getTutorialById = async (req, res) => {
     const { id } = req.params;
 
     try {
@@ -55,7 +55,7 @@ export const getTutorialById = async (req, res) => {
     }
 }
 
-export const updateTutorial = async (req, res) => {
+const updateTutorial = async (req, res) => {
     const { id } = req.params;
     const tutorial = req.body;
 
@@ -71,3 +71,5 @@ export const updateTutorial = async (req, res) => {
         res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
     }
 }
+
+module.exports = { updateTutorial, createTutorial, deleteTutorialById, getTutorialById, getTutorialsByUsername }

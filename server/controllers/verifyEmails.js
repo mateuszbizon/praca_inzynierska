@@ -1,8 +1,8 @@
-import User from "../models/user.js";
-import Token from "../models/token.js";
-import mongoose from "mongoose";
+const User = require("../models/user.js");
+const Token = require("../models/token.js");
+const mongoose = require("mongoose");
 
-export const verifyRegisterEmail = async (req, res) => {
+const verifyRegisterEmail = async (req, res) => {
     const { id, token } = req.params
 
     try {
@@ -20,3 +20,5 @@ export const verifyRegisterEmail = async (req, res) => {
         console.log(error)
     }
 }
+
+module.exports = { verifyRegisterEmail }

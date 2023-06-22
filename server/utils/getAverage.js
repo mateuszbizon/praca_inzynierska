@@ -1,4 +1,4 @@
-export default function getAverage(array) {
+function getAverage(array) {
     let splitArray
     let minutes = 0
     let restTime = 0
@@ -36,3 +36,5 @@ export default function getAverage(array) {
 
     return { average: average, averageText: averageText }
 }
+
+module.exports = getAverage;

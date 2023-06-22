@@ -1,4 +1,4 @@
-import User from "../models/user.js";
+const User = require("../models/user.js");
 
 function getBestTime(array) {
     let bestTime = 600000;
@@ -87,7 +87,7 @@ function getPlusTwoTime(time) {
 	return `${seconds}.${miliseconds}`;
 }
 
-export const getAllTimes = async (req, res) => {
+const getAllTimes = async (req, res) => {
 	try {
 		const user = await User.findById(req.userId);
 
@@ -101,7 +101,7 @@ export const getAllTimes = async (req, res) => {
 	}
 }
 
-export const addNewTime = async (req, res) => {
+const addNewTime = async (req, res) => {
 	const { time } = req.body;
 
 	try {
@@ -125,7 +125,7 @@ export const addNewTime = async (req, res) => {
 	}
 }
 
-export const deleteTime = async (req, res) => {
+const deleteTime = async (req, res) => {
 	const { id } = req.params;
 
 	try {
@@ -147,7 +147,7 @@ export const deleteTime = async (req, res) => {
 	}
 }
 
-export const deleteAllTimes = async (req, res) => {
+const deleteAllTimes = async (req, res) => {
 	try {
 		const user = await User.findById(req.userId);
 
@@ -163,7 +163,7 @@ export const deleteAllTimes = async (req, res) => {
 	}
 }
 
-export const setDnf = async (req, res) => {
+const setDnf = async (req, res) => {
 	const { id } = req.params;
 
 	try {
@@ -187,7 +187,7 @@ export const setDnf = async (req, res) => {
 	}
 }
 
-export const setTimeOk = async (req, res) => {
+const setTimeOk = async (req, res) => {
 	const { id } = req.params;
 
 	try {
@@ -211,7 +211,7 @@ export const setTimeOk = async (req, res) => {
 	}
 }
 
-export const setPlusTwo = async (req, res) => {
+const setPlusTwo = async (req, res) => {
 	const { id } = req.params;
 
 	try {
@@ -236,3 +236,5 @@ export const setPlusTwo = async (req, res) => {
 		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
 	}
 }
+
+module.exports = { setDnf, setPlusTwo, setTimeOk, getAllTimes, deleteAllTimes, deleteTime, addNewTime }

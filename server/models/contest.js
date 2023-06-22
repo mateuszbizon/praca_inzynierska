@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const contestSchema = mongoose.Schema({
     name: String,
@@ -15,4 +15,4 @@ const contestSchema = mongoose.Schema({
     isEnded: { type: Boolean, default: false }
 })
 
-export default mongoose.model("Contest", contestSchema);
+module.exports =  mongoose.model("Contest", contestSchema);

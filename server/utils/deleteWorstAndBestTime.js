@@ -1,4 +1,4 @@
-export default function deleteWorstAndBestTime(array, bestTime) {
+function deleteWorstAndBestTime(array, bestTime) {
     const newArray = [...array]
     let splitArray
     let newValue
@@ -32,3 +32,5 @@ export default function deleteWorstAndBestTime(array, bestTime) {
 
     return newArray
 }
+
+module.exports = deleteWorstAndBestTime;

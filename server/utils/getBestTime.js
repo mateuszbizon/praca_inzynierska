@@ -1,4 +1,4 @@
-export default function getBestTime(array) {
+function getBestTime(array) {
     let splitArray
     let newValue
     let bestTime = 1000000
@@ -22,3 +22,5 @@ export default function getBestTime(array) {
 
     return bestTimeText
 }
+
+module.exports = getBestTime;
