@@ -1,28 +1,29 @@
-const nodemailer = require("nodemailer")
+const nodemailer = require("nodemailer");
 
-async function sendEmail(email, subject, text) {
-    try {
+async function sendEmail(email, link) {
+	try {
 		const transporter = nodemailer.createTransport({
 			service: "gmail",
 			port: 465,
 			secure: true,
-            logger: true,
-            debug: true,
-            secureConnection: false,
+			logger: true,
+			debug: true,
+			secureConnection: false,
 			auth: {
 				user: process.env.USER,
 				pass: process.env.PASS,
 			},
-            tls: {
-                rejectUnauthorized: true
-            }
+			tls: {
+				rejectUnauthorized: true,
+			},
 		});
 
 		await transporter.sendMail({
 			from: process.env.USER,
 			to: email,
-			subject: subject,
-			text: text,
+			subject: "Weryfikacja rejestracji",
+			html: `<p>Dziękujemy za rejestrację w naszym systemie. Aby ukończyć rejestracje i korzystać z konta kliknij w link poniżej.</p></br></br>
+			<a href="${link}" target="_blank">${link}</a>`,
 		});
 
 		console.log("email sent successfully");
@@ -34,4 +35,4 @@ async function sendEmail(email, subject, text) {
 	}
 }
 
-module.exports = sendEmail
+module.exports = sendEmail;

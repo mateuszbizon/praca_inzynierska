@@ -12,7 +12,8 @@ const verifyRegisterEmail = async (req, res) => {
 
         if (!existingToken) return res.status(400).json({ success: false, message: "Niepoprawny link" })
 
-        await User.updateOne(({ _id: id, verified: true }))
+        await User.findByIdAndUpdate(id, { verified: true }, { new: true })
+
         await existingToken.remove()
 
         res.status(200).json({ success: true, message: "Rejestracja potwierdzona!" })

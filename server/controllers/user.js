@@ -70,7 +70,7 @@ const sendEmail = require("../utils/sendEmail.js");
 
 		const url = `${process.env.BASE_URL}users/${user._id}/verify/${token.token}`;
 
-		await sendEmail(user.email, "Weryfikacja rejestracji", url);
+		await sendEmail(user.email, url);
 
 		res.status(200).json({ email: user.email, message: "Zarejestrowano pomyślnie" });
 	} catch (error) {
