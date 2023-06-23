@@ -7,8 +7,6 @@ import Loader from '../../components/Loader/Loader'
 
 function EditTutorial() {
     const { id } = useParams()
-    const [title, setTitle] = useState("")
-    const [allStages, setAllStages] = useState([])
     const dispatch = useDispatch()
     const { tutorial } = useSelector(state => state.tutorials)
     const { isLoading } = useSelector(state => state.loaders)
@@ -18,13 +16,6 @@ function EditTutorial() {
         dispatch(getTutorialById(id))
     }, [])
 
-    useEffect(() => {
-        if (tutorial) {
-            setTitle(tutorial.title)
-            setAllStages(tutorial.stages)
-        }
-    }, [tutorial])
-
   return (
     <>
       {isLoading ? (
@@ -32,7 +23,7 @@ function EditTutorial() {
       ) : (
         <>
           {user.result._id === tutorial.creator && (
-            <CreateEditTutorial title={title} setTitle={setTitle} allStages={allStages} setAllStages={setAllStages} dispatchFunc={updateTutorial} />
+            <CreateEditTutorial isEditing={true} dispatchFunc={updateTutorial} />
           )}
         </>
       )}

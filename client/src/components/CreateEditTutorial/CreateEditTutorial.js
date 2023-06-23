@@ -7,10 +7,12 @@ import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import ImgSlider from '../../components/ImgSlider/ImgSlider';
 
-function CreateEditTutorial({title, setTitle, allStages, setAllStages, dispatchFunc}) {
+function CreateEditTutorial({ isEditing, dispatchFunc }) {
     const [shadowActive, setShadowActive] = useState(false)
     const [titleModalActive, setTitleModalActive] = useState(false)
     const [stageModalActive, setStageModalActive] = useState(false)
+    const [title, setTitle] = useState("")
+    const [allStages, setAllStages] = useState([])
     const [stage, setStage] = useState({id: "", name: "", desc: "", selectedFile: [] })
     const [errors, setErrors] = useState({})
     const [isEdited, setIsEdited] = useState(false);
@@ -84,6 +86,13 @@ function CreateEditTutorial({title, setTitle, allStages, setAllStages, dispatchF
             dispatch(dispatchFunc({ title: title, stages: allStages, username: user.result.username }, navigate, tutorial._id))
         }
     }
+
+    useEffect(() => {
+        if (Object.keys(tutorial).length > 0 && isEditing) {
+            setTitle(tutorial.title)
+            setAllStages(tutorial.stages)
+        }
+    }, [tutorial])
 
     useEffect(() => {
         if (Object.keys(errors).length == 0 && title !== "") {
