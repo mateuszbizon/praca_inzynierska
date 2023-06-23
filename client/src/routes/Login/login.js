@@ -4,13 +4,13 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { signin } from "../../actions/auth";
+import { signin, reset } from "../../actions/auth";
 import { CircularProgress } from "@mui/material";
 import loginValid from "../../validations/LoginValid";
 
 function Login() {
 	const [form, setForm] = useState({ password: "", email: "" });
-	const [errors, setErrors] = useState({})
+	const [errors, setErrors] = useState({});
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const { authData, success, loading } = useSelector(state => state.auth);
@@ -39,15 +39,22 @@ function Login() {
 	function handleSubmit(e) {
 		e.preventDefault();
 
-		setErrors(loginValid(form))
+		setErrors(loginValid(form));
 	}
 
 	useEffect(() => {
-		if (Object.keys(errors).length === 0 && form.email !== "" && form.password !== "") {
+		if (
+			Object.keys(errors).length === 0 &&
+			form.email !== "" &&
+			form.password !== ""
+		) {
 			dispatch(signin(form, navigate));
 		}
+	}, [errors]);
 
-	}, [errors])
+	useEffect(() => {
+		dispatch(reset());
+	}, []);
 
 	return (
 		<>
@@ -64,7 +71,12 @@ function Login() {
 								required
 							/>
 							<label htmlFor='email'>Adres email</label>
-							<p className={errors.email ? "login__text-error login__show-input-error" : "login__text-error"} >
+							<p
+								className={
+									errors.email
+										? "login__text-error login__show-input-error"
+										: "login__text-error"
+								}>
 								{errors.email ? errors.email : "error"}
 							</p>
 						</div>
@@ -90,7 +102,12 @@ function Login() {
 									onClick={showPassword}
 								/>
 							</span>
-							<p className={errors.password ? "login__text-error login__show-input-error" : "login__text-error"} >
+							<p
+								className={
+									errors.password
+										? "login__text-error login__show-input-error"
+										: "login__text-error"
+								}>
 								{errors.password ? errors.password : "error"}
 							</p>
 						</div>

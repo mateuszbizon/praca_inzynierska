@@ -3,7 +3,7 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import "./register.css";
 import { useDispatch, useSelector } from "react-redux";
-import { signup } from "../../actions/auth";
+import { signup, reset } from "../../actions/auth";
 import { CircularProgress } from "@mui/material";
 import registerValid from "../../validations/RegisterValid";
 
@@ -15,7 +15,7 @@ function Register() {
 		username: "",
 		password: "",
 	});
-	const [errors, setErrors] = useState({})
+	const [errors, setErrors] = useState({});
 	const dispatch = useDispatch();
 	const { authData, loading, success } = useSelector(state => state.auth);
 	const email = localStorage.getItem("email");
@@ -43,31 +43,38 @@ function Register() {
 	function handleSubmit(e) {
 		e.preventDefault();
 
-		setErrors(registerValid(form))
+		setErrors(registerValid(form));
 	}
 
 	function checkIfValuesAreEmpty() {
 		for (const element in form) {
 			if (form[element] === "") {
-				return true
+				return true;
 			}
 		}
-		return false
+		return false;
 	}
 
 	useEffect(() => {
 		if (Object.keys(errors).length === 0 && !checkIfValuesAreEmpty()) {
 			dispatch(signup(form));
 		}
-	}, [errors])
+	}, [errors]);
+
+	useEffect(() => {
+		dispatch(reset());
+	}, []);
 
 	return (
 		<>
 			<section className='register'>
-				{ email !== null ? (
-					<div className="register__verify-container">
-						<h2 className="register__verify-title">Zarejestrowano pomyślnie</h2>
-						<p className="register__verify-text">Na adres {email} wysłaliśmy wiadomość potwierdzającą rejestrację. Potwierdź rejestrację, aby móc korzystać z konta</p>
+				{email !== null ? (
+					<div className='register__verify-container'>
+						<h2 className='register__verify-title'>Zarejestrowano pomyślnie</h2>
+						<p className='register__verify-text'>
+							Na adres {email} wysłaliśmy wiadomość potwierdzającą rejestrację.
+							Potwierdź rejestrację, aby móc korzystać z konta
+						</p>
 					</div>
 				) : (
 					<div className='register__form'>
@@ -83,8 +90,13 @@ function Register() {
 										required
 									/>
 									<label htmlFor='name'>Imię</label>
-									<p className={errors.name ? "register__text-error register__show-input-error" : "register__text-error"} >
-									{errors.name ? errors.name : "error"}
+									<p
+										className={
+											errors.name
+												? "register__text-error register__show-input-error"
+												: "register__text-error"
+										}>
+										{errors.name ? errors.name : "error"}
 									</p>
 								</div>
 
@@ -97,8 +109,13 @@ function Register() {
 										required
 									/>
 									<label htmlFor='surname'>Nazwisko</label>
-									<p className={errors.surname ? "register__text-error register__show-input-error" : "register__text-error"} >
-									{errors.surname ? errors.surname : "error"}
+									<p
+										className={
+											errors.surname
+												? "register__text-error register__show-input-error"
+												: "register__text-error"
+										}>
+										{errors.surname ? errors.surname : "error"}
 									</p>
 								</div>
 							</div>
@@ -113,8 +130,13 @@ function Register() {
 										required
 									/>
 									<label htmlFor='username'>Nazwa użytkownika</label>
-									<p className={errors.username ? "register__text-error register__show-input-error" : "register__text-error"} >
-									{errors.username ? errors.username : "error"}
+									<p
+										className={
+											errors.username
+												? "register__text-error register__show-input-error"
+												: "register__text-error"
+										}>
+										{errors.username ? errors.username : "error"}
 									</p>
 								</div>
 
@@ -127,8 +149,13 @@ function Register() {
 										required
 									/>
 									<label htmlFor='email'>Adres email</label>
-									<p className={errors.email ? "register__text-error register__show-input-error" : "register__text-error"} >
-									{errors.email ? errors.email : "error"}
+									<p
+										className={
+											errors.email
+												? "register__text-error register__show-input-error"
+												: "register__text-error"
+										}>
+										{errors.email ? errors.email : "error"}
 									</p>
 								</div>
 							</div>
@@ -155,7 +182,12 @@ function Register() {
 											onClick={showPassword}
 										/>
 									</span>
-									<p className={errors.password ? "register__text-error register__show-input-error" : "register__text-error"} >
+									<p
+										className={
+											errors.password
+												? "register__text-error register__show-input-error"
+												: "register__text-error"
+										}>
 										{errors.password ? errors.password : "error"}
 									</p>
 								</div>

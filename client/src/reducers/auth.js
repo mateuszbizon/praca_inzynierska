@@ -1,6 +1,6 @@
 import * as actionType from '../constants/actionTypes';
 
-const authReducer = (state = { authData: null, passwordMessage: null, loading: false, success: null, successPassword: null }, action) => {
+const authReducer = (state = { authData: null, loading: false, success: null }, action) => {
     switch (action.type) {
         case actionType.AUTH:
             localStorage.setItem('user', JSON.stringify({ ...action?.data }));
@@ -27,10 +27,13 @@ const authReducer = (state = { authData: null, passwordMessage: null, loading: f
             return { ...state, authData: action.data, success: false, loading: false }
 
         case actionType.EDIT_PASSWORD:
-            return { ...state, passwordMessage: action.data.message, successPassword: true, loading: false }
+            return { ...state, authData: action.data.message, success: true, loading: false }
 
         case actionType.EDIT_PASSWORD_FAIL:
-            return { ...state, passwordMessage: action.data, successPassword: false, loading: false }
+            return { ...state, authData: action.data, success: false, loading: false }
+        
+        case actionType.AUTH_RESET:
+            return { ...state, authData: null, success: null }
             
         default:
             return state;

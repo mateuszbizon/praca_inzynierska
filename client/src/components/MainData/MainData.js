@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from "react";
 import FileBase from "react-file-base64";
 import userImg from "../../img/user.png";
 import { useDispatch, useSelector } from "react-redux";
-import { editAccount } from "../../actions/auth";
+import { editAccount, reset } from "../../actions/auth";
 import { CircularProgress } from "@mui/material";
-import './main-data.css'
+import "./main-data.css";
 import editMainDataValid from "../../validations/EditMainDataValid";
 
 function MainData() {
@@ -13,15 +13,14 @@ function MainData() {
 		username: "",
 		selectedFile: "",
 	});
-	const [errors, setErrors] = useState({})
+	const [errors, setErrors] = useState({});
 	const user = JSON.parse(localStorage.getItem("user"));
 	const dispatch = useDispatch();
-	const { authData, success, loading } = useSelector(
-		state => state.auth
-	);
+	const { authData, success, loading } = useSelector(state => state.auth);
 
 	useEffect(() => {
 		setForm(user.result);
+		dispatch(reset());
 	}, []);
 
 	function onChange(e) {
@@ -31,14 +30,18 @@ function MainData() {
 	function handleSubmit(e) {
 		e.preventDefault();
 
-		setErrors(editMainDataValid(form))
+		setErrors(editMainDataValid(form));
 	}
 
 	useEffect(() => {
-		if (Object.keys(errors).length == 0 && form.name !== "" && form.username !== "") {
+		if (
+			Object.keys(errors).length == 0 &&
+			form.name !== "" &&
+			form.username !== ""
+		) {
 			dispatch(editAccount(form));
 		}
-	}, [errors])
+	}, [errors]);
 
 	return (
 		<>
@@ -74,7 +77,12 @@ function MainData() {
 							required
 						/>
 						<label htmlFor='name'>Imię i nazwisko</label>
-						<p className={errors.name ? "main-data__text-error main-data__show-input-error" : "main-data__text-error"} >
+						<p
+							className={
+								errors.name
+									? "main-data__text-error main-data__show-input-error"
+									: "main-data__text-error"
+							}>
 							{errors.name ? errors.name : "error"}
 						</p>
 					</div>
@@ -88,8 +96,13 @@ function MainData() {
 							required
 						/>
 						<label htmlFor='username'>Nazwa użytkownika</label>
-						<p className={errors.username ? "main-data__text-error main-data__show-input-error" : "main-data__text-error"} >
-						{errors.username ? errors.username : "error"}
+						<p
+							className={
+								errors.username
+									? "main-data__text-error main-data__show-input-error"
+									: "main-data__text-error"
+							}>
+							{errors.username ? errors.username : "error"}
 						</p>
 					</div>
 					<p
@@ -102,7 +115,7 @@ function MainData() {
 						{success && authData}
 					</p>
 					<div className='main-data__submit-btn'>
-						<button type='submit' className="main-data__submit">
+						<button type='submit' className='main-data__submit'>
 							Edytuj profil{" "}
 							{loading && (
 								<CircularProgress size='15px' style={{ color: "#fff" }} />

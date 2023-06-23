@@ -11,6 +11,7 @@ export const AUTH_FAIL = 'AUTH_FAIL';
 export const AUTH_LOADING = 'AUTH_LOADING';
 export const REGISTER = 'REGISTER';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
+export const AUTH_RESET = 'AUTH_RESET';
 
 export const GET_USER = "GET_USER";
 export const GET_USERS_BY_SEARCH = "GET_USERS_BY_SEARCH";
