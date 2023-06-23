@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000' });
+export const apiUrl = 'http://localhost:5000'
+
+const API = axios.create({ baseURL: apiUrl });
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('user')) {

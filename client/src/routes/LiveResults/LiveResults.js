@@ -7,8 +7,9 @@ import "./live-results.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import io from "socket.io-client"
+import { apiUrl } from '../../api';
 
-const socket = io.connect("http://localhost:5000")
+const socket = io.connect(apiUrl)
 
 function LiveResults() {
     const { id, event } = useParams()

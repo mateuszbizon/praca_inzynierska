@@ -6,8 +6,9 @@ import checkAreInputsEmpty from '../../validations/CheckAreInputsEmpty'
 import addUserTimeValid from '../../validations/AddUserTimeValid'
 import { addUserTimesToContestEvent, getContestEvent } from '../../actions/contests'
 import io from "socket.io-client"
+import { apiUrl } from '../../api'
 
-const socket = io.connect("http://localhost:5000")
+const socket = io.connect(apiUrl)
 
 function AddUserTime() {
     const {id, event } = useParams()
