@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import FormEdit from "../../components/FormEdit/FormEdit";
 import moment from "moment";
+import 'moment/locale/pl'
 import EditIcon from "@mui/icons-material/Edit";
 import { CircularProgress } from "@mui/material";
 import "./post-details.css";
