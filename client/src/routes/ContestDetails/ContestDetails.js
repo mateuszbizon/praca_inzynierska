@@ -62,7 +62,6 @@ function ContestDetails() {
                 <div className='contest-details__change-view-btns'>
                     <button className='contest-details__change-view-btn' ref={firstButtonRef} onClick={e => changeViewAndMarker(e, "register")}>Rejestracja</button>
                     <button className='contest-details__change-view-btn' onClick={e => changeViewAndMarker(e, "users")}>Zawodnicy</button>
-                    <button className='contest-details__change-view-btn' onClick={e => changeViewAndMarker(e, "regulations")}>Regulamin</button>
                     <button className='contest-details__change-view-btn' onClick={e => changeViewAndMarker(e, "live")}>Wyniki live</button>
                     <Marker firstButtonRef={firstButtonRef} indicator={indicator} />
                 </div>
