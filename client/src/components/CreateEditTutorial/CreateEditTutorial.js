@@ -87,6 +87,12 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
         }
     }
 
+    function handleShadowClick() {
+        closeModals()
+        clearStageData()
+        setErrors({})
+    }
+
     useEffect(() => {
         if (Object.keys(tutorial).length > 0 && isEditing) {
             setTitle(tutorial.title)
@@ -111,7 +117,7 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
 
   return (
     <section className='create-edit-tutorial'>
-        <div className={shadowActive ? 'create-edit-tutorial__shadow' : null}></div>
+        <div className={shadowActive ? 'create-edit-tutorial__shadow' : null} onClick={handleShadowClick}></div>
         <div className={titleModalActive ? 'create-edit-tutorial__form-container--title active' : 'create-edit-tutorial__form-container'}>
             <h1 className='create-edit-tutorial__heading'>Tytuł poradnika</h1>
             <div className='create-edit-tutorial__form-box'>
