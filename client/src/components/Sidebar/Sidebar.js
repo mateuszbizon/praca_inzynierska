@@ -34,6 +34,7 @@ function Sidebar({ sidebar, setSidebar }) {
   function logout(){
     localStorage.removeItem("user");
     navigate("/login");
+	setSidebar(!sidebar)
   }
 
 	return (
