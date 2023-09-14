@@ -68,7 +68,7 @@ const sendEmail = require("../utils/sendEmail.js");
 
 		const token = await Token.create({ userId: user._id, token: crypto.randomBytes(32).toString("hex") })
 
-		const url = `https://social-speed-cubing.netlify.app/users/${user._id}/verify/${token.token}`;
+		const url = `${process.env.BASE_URL}users/${user._id}/verify/${token.token}`;
 
 		await sendEmail(user.email, url);
 
