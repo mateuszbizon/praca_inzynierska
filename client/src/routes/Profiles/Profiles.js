@@ -28,7 +28,7 @@ function Profiles() {
 	useEffect(() => {
 		dispatch(getPostsByUsername(username));
 		dispatch(getTutorialsByUsername(username));
-	}, []);
+	}, [username]);
 
 	return (
 		<>
