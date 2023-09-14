@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Tutorial = require('../models/tutorial.js');
+const User = require("../models/user.js");
+const { authOperation } = require("../utils/authOperation.js");
 
 const createTutorial = async (req, res) => {
     const tutorial = req.body;
@@ -33,6 +35,12 @@ const deleteTutorialById = async (req, res) => {
     try {
         if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego poradnika z tym id" });
 
+        const currentUser = await User.findById(req.userId);
+
+        const currentTutorial = await Tutorial.findById(id);
+
+        if (!authOperation(req.userId, currentTutorial.creator, currentUser.isAdmin)) return res.status(403).json({ message: "Nie jesteś autorem lub administratorem" });
+
         await Tutorial.findByIdAndRemove(id);
 
         res.status(200).json({ message: "Usunięto poradnik pomyślnie" })
@@ -62,9 +70,13 @@ const updateTutorial = async (req, res) => {
     try {
         if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego poradnika z tym id" });
 
-        await Tutorial.findByIdAndUpdate(id, tutorial, { new: true })
+        const currentUser = await User.findById(req.userId);
 
-        const updatedTutorial = await Tutorial.findById(id)
+        const currentTutorial = await Tutorial.findById(id);
+
+        if (!authOperation(req.userId, currentTutorial.creator, currentUser.isAdmin)) return res.status(403).json({ message: "Nie jesteś autorem lub administratorem" });
+
+        const updatedTutorial = await Tutorial.findByIdAndUpdate(id, tutorial, { new: true })
 
         res.status(200).json(updatedTutorial)
     } catch (error) {

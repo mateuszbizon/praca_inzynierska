@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const PostMessage = require('../models/postMessage.js');
+const User = require("../models/user.js");
+const { authOperation } = require("../utils/authOperation.js");
 
  const getPostsByUsername = async (req, res) => {
     const { username } = req.params;
@@ -47,9 +49,13 @@ const PostMessage = require('../models/postMessage.js');
     try {
         if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
 
-        await PostMessage.findByIdAndUpdate(id, post, { new: true });
+        const currentUser = await User.findById(req.userId);
 
-        const updatedPost = await PostMessage.findById(id);
+        const currentPost = await PostMessage.findById(id);
+
+        if (!authOperation(req.userId, currentPost.creator, currentUser.isAdmin)) return res.status(403).json({ message: "Nie jesteś autorem lub administratorem" });
+
+        const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
 
         res.status(200).json(updatedPost);
     } catch (error) {
@@ -62,6 +68,12 @@ const PostMessage = require('../models/postMessage.js');
 
     try {
         if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+
+        const currentUser = await User.findById(req.userId);
+
+        const currentPost = await PostMessage.findById(id);
+
+        if (!authOperation(req.userId, currentPost.creator, currentUser.isAdmin)) return res.status(403).json({ message: "Nie jesteś autorem lub administratorem" })
 
         await PostMessage.findByIdAndRemove(id);
 
