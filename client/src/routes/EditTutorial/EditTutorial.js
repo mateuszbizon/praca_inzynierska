@@ -22,9 +22,9 @@ function EditTutorial() {
         <Loader />
       ) : (
         <>
-          {user.result._id === tutorial.creator && (
+          {user.result._id === tutorial.creator || user.result.isAdmin ? (
             <CreateEditTutorial isEditing={true} dispatchFunc={updateTutorial} />
-          )}
+          ) : null}
         </>
       )}
     </>

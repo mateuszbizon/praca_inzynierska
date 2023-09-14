@@ -83,6 +83,12 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
 
     function finishTutorial() {
         if (checkTutorial(title, allStages)) {
+            if (isEditing) {
+                dispatch(dispatchFunc({ title: title, stages: allStages }, navigate, tutorial._id))
+
+                return;
+            }
+            
             dispatch(dispatchFunc({ title: title, stages: allStages, username: user.result.username }, navigate, tutorial._id))
         }
     }

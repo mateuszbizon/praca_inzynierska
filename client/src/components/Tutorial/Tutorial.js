@@ -16,7 +16,7 @@ function tutorial({tutorial, setShadowActive, setCurrentId}) {
         <div className='tutorial__title' onClick={() => navigate(`/tutorials/${tutorial._id}`)}>
             {tutorial.title}
         </div>
-        {user.result._id === tutorial.creator && (
+        {user.result._id === tutorial.creator || user.result.isAdmin ? (
             <>
                 <div className='tutorial__btn-box'>
                     <button className='tutorial__btn' onClick={() => navigate(`/edit-tutorial/${tutorial._id}`)}>
@@ -29,7 +29,7 @@ function tutorial({tutorial, setShadowActive, setCurrentId}) {
                     </button>
                 </div>
             </>
-        )}
+        ) : null}
     </div>
   )
 }
