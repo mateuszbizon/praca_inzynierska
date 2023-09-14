@@ -16,12 +16,12 @@ function post({post, setShadowActive, setCurrentId}) {
     <>
         <div className="post">
             <img src={post.selectedFile} alt="" className='post__img' onClick={() => navigate(`/posts/${post._id}`)}/>
-            {(user.result._id === post.creator) && (
+            {user.result._id === post.creator || user.result.isAdmin ? (
                 <div className='post__button-box' >
                     <DeleteOutlineIcon fontSize='medium' className='post__icon' onClick={handleDeleteData} />
                     <p className='post__text'> Usuń</p>
                 </div>
-            )}
+            ) : null}
         </div>
     </>
   )

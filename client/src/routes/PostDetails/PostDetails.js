@@ -78,7 +78,7 @@ function PostDetails() {
 								<div className='post-details__button-box'>
 									<Likes posts={posts} />
 								</div>
-								{user.result._id === posts.creator && (
+								{user.result._id === posts.creator || user.result.isAdmin ? (
 									<div
 										className='post-details__button-box'
 										onClick={() => setCurrentId(posts._id)}>
@@ -88,7 +88,7 @@ function PostDetails() {
 										/>
 										<p className='post-details__text'> Edytuj</p>
 									</div>
-								)}
+								) : null}
 							</div>
 							<div className='post-details__comment-input'>
 								<textarea

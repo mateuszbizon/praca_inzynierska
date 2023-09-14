@@ -43,7 +43,7 @@ function FormEdit({ currentId, setCurrentId }) {
 		}
 
 		dispatch(
-			updatePost(currentId, { ...form, username: user.result.username })
+			updatePost(currentId, form)
 		);
 		closeForm();
 	}
