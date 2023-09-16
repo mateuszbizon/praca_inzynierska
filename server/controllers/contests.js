@@ -96,6 +96,8 @@ const addUserToContest = async (req, res) => {
 
         if (contest.users.indexOf(currentUser) !== -1) return res.status(400).json({ message: contestMessages.emailAlreadyExist } )
 
+        if (contest.users.length == contest.usersLimit) return res.status(400).json({ message: contestMessages.contestNotSpaceForUser })
+
         contest.users.push({ ...user, name: existingUser.name.split(" ")[0], surname: existingUser.name.split(" ")[1] })
 
         sortArrayBySurname(contest.users)

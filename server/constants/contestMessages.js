@@ -5,6 +5,7 @@ const emailNotFound = "Nie znaleziono podanego adresu w naszym systemie";
 const emailAlreadyExist = "Email już zarejestrowany";
 const addedEmailToContest = "Dodano pomyślnie do zawodów";
 const eventNotFound = "Nie znaleziono danego eventu";
+const contestNotSpaceForUser = "Liczba zawodników jest już pełna";
 
 module.exports = {
 	contestNotCreated,
@@ -14,4 +15,5 @@ module.exports = {
 	emailAlreadyExist,
 	addedEmailToContest,
 	eventNotFound,
+	contestNotSpaceForUser
 };
