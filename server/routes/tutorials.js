@@ -91,6 +91,8 @@ router.get("/getTutorialsByUsername/:username", getTutorialsByUsername);
  *         description: Nie znaleziono poradnika
  *       401:
  *         description: Użytkownik nie zalogowany
+ *       403:
+ *         description: Użytkownik nie jest autorem lub administratorem
  */
 
 router.delete("/deleteTutorial/:id", auth, deleteTutorialById);
@@ -139,6 +141,8 @@ router.get("/getTutorialById/:id", getTutorialById);
  *         description: Nie znaleziono poradnika
  *       401:
  *         description: Użytkownik nie zalogowany
+ *       403:
+ *         description: Użytkownik nie jest autorem lub administratorem
  */
 
 router.patch("/updateTutorial/:id", auth, updateTutorial);

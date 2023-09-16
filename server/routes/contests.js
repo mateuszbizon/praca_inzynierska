@@ -1,5 +1,6 @@
 const express = require("express");
 const auth = require("../middleware/auth.js");
+const authAdmin = require("../middleware/authAdmin.js");
 const { createContest, getAllContests, deleteContestById, getContestById, updateContest, addUserToContest, getContestEvent, addUserTimesToContestEvent } = require("../controllers/contests.js");
 
 const router = express.Router();
@@ -106,9 +107,11 @@ const router = express.Router();
  *         description: Nie dodano nowych zawodów konflikt
  *       401:
  *         description: Administrator nie zalogowany
+ *       403:
+ *         description: Użytkownik nie jest administratorem
  */
 
-router.post("/createContest", auth, createContest);
+router.post("/createContest", auth, authAdmin, createContest);
 
 /**
  * @swagger
@@ -141,9 +144,11 @@ router.get("/getAllContests", getAllContests);
  *         description: Nie znaleziono zawodów
  *       401:
  *         description: Administrator nie zalogowany
+ *       403:
+ *         description: Użytkownik nie jest administratorem
  */
 
-router.delete("/deleteContestById/:id", auth, deleteContestById);
+router.delete("/deleteContestById/:id", auth, authAdmin, deleteContestById);
 
 /**
  * @swagger
@@ -189,9 +194,11 @@ router.get("/getContestById/:id", getContestById);
  *         description: Nie znaleziono zawodów
  *       401:
  *         description: Administrator nie zalogowany
+ *       403:
+ *         description: Użytkownik nie jest administratorem
  */
 
-router.patch("/updateContest/:id", auth, updateContest);
+router.patch("/updateContest/:id", auth, authAdmin, updateContest);
 
 /**
  * @swagger
@@ -273,8 +280,10 @@ router.get("/getContestEvent/:id/:event", getContestEvent)
  *         description: Nie znaleziono zawodów. Nie znaleziono konkurencji
  *       401:
  *         description: Administrator nie zalogowany
+ *       403:
+ *         description: Użytkownik nie jest administratorem
  */
 
-router.patch("/addUserTimesToContestEvent/:id/:event", auth, addUserTimesToContestEvent)
+router.patch("/addUserTimesToContestEvent/:id/:event", auth, authAdmin, addUserTimesToContestEvent)
 
 module.exports =  router;

@@ -124,6 +124,8 @@ router.post("/createPost", auth, createPost);
  *         description: Nie znaleziono postu
  *       401:
  *         description: Użytkownik nie zalogowany
+ *       403:
+ *         description: Użytkownik nie jest autorem lub administratorem
  */
 
 router.patch("/updatePost/:id", auth, updatePost);
@@ -146,6 +148,8 @@ router.patch("/updatePost/:id", auth, updatePost);
  *         description: Nie znaleziono postu
  *       401:
  *         description: Użytkownik nie zalogowany
+ *       403:
+ *         description: Użytkownik nie jest autorem lub administratorem
  */
 
 router.delete("/deletePost/:id", auth, deletePost);
