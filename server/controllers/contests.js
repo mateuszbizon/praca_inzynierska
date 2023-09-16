@@ -108,7 +108,7 @@ const addUserToContest = async (req, res) => {
 
         const updatedContest = await Contest.findByIdAndUpdate(id, contest, { new: true });
 
-        res.status(200).json({ message: "Dodano pomyślnie", contest: updatedContest });
+        res.status(200).json({ message: contestMessages.addedEmailToContest, contest: updatedContest });
     } catch (error) {
         res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
