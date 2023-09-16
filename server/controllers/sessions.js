@@ -1,4 +1,6 @@
 const User = require("../models/user.js");
+const commonMessages = require("../constants/commonMessages.js");
+const sessionMessages = require("../constants/sessionMessages.js");
 
 function getDate() {
     let newDate = new Date();
@@ -26,7 +28,7 @@ const getAllSessions = async (req, res) => {
 
         res.status(200).json(allSessions);
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -48,9 +50,9 @@ const addNewSession = async (req, res) => {
 
         const updatedSessions = await User.findByIdAndUpdate(req.userId, user, { new: true });
 
-        res.status(200).json({ message: "Zapisano pomyślnie", sessions: updatedSessions.sessions });
+        res.status(200).json({ message: sessionMessages.sessionCreated, sessions: updatedSessions.sessions });
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -62,15 +64,15 @@ const deleteSession = async (req, res) => {
 
         const currentSessionIndex = user.sessions.indexOf(user.sessions.find(s => s.id === parseInt(id)))
 
-        if (currentSessionIndex === -1) return res.status(404).json({ message: "Nie znaleziono sesji z tym id" })
+        if (currentSessionIndex === -1) return res.status(404).json({ message: sessionMessages.sessionNotFound })
 
         user.sessions = user.sessions.filter(s => s.id !== parseInt(id))
 
         const updatedSessions = await User.findByIdAndUpdate(req.userId, user, { new: true });
 
-        res.status(200).json({ message: "Usunięto pomyślnie", sessions: updatedSessions.sessions });
+        res.status(200).json({ message: sessionMessages.sessionDeleted, sessions: updatedSessions.sessions });
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 

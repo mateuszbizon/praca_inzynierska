@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const commonMessages = require("../constants/commonMessages.js");
 
 const auth = (req, res, next) => {
     try {
@@ -19,7 +20,7 @@ const auth = (req, res, next) => {
         
         next();
     } catch (error) {
-        res.status(401).json({ message: "Nie jesteś zalogowany!" })
+        res.status(401).json({ message: commonMessages.notAuthenticated })
     }
 }
 

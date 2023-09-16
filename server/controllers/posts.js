@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 const PostMessage = require('../models/postMessage.js');
 const User = require("../models/user.js");
 const { authOperation } = require("../utils/authOperation.js");
+const commonMessages = require("../constants/commonMessages.js");
+const postMessages = require("../constants/postMessages.js");
 
  const getPostsByUsername = async (req, res) => {
     const { username } = req.params;
@@ -11,7 +13,7 @@ const { authOperation } = require("../utils/authOperation.js");
 
         res.status(200).json(postMessages.slice(0).reverse());
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -19,13 +21,13 @@ const { authOperation } = require("../utils/authOperation.js");
     const { id } = req.params;
     
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: postMessages.postNotFound });
 
         const post = await PostMessage.findById(id);
         
         res.status(200).json(post);
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -38,7 +40,7 @@ const { authOperation } = require("../utils/authOperation.js");
 
         res.status(201).json(newPost);
     } catch (error) {
-        res.status(409).json({ message: "Nie udało się utworzyć postu.", desc: error.message });
+        res.status(409).json({ message: postMessages.postNotCreated, desc: error.message });
     }
 }
 
@@ -47,19 +49,19 @@ const { authOperation } = require("../utils/authOperation.js");
     const post = req.body;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: postMessages.postNotFound });
 
         const currentUser = await User.findById(req.userId);
 
         const currentPost = await PostMessage.findById(id);
 
-        if (!authOperation(req.userId, currentPost.creator, currentUser.isAdmin)) return res.status(403).json({ message: "Nie jesteś autorem lub administratorem" });
+        if (!authOperation(req.userId, currentPost.creator, currentUser.isAdmin)) return res.status(403).json({ message: commonMessages.notAuthorOrAdmin });
 
         const updatedPost = await PostMessage.findByIdAndUpdate(id, post, { new: true });
 
         res.status(200).json(updatedPost);
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -67,19 +69,19 @@ const { authOperation } = require("../utils/authOperation.js");
     const { id } = req.params;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: postMessages.postNotFound });
 
         const currentUser = await User.findById(req.userId);
 
         const currentPost = await PostMessage.findById(id);
 
-        if (!authOperation(req.userId, currentPost.creator, currentUser.isAdmin)) return res.status(403).json({ message: "Nie jesteś autorem lub administratorem" })
+        if (!authOperation(req.userId, currentPost.creator, currentUser.isAdmin)) return res.status(403).json({ message: commonMessages.notAuthorOrAdmin })
 
         await PostMessage.findByIdAndRemove(id);
 
-        res.status(200).json({message: "Usunięto post pomyślnie"});
+        res.status(200).json({message: postMessages.postDeleted });
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -87,7 +89,7 @@ const { authOperation } = require("../utils/authOperation.js");
     const { id } = req.params;
     
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: postMessages.postNotFound });
 
         const post = await PostMessage.findById(id);
 
@@ -105,7 +107,7 @@ const { authOperation } = require("../utils/authOperation.js");
 
         res.status(200).json(updatedPost);
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -114,7 +116,7 @@ const { authOperation } = require("../utils/authOperation.js");
     const { commentCreator, value } = req.body;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takiego posta z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: postMessages.postNotFound });
 
         const post = await PostMessage.findById(id);
     
@@ -124,7 +126,7 @@ const { authOperation } = require("../utils/authOperation.js");
     
         res.status(200).json(updatedPost); 
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 

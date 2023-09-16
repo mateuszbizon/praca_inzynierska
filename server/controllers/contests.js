@@ -5,6 +5,8 @@ const getBestTime = require("../utils/getBestTime.js");
 const deleteWorstAndBestTime = require("../utils/deleteWorstAndBestTime.js");
 const getAverage = require("../utils/getAverage.js");
 const User = require("../models/user.js");
+const contestMessages = require("../constants/contestMessages.js");
+const commonMessages = require("../constants/commonMessages.js");
 
 const createContest = async (req, res) => {
     const contest = req.body;
@@ -16,7 +18,7 @@ const createContest = async (req, res) => {
 
         res.status(201).json(newContest);
     } catch (error) {
-        res.status(409).json({ message: "Nie udało się utworzyć zawodów.", desc: error.message });
+        res.status(409).json({ message: contestMessages.contestNotCreated, desc: error.message });
     }
 }
 
@@ -28,7 +30,7 @@ const getAllContests = async (req, res) => {
 
         res.status(200).json({ contests: contests, contestsEnd: contestsEnd });
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -36,13 +38,13 @@ const deleteContestById = async (req, res) => {
     const { id } = req.params;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: contestMessages.contestNotFound });
 
         await Contest.findByIdAndRemove(id);
 
-        res.status(200).json({ message: "Usunięto zawody pomyślnie" });
+        res.status(200).json({ message: contestMessages.contestDeleted });
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -50,13 +52,13 @@ const getContestById = async (req, res) => {
     const { id } = req.params;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: contestMessages.contestNotFound });
 
         const contest = await Contest.findById(id);
 
         res.status(200).json(contest);
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -65,7 +67,7 @@ const updateContest = async (req, res) => {
     const contest = req.body;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: contestMessages.contestNotFound });
 
         await Contest.findByIdAndUpdate(id, contest, { new: true })
 
@@ -73,7 +75,7 @@ const updateContest = async (req, res) => {
 
         res.status(200).json(updatedContest);
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -82,17 +84,17 @@ const addUserToContest = async (req, res) => {
     const user = req.body;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: contestMessages.contestNotFound });
 
         const contest = await Contest.findById(id)
 
         const existingUser = await User.findOne({ email: user.email });
 
-        if (!existingUser) { return res.status(404).json({ message: "Nie znaleziono podanego adresu w naszym systemie" })}
+        if (!existingUser) { return res.status(404).json({ message: contestMessages.emailNotFound })}
 
         const currentUser = contest.users.find(u => u.email === user.email)
 
-        if (contest.users.indexOf(currentUser) !== -1) return res.status(400).json({ message: "Email już zarejestrowany"} )
+        if (contest.users.indexOf(currentUser) !== -1) return res.status(400).json({ message: contestMessages.emailAlreadyExist } )
 
         contest.users.push({ ...user, name: existingUser.name.split(" ")[0], surname: existingUser.name.split(" ")[1] })
 
@@ -108,7 +110,7 @@ const addUserToContest = async (req, res) => {
 
         res.status(200).json({ message: "Dodano pomyślnie", contest: updatedContest });
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -116,19 +118,19 @@ const getContestEvent = async (req, res) => {
     const { id, event } = req.params;
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: contestMessages.contestNotFound });
 
         const contest = await Contest.findById(id);
 
         const contestEvent = contest.events.find(e => e.value === event)
 
-        if (contest.events.indexOf(contestEvent) === -1) return res.status(404).json({ message: "Nie znaleziono danego eventu" })
+        if (contest.events.indexOf(contestEvent) === -1) return res.status(404).json({ message: contestMessages.eventNotFound })
 
         sortArrayByAverage(contestEvent.users)
 
         res.status(200).json({ contest: contest, contestEvent: contestEvent });
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 
@@ -137,13 +139,13 @@ const addUserTimesToContestEvent = async (req, res) => {
     const user = req.body
 
     try {
-        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie ma takich zawodów z tym id" });
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: contestMessages.contestNotFound });
 
         const contest = await Contest.findById(id);
 
         const currentEvent = contest.events.find(e => e.value === event)
 
-        if (contest.events.indexOf(currentEvent) === -1) return res.status(404).json({ message: "Nie znaleziono danego eventu" })
+        if (contest.events.indexOf(currentEvent) === -1) return res.status(404).json({ message: contestMessages.eventNotFound })
 
         const currentUser = currentEvent.users.find(u => u.email === user.email)
 
@@ -161,7 +163,7 @@ const addUserTimesToContestEvent = async (req, res) => {
 
         res.status(200).json({ updatedContest })
     } catch (error) {
-        res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
     }
 }
 

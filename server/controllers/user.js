@@ -6,6 +6,8 @@ const PostMessage = require('../models/postMessage.js');
 const Token = require("../models/token.js");
 const crypto = require("crypto");
 const sendEmail = require("../utils/sendEmail.js");
+const commonMessages = require("../constants/commonMessages.js");
+const userMessages = require("../constants/userMessages.js");
 
  const signin = async (req, res) => {
 	const { email, password } = req.body;
@@ -14,7 +16,7 @@ const sendEmail = require("../utils/sendEmail.js");
 		const existingUser = await User.findOne({ email });
 
 		if (!existingUser)
-			return res.status(404).json({ message: "Błędne dane logowania" });
+			return res.status(404).json({ message: userMessages.incorrectCredentials });
 
 		const isPasswordCorrect = await bcrypt.compare(
 			password,
@@ -22,11 +24,11 @@ const sendEmail = require("../utils/sendEmail.js");
 		);
 
 		if (!isPasswordCorrect){
-			return res.status(400).json({ message: "Błędne dane logowania" });
+			return res.status(400).json({ message: userMessages.incorrectCredentials });
         }
 
 		if (!existingUser.verified) {
-			return res.status(400).json({ message: "Potwierdź rejestrację" })
+			return res.status(400).json({ message: userMessages.confirmRegistration })
 		}
 
 		const token = jwt.sign(
@@ -37,7 +39,7 @@ const sendEmail = require("../utils/sendEmail.js");
 
 		res.status(200).json({ result: existingUser, token: token });
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 };
 
@@ -49,12 +51,12 @@ const sendEmail = require("../utils/sendEmail.js");
 		const existingUser = await User.findOne({ email });
 
 		if (existingUser)
-			return res.status(400).json({ message: "Email jest już zajęty" });
+			return res.status(400).json({ message: userMessages.emailAlreadyTaken });
 
 		const existingUsername = await User.findOne({ username });
 
 		if (existingUsername)
-			return res.status(400).json({ message: "Nazwa użytkownika jest już zajęta" });
+			return res.status(400).json({ message: userMessages.usernameAlreadyTaken });
 
 		const hashedPassword = await bcrypt.hash(password, 12);
 
@@ -72,9 +74,9 @@ const sendEmail = require("../utils/sendEmail.js");
 
 		await sendEmail(user.email, url);
 
-		res.status(200).json({ email: user.email, message: "Zarejestrowano pomyślnie" });
+		res.status(200).json({ email: user.email, message: userMessages.registrationSuccess });
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 };
 
@@ -84,11 +86,11 @@ const sendEmail = require("../utils/sendEmail.js");
 	try {
 		const user = await User.findOne({username: username});
 
-		if(!user) return res.status(404).json({ message: "Nie znaleziono danego użytkonwika" });
+		if(!user) return res.status(404).json({ message: userMessages.userNotFound });
 
 		res.status(200).json({ user: user });
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 
@@ -103,7 +105,7 @@ const sendEmail = require("../utils/sendEmail.js");
 		
 		res.status(200).json(users);
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 
@@ -115,7 +117,7 @@ const sendEmail = require("../utils/sendEmail.js");
 
 		if(existingUsername){
 			if(existingUsername._id.toString() !== req.userId){
-				return res.status(400).json({ message: "Nazwa użytkownika jest już zajęta" })
+				return res.status(400).json({ message: userMessages.usernameAlreadyTaken })
 			}
 		}
 
@@ -135,9 +137,9 @@ const sendEmail = require("../utils/sendEmail.js");
 			{ expiresIn: "5h" }
 		);
 
-		res.status(200).json({ message: "Zaktualizowano pomyślnie", result: newUser, token: token });
+		res.status(200).json({ message: userMessages.updatedSuccess, result: newUser, token: token });
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 
@@ -146,12 +148,12 @@ const sendEmail = require("../utils/sendEmail.js");
 	const { password, newPassword } = req.body
 	
 	try {
-		if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: "Nie znaleziono użytkownika" });
+		if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: userMessages.userNotFound });
 
 		const user = await User.findById(id)
 
 		if (user && id !== req.userId) {
-			res.status(400).json({ message: "Nie można zmienić hasła innego użytkownika" })
+			res.status(400).json({ message: userMessages.cantChangePasswordOtherUser })
 		}
 
 		const isPasswordCorrect = await bcrypt.compare(
@@ -159,7 +161,7 @@ const sendEmail = require("../utils/sendEmail.js");
 			user.password
 		);
 
-		if (!isPasswordCorrect) return res.status(400).json({ message: "Nieprawidłowe hasło" })
+		if (!isPasswordCorrect) return res.status(400).json({ message: userMessages.incorrectPassword })
 
 		const newHashedPassword = await bcrypt.hash(newPassword, 12);
 
@@ -167,9 +169,9 @@ const sendEmail = require("../utils/sendEmail.js");
 
 		await User.findByIdAndUpdate(id, user, { new: true })
 
-		res.status(200).json({ message: "Pomyślnie zmieniono hasło" })
+		res.status(200).json({ message: userMessages.passwordChangedSuccess })
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 

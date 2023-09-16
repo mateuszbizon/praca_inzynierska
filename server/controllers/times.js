@@ -1,4 +1,6 @@
 const User = require("../models/user.js");
+const commonMessages = require("../constants/commonMessages.js");
+const timesMessages = require("../constants/timesMessages.js");
 
 function getBestTime(array) {
     let bestTime = 600000;
@@ -97,7 +99,7 @@ const getAllTimes = async (req, res) => {
 
 		res.status(200).json({ times: allTimes, bestTime: bestTime });
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 
@@ -119,9 +121,9 @@ const addNewTime = async (req, res) => {
 
 		const bestTime = getBestTime(updatedTimes.times);
 
-		res.status(200).json({ message: "Dodano nowy czas", times: updatedTimes.times, bestTime: bestTime });
+		res.status(200).json({ message: timesMessages.newTimeAdded, times: updatedTimes.times, bestTime: bestTime });
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 
@@ -133,7 +135,7 @@ const deleteTime = async (req, res) => {
 
 		const currentTimeIndex = user.times.indexOf(user.times.find(t => t.id === parseInt(id)))
 
-		if (currentTimeIndex === -1) return res.status(404).json({ message: "Nie znaleziono czasu z tym id" })
+		if (currentTimeIndex === -1) return res.status(404).json({ message: timesMessages.timeNotFound })
 
 		user.times = user.times.filter(t => t.id !== parseInt(id));
 
@@ -141,9 +143,9 @@ const deleteTime = async (req, res) => {
 
 		const bestTime = getBestTime(updatedTimes.times);
 
-		res.status(200).json({ message: "Usunięto czas", times: updatedTimes.times, bestTime: bestTime })
+		res.status(200).json({ message: timesMessages.timeDeleted, times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 
@@ -157,9 +159,9 @@ const deleteAllTimes = async (req, res) => {
 
 		const bestTime = getBestTime(updatedTimes.times);
 
-		res.status(200).json({ message: "Usunięto wszystkie czasy", times: updatedTimes.times, bestTime: bestTime })
+		res.status(200).json({ message: timesMessages.allTimesDeleted, times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 
@@ -173,7 +175,7 @@ const setDnf = async (req, res) => {
 
 		const currentTimeIndex = user.times.indexOf(currentTime);
 
-		if (currentTimeIndex === -1) return res.status(404).json({ message: "Nie znaleziono czasu z tym id" })
+		if (currentTimeIndex === -1) return res.status(404).json({ message: timesMessages.timeNotFound })
 
 		user.times[currentTimeIndex] = { id: currentTime.id, time: currentTime.time, isDnf: true, plusTwo: null, textToDisplay: `DNF(${currentTime.time})` }
 
@@ -181,9 +183,9 @@ const setDnf = async (req, res) => {
 
 		const bestTime = getBestTime(updatedTimes.times);
 
-		res.status(200).json({ message: "Ustalono karę DNF", times: updatedTimes.times, bestTime: bestTime })
+		res.status(200).json({ message: timesMessages.timeSetDnf, times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 
@@ -197,7 +199,7 @@ const setTimeOk = async (req, res) => {
 
 		const currentTimeIndex = user.times.indexOf(currentTime);
 
-		if (currentTimeIndex === -1) return res.status(404).json({ message: "Nie znaleziono czasu z tym id" })
+		if (currentTimeIndex === -1) return res.status(404).json({ message: timesMessages.timeNotFound })
 
 		user.times[currentTimeIndex] = { id: currentTime.id, time: currentTime.time, isDnf: false, plusTwo: null, textToDisplay: currentTime.time }
 
@@ -205,9 +207,9 @@ const setTimeOk = async (req, res) => {
 
 		const bestTime = getBestTime(updatedTimes.times);
 
-		res.status(200).json({ message: "Ustalono czas na poprawny", times: updatedTimes.times, bestTime: bestTime })
+		res.status(200).json({ message: timesMessages.timeSetOk, times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 
@@ -221,7 +223,7 @@ const setPlusTwo = async (req, res) => {
 
 		const currentTimeIndex = user.times.indexOf(currentTime);
 
-		if (currentTimeIndex === -1) return res.status(404).json({ message: "Nie znaleziono czasu z tym id" })
+		if (currentTimeIndex === -1) return res.status(404).json({ message: timesMessages.timeNotFound })
 
 		const plusTwoTime = getPlusTwoTime(currentTime);
 
@@ -231,9 +233,9 @@ const setPlusTwo = async (req, res) => {
 
 		const bestTime = getBestTime(updatedTimes.times);
 
-		res.status(200).json({ message: "Ustalono karę dwóch sekund", times: updatedTimes.times, bestTime: bestTime })
+		res.status(200).json({ message: timesMessages.timeSetPlusTwo, times: updatedTimes.times, bestTime: bestTime })
 	} catch (error) {
-		res.status(500).json({ message: "Błąd serwera. Spróbuj ponownie później.", desc: error.message });
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
 	}
 }
 
