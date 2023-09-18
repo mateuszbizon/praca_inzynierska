@@ -1,14 +1,21 @@
 import React from 'react'
 import "./contest.css"
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { setContestEnded } from '../../actions/contests';
 
 function Contest({contest, setShadowActive, setCurrentId}) {
     const user = JSON.parse(localStorage.getItem("user"))
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     function handleDelete() {
         setShadowActive(true)
         setCurrentId(contest._id)
+    }
+
+    function handleSetContestEnded() {
+        dispatch(setContestEnded(contest));
     }
 
   return (
@@ -19,10 +26,15 @@ function Contest({contest, setShadowActive, setCurrentId}) {
             <p className='contest__text'>{contest.typeContest === "on-line" ? `zawody ${contest.typeContest}` : contest.city}</p>
         </div>
         {user !== null ? user.result.isAdmin && !contest.isEnded && (
-            <div className='contest__buttons-side'>
-                <button className='contest__btn' onClick={() => navigate(`/edit-contest/${contest._id}`)}>Edytuj</button>
-                <button className='contest__btn' onClick={handleDelete}>Usuń</button>
-            </div>
+            <>
+                <div className='contest__buttons-side'>
+                    <button className='contest__btn' onClick={() => navigate(`/edit-contest/${contest._id}`)}>Edytuj</button>
+                    <button className='contest__btn' onClick={handleDelete}>Usuń</button>
+                </div>
+                <div className='contest__buttons-side'>
+                    <button className='contest__btn' onClick={handleSetContestEnded}>Zakończ</button>
+                </div>
+            </>
         ) : null}
     </div>
   )

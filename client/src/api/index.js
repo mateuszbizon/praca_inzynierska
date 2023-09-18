@@ -50,6 +50,7 @@ export const getAllContests = () => API.get("/contests/getAllContests");
 export const deleteContestById = (id) => API.delete(`/contests/deleteContestById/${id}`);
 export const getContestById = (id) => API.get(`/contests/getContestById/${id}`);
 export const updateContest = (contest, id) => API.patch(`/contests/updateContest/${id}`, contest);
+export const setContestEnded = (id) => API.patch(`/contests/setContestEnded/${id}`);
 export const addUserToContest = (user, id) => API.patch(`/contests/addUserToContest/${id}`, user)
 export const getContestEvent = (id, event) => API.get(`/contests/getContestEvent/${id}/${event}`)
 export const addUserTimesToContestEvent = (id, event, userTimes) => API.patch(`/contests/addUserTimesToContestEvent/${id}/${event}`, userTimes)

@@ -1,7 +1,7 @@
 const express = require("express");
 const auth = require("../middleware/auth.js");
 const authAdmin = require("../middleware/authAdmin.js");
-const { createContest, getAllContests, deleteContestById, getContestById, updateContest, addUserToContest, getContestEvent, addUserTimesToContestEvent } = require("../controllers/contests.js");
+const { createContest, getAllContests, deleteContestById, getContestById, updateContest, addUserToContest, getContestEvent, addUserTimesToContestEvent, setContestEnded } = require("../controllers/contests.js");
 
 const router = express.Router();
 
@@ -199,6 +199,30 @@ router.get("/getContestById/:id", getContestById);
  */
 
 router.patch("/updateContest/:id", auth, authAdmin, updateContest);
+
+/**
+ * @swagger
+ * /contests/setContestEnded/{id}:
+ *   patch:
+ *     description: Ustawianie zawodów jako zakończone
+ *     tags: [contests]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         type: string
+ *     responses:
+ *       200:
+ *         description: Usunięto zawody
+ *       404:
+ *         description: Nie znaleziono zawodów
+ *       401:
+ *         description: Administrator nie zalogowany
+ *       403:
+ *         description: Użytkownik nie jest administratorem
+ */
+
+router.patch("/setContestEnded/:id", auth, authAdmin, setContestEnded);
 
 /**
  * @swagger

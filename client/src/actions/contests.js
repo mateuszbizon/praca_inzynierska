@@ -81,6 +81,16 @@ export const updateContest = (contest, navigate, id) => async (dispatch) => {
     }
 }
 
+export const setContestEnded = (contest) => async (dispatch) => {
+    try {
+        const { data } = await api.setContestEnded(contest._id);
+
+        dispatch({ type: actionTypes.SET_CONTEST_ENDED, payload: data });
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
 export const addUserToContest = (user, id) => async (dispatch) => {
     try {
         const { data } = await api.addUserToContest(user, id)
