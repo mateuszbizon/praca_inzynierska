@@ -2,7 +2,7 @@ import React from 'react'
 import "./contest.css"
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from "react-redux";
-import { setContestEnded } from '../../actions/contests';
+import { setContestEnded, setContestResumed } from '../../actions/contests';
 
 function Contest({contest, setShadowActive, setCurrentId}) {
     const user = JSON.parse(localStorage.getItem("user"))
@@ -16,6 +16,10 @@ function Contest({contest, setShadowActive, setCurrentId}) {
 
     function handleSetContestEnded() {
         dispatch(setContestEnded(contest));
+    }
+
+    function handleSetContestResumed() {
+        dispatch(setContestResumed(contest));
     }
 
   return (
@@ -35,6 +39,12 @@ function Contest({contest, setShadowActive, setCurrentId}) {
                     <button className='contest__btn' onClick={handleSetContestEnded}>Zakończ</button>
                 </div>
             </>
+        ) : null}
+
+        {user !== null ? user.result.isAdmin && contest.isEnded && (
+            <div className='contest__buttons-side'>
+                <button className='contest__btn' onClick={handleSetContestResumed}>Wznów</button>
+            </div>
         ) : null}
     </div>
   )

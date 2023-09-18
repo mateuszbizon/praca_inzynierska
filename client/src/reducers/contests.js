@@ -23,6 +23,9 @@ export default (state = { contests: [], contestsEnd: [], contest: {}, message: "
       case actionTypes.SET_CONTEST_ENDED:
         return { ...state, contests: state.contests.filter(contest => contest._id !== action.payload._id), contestsEnd: [...state.contestsEnd, action.payload] }
 
+      case actionTypes.SET_CONTEST_RESUMED:
+        return { ...state, contests: [...state.contests, action.payload], contestsEnd: state.contestsEnd.filter(contest => contest._id !== action.payload._id) }  
+
       case actionTypes.ADD_USER_TO_CONTEST:
         return { ...state, message: action.payload.message, contest: action.payload.contest }
 

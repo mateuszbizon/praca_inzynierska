@@ -97,6 +97,24 @@ const setContestEnded = async (req, res) => {
     }
 }
 
+const setContestResumed = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).json({ message: contestMessages.contestNotFound });
+
+        const currentContest = await Contest.findById(id);
+
+        currentContest.isEnded = false;
+
+        const updatedContest = await Contest.findByIdAndUpdate(id, currentContest, { new: true });
+
+        res.status(200).json(updatedContest);
+    } catch (error) {
+        res.status(500).json({ message: commonMessages.serverError, desc: error.message });
+    }
+}
+
 const addUserToContest = async (req, res) => {
     const { id } = req.params;
     const user = req.body;
@@ -187,4 +205,4 @@ const addUserTimesToContestEvent = async (req, res) => {
     }
 }
 
-module.exports = { addUserTimesToContestEvent, addUserToContest, getContestEvent, getContestById, createContest, getAllContests, updateContest, deleteContestById, setContestEnded }
+module.exports = { addUserTimesToContestEvent, addUserToContest, getContestEvent, getContestById, createContest, getAllContests, updateContest, deleteContestById, setContestEnded, setContestResumed }
