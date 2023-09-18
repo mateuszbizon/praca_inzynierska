@@ -40,7 +40,7 @@ function ContestsDashboard() {
             <Marker firstButtonRef={firstButtonRef} indicator={indicator} />
         </div>
         {changeView === "contests" && <Contests shadowActive={shadowActive} setShadowActive={setShadowActive} />}
-        {changeView === "contests-end" && <ContestsEnd shadowActive={shadowActive} setShadowActive={setShadowActive} />}
+        {changeView === "contests-end" && <ContestsEnd />}
     </section>
   )
 }

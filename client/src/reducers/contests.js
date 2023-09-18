@@ -11,9 +11,6 @@ export default (state = { contests: [], contestsEnd: [], contest: {}, message: "
       case actionTypes.DELETE_CONTEST_BY_ID:
         return { ...state, contests: state.contests.filter(contest => contest._id !== action.payload) }
 
-      case actionTypes.DELETE_CONTEST_END_BY_ID:
-        return { ...state, contestsEnd: state.contestsEnd.filter(contest => contest._id !== action.payload) }
-
       case actionTypes.GET_CONTEST_BY_ID:
         return { ...state, contest: action.payload, message: "" }
 

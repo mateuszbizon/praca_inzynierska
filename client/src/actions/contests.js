@@ -41,16 +41,6 @@ export const deleteContestById = (id) => async (dispatch) => {
     }
 }
 
-export const deleteContestEndById = (id) => async (dispatch) => {
-    try {
-        await api.deleteContestById(id)
-
-        dispatch({ type: actionTypes.DELETE_CONTEST_END_BY_ID, payload: id })
-    } catch (error) {
-        console.log(error.message)
-    }
-}
-
 export const getContestById = (id) => async (dispatch) => {
     try {
         dispatch({ type: actionTypes.START_LOADING })
