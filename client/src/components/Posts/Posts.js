@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { deletePost } from "../../actions/posts";
 import { CircularProgress } from "@mui/material";
 import DeleteConfirm from "../DeleteConfirm/DeleteConfirm";
+import * as deleteConfirmMessages from "../../constants/deleteConfirmMessages";
 
 function posts({ shadowActive, setShadowActive }) {
 	const { posts } = useSelector(state => state.posts);
@@ -25,6 +26,7 @@ function posts({ shadowActive, setShadowActive }) {
 				currentId={currentId}
 				setCurrentId={setCurrentId}
 				deleteFunc={deletePost}
+				message={deleteConfirmMessages.deletePostMessage}
 			/>
 			{isLoading ? (
 				<CircularProgress />

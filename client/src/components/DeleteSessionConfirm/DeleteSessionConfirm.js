@@ -14,7 +14,7 @@ function DeleteSessionConfirm(props) {
   return (
     <>
         <div className={props.isShadowActive ? "delete-session-confirm active" : "delete-session-confirm"}>
-            <p className='delete-session-confirm__title'>Czy na pewno chcesz usunąć tę sesję?</p>
+            <p className='delete-session-confirm__title'>{props.message}</p>
             <div className='delete-session-confirm__main-buttons'>
                 <button onClick={handleDeleteSession}>Tak</button>
                 <button onClick={() => props.setIsShadowActive(false)}>Nie</button>

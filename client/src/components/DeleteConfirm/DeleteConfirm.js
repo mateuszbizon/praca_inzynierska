@@ -7,7 +7,8 @@ function DeleteConfirm({
 	setShadowActive,
 	currentId,
 	setCurrentId,
-	deleteFunc
+	deleteFunc,
+	message
 }) {
 	const dispatch = useDispatch();
 
@@ -20,7 +21,7 @@ function DeleteConfirm({
 	return (
 		<div className={shadowActive ? "delete-confirm active" : "delete-confirm"}>
 			<p className='delete-confirm__title'>
-				Czy na pewno chcesz usunąć ten post?
+				{message}
 			</p>
 			<div className='delete-confirm__buttons'>
 				<button onClick={deleteCurrentPost}>Tak</button>

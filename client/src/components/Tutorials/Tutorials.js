@@ -4,6 +4,7 @@ import "./tutorials.css";
 import Tutorial from '../Tutorial/Tutorial';
 import DeleteConfirm from '../DeleteConfirm/DeleteConfirm';
 import { deleteTutorialById } from '../../actions/tutorials';
+import * as deleteConfirmMessages from "../../constants/deleteConfirmMessages";
 
 function tutorials(props) {
   const { tutorials } = useSelector(state => state.tutorials);
@@ -24,6 +25,7 @@ function tutorials(props) {
 				currentId={currentId}
 				setCurrentId={setCurrentId}
         deleteFunc={deleteTutorialById}
+        message={deleteConfirmMessages.deleteTutorialMessage}
 			/>
       <div className='tutorials'>
         {tutorials.map((tutorial, index) => (

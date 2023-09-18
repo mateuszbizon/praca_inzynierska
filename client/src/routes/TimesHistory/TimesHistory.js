@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllSessions } from "../../actions/sessions";
 import DeleteSessionConfirm from "../../components/DeleteSessionConfirm/DeleteSessionConfirm";
 import { CircularProgress } from "@mui/material";
+import * as deleteConfirmMessages from "../../constants/deleteConfirmMessages";
 
 function TimesHistory() {
 	const [clicked, setClicked] = useState(false);
@@ -45,7 +46,7 @@ function TimesHistory() {
 	return (
 		<section className='times-history'>
 			<div className={isShadowActive ? "times-history__shadow-active" : "times-history__shadow"} onClick={() => setIsShadowActive(false)}></div>
-			<DeleteSessionConfirm isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} sessionId={sessionId} />
+			<DeleteSessionConfirm isShadowActive={isShadowActive} setIsShadowActive={setIsShadowActive} sessionId={sessionId} message={deleteConfirmMessages.deleteSessionMessage} />
 			<div className='times-history__accordion'>
 				{isLoading ? (
 					<CircularProgress />

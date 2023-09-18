@@ -11,6 +11,7 @@ import {
 import { addNewSession } from "../../actions/sessions";
 import { CircularProgress } from "@mui/material";
 import sessionValid from "../../validations/SessionValid";
+import * as deleteConfirmMessages from "../../constants/deleteConfirmMessages";
 
 function ConfirmTimeAction({
 	currentTimeId,
@@ -79,7 +80,7 @@ function ConfirmTimeAction({
 			{timeAction === "delete-all-times" && (
 				<>
 					<p className='confirm-time-action__title'>
-						Czy na pewno chcesz usunąć wszystkie czasy?
+						{deleteConfirmMessages.deleteAllTimesMessage}
 					</p>
 					<div className='confirm-time-action__delete-buttons'>
 						<button onClick={handleDeleteAllTimes}>Tak</button>
@@ -100,7 +101,7 @@ function ConfirmTimeAction({
 					{showDeleteTime && (
 						<>
 							<p className='confirm-time-action__delete-title'>
-								Czy na pewno chcesz usunąć czas?
+								{deleteConfirmMessages.deleteTimeMessage}
 							</p>
 							<div className='confirm-time-action__delete-buttons'>
 								<button onClick={handleDelete}>Tak</button>

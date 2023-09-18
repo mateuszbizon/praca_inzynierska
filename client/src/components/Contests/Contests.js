@@ -5,6 +5,7 @@ import Loader from "../Loader/Loader"
 import "./contests.css"
 import DeleteConfirm from '../DeleteConfirm/DeleteConfirm'
 import { deleteContestById } from '../../actions/contests'
+import * as deleteConfirmMessages from "../../constants/deleteConfirmMessages";
 
 function Contests({ shadowActive, setShadowActive }) {
     const { isLoading } = useSelector(state => state.loaders)
@@ -19,7 +20,7 @@ function Contests({ shadowActive, setShadowActive }) {
 
   return (
     <>
-        <DeleteConfirm shadowActive={shadowActive} setShadowActive={setShadowActive} currentId={currentId} setCurrentId={setCurrentId} deleteFunc={deleteContestById} />
+        <DeleteConfirm shadowActive={shadowActive} setShadowActive={setShadowActive} currentId={currentId} setCurrentId={setCurrentId} deleteFunc={deleteContestById} message={deleteConfirmMessages.deleteContestMessage} />
         {isLoading ? (
             <Loader />
         ) : (
