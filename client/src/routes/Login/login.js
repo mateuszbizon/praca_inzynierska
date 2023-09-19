@@ -115,7 +115,7 @@ function Login() {
 							<button
 								type='submit'
 								onClick={handleSubmit}
-								className='login__submit'>
+								className='login__submit' disabled={loading}>
 								Zaloguj się{" "}
 								{loading && (
 									<CircularProgress size='25px' style={{ color: "#fff" }} />

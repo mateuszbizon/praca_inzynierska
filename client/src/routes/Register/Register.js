@@ -196,7 +196,7 @@ function Register() {
 								<button
 									type='submit'
 									onClick={handleSubmit}
-									className='register__submit'>
+									className='register__submit' disabled={loading}>
 									Zarejestruj się{" "}
 									{loading && (
 										<CircularProgress size='25px' style={{ color: "#fff" }} />

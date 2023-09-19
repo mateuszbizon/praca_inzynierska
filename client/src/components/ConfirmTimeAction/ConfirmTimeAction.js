@@ -133,7 +133,7 @@ function ConfirmTimeAction({
 							</p>
 						</div>
 						<div className='confirm-time-action__btn-box'>
-							<button type='submit'>
+							<button type='submit' disabled={isLoading}>
 								Zapisz{" "}
 								{isLoading && (
 									<CircularProgress size='25px' style={{ color: "#fff" }} />

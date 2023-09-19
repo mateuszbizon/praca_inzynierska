@@ -172,7 +172,7 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
         <div className='create-edit-tutorial__main-buttons'>
             <button className='create-edit-tutorial__btn' onClick={showTitleModal}>Dodaj/Zmień tytuł</button>
             <button className='create-edit-tutorial__btn' onClick={showStageModal}>Dodaj etap</button>
-            <button className='create-edit-tutorial__btn' onClick={finishTutorial}>Zakończ {isLoading && <CircularProgress size='20px' style={{ color: "#fff" }} />}</button>
+            <button className='create-edit-tutorial__btn' onClick={finishTutorial} disabled={isLoading}>Zakończ {isLoading && <CircularProgress size='20px' style={{ color: "#fff" }} />}</button>
         </div>
         <p className='create-edit-tutorial__title'>{title}</p>
         <div className='create-edit-tutorial__stages'>

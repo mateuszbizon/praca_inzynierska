@@ -50,7 +50,7 @@ function CreatePost() {
 							<button
 								type='submit'
 								onClick={handleSubmit}
-								className='create-post__submit'>
+								className='create-post__submit' disabled={isLoading}>
 								Utwórz {isLoading && <CircularProgress size="25px" style={{color: "#fff"}} />}
 							</button>
 						</div>
