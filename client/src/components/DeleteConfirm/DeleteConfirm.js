@@ -12,7 +12,7 @@ function DeleteConfirm({
 }) {
 	const dispatch = useDispatch();
 
-	function deleteCurrentPost() {
+	function handleDelete() {
 		dispatch(deleteFunc(currentId))
 		setCurrentId(null);
 		setShadowActive(false);
@@ -24,7 +24,7 @@ function DeleteConfirm({
 				{message}
 			</p>
 			<div className='delete-confirm__buttons'>
-				<button onClick={deleteCurrentPost}>Tak</button>
+				<button onClick={handleDelete}>Tak</button>
 				<button onClick={() => setShadowActive(false)}>Nie</button>
 			</div>
 		</div>
