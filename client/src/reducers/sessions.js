@@ -9,7 +9,7 @@ const sessions = (state = { sessions: [], message: "", success: false }, action)
             return { ...state, sessions: action.data.sessions, message: action.data.message, success: true }
 
         case actionType.DELETE_SESSION:
-            return { ...state, sessions: action.data }
+            return { ...state, sessions: action.data.sessions }
     
         default:
             return state;
