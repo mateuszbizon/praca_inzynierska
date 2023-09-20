@@ -28,6 +28,9 @@ export default (state = { contests: [], contestsEnd: [], contest: {}, message: "
 
       case actionTypes.GET_CONTEST_EVENT:
         return { ...state, contest: action.payload.contest, contestEvent: action.payload.contestEvent }
+
+      case actionTypes.RESET_CONTEST:
+        return { ...state, message: "" }
         
       default:
         return state;

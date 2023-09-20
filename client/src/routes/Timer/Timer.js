@@ -3,6 +3,7 @@ import "./timer.css";
 import Times from "../../components/Times/Times";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTimes, addNewTime } from "../../actions/times";
+import { resetSession } from "../../actions/sessions";
 import ConfirmTimeAction from "../../components/ConfirmTimeAction/ConfirmTimeAction";
 import { useNavigate } from "react-router-dom";
 
@@ -110,6 +111,7 @@ function Timer() {
 	function handleShowConfirmModal(timeActionText) {
 		setTimeAction(timeActionText);
 		setIsShadowActive(true);
+		dispatch(resetSession());
 	}
 
 	return (

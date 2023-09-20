@@ -8,7 +8,7 @@ import {
 	setPlusTwo,
 	deleteAllTimes,
 } from "../../actions/times";
-import { addNewSession } from "../../actions/sessions";
+import { addNewSession, resetSession } from "../../actions/sessions";
 import { CircularProgress } from "@mui/material";
 import sessionValid from "../../validations/SessionValid";
 import * as deleteConfirmMessages from "../../constants/deleteConfirmMessages";
@@ -71,6 +71,10 @@ function ConfirmTimeAction({
 			setNameSession("");
 		}
 	}, [errors])
+
+	useEffect(() => {
+		dispatch(resetSession());
+	}, [])
 
 	return (
 		<div

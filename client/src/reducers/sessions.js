@@ -10,6 +10,9 @@ const sessions = (state = { sessions: [], message: "", success: false }, action)
 
         case actionType.DELETE_SESSION:
             return { ...state, sessions: action.data.sessions }
+
+        case actionType.RESET_SESSION:
+            return { ...state, message: "" }
     
         default:
             return state;

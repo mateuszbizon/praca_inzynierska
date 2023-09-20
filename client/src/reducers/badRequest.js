@@ -7,6 +7,9 @@ export default (state = { isBadRequest: false, badMessage: "" }, action) => {
 
       case actionTypes.BAD_REQUEST_TRUE:
         return { ...state, isBadRequest: true, badMessage: action.payload }
+
+      case actionTypes.BAD_REQUEST_RESET:
+        return { ...state, badMessage: "" }
         
       default:
         return state;

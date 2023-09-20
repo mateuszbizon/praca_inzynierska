@@ -1,4 +1,4 @@
-import { GET_ALL_SESSIONS, ADD_NEW_SESSION, DELETE_SESSION, START_LOADING, END_LOADING } from '../constants/actionTypes';
+import { GET_ALL_SESSIONS, ADD_NEW_SESSION, DELETE_SESSION, START_LOADING, END_LOADING, RESET_SESSION } from '../constants/actionTypes';
 import * as api from '../api/index.js';
 
 export const getAllSessions = () => async (dispatch) => {
@@ -34,6 +34,14 @@ export const deleteSession = (id) => async (dispatch) => {
     const { data } = await api.deleteSession(id);
 
     dispatch({ type: DELETE_SESSION, data: data })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const resetSession = () => async (dispatch) => {
+  try {
+    dispatch({ type: RESET_SESSION });
   } catch (error) {
     console.log(error)
   }

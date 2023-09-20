@@ -4,7 +4,7 @@ import "./register-user-contest.css"
 import registerUserContestValid from '../../validations/RegisterUserContestvalid'
 import checkAreInputsEmpty from "../../validations/CheckAreInputsEmpty"
 import { useDispatch, useSelector } from "react-redux"
-import { addUserToContest } from '../../actions/contests'
+import { addUserToContest, resetContest } from '../../actions/contests'
 
 function RegisterUserToContest({ startRegistration, endRegistration, id, events }) {
   const [form, setForm] = useState({ email: "", place: "", events: [] })
@@ -29,6 +29,10 @@ function RegisterUserToContest({ startRegistration, endRegistration, id, events 
       dispatch(addUserToContest(form, id))
     }
   }, [errors])
+
+  useEffect(() => {
+    dispatch(resetContest());
+  }, [])
     
   return (
     <>

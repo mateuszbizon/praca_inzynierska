@@ -130,3 +130,13 @@ export const addUserTimesToContestEvent = (id, event, userTimes, navigate) => as
         console.log(error)
     }
 }
+
+export const resetContest = () => async (dispatch) => {
+    try {
+        dispatch({ type: actionTypes.RESET_CONTEST })
+
+        dispatch({ type: actionTypes.BAD_REQUEST_RESET })
+    } catch (error) {
+        console.log(error)
+    }
+}
