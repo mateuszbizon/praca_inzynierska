@@ -31,7 +31,7 @@ function ImgSlider({ imgsArray }) {
 			/>
 			<button
 				className={
-					!imgsArray.length
+					imgsArray.length < 2
 						? "img-slider__btn-not-show"
 						: "img-slider__btn img-slider__btn-prev"
 				}
@@ -40,7 +40,7 @@ function ImgSlider({ imgsArray }) {
 			</button>
 			<button
 				className={
-					!imgsArray.length
+					imgsArray.length < 2
 						? "img-slider__btn-not-show"
 						: "img-slider__btn img-slider__btn-next"
 				}
