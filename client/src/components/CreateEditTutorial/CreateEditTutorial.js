@@ -13,7 +13,7 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
     const [stageModalActive, setStageModalActive] = useState(false)
     const [title, setTitle] = useState("")
     const [allStages, setAllStages] = useState([])
-    const [stage, setStage] = useState({id: "", name: "", desc: "", selectedFile: [] })
+    const [stage, setStage] = useState({ index: "", name: "", desc: "", selectedFile: [] })
     const [errors, setErrors] = useState({})
     const [isEdited, setIsEdited] = useState(false);
     const dispatch = useDispatch();
@@ -42,36 +42,31 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
     }
 
     function clearStageData() {
-        setStage({ ...stage, id: "", name: "", desc: "", selectedFile: [] });
+        setStage({ ...stage, index: "", name: "", desc: "", selectedFile: [] });
     }
 
     function addStage() {
-        if (allStages.length == 0) {
-            allStages.push({ id: 1, name: stage.name, desc: stage.desc, selectedFile: stage.selectedFile })
-        } else {
-            const lastElement = allStages[allStages.length - 1]
-            allStages.push({ id: lastElement.id + 1, name: stage.name, desc: stage.desc, selectedFile: stage.selectedFile })
-        }
+        allStages.push({ name: stage.name, desc: stage.desc, selectedFile: stage.selectedFile })
 
         setAllStages([...allStages]);
         clearStageData();
     }
 
     function editCurrentStage() {
-        const update = allStages.map(existingStage => existingStage.id === stage.id ? stage : existingStage)
-        setAllStages(update)
+        const updatedStages = allStages.map((existingStage, index) => index === stage.index ? stage : existingStage)
+        setAllStages(updatedStages)
         saveStage()
     }
 
     function deleteCurrentStage() {
-        setAllStages(allStages.filter(existingStage => existingStage.id != stage.id))
+        setAllStages(allStages.filter((existingStage, index) => index != stage.index))
         closeModals();
     }
 
-    function fillCurrentStage(name, desc, file, id) {
+    function fillCurrentStage(name, desc, file, index) {
         setIsEdited(true);
         showStageModal();
-        setStage({ ...stage, id: id, name: name, desc: desc, selectedFile: file })
+        setStage({ ...stage, index: index, name: name, desc: desc, selectedFile: file })
     }
 
     function closeModals() {
@@ -111,12 +106,12 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
             closeModals() //adding or changing title
         }
 
-        if (Object.keys(errors).length == 0 && stage.name !== "" && stage.desc !== "" && stage.selectedFile.length > 0 && stage.id === "") {
+        if (Object.keys(errors).length == 0 && stage.name !== "" && stage.desc !== "" && stage.selectedFile.length > 0 && stage.index === "") {
             addStage()
             closeModals() // adding new stage
         }
 
-        if (Object.keys(errors).length == 0 && stage.name !== "" && stage.desc !== "" && stage.selectedFile.length > 0 && stage.id !== "") {
+        if (Object.keys(errors).length == 0 && stage.name !== "" && stage.desc !== "" && stage.selectedFile.length > 0 && stage.index !== "") {
             closeModals() // editing stage 
         }
     }, [errors])
@@ -177,9 +172,9 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
         <p className='create-edit-tutorial__title'>{title}</p>
         <div className='create-edit-tutorial__stages'>
             {allStages?.map((stage, index) => (
-                <div className='create-edit-tutorial__stage' key={index} onClick={() => fillCurrentStage(stage.name, stage.desc, stage.selectedFile, stage.id)}>
+                <div className='create-edit-tutorial__stage' key={index} onClick={() => fillCurrentStage(stage.name, stage.desc, stage.selectedFile, index)}>
                     <p className='create-edit-tutorial__stage-text'>
-                        Etap {index + 1}
+                        Etap nr {index + 1}
                     </p>
                     <p className='create-edit-tutorial__stage-text'>
                         {stage.name}
