@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import "./create-edit-tutorial.css"
 import { checkTitle, checkStage, checkTutorial } from "../../validations/CreateTutorialValid";
 import FileBase from 'react-file-base64';
@@ -21,7 +21,17 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
     const user = JSON.parse(localStorage.getItem("user"));
     const { isLoading } = useSelector(state => state.loaders)
     const { tutorial } = useSelector(state => state.tutorials)
+    const dragItem = useRef();
+    const dragOverItem = useRef();
 
+    function handleSort() {
+        const draggedItemContent = allStages.splice(dragItem.current, 1)[0];
+
+        allStages.splice(dragOverItem.current, 0, draggedItemContent);
+
+        setAllStages([...allStages]);
+    }
+    
     function showTitleModal() {
         setShadowActive(true);
         setTitleModalActive(true);
@@ -172,7 +182,15 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
         <p className='create-edit-tutorial__title'>{title}</p>
         <div className='create-edit-tutorial__stages'>
             {allStages?.map((stage, index) => (
-                <div className='create-edit-tutorial__stage' key={index} onClick={() => fillCurrentStage(stage.name, stage.desc, stage.selectedFile, index)}>
+                <div 
+                    className='create-edit-tutorial__stage' 
+                    key={index} onClick={() => fillCurrentStage(stage.name, stage.desc, stage.selectedFile, index)}
+                    draggable
+                    onDragStart={(e) => dragItem.current = index}
+                    onDragEnter={(e) => dragOverItem.current = index}
+                    onDragEnd={handleSort}
+                    onDragOver={(e) => e.preventDefault()}
+                >
                     <p className='create-edit-tutorial__stage-text'>
                         Etap nr {index + 1}
                     </p>
