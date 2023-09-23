@@ -174,11 +174,20 @@
             font-size: 20px;
         }
 
+        &__stage {
+            width: 300px;
+            height: 300px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .create-edit-tutorial {
         &__stages {
-            flex-direction: row;
-            justify-content: center;
-            flex-wrap: wrap;
-            padding: 10px;
+            padding: 10px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 300px);
+            justify-content: space-between;
         }
     }
 }

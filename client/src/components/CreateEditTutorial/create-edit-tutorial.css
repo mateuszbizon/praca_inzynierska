@@ -237,16 +237,18 @@
   .create-edit-tutorial__btn, .create-edit-tutorial__submit-btn, .create-edit-tutorial__stage-text {
     font-size: 20px;
   }
+  .create-edit-tutorial__stage {
+    width: 300px;
+    height: 300px;
+  }
+}
+@media (min-width: 768px) {
   .create-edit-tutorial__stages {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    padding: 10px;
+    padding: 10px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 300px);
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }/*# sourceMappingURL=create-edit-tutorial.css.map */
