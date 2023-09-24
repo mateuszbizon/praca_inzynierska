@@ -2,10 +2,10 @@
   opacity: 0;
   position: fixed;
   top: 70px;
-  right: 120px;
+  right: 100px;
   border-radius: 5px;
   background-color: #414770;
-  min-width: 200px;
+  min-width: 150px;
   padding: 10px 20px;
   z-index: -5;
   -webkit-transition: opacity 0.3s;
@@ -13,9 +13,11 @@
 }
 .more-create-options__item {
   position: relative;
-  width: 100%;
   margin-bottom: 10px;
   cursor: pointer;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
 }
 .more-create-options__item:last-child {
   margin-bottom: 5px;
@@ -45,7 +47,7 @@
 }
 .more-create-options__text {
   color: #fff;
-  font-size: 23px;
+  font-size: 20px;
 }
 
 .more-create-options.active {

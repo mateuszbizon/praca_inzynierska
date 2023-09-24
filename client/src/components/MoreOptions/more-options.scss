@@ -5,19 +5,19 @@
 	opacity: 0;
 	position: fixed;
 	top: 70px;
-	right: 100px;
+	right: 150px;
 	border-radius: 5px;
 	background-color: $secondary-color;
-	min-width: 200px;
+	min-width: 150px;
 	padding: 10px 20px;
 	z-index: -5;
 	transition: opacity .3s;
 
 	&__item {
 		position: relative;
-		width: 100%;
 		margin-bottom: 10px;
 		cursor: pointer;
+		width: max-content;
 
 		&:last-child {
 			margin-bottom: 5px;
@@ -34,7 +34,7 @@
 
 	&__text {
 		color: #fff;
-		font-size: 23px;
+		font-size: 20px;
 	}
 }
 
