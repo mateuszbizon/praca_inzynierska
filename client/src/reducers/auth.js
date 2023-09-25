@@ -10,7 +10,7 @@ const authReducer = (state = { authData: null, loading: false, success: null }, 
             return {...state, authData: action.data, success: false, loading: false };
 
         case actionType.AUTH_LOADING:
-            return { ...state, loading: true}
+            return { ...state, loading: true, authData: null }
 
         case actionType.REGISTER:
             localStorage.setItem("email", action.data.email)

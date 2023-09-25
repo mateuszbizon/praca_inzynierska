@@ -105,6 +105,14 @@ function MainData() {
 							{errors.username ? errors.username : "error"}
 						</p>
 					</div>
+					<div className='main-data__submit-btn'>
+						<button type='submit' className='main-data__submit'>
+							Edytuj profil{" "}
+							{loading && (
+								<CircularProgress size='15px' style={{ color: "#fff" }} />
+							)}
+						</button>
+					</div>
 					<p
 						className={
 							success
@@ -114,14 +122,6 @@ function MainData() {
 						{!success && authData}
 						{success && authData}
 					</p>
-					<div className='main-data__submit-btn'>
-						<button type='submit' className='main-data__submit'>
-							Edytuj profil{" "}
-							{loading && (
-								<CircularProgress size='15px' style={{ color: "#fff" }} />
-							)}
-						</button>
-					</div>
 				</form>
 			)}
 		</>
