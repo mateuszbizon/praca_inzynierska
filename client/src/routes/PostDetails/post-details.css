@@ -169,6 +169,9 @@
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 5;
 }
+.post-details__error-message {
+  font-size: 18px;
+}
 
 @media (min-width: 768px) {
   .post-details__container {

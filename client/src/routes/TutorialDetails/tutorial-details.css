@@ -184,6 +184,21 @@
   width: 300px;
   height: 300px;
 }
+.tutorial-details__section-error {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.tutorial-details__error-message {
+  font-size: 18px;
+}
 
 @media (min-width: 768px) {
   .tutorial-details__header-heading {

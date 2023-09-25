@@ -49,7 +49,7 @@ export const getTutorialById = (id) => async (dispatch) => {
 
         dispatch({ type: actionTypes.END_LOADING })
     } catch (error) {
-        console.log(error)
+        dispatch({ type: actionTypes.GET_TUTORIAL_BY_ID_FAIL, payload: error.response.data.message })
     }
 }
 

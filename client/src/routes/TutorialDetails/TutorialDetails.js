@@ -11,12 +11,18 @@ import Loader from '../../components/Loader/Loader';
 function TutorialDetails() {
     const { id } = useParams()
     const dispatch = useDispatch()
-    const { tutorial } = useSelector(state => state.tutorials)
+    const { tutorial, message, success } = useSelector(state => state.tutorials)
     const { isLoading } = useSelector(state => state.loaders)
 
     useEffect(() => {
         dispatch(getTutorialById(id))
     }, [])
+
+    if (!success) return (
+      <section className='tutorial-details__section-error'>
+        <p className='tutorial-details__error-message'>{message}</p>
+      </section>
+    )
 
   return (
     <>

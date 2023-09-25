@@ -144,6 +144,10 @@
 	&__shadow-active {
 		@include shadow;
 	}
+
+	&__error-message {
+		font-size: 18px;
+	}
 }
 
 @media (min-width: 768px) {

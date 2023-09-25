@@ -51,7 +51,7 @@ export const getContestById = (id) => async (dispatch) => {
 
         dispatch({ type: actionTypes.END_LOADING })
     } catch (error) {
-        console.log(error.message)
+        dispatch({ type: actionTypes.GET_CONTEST_BY_ID_FAIL, payload: error.response.data.message })
     }
 }
 

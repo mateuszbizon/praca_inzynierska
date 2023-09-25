@@ -17,7 +17,7 @@ function PostDetails() {
 	const navigate = useNavigate();
 	const [currentId, setCurrentId] = useState(null);
 	const user = JSON.parse(localStorage.getItem("user"));
-	const { posts } = useSelector(state => state.posts);
+	const { posts, message, success } = useSelector(state => state.posts);
 	const { isLoading } = useSelector(state => state.loaders);
 	const [comment, setComment] = useState({
 		commentCreator: user.result.username,
@@ -33,7 +33,11 @@ function PostDetails() {
 		setComment({ ...comment, value: "" });
 	}
 
-	if (!posts && !isLoading) return "Nie ma takiego postu";
+	if (!success) return (
+		<section className="post-details">
+			<p className="post-details__error-message">{message}</p>
+		</section>
+	);
 
 	return (
 		<>

@@ -1,4 +1,4 @@
-import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL_BY_USERNAME, FETCH_POST_BY_ID, START_LOADING, END_LOADING, COMMENT } from '../constants/actionTypes';
+import { CREATE, UPDATE, DELETE, LIKE, FETCH_ALL_BY_USERNAME, FETCH_POST_BY_ID, START_LOADING, END_LOADING, COMMENT, FETCH_POST_BY_ID_FAIL } from '../constants/actionTypes';
 
 import * as api from '../api/index.js';
 
@@ -25,7 +25,7 @@ export const getPostById = (id) => async (dispatch) => {
 
     dispatch({ type: END_LOADING });
   } catch (error) {
-    console.log(error);
+    dispatch({ type: FETCH_POST_BY_ID_FAIL, payload: error.response.data.message })
   }
 };
 

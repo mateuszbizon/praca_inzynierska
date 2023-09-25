@@ -13,7 +13,7 @@ function ContestDetails() {
     const [changeView, setChangeView] = useState("register")
     const { id } = useParams()
     const dispatch = useDispatch()
-    const { contest } = useSelector(state => state.contests)
+    const { contest, messageError, success } = useSelector(state => state.contests)
     const { isLoading } = useSelector(state => state.loaders)
     const firstButtonRef = useRef()
     const [indicator, setIndicator] = useState(null)
@@ -26,6 +26,12 @@ function ContestDetails() {
     useEffect(() => {
         dispatch(getContestById(id))
     }, [])
+
+    if (!success) return (
+        <section className='contest-details__section-error'>
+            <p className='contest-details__error-message'>{messageError}</p>
+        </section>
+    )
 
   return (
     <section className='contest-details'>

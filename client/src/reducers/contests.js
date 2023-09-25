@@ -1,6 +1,6 @@
 import * as actionTypes from "../constants/actionTypes";
 
-export default (state = { contests: [], contestsEnd: [], contest: {}, message: "", contestEvent: {} }, action) => {
+export default (state = { contests: [], contestsEnd: [], contest: {}, message: "", messageError: "", success: null, contestEvent: {} }, action) => {
     switch (action.type) {
       case actionTypes.CREATE_CONTEST:
         return { ...state, contests: [...state.contests, action.payload] };
@@ -12,7 +12,10 @@ export default (state = { contests: [], contestsEnd: [], contest: {}, message: "
         return { ...state, contests: state.contests.filter(contest => contest._id !== action.payload) }
 
       case actionTypes.GET_CONTEST_BY_ID:
-        return { ...state, contest: action.payload, message: "" }
+        return { ...state, contest: action.payload, message: "", success: true }
+
+      case actionTypes.GET_CONTEST_BY_ID_FAIL:
+        return { ...state, messageError: action.payload, success: false }
 
       case actionTypes.UPDATE_TUTORIAL:
         return { ...state, contest: action.payload }
