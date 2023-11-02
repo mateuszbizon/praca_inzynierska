@@ -5,9 +5,10 @@ const User = require("../models/user.js");
 const PostMessage = require('../models/postMessage.js');
 const Token = require("../models/token.js");
 const crypto = require("crypto");
-const sendEmail = require("../utils/sendEmail.js");
+const { sendEmail, resetPasswordEmail } = require("../utils/sendEmail.js");
 const commonMessages = require("../constants/commonMessages.js");
 const userMessages = require("../constants/userMessages.js");
+const passwordGenerator = require('generate-password');
 
  const signin = async (req, res) => {
 	const { email, password } = req.body;
@@ -175,4 +176,36 @@ const userMessages = require("../constants/userMessages.js");
 	}
 }
 
-module.exports = { signin, signup, editAccount, editPassword, getUser, getUsersBySearch }
+const resetPassword = async (req, res) => {
+	const { email } = req.body;
+
+	try {
+		const existingUser = await User.findOne({ email: email })
+
+		if (!existingUser) {
+			return res.status(404).json({ message: userMessages.emailNotFound });
+		}
+
+		const newPassword = passwordGenerator.generate({
+			length: 15,
+			numbers: true,
+			symbols: true
+		});
+
+		console.log(newPassword);
+
+		const hashedPassword = await bcrypt.hash(newPassword, 12);
+
+		existingUser.password = hashedPassword;
+
+		await User.findByIdAndUpdate(existingUser._id, existingUser, { new: true });
+
+		await resetPasswordEmail(existingUser.email, newPassword);
+
+		res.status(200).json({ message: userMessages.passwordResetedSuccess })
+	} catch (error) {
+		res.status(500).json({ message: commonMessages.serverError, desc: error.message });
+	}
+}
+
+module.exports = { signin, signup, editAccount, editPassword, getUser, getUsersBySearch, resetPassword }

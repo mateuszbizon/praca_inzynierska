@@ -1,5 +1,5 @@
 const express = require('express');
-const { signin, signup, getUser, getUsersBySearch, editAccount, editPassword } = require("../controllers/user.js");
+const { signin, signup, getUser, getUsersBySearch, editAccount, editPassword, resetPassword } = require("../controllers/user.js");
 const auth = require("../middleware/auth.js");
 
 const router = express.Router();
@@ -56,6 +56,12 @@ const router = express.Router();
  *         newPassword:
  *           type: string
  *           description: Nowe hasło użytkownika
+ *     ResetPassword:
+ *       type: object
+ *       properties:
+ *         email:
+ *           type: string
+ *           description: Hasło użytkownika do zresetowania
  */
 
 /**
@@ -200,6 +206,27 @@ router.patch("/editAccount", auth, editAccount);
  *         description: Użytkownik nie zalogowany
  */
 
-router.patch("/editPassword/:id", auth, editPassword)
+router.patch("/editPassword/:id", auth, editPassword);
+
+/**
+ * @swagger
+ * /user/resetPassword:
+ *   patch:
+ *     description: Resetowanie hasła
+ *     tags: [users]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ResetPassword'
+ *     responses:
+ *       200:
+ *         description: Zresetowano hasło
+ *       400:
+ *         description: Podany adres email nie znaleziony
+ */
+
+router.patch("/resetPassword", resetPassword);
 
 module.exports =  router;
