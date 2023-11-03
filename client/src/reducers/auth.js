@@ -31,6 +31,12 @@ const authReducer = (state = { authData: null, loading: false, success: null }, 
 
         case actionType.EDIT_PASSWORD_FAIL:
             return { ...state, authData: action.data, success: false, loading: false }
+
+        case actionType.RESET_PASSWORD:
+            return { ...state, authData: action.data.message, success: true, loading: false }
+
+        case actionType.RESET_PASSWORD_FAIL:
+            return { ...state, authData: action.data, success: false, loading: false }
         
         case actionType.AUTH_RESET:
             return { ...state, authData: null, success: null }

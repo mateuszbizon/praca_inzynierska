@@ -126,6 +126,12 @@ function Login() {
 							{!success && authData}
 						</p>
 						<div className='login__info-box'>
+							<p className='login__info'>Nie pamiętasz hasła?</p>
+							<a className='login__link' href='/reset-password'>
+								Zresetuj hasło
+							</a>
+						</div>
+						<div className='login__info-box'>
 							<p className='login__info'>Nie masz konta?</p>
 							<a className='login__link' href='/register'>
 								Zarejestruj się

@@ -22,6 +22,7 @@ import ContestDetails from "./routes/ContestDetails/ContestDetails";
 import LiveResults from "./routes/LiveResults/LiveResults";
 import AddUserTime from "./routes/AddUserTime/AddUserTime";
 import VerifyRegisterEmail from "./routes/VerifyRegisterEmail/VerifyRegisterEmail";
+import ResetPassword from "./routes/ResetPassword/ResetPassword";
 import "./app.css";
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
 				<Route path='/contests/:id' element={<ContestDetails />} />
 				<Route path='/live-results/:id/:event' element={<LiveResults />} />
 				<Route path='/users/:id/verify/:token' element={<VerifyRegisterEmail />} />
+				<Route path="/reset-password" element={<ResetPassword />} />
 			</Routes>
 		</Router>
 	);

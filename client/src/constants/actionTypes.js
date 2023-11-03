@@ -13,6 +13,8 @@ export const AUTH_LOADING = 'AUTH_LOADING';
 export const REGISTER = 'REGISTER';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const AUTH_RESET = 'AUTH_RESET';
+export const RESET_PASSWORD = "RESET_PASSWORD";
+export const RESET_PASSWORD_FAIL = "RESET_PASSWORD_FAIL";
 
 export const GET_USER = "GET_USER";
 export const GET_USERS_BY_SEARCH = "GET_USERS_BY_SEARCH";

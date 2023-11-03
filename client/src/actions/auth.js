@@ -9,6 +9,8 @@ import {
 	EDIT_PASSWORD,
 	EDIT_PASSWORD_FAIL,
 	AUTH_RESET,
+	RESET_PASSWORD,
+	RESET_PASSWORD_FAIL
 } from "../constants/actionTypes";
 import * as api from "../api/index.js";
 
@@ -61,6 +63,18 @@ export const editPassword = (passwords, id) => async dispatch => {
 		dispatch({ type: EDIT_PASSWORD, data: data });
 	} catch (error) {
 		dispatch({ type: EDIT_PASSWORD_FAIL, data: error.response.data.message });
+	}
+};
+
+export const resetPassword = (formData) => async dispatch => {
+	try {
+		dispatch({ type: AUTH_LOADING });
+
+		const { data } = await api.resetPassword(formData);
+
+		dispatch({ type: RESET_PASSWORD, data: data });
+	} catch (error) {
+		dispatch({ type: RESET_PASSWORD_FAIL, data: error.response.data.message });
 	}
 };
 

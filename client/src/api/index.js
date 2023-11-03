@@ -26,6 +26,7 @@ export const getUser = (username) => API.get(`/user/getUser/${username}`);
 export const getUsersBySearch = (search) => API.get(`/user/getUsersBySearch?search=${search}`)
 export const editAccount = (editData) => API.patch(`/user/editAccount`, editData);
 export const editPassword = (passwords, id) => API.patch(`/user/editPassword/${id}`, passwords)
+export const resetPassword = (formData) => API.patch(`/user/resetPassword`, formData)
 
 export const getAllTimes = () => API.get('/times/getAllTimes');
 export const addNewTime = (newTime) => API.post('/times/addNewTime', newTime);
