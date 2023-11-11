@@ -3,12 +3,12 @@ import { useSelector } from "react-redux";
 import "./tutorials.css";
 import Tutorial from '../Tutorial/Tutorial';
 import DeleteConfirm from '../DeleteConfirm/DeleteConfirm';
+import { CircularProgress } from "@mui/material";
 import { deleteTutorialById } from '../../actions/tutorials';
 import * as deleteConfirmMessages from "../../constants/deleteConfirmMessages";
 
 function tutorials(props) {
-  const { tutorials } = useSelector(state => state.tutorials);
-  const { isLoading } = useSelector(state => state.loaders);
+  const { tutorials, isLoading } = useSelector(state => state.tutorials);
   const [currentId, setCurrentId] = useState(null);
 
   if (!tutorials.length && !isLoading) return (
@@ -27,11 +27,15 @@ function tutorials(props) {
         deleteFunc={deleteTutorialById}
         message={deleteConfirmMessages.deleteTutorialMessage}
 			/>
-      <div className='tutorials'>
-        {tutorials.map((tutorial, index) => (
-          <Tutorial key={index} tutorial={tutorial} setShadowActive={props.setShadowActive} setCurrentId={setCurrentId}/>
-        ))}
-      </div>
+      {isLoading ? (
+        <CircularProgress />
+      ) : (
+        <div className='tutorials'>
+          {tutorials.map((tutorial, index) => (
+            <Tutorial key={index} tutorial={tutorial} setShadowActive={props.setShadowActive} setCurrentId={setCurrentId}/>
+          ))}
+        </div>
+      )}
     </>
   )
 }

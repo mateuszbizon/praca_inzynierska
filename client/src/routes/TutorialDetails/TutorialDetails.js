@@ -11,8 +11,7 @@ import Loader from '../../components/Loader/Loader';
 function TutorialDetails() {
     const { id } = useParams()
     const dispatch = useDispatch()
-    const { tutorial, message, success } = useSelector(state => state.tutorials)
-    const { isLoading } = useSelector(state => state.loaders)
+    const { tutorial, message, success, isLoading } = useSelector(state => state.tutorials)
 
     useEffect(() => {
         dispatch(getTutorialById(id))

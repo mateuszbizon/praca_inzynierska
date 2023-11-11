@@ -19,8 +19,7 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("user"));
-    const { isLoading } = useSelector(state => state.loaders)
-    const { tutorial } = useSelector(state => state.tutorials)
+    const { tutorial, isLoading } = useSelector(state => state.tutorials)
     const dragItem = useRef();
     const dragOverItem = useRef();
 
