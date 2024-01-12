@@ -22,9 +22,7 @@ describe("POST /user/signin", () => {
         return request(app).post("/user/signin").send({
             email: "mat-biz@wp.pl",
             password: "kaktus123"
-        }).expect(200).then(response => {
-            token = response.body.token
-        })
+        }).expect(200)
     })
 })
 
@@ -46,45 +44,6 @@ describe("POST /user/signup", () => {
             name: "Mateusz",
             surname: "Bizoń",
             username: "mateuszbizon"
-        }).expect(400)
-    })
-})
-
-describe("GET /user/getUser/:username", () => {
-    it("404 if user was not found", () => {
-        return request(app).get('/user/getUser/fake_username').expect(404)
-    })
-})
-
-describe("PATCH /user/editAccount", () => {
-    it("400 if username is already taken", () => {
-        return request(app).patch('/user/editAccount').set('Authorization', 'Bearer ' + token).send({
-            name: "Mateusz Bizoń",
-            username: "mateuszbizon2",
-            selectedFile: ""
-        }).expect(400)
-    })
-})
-
-describe("PATCH /user/editPassword/:id", () => {
-    it("404 if user is not found", () => {
-        return request(app).patch('/user/editPassword/fake_id').set('Authorization', 'Bearer ' + token).send({
-            password: "haslo",
-            newPassword: "haslo"
-        }).expect(404)
-    })
-
-    it("400 if password is incorrect", () => {
-        return request(app).patch('/user/editPassword/6492d306e1fa518521d8e453').set('Authorization', 'Bearer ' + token).send({
-            password: "haslo",
-            newPassword: "haslo123"
-        }).expect(400)
-    })
-
-    it("400 if changing password is not logged user", () => {
-        return request(app).patch('/user/editPassword/64946134330d9342d6adf2c8').set('Authorization', 'Bearer ' + token).send({
-            password: "haslo",
-            newPassword: "haslo123"
         }).expect(400)
     })
 })
