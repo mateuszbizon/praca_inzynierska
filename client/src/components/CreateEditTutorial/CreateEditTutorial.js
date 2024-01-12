@@ -19,7 +19,7 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = JSON.parse(localStorage.getItem("user"));
-    const { tutorial, isLoading } = useSelector(state => state.tutorials)
+    const { tutorial, isLoading, success, message } = useSelector(state => state.tutorials)
     const dragItem = useRef();
     const dragOverItem = useRef();
 
@@ -179,6 +179,7 @@ function CreateEditTutorial({ isEditing, dispatchFunc }) {
             <button className='create-edit-tutorial__btn' onClick={finishTutorial} disabled={isLoading}>Zakończ {isLoading && <CircularProgress size='20px' style={{ color: "#fff" }} />}</button>
         </div>
         <p className='create-edit-tutorial__title'>{title}</p>
+        <p className="create-edit-tutorial__error-message">{!success && message}</p>
         <div className='create-edit-tutorial__stages'>
             {allStages?.map((stage, index) => (
                 <div 

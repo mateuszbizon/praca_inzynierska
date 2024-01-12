@@ -14,6 +14,7 @@ export const createTutorial = (newTutorial, navigate) => async (dispatch) => {
         navigate(`/profile/${user.result.username}`);
     } catch (error) {
         console.log(error)
+        dispatch({ type: actionTypes.CREATE_TUTORIAL_FAIL, payload: error.response.data.message })
     }
 }
 
@@ -62,5 +63,6 @@ export const updateTutorial = (tutorial, navigate, id) => async (dispatch) => {
         navigate(`/tutorials/${id}`);
     } catch (error) {
         console.log(error)
+        dispatch({ type: actionTypes.UPDATE_TUTORIAL_FAIL, payload: error.response.data.message })
     }
 }

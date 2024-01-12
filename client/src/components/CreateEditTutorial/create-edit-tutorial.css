@@ -156,6 +156,7 @@
   font-size: 20px;
   width: 100%;
   word-wrap: break-word;
+  margin-bottom: 20px;
 }
 .create-edit-tutorial__btn {
   background-color: #f46036;
@@ -216,6 +217,11 @@
   height: 90%;
   -o-object-fit: cover;
      object-fit: cover;
+}
+.create-edit-tutorial__error-message {
+  text-align: center;
+  font-size: 18px;
+  word-wrap: break-word;
 }
 
 @media (min-width: 576px) {

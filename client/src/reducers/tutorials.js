@@ -5,6 +5,9 @@ export default (state = { tutorials: [], tutorial: {}, message: "", success: nul
       case actionTypes.CREATE_TUTORIAL:
         return { ...state, tutorials: [...state.tutorials, action.payload], isLoading: false };
 
+      case actionTypes.CREATE_TUTORIAL_FAIL:
+        return { ...state, message: action.payload, success: false, isLoading: false }
+
       case actionTypes.GET_TUTORIALS_BY_USERNAME:
         return { ...state, tutorials: action.payload, isLoading: false }
 
@@ -19,6 +22,9 @@ export default (state = { tutorials: [], tutorial: {}, message: "", success: nul
 
       case actionTypes.UPDATE_TUTORIAL:
         return { ...state, tutorial: action.payload, isLoading: false }
+
+      case actionTypes.UPDATE_TUTORIAL_FAIL:
+        return { ...state, message: action.payload, success: false, isLoading: false }
 
       case actionTypes.TUTORIAL_LOADING:
         return { ...state, isLoading: true }
