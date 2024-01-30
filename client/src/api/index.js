@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const apiUrl = 'https://social-speed-cubing-api.onrender.com/'
+export const apiUrl = process.env.REACT_APP_BACKEND_URL;
 
 const API = axios.create({ baseURL: apiUrl });
 
